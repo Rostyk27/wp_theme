@@ -1,0 +1,658 @@
+/* WooCommerce Custom Styles */
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("../fonts/HelveticaNeueCyr-Medium.eot");
+  src: url("../fonts/HelveticaNeueCyr-Medium.eot?#iefix") format("embedded-opentype"), url("../fonts/HelveticaNeueCyr-Medium.woff") format("woff"), url("../fonts/HelveticaNeueCyr-Medium.ttf") format("truetype"), url("../fonts/HelveticaNeueCyr-Medium.svg#Helvetica Neue") format("svg");
+  font-weight: 500;
+  font-style: normal; }
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  @font-face {
+    font-family: "Helvetica Neue";
+    src: url("../fonts/HelveticaNeueCyr-Medium.svg#Helvetica Neue") format("svg");
+    font-weight: 500;
+    font-style: normal; } }
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0 none;
+  box-sizing: border-box;
+  border-collapse: collapse;
+  -webkit-box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0); }
+
+*:before, *:after {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box; }
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -webkit-overflow-scrolling: touch;
+  -webkit-text-size-adjust: none;
+  -ms-text-size-adjust: none; }
+
+html, body {
+  height: 100%;
+  margin: 0; }
+
+hr {
+  height: 0;
+  border: 0;
+  font-size: 0;
+  clear: both;
+  display: block;
+  overflow: hidden; }
+
+article, aside, details, figcaption, figure, footer, header, nav, section, summary {
+  display: block; }
+
+ol, ul {
+  list-style: none; }
+
+h1, h2, h3, h4, h5 {
+  font-weight: normal; }
+
+mark {
+  background: none; }
+
+button {
+  background: rgba(255, 255, 255, 0);
+  border: medium none; }
+
+table {
+  border-spacing: 0; }
+
+td {
+  vertical-align: middle; }
+
+img {
+  max-width: 100%;
+  display: block;
+  height: auto; }
+
+a {
+  color: #27f;
+  outline: 0 none;
+  text-decoration: none;
+  -webkit-transition: all 0.4s ease;
+  -khtml-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -ms-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease; }
+  a:hover {
+    outline: 0 none;
+    text-decoration: none; }
+  a > img {
+    border: 0; }
+
+input, select, textarea {
+  -webkit-transition: all 0.4s ease;
+  -khtml-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -ms-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  -webkit-border-radius: 0;
+  -khtml-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -webkit-appearance: none;
+  outline: 0 none;
+  width: 100%; }
+
+input[type="submit"], input[type="button"] {
+  cursor: pointer;
+  -webkit-appearance: none;
+  border: none;
+  width: auto; }
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color: #999; }
+input:-moz-placeholder, textarea:-moz-placeholder {
+  color: #999; }
+input::-moz-placeholder, textarea::-moz-placeholder {
+  color: #999; }
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+  color: #999; }
+
+::-moz-selection {
+  color: #fff;
+  background: #ff4e50; }
+
+::selection {
+  color: #fff;
+  background: #ff4e50; }
+
+:focus {
+  outline: none; }
+
+::-moz-focus-inner {
+  border: 0; }
+
+.fullframe {
+  height: 0;
+  margin: 0;
+  overflow: hidden;
+  padding-bottom: 56.5%;
+  position: relative;
+  z-index: 0; }
+  .fullframe > iframe, .fullframe > object, .fullframe > embed {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1; }
+
+/*.left,*/
+.alignleft, .al {
+  float: left; }
+
+/*.right,*/
+.alignright, .ar {
+  float: right; }
+
+.aligncenter, .ac {
+  margin-left: auto;
+  margin-right: auto; }
+
+.valign {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 94%; }
+
+.vfix {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  width: 0; }
+
+.wrap {
+  font-size: 0;
+  text-align: center; }
+  .wrap .item {
+    display: inline-block;
+    vertical-align: top; }
+
+div.wpcf7 .wpcf7-form-control-wrap {
+  display: block !important;
+  margin-bottom: 20px;
+  clear: both; }
+div.wpcf7 .wpcf7-not-valid-tip {
+  background: #fff;
+  border: 1px solid #FF0000;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  cursor: pointer;
+  font-family: "Helvetica Neue", "Arial", sans-serif;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 10px; }
+div.wpcf7 .wpcf7-response-output {
+  float: left;
+  width: 100%;
+  margin: 10px 0 0 0;
+  font-family: "Helvetica Neue", "Arial", sans-serif;
+  line-height: 20px;
+  padding: 5px 20px;
+  text-align: center; }
+  div.wpcf7 .wpcf7-response-output.wpcf7-validation-errors {
+    background: #FF5F5F;
+    color: #fff; }
+  div.wpcf7 .wpcf7-response-output.wpcf7-mail-sent-ng {
+    background: #1091ae;
+    color: #fff; }
+  div.wpcf7 .wpcf7-response-output.wpcf7-mail-sent-ok {
+    background: #16A085;
+    color: #fff; }
+div.wpcf7 .ajax-loader {
+  display: none; }
+div.wpcf7 input:not([type="submit"]), div.wpcf7 textarea {
+  width: 100%;
+  border: 1px solid #086195;
+  padding: 0 12px;
+  display: block;
+  height: 49px;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  margin: 0 auto 20px;
+  font: 400 16px "Helvetica Neue", "Arial", sans-serif; }
+  div.wpcf7 input:not([type="submit"])::-webkit-input-placeholder, div.wpcf7 textarea::-webkit-input-placeholder {
+    color: #999; }
+  div.wpcf7 input:not([type="submit"]):-moz-placeholder, div.wpcf7 textarea:-moz-placeholder {
+    color: #999; }
+  div.wpcf7 input:not([type="submit"])::-moz-placeholder, div.wpcf7 textarea::-moz-placeholder {
+    color: #999; }
+  div.wpcf7 input:not([type="submit"]):-ms-input-placeholder, div.wpcf7 textarea:-ms-input-placeholder {
+    color: #999; }
+  div.wpcf7 input:not([type="submit"]):focus, div.wpcf7 textarea:focus {
+    background: rgba(8, 97, 149, 0.08); }
+div.wpcf7 textarea {
+  resize: none;
+  overflow: auto;
+  height: 150px;
+  padding: 10px; }
+
+.selbel_w {
+  position: relative;
+  display: block;
+  width: 100%;
+  font: 400 14px/40px "Helvetica Neue", "Arial", sans-serif;
+  height: 40px; }
+  .selbel_w select {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    position: relative;
+    display: block;
+    z-index: 1;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; }
+    .selbel_w select + span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #fff;
+      color: #555;
+      padding: 0 10px;
+      -webkit-border-radius: 5px;
+      -khtml-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -o-border-radius: 5px;
+      border-radius: 5px;
+      border: 1px solid #eee; }
+      .selbel_w select + span:after {
+        content: '';
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 9px 5px 0 5px;
+        border-color: #555 transparent transparent transparent;
+        position: absolute;
+        right: 13px;
+        top: 16px; }
+      .selbel_w select + span.err {
+        border-color: #ef4036; }
+    .selbel_w select option {
+      padding: 5px; }
+
+#menuopen {
+  display: none;
+  position: absolute;
+  top: 24px;
+  right: 0;
+  width: 23px;
+  height: 27px;
+  cursor: pointer;
+  z-index: 2000;
+  -webkit-transition: all 0.35s ease;
+  -khtml-transition: all 0.35s ease;
+  -moz-transition: all 0.35s ease;
+  -ms-transition: all 0.35s ease;
+  -o-transition: all 0.35s ease;
+  transition: all 0.35s ease; }
+  #menuopen:before, #menuopen:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    box-shadow: 0 4px 0 0 #fff, 0 18px 0 0 #fff;
+    -webkit-box-shadow: 0 4px 0 0 #fff, 0 18px 0 0 #fff;
+    -moz-box-shadow: 0 4px 0 0 #fff, 0 18px 0 0 #fff;
+    -webkit-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-transition: all 0.35s ease;
+    -khtml-transition: all 0.35s ease;
+    -moz-transition: all 0.35s ease;
+    -ms-transition: all 0.35s ease;
+    -o-transition: all 0.35s ease;
+    transition: all 0.35s ease; }
+  #menuopen:after {
+    content: '';
+    position: absolute;
+    top: 7px;
+    height: 4px;
+    -webkit-box-shadow: 0 4px 0 0 #fff;
+    -khtml-box-shadow: 0 4px 0 0 #fff;
+    -moz-box-shadow: 0 4px 0 0 #fff;
+    -ms-box-shadow: 0 4px 0 0 #fff;
+    -o-box-shadow: 0 4px 0 0 #fff;
+    box-shadow: 0 4px 0 0 #fff;
+    -webkit-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-transition: all 0.35s ease;
+    -khtml-transition: all 0.35s ease;
+    -moz-transition: all 0.35s ease;
+    -ms-transition: all 0.35s ease;
+    -o-transition: all 0.35s ease;
+    transition: all 0.35s ease; }
+  #menuopen.active:before, #menuopen.active:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    -webkit-box-shadow: none;
+    -khtml-box-shadow: none;
+    -moz-box-shadow: none;
+    -ms-box-shadow: none;
+    -o-box-shadow: none;
+    box-shadow: none;
+    -webkit-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px; }
+  #menuopen.active:before {
+    -webkit-backface-visibility: hidden;
+    -khtml-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: rotate(-45deg) translate(-7px, 7px);
+    -khtml-transform: rotate(-45deg) translate(-7px, 7px);
+    -moz-transform: rotate(-45deg) translate(-7px, 7px);
+    -ms-transform: rotate(-45deg) translate(-7px, 7px);
+    -o-transform: rotate(-45deg) translate(-7px, 7px);
+    transform: rotate(-45deg) translate(-7px, 7px); }
+  #menuopen.active:after {
+    -webkit-backface-visibility: hidden;
+    -khtml-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: rotate(45deg) translate(7px, 7px);
+    -khtml-transform: rotate(45deg) translate(7px, 7px);
+    -moz-transform: rotate(45deg) translate(7px, 7px);
+    -ms-transform: rotate(45deg) translate(7px, 7px);
+    -o-transform: rotate(45deg) translate(7px, 7px);
+    transform: rotate(45deg) translate(7px, 7px); }
+
+#customer_details {
+  margin: 30px 0 0; }
+
+.col2-set .col-1 {
+  float: left; }
+.col2-set .col-2 {
+  float: right; }
+.col2-set > div {
+  width: 49%; }
+
+.form-row label {
+  display: block;
+  font: 400 16px "Helvetica Neue", "Arial", sans-serif;
+  padding: 0 0 10px; }
+.form-row input[type="text"],
+.form-row input[type="email"],
+.form-row input[type="tel"],
+.form-row textarea {
+  border: 1px solid #eee;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  color: #555;
+  display: block;
+  font: 400 14px/40px "Helvetica Neue", "Arial", sans-serif;
+  height: 40px;
+  padding: 0 20px;
+  width: 100%; }
+  .form-row input[type="text"]:focus,
+  .form-row input[type="email"]:focus,
+  .form-row input[type="tel"]:focus,
+  .form-row textarea:focus {
+    border-color: #4f91cd;
+    color: #4f91cd; }
+.form-row textarea {
+  height: 130px;
+  line-height: 20px;
+  overflow: hidden;
+  padding: 10px;
+  resize: none; }
+.form-row abbr {
+  border: 0;
+  color: #e74c3c;
+  font-size: 16px; }
+.form-row input#billing_state + span {
+  display: none; }
+
+.woocommerce-error {
+  margin: 0; }
+  .woocommerce-error li {
+    background: #fff;
+    border: 1px solid #ef4036;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    color: #ef4036 !important;
+    display: block;
+    font: 400 14px/38px "Helvetica Neue", "Arial", sans-serif !important;
+    list-style: none !important;
+    margin: 20px 0;
+    text-align: center;
+    padding: 10px !important; }
+    .woocommerce-error li::before {
+      display: none !important; }
+
+.shop_table {
+  width: 100%; }
+  .shop_table tr th {
+    background: #4f91cd;
+    border: 1px solid #3979b2;
+    color: #fff;
+    font: 300 20px "Helvetica Neue", "Arial", sans-serif;
+    padding: 10px;
+    text-transform: uppercase; }
+    .shop_table tr th.product-thumbnail {
+      border-right: 0;
+      border-left: 0; }
+    .shop_table tr th.product-name {
+      border-left: 0; }
+    .shop_table tr th.product-remove {
+      border-right: 0; }
+  .shop_table tr td {
+    background: #fff;
+    border: 1px solid #3979b2;
+    padding: 10px; }
+    .shop_table tr td p {
+      padding: 0; }
+    .shop_table tr td.product-thumbnail {
+      padding: 0;
+      width: 90px; }
+      .shop_table tr td.product-thumbnail a, .shop_table tr td.product-thumbnail img {
+        display: block; }
+      .shop_table tr td.product-thumbnail img {
+        width: 90px; }
+    .shop_table tr td.product-name {
+      padding: 5px 10px; }
+    .shop_table tr td.product-price, .shop_table tr td.product-subtotal {
+      text-align: center; }
+    .shop_table tr td.product-quantity {
+      text-align: center;
+      width: 120px; }
+    .shop_table tr td.actions {
+      border: 0;
+      text-align: right;
+      padding: 10px 0; }
+  .shop_table tr .product-remove {
+    padding: 0;
+    width: 20px; }
+    .shop_table tr .product-remove a.remove {
+      background: #ef4036;
+      color: #fff;
+      display: block;
+      font: 700 20px/21px "Helvetica Neue", "Arial", sans-serif;
+      margin: 0 auto;
+      text-align: center;
+      text-decoration: none;
+      width: 21px; }
+
+.cart-collaterals .cart_totals {
+  float: right;
+  text-align: right;
+  margin: 0 0 40px; }
+  .cart-collaterals .cart_totals table {
+    table-layout: fixed;
+    text-align: right;
+    max-width: 100%;
+    width: 300px; }
+    .cart-collaterals .cart_totals table td {
+      font-size: 16px; }
+
+.woocommerce-message {
+  border: 1px solid #eee;
+  border-radius: 5px;
+  display: block;
+  margin: 20px 0;
+  padding: 20px;
+  vertical-align: middle; }
+  .woocommerce-message .button {
+    margin-right: 20px; }
+
+#payment {
+  margin-top: 30px; }
+  #payment .payment_methods {
+    margin: 0 0 30px; }
+    #payment .payment_methods li {
+      list-style: none;
+      padding: 0; }
+      #payment .payment_methods li:before {
+        display: none; }
+      #payment .payment_methods li input {
+        display: none; }
+        #payment .payment_methods li input + label {
+          background: #eee;
+          color: #4f91cd;
+          cursor: pointer;
+          display: inline-block;
+          font: 500 15px/40px "Helvetica Neue", "Arial", sans-serif;
+          height: 40px;
+          letter-spacing: 1.666px;
+          margin-bottom: 20px;
+          max-width: 100%;
+          padding: 0 20px;
+          text-decoration: none;
+          width: 310px; }
+          #payment .payment_methods li input + label:hover {
+            background: #3979b2;
+            color: #fff; }
+          #payment .payment_methods li input + label img {
+            float: right;
+            position: relative;
+            right: -10px;
+            top: 8px; }
+        #payment .payment_methods li input:checked + label {
+          background: #4f91cd;
+          color: #fff; }
+
+.woocommerce-billing-fields {
+  font-size: 0;
+  margin: 0 -10px; }
+  .woocommerce-billing-fields > h3 {
+    margin-left: 10px; }
+  .woocommerce-billing-fields .form-row {
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    padding: 0 10px 15px; }
+  .woocommerce-billing-fields #billing_country_field,
+  .woocommerce-billing-fields #billing_address_1_field,
+  .woocommerce-billing-fields #billing_company_field {
+    display: block;
+    width: auto; }
+  .woocommerce-billing-fields #billing_city_field label {
+    display: none; }
+  .woocommerce-billing-fields #order_comments_field > label {
+    display: none; }
+  .woocommerce-billing-fields .select2-container .select2-choice > .select2-chosen {
+    font-size: 14px; }
+
+.woocommerce-shipping-fields .form-row#order_comments_field {
+  padding-top: 32px; }
+  .woocommerce-shipping-fields .form-row#order_comments_field label {
+    display: none; }
+  .woocommerce-shipping-fields .form-row#order_comments_field textarea {
+    height: 116px; }
+
+form.cart {
+  display: inline-block;
+  vertical-align: top; }
+
+.quantity {
+  display: inline-block;
+  position: relative;
+  width: 100px; }
+  .quantity input[type="button"] {
+    background: #56a89f;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 700;
+    height: 20px;
+    line-height: 20px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 20px; }
+    .quantity input[type="button"].minus {
+      bottom: 0;
+      top: auto; }
+  .quantity input[type="number"] {
+    text-align: center;
+    border: 1px solid #eee;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    color: #555;
+    display: block;
+    font: 400 14px/40px "Helvetica Neue", "Arial", sans-serif;
+    height: 40px;
+    padding: 0 20px;
+    width: 100%;
+    -moz-appearance: textfield; }
+    .quantity input[type="number"]::-webkit-outer-spin-button, .quantity input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none; }
+    .quantity input[type="number"]:focus {
+      border-color: #56a89f;
+      color: #56a89f; }
+
+/* End WooCommerce */
+
+/*# sourceMappingURL=woo.css.map */
