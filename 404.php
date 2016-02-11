@@ -9,6 +9,7 @@
 	    	<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem doloremque dolorum, earum eos eum eveniet expedita illum incidunt ipsam ipsum labore maiores neque numquam porro saepe sit velit veniam voluptas!</span>
 	    </p>
 	    <h6>testtesttest</h6>
+	    <h4>for fun</h4>
     </div>
 </section>
 <?php get_footer(); ?>
