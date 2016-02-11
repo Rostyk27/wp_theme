@@ -1,5 +1,8 @@
 <?php
 
+//http://pp.dev.belugalab.com/news/
+//http://blog.autolightpros.com/
+
 '
 ajax_url = "http://pp.dev.belugalab.com/wp-admin/admin-ajax.php";
 $ = jQuery;
