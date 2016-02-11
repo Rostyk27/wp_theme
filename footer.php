@@ -1,7 +1,6 @@
 </div>
 <footer>
     <div class="container">
-        <hr/>
     </div>
 </footer>
 <?php wp_footer(); ?>
