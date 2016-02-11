@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Ростик
- * Date: 11.02.2016
- * Time: 16:26
- */
 
 '
 ajax_url = "http://pp.dev.belugalab.com/wp-admin/admin-ajax.php";
