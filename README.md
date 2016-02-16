@@ -1,4 +1,4 @@
 # themewp
 Сlean theme for WordPress. <br/>
-:octocat:
+:octocat: <br/>
 Inspired by Tusko Trush and Sonny :)
