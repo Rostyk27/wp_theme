@@ -1,6 +1,7 @@
 </div>
 <footer>
     <div class="container">
+    	test
     </div>
 </footer>
 <?php wp_footer(); ?>
