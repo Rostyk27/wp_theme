@@ -1,25 +1,25 @@
 <?php
 
 // Theme globals
-require_once('include/defines.php');
+require_once('inc/defines.php');
 
 // Recommended plugins installer
-require_once 'include/plugins/installer.php';
+require_once 'inc/plugins/installer.php';
 
 // Run pre-installed plugins
-require_once('include/themer.php');
+require_once('inc/themer.php');
 
 // Include custom assets
-require_once('include/assets.php');
+require_once('inc/assets.php');
 
 // Custom admin area functions
-require_once('include/admin-assets/admin-addons.php');
+require_once('inc/admin-assets/admin-addons.php');
 
 // Custom shortcodes
-require_once('include/shortcodes.php');
+require_once('inc/shortcodes.php');
 
 // Custom Posts Duplicator
-require_once('include/duplicator.php');
+require_once('inc/duplicator.php');
 
 // uncomment if need CPT
 //require_once('inc/custom-cpt.php');

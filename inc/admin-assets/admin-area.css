@@ -8,7 +8,7 @@ body, html {
     width: 100%;
 }
 body {
-    background: url(https://crystalstudio.me/images/s/scr1.jpg) no-repeat 50% 50%;
+    background: url(//farm6.staticflickr.com/5541/10785702065_591a36db1a_o_d.jpg) no-repeat 50% 50%;
     -webkit-background-size: cover;
     -khtml-background-size: cover;
     -moz-background-size: cover;
@@ -23,18 +23,11 @@ body {
     -moz-box-shadow: 0 2px 0 rgba(35, 110, 161, .75);
     box-shadow: 0 2px 0 rgba(35, 110, 161, .75);
 }
+.login h1 a {
+    background-image: url(wordpress-logo.svg);
+}
 .login label {
     color: #fff;
-}
-.login h1 a {
-    background:url(https://crystalstudio.me/images/logo.svg) no-repeat;
-    width: 150px;
-    height: 150px;
-    -webkit-background-size: cover;
-    -khtml-background-size: cover;
-    -moz-background-size: cover;
-    -ms-background-size: cover;
-    background-size: cover;
 }
 .login p a {
     border: 1px solid rgba(255, 255, 255, 0);
@@ -44,8 +37,9 @@ body {
     color: #fff !important;
     display: inline-block;
     font: 300 13px/20px "Open Sans","Arial",sans-serif;
-    padding: 0 10px;
     vertical-align: top;
+    text-shadow: none;
+    padding: 0 10px;
 }
 .login p a:hover {
     background: rgb(46, 204, 113);
@@ -55,6 +49,7 @@ body {
 }
 .login .button {
     float: none;
+    text-shadow: none;
     background: rgb(46, 204, 113) !important;
     border: 0 !important;
     -webkit-box-shadow: 0 2px 0 rgb(35, 110, 161) !important;
