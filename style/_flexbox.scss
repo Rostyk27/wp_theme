@@ -355,3 +355,18 @@
   }
   align-content: $value;
 }
+
+// flex grid
+
+@mixin flexboxGridMixin($columnNumber, $spacingPercent) {
+    $contentPercent: 100% - $spacingPercent;
+    $sideMargin: $spacingPercent/($columnNumber*2);
+    @include justify-content(flex-start);
+    @include flex-flow(wrap);
+    @include flexbox();
+    margin: 0 -$sideMargin;
+    > * {
+        width: $contentPercent/$columnNumber;
+        margin: 0 #{$sideMargin}
+    }
+}
