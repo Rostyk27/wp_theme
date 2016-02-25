@@ -1,9 +1,9 @@
 <?php
 
-function remove_footer_admin () {
+/*function remove_footer_admin () {
     echo 'Powered by <a href="http://www.wordpress.org" target="_blank">WordPress</a> | Theme Developer <a href="http://frontend.im" target="_blank">Tusko Trush</a>';
 }
-add_filter('admin_footer_text', 'remove_footer_admin');
+add_filter('admin_footer_text', 'remove_footer_admin');*/
 
 // Login area branding styles
 function wp_login_candy() {

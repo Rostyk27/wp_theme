@@ -1,24 +1,19 @@
-@import 'reset', 'flexbox';
+@import 'reset';
 
 html {
-  font-size: $font-base;
-  line-height: rem(24);
-  font-family: $font;
-  font-weight: 400;
-  background: #fff;
+  font: 400 #{$font-base} / 1.6  $font;
 }
 body {
   @include flexbox();
   @include flex-direction(column);
-  max-width: 1920px;
   min-height: 100vh;
+  background: #fff;
+  color: $black;
 }
 #main {
   @include flex(1, 0, auto);
   overflow: hidden;
-  width: 100%;
 }
-
 .container {
   margin: 0 auto;
   width: $container;
@@ -30,10 +25,7 @@ header {
   #menu {}
 }
 
-.content {
-  float: left;
-  width: 100%;
-}
+.content {}
 
 footer {}
 
@@ -44,7 +36,7 @@ footer {}
 
 
 @media screen and (max-width: 1024px) {
-  //html { font-size: px; }
+  //html {font-size: 16px;}
 
   #menuopen {
     display: block;
@@ -52,11 +44,9 @@ footer {}
 }
 
 
-@media screen and (max-width: 768px) {}
-
-
 @media screen and (max-width: 767px) {
-  .animatedParent .animated {
+
+  /*.animatedParent .animated {
     -o-transition-property: none !important;
     -moz-transition-property: none !important;
     -ms-transition-property: none !important;
@@ -73,10 +63,13 @@ footer {}
     -ms-animation: none !important;
     animation: none !important;
     opacity: 1
-  }
+  }*/
 }
 
 
+@media screen and (max-width: 640px) {}
+
+
 @media screen and (max-width: 480px) {
-  //html { font-size: px; }
+  //html {font-size: 14px;}
 }

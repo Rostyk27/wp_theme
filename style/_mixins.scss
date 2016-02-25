@@ -1,3 +1,177 @@
+@mixin css3-prefix($property, $value){
+  -webkit-#{$property}: #{$value};
+  -khtml-#{$property}: #{$value};
+  -moz-#{$property}: #{$value};
+  -ms-#{$property}: #{$value};
+  -o-#{$property}: #{$value};
+  #{$property}: #{$value}
+}
+
+@mixin border-radius($radius) {
+  @include css3-prefix('border-radius', $radius);
+}
+
+@mixin box-shadow($shadow) {
+  @include css3-prefix('box-shadow', $shadow);
+}
+
+@mixin backface-visibility($back: hidden) {
+  @include css3-prefix('backface-visibility', $back);
+}
+
+@mixin user-select($select) {
+  -webkit-touch-callout: $select;
+  @include css3-prefix('user-select', $select);
+}
+
+@mixin columns($count: 2, $gap: 0) {
+  @include css3-prefix('column-count', $count);
+  @include css3-prefix('column-gap', $gap);
+}
+
+@mixin background-size($size) {
+  @include css3-prefix('background-size', $size);
+}
+
+@mixin transition($property: all, $duration: .4s, $easing: ease) {
+  $transitions: ($property $duration $easing);
+  @include css3-prefix('transition', $transitions);
+}
+
+@mixin imagenize() {
+  image-rendering: -moz-crisp-edges;
+  image-rendering:   -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
+}
+
+@mixin transform($params, $backface: false) {
+  @include css3-prefix('transform', $params);
+  @if $backface {
+    -webkit-backface-visibility:hidden;
+    backface-visibility:hidden;
+  }
+}
+@mixin transform-origin($params) {
+  @include css3-prefix('transform-origin', $params);
+}
+
+@mixin center($horizontal: true, $vertical: true) {
+  position: absolute;
+  @if ($horizontal and $vertical) {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  } @else if ($horizontal) {
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+  } @else if ($vertical) {
+    top: 50%;
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+  }
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @-o-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+@mixin animation($str) {
+  @include css3-prefix('animation', $str);
+}
+
+@mixin placeholder {
+  &::-webkit-input-placeholder { @content; }
+  &:-moz-placeholder           { @content; }
+  &::-moz-placeholder          { @content; }
+  &:-ms-input-placeholder      { @content; }
+}
+
+//SCSS Triangle
+@mixin triangle ($width:12px, $height:10px, $color:#000, $direction: top) {
+  position: absolute;
+  content: '';
+  height: 0;
+  width: 0;
+
+  @if $direction == top {
+    border-top: 0;
+    border-left: $width solid transparent;
+    border-right: $width solid transparent;
+    border-bottom: $height solid $color;
+    top: -$height;
+    left: 50%;
+    @include transform(translateX(-50%));
+  } @else if $direction == right {
+    border-right: 0;
+    border-top: $width solid transparent;
+    border-bottom: $width solid transparent;
+    border-left: $height solid $color;
+    right: -$height;
+    top: 50%;
+    @include transform(translateY(-50%));
+  } @else if $direction == bottom {
+    border-bottom: 0;
+    border-left: $width solid transparent;
+    border-right: $width solid transparent;
+    border-top: $height solid $color;
+    bottom: -$height;
+    left: 50%;
+    @include transform(translateX(-50%));
+  } @else {
+    border-left: 0;
+    border-top: $width solid transparent;
+    border-bottom: $width solid transparent;
+    border-right: $height solid $color;
+    left: -$height;
+    top: 50%;
+    @include transform(translateY(-50%));
+  }
+
+}
+
+@mixin declare-font-face($font-family, $font-filename, $font-weight: normal, $font-style: normal) {
+  @font-face {
+    font-family: '#{$font-family}';
+    src: url('../fonts/#{$font-filename}.eot');
+    src: url('../fonts/#{$font-filename}.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/#{$font-filename}.woff') format('woff'),
+    url('../fonts/#{$font-filename}.ttf') format('truetype'),
+    url('../fonts/#{$font-filename}.svg##{$font-family}') format('svg');
+    font-weight: $font-weight;
+    font-style: $font-style
+  }
+}
+@mixin svg-font-face($font-family, $font-filename, $font-weight: normal, $font-style: normal) {
+  @font-face {
+    font-family: '#{$font-family}';
+    src: url('../fonts/#{$font-filename}.svg##{$font-family}') format('svg');
+    font-weight: $font-weight;
+    font-style: $font-style
+  }
+}
+
+
+
 // Flexbox Mixins
 // http://philipwalton.github.io/solved-by-flexbox/
 // https://github.com/philipwalton/solved-by-flexbox
@@ -354,4 +528,38 @@
     -ms-flex-line-pack: $value;
   }
   align-content: $value;
+}
+
+/*
+flex grid
+
+EXAMPLE
+.flexbox {
+  @include boxGrid(5, 4%);
+  > div {
+    margin-bottom: .4em;
+    background: #333;
+    padding: .8em;
+    color: #fff;
+  }
+}
+
+*/
+
+// Tusko's version
+
+@mixin flex-grid($columnNumber, $spacingPercent) {
+  $contentPercent: 100%;
+  $sideMargin: ($spacingPercent/2);
+  $marginInt: strip-units($sideMargin);
+  @include justify-content(flex-start);
+  @include flex-flow(wrap);
+  @include transition();
+  @include flexbox();
+  margin: 0 -$sideMargin;
+  width: $contentPercent + $spacingPercent;
+  > * {
+    width: ($contentPercent/$columnNumber) - $spacingPercent;
+    margin: 0 #{$sideMargin} ($marginInt + ($marginInt / $columnNumber) * 1em)
+  }
 }

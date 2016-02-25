@@ -1,174 +1,4 @@
-@mixin css3-prefix($property, $value){
-  -webkit-#{$property}: #{$value};
-  -khtml-#{$property}: #{$value};
-  -moz-#{$property}: #{$value};
-  -ms-#{$property}: #{$value};
-  -o-#{$property}: #{$value};
-  #{$property}: #{$value}
-}
-
-@mixin border-radius($radius) {
-  @include css3-prefix('border-radius', $radius);
-}
-
-@mixin box-shadow($shadow) {
-  @include css3-prefix('box-shadow', $shadow);
-}
-
-@mixin backface-visibility($back: hidden) {
-  @include css3-prefix('backface-visibility', $back);
-}
-
-@mixin user-select($select) {
-  -webkit-touch-callout: $select;
-  @include css3-prefix('user-select', $select);
-}
-
-@mixin columns($count: 2, $gap: 0) {
-  @include css3-prefix('column-count', $count);
-  @include css3-prefix('column-gap', $gap);
-}
-
-@mixin background-size($size) {
-  @include css3-prefix('background-size', $size);
-}
-
-@mixin transition($property: all, $duration: .4s, $easing: ease) {
-  $transitions: ($property $duration $easing);
-  @include css3-prefix('transition', $transitions);
-}
-
-@mixin imagenize() {
-  image-rendering: -moz-crisp-edges;
-  image-rendering:   -o-crisp-edges;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  -ms-interpolation-mode: nearest-neighbor;
-}
-
-@mixin transform($params, $backface: false) {
-  @include css3-prefix('transform', $params);
-  @if $backface {
-    -webkit-backface-visibility:hidden;
-    backface-visibility:hidden;
-  }
-}
-@mixin transform-origin($params) {
-  @include css3-prefix('transform-origin', $params);
-}
-
-@mixin center($horizontal: true, $vertical: true) {
-  position: absolute;
-  @if ($horizontal and $vertical) {
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-  } @else if ($horizontal) {
-    left: 50%;
-    -webkit-transform: translate(-50%, 0);
-    -moz-transform: translate(-50%, 0);
-    transform: translate(-50%, 0);
-  } @else if ($vertical) {
-    top: 50%;
-    -webkit-transform: translate(0, -50%);
-    -moz-transform: translate(0, -50%);
-    transform: translate(0, -50%);
-  }
-}
-
-@mixin keyframes($name) {
-  @-webkit-keyframes #{$name} {
-    @content;
-  }
-  @-moz-keyframes #{$name} {
-    @content;
-  }
-  @-ms-keyframes #{$name} {
-    @content;
-  }
-  @-o-keyframes #{$name} {
-    @content;
-  }
-  @keyframes #{$name} {
-    @content;
-  }
-}
-@mixin animation($str) {
-  @include css3-prefix('animation', $str);
-}
-
-@mixin placeholder {
-  &::-webkit-input-placeholder { @content; }
-  &:-moz-placeholder           { @content; }
-  &::-moz-placeholder          { @content; }
-  &:-ms-input-placeholder      { @content; }
-}
-
-//SCSS Triangle
-@mixin triangle ($width:12px, $height:10px, $color:#000, $direction: top) {
-  position: absolute;
-  content: '';
-  height: 0;
-  width: 0;
-
-  @if $direction == top {
-    border-top: 0;
-    border-left: $width solid transparent;
-    border-right: $width solid transparent;
-    border-bottom: $height solid $color;
-    top: -$height;
-    left: 50%;
-    @include transform(translateX(-50%));
-  } @else if $direction == right {
-    border-right: 0;
-    border-top: $width solid transparent;
-    border-bottom: $width solid transparent;
-    border-left: $height solid $color;
-    right: -$height;
-    top: 50%;
-    @include transform(translateY(-50%));
-  } @else if $direction == bottom {
-    border-bottom: 0;
-    border-left: $width solid transparent;
-    border-right: $width solid transparent;
-    border-top: $height solid $color;
-    bottom: -$height;
-    left: 50%;
-    @include transform(translateX(-50%));
-  } @else {
-    border-left: 0;
-    border-top: $width solid transparent;
-    border-bottom: $width solid transparent;
-    border-right: $height solid $color;
-    left: -$height;
-    top: 50%;
-    @include transform(translateY(-50%));
-  }
-
-}
-
-@mixin declare-font-face($font-family, $font-filename, $font-weight: normal, $font-style: normal) {
-  @font-face {
-    font-family: '#{$font-family}';
-    src: url('../fonts/#{$font-filename}.eot');
-    src: url('../fonts/#{$font-filename}.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/#{$font-filename}.woff') format('woff'),
-    url('../fonts/#{$font-filename}.ttf') format('truetype'),
-    url('../fonts/#{$font-filename}.svg##{$font-family}') format('svg');
-    font-weight: $font-weight;
-    font-style: $font-style
-  }
-}
-@mixin svg-font-face($font-family, $font-filename, $font-weight: normal, $font-style: normal) {
-  @font-face {
-    font-family: '#{$font-family}';
-    src: url('../fonts/#{$font-filename}.svg##{$font-family}') format('svg');
-    font-weight: $font-weight;
-    font-style: $font-style
-  }
-}
+@import 'mixins';
 
 @include declare-font-face('Helvetica Neue', 'HelveticaNeueCyr-Medium', 500);
 
@@ -198,12 +28,18 @@ $font-base: 16px;
 
 
 $container: 1140px;
+
 $color: #ff4e50;
+$black: #333;
+
 $font: 'Helvetica Neue', 'Arial', sans-serif;
+
+.flex {@include flexbox();}
 
 * {
   margin: 0;
   padding: 0;
+  min-width: 1px;
   outline: 0 none;
   box-sizing: border-box;
   border-collapse: collapse;
@@ -247,7 +83,7 @@ img {
 }
 
 a {
-  color: #27f;
+  color: $color;
   outline: 0 none;
   text-decoration: none;
   @include transition();
@@ -304,14 +140,14 @@ input, textarea {@include placeholder {color: #999;}}
   width: 0
 }
 
-.wrap {
+/*.wrap {
   font-size: 0;
   text-align: center;
   .item {
     display: inline-block;
     vertical-align: top;
   }
-}
+}*/
 
 //cf7
 div.wpcf7 {
@@ -429,16 +265,16 @@ div.wpcf7 {
 }
 
 // menu button
-$line-thickness: 4px; // The thickness of the button lines, also need to improve -> &:after {top: ?px} !
-$line-position: 18px; // The spacing between lines, also need to improve -> &:after {top: ?px} !
-$button-color: #fff; // The color of button
+$line-thickness: 5px; // The thickness of the button lines, also need to improve -> &:after {top: ?px} !
+$line-position: 21px; // The spacing between lines, also need to improve -> &:after {top: ?px} !
+$button-color: $color; // The color of button
 
 #menuopen {
   display: none;
   position: absolute;
   top: 24px;
   right: 0;
-  width: 23px;
+  width: 25px;
   height: 27px;
   cursor: pointer;
   z-index: 2000;
@@ -453,16 +289,16 @@ $button-color: #fff; // The color of button
     box-shadow: 0 $line-thickness 0 0 $button-color, 0 $line-position 0 0 $button-color;
     -webkit-box-shadow: 0 $line-thickness 0 0 $button-color, 0 $line-position 0 0 $button-color;
     -moz-box-shadow: 0 $line-thickness 0 0 $button-color, 0 $line-position 0 0 $button-color;
-    @include border-radius(3px);
+    /*@include border-radius(3px);*/
     @include transition(all, .35s, ease);
   }
   &:after {
     content: '';
     position: absolute;
-    top: 7px; // Need to improve if both $line-thickness and $line-position changed !
+    top: 8px; // Need to improve if both $line-thickness and $line-position changed !
     height: $line-thickness;
     @include box-shadow(0 $line-thickness 0 0 $button-color);
-    @include border-radius(3px);
+    /*@include border-radius(3px);*/
     @include transition(all, .35s, ease);
   }
   &.active:before, &.active:after {
@@ -472,7 +308,7 @@ $button-color: #fff; // The color of button
     right: 0;
     background: $button-color;
     @include box-shadow(none);
-    @include border-radius(3px);
+    /*@include border-radius(3px);*/
   }
   &.active:before {
     @include backface-visibility();

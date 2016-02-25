@@ -1,4 +1,19 @@
 /* WooCommerce Custom Styles */
+/*
+flex grid
+
+EXAMPLE
+.flexbox {
+  @include boxGrid(5, 4%);
+  > div {
+    margin-bottom: .4em;
+    background: #333;
+    padding: .8em;
+    color: #fff;
+  }
+}
+
+*/
 @font-face {
   font-family: "Helvetica Neue";
   src: url("../fonts/HelveticaNeueCyr-Medium.eot");
@@ -11,9 +26,17 @@
     src: url("../fonts/HelveticaNeueCyr-Medium.svg#Helvetica Neue") format("svg");
     font-weight: 500;
     font-style: normal; } }
+.flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex; }
+
 * {
   margin: 0;
   padding: 0;
+  min-width: 1px;
   outline: 0 none;
   box-sizing: border-box;
   border-collapse: collapse;
@@ -70,7 +93,7 @@ img {
   height: auto; }
 
 a {
-  color: #27f;
+  color: #ff4e50;
   outline: 0 none;
   text-decoration: none;
   -webkit-transition: all 0.4s ease;
@@ -171,13 +194,14 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   vertical-align: middle;
   width: 0; }
 
-.wrap {
+/*.wrap {
   font-size: 0;
-  text-align: center; }
-  .wrap .item {
+  text-align: center;
+  .item {
     display: inline-block;
-    vertical-align: top; }
-
+    vertical-align: top;
+  }
+}*/
 div.wpcf7 .wpcf7-form-control-wrap {
   display: block !important;
   margin-bottom: 20px;
@@ -295,7 +319,7 @@ div.wpcf7 textarea {
   position: absolute;
   top: 24px;
   right: 0;
-  width: 23px;
+  width: 25px;
   height: 27px;
   cursor: pointer;
   z-index: 2000;
@@ -311,16 +335,11 @@ div.wpcf7 textarea {
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
-    box-shadow: 0 4px 0 0 #fff, 0 18px 0 0 #fff;
-    -webkit-box-shadow: 0 4px 0 0 #fff, 0 18px 0 0 #fff;
-    -moz-box-shadow: 0 4px 0 0 #fff, 0 18px 0 0 #fff;
-    -webkit-border-radius: 3px;
-    -khtml-border-radius: 3px;
-    -moz-border-radius: 3px;
-    -ms-border-radius: 3px;
-    -o-border-radius: 3px;
-    border-radius: 3px;
+    height: 5px;
+    box-shadow: 0 5px 0 0 #ff4e50, 0 21px 0 0 #ff4e50;
+    -webkit-box-shadow: 0 5px 0 0 #ff4e50, 0 21px 0 0 #ff4e50;
+    -moz-box-shadow: 0 5px 0 0 #ff4e50, 0 21px 0 0 #ff4e50;
+    /*@include border-radius(3px);*/
     -webkit-transition: all 0.35s ease;
     -khtml-transition: all 0.35s ease;
     -moz-transition: all 0.35s ease;
@@ -330,20 +349,15 @@ div.wpcf7 textarea {
   #menuopen:after {
     content: '';
     position: absolute;
-    top: 7px;
-    height: 4px;
-    -webkit-box-shadow: 0 4px 0 0 #fff;
-    -khtml-box-shadow: 0 4px 0 0 #fff;
-    -moz-box-shadow: 0 4px 0 0 #fff;
-    -ms-box-shadow: 0 4px 0 0 #fff;
-    -o-box-shadow: 0 4px 0 0 #fff;
-    box-shadow: 0 4px 0 0 #fff;
-    -webkit-border-radius: 3px;
-    -khtml-border-radius: 3px;
-    -moz-border-radius: 3px;
-    -ms-border-radius: 3px;
-    -o-border-radius: 3px;
-    border-radius: 3px;
+    top: 8px;
+    height: 5px;
+    -webkit-box-shadow: 0 5px 0 0 #ff4e50;
+    -khtml-box-shadow: 0 5px 0 0 #ff4e50;
+    -moz-box-shadow: 0 5px 0 0 #ff4e50;
+    -ms-box-shadow: 0 5px 0 0 #ff4e50;
+    -o-box-shadow: 0 5px 0 0 #ff4e50;
+    box-shadow: 0 5px 0 0 #ff4e50;
+    /*@include border-radius(3px);*/
     -webkit-transition: all 0.35s ease;
     -khtml-transition: all 0.35s ease;
     -moz-transition: all 0.35s ease;
@@ -355,19 +369,14 @@ div.wpcf7 textarea {
     top: 0;
     left: 0;
     right: 0;
-    background: #fff;
+    background: #ff4e50;
     -webkit-box-shadow: none;
     -khtml-box-shadow: none;
     -moz-box-shadow: none;
     -ms-box-shadow: none;
     -o-box-shadow: none;
     box-shadow: none;
-    -webkit-border-radius: 3px;
-    -khtml-border-radius: 3px;
-    -moz-border-radius: 3px;
-    -ms-border-radius: 3px;
-    -o-border-radius: 3px;
-    border-radius: 3px; }
+    /*@include border-radius(3px);*/ }
   #menuopen.active:before {
     -webkit-backface-visibility: hidden;
     -khtml-backface-visibility: hidden;
