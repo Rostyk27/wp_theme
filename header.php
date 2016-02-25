@@ -15,7 +15,7 @@ if( defined('WP_DEBUG') && true !== WP_DEBUG) {
     <meta name="HandheldFriendly" content="True"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui, minimum-scale=1.0, maximum-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <link rel="shortcut icon" href="<?php theme(); ?>/images/favicon.ico" type="image/x-icon" sizes="16x16"/>
+    <link rel="shortcut icon" href="<?php echo theme('images/favicon.ico'); ?>" type="image/x-icon" sizes="16x16"/>
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
@@ -23,7 +23,7 @@ if( defined('WP_DEBUG') && true !== WP_DEBUG) {
     <header>
         <div class="container">
             <a class="logo" href="<?php echo domain_name(); ?>">
-                <img src="<?php theme(); ?>/images/logo.png" alt="logo">
+                <img src="<?php echo theme('images/logo.png'); ?>" alt="logo">
             </a>
             <button id="menuopen"></button>
             <nav id="menu">
