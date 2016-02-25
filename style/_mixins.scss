@@ -534,8 +534,8 @@
 flex grid
 
 EXAMPLE
-.flexbox {
-  @include boxGrid(5, 4%);
+.flexgrid {
+  @include flex-grid(5, 4%);
   > div {
     margin-bottom: .4em;
     background: #333;

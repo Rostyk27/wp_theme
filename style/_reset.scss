@@ -150,7 +150,7 @@ input, textarea {@include placeholder {color: #999;}}
 
 .flex {@include flexbox();}
 
-.flexbox {
+.flexgrid {
   @include flex-grid(3, 3%);
   > div {
     background: #333;

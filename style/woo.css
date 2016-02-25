@@ -3,8 +3,8 @@
 flex grid
 
 EXAMPLE
-.flexbox {
-  @include boxGrid(5, 4%);
+.flexgrid {
+  @include flex-grid(5, 4%);
   > div {
     margin-bottom: .4em;
     background: #333;
@@ -202,7 +202,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   display: -ms-flexbox;
   display: flex; }
 
-.flexbox {
+.flexgrid {
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   -webkit-justify-content: flex-start;
@@ -225,10 +225,10 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   display: flex;
   margin: -1.5%;
   width: 103%; }
-  .flexbox > * {
+  .flexgrid > * {
     width: 30.33333%;
     margin: 0 1.5% 2em; }
-  .flexbox > div {
+  .flexgrid > div {
     background: #333;
     padding: .8em;
     color: #fff; }
