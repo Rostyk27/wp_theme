@@ -34,8 +34,6 @@ $black: #333;
 
 $font: 'Helvetica Neue', 'Arial', sans-serif;
 
-.flex {@include flexbox();}
-
 * {
   margin: 0;
   padding: 0;
@@ -148,6 +146,112 @@ input, textarea {@include placeholder {color: #999;}}
     vertical-align: top;
   }
 }*/
+
+
+.flex {@include flexbox();}
+
+.flexbox {
+  @include flex-grid(3, 3%);
+  > div {
+    background: #333;
+    padding: .8em;
+    color: #fff;
+  }
+}
+
+.content {
+  img {
+    &.alignright { margin-left: 1.5em }
+    &.alignleft { margin-right: 1.5em }
+    &.alignnone {
+      display: inline-block;
+      vertical-align: baseline;
+      margin: 0;
+    }
+  }
+}
+
+.wp-video {
+  margin-bottom: .75em;
+  width: auto !important;
+  .mejs-video {
+    width: auto!important;
+    height: auto!important;
+  }
+}
+
+// content slideshow
+.wpa_slideshow {
+  position: relative;
+  margin-bottom: 20px;
+  .bx-pager {
+    position: absolute;
+    background: rgba(#000, .35);
+    text-align: center;
+    padding: 5px 0 10px;
+    > div {
+      vertical-align: middle;
+      display: inline-block;
+      margin: 0 5px;
+      a {
+        @include border-radius(50%);
+        border: 2px solid #fff;
+        text-indent: -99px;
+        overflow: hidden;
+        display: block;
+        height: 12px;
+        width: 12px;
+        &:hover,
+        &.active {
+          border-color: #000
+        }
+      }
+    }
+  }
+  .bx-controls-direction {
+    a {
+      position: absolute;
+      text-align: center;
+      margin-top: -20px;
+      line-height: 40px;
+      font-size: 40px;
+      color: #fff;
+      width: 40px;
+      top: 50%;
+      &::before {
+        position: relative;
+        top: 3pt;
+        content: "";
+        display: inline-block;
+        width: 0.4em;
+        height: 0.4em;
+        border-right: 0.03em solid #fff;
+        border-top: 0.03em solid #fff;
+        @include transform(rotate(45deg));
+      }
+      &.bx-prev {
+        left: 20px;
+        &:before {
+          @include transform(rotate(-135deg))
+        }
+      }
+      &.bx-next {
+        right: 20px;
+      }
+      &.disabled {
+        display: none
+      }
+      &:hover {
+        color: $color;
+      }
+    }
+  }
+  img {
+    @extend .aligncenter;
+    margin-bottom: 0 !important
+  }
+}
+
 
 //cf7
 div.wpcf7 {
