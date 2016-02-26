@@ -39,7 +39,7 @@ function my_theme_register_required_plugins() {
             'slug'      => 'contact-form-7',
             'required'  => false,
         ),
-        array(
+        /*array(
             'name'      => 'Contact Form 7 Controls',
             'slug'      => 'contact-form-7-extras',
             'required'  => false,
@@ -48,7 +48,7 @@ function my_theme_register_required_plugins() {
             'name'      => 'Contact Form 7 Lead info with country',
             'slug'      => 'contact-form-7-lead-info-with-country',
             'required'  => false,
-        ),
+        ),*/
         array(
             'name'      => 'TinyMCE Advanced',
             'slug'      => 'tinymce-advanced',
@@ -79,21 +79,21 @@ function my_theme_register_required_plugins() {
             'slug'      => 'wp-no-category-base',
             'required'  => false,
         ),
-	    array(
+	    /*array(
 		    'name' => 'Post Thumbnail Editor',
 		    'slug' => 'post-thumbnail-editor',
 		    'required' => true,
-	    ),
+	    ),*/
 	    array(
 		    'name' => 'Optimize Database after Deleting Revisions',
 		    'slug' => 'rvg-optimize-database',
 		    'required' => false,
 	    ),
-	    array(
+	    /*array(
 		    'name' => 'Wp-scss',
 		    'slug' => 'wp-scss',
 		    'required' => true,
-	    ),
+	    ),*/
         array(
             'name'               => 'Advanced Custom Fields: PRO',
             'slug'               => 'advanced-custom-fields-pro',
