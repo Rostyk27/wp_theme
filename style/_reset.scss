@@ -1,10 +1,10 @@
 @import 'mixins';
 
-@include declare-font-face('Helvetica Neue', 'HelveticaNeueCyr-Medium', 500);
+/*@include declare-font-face('name', 'file_name', 400);
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-  @include svg-font-face('Helvetica Neue', 'HelveticaNeueCyr-Medium', 500);
-}
+  @include svg-font-face('name', 'file_name', 400);
+}*/
 
 // responsive fonts + line-heights + padding & margin !!!
 $font-base: 16px;
@@ -32,7 +32,7 @@ $container: 1140px;
 $color: #ff4e50;
 $black: #333;
 
-$font: 'Helvetica Neue', 'Arial', sans-serif;
+$font: 'Arial', sans-serif;
 
 * {
   margin: 0;

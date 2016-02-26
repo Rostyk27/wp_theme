@@ -1,5 +1,12 @@
 /* WooCommerce Custom Styles */
-@import 'reset';
+@import 'mixins';
+
+$container: 1140px;
+
+$color: #ff4e50;
+$black: #333;
+
+$font: 'Arial', sans-serif;
 
 #customer_details {
   margin: 30px 0 0;

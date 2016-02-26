@@ -13,18 +13,11 @@ EXAMPLE
 }
 
 */
-@font-face {
-  font-family: "Helvetica Neue";
-  src: url("../fonts/HelveticaNeueCyr-Medium.eot");
-  src: url("../fonts/HelveticaNeueCyr-Medium.eot?#iefix") format("embedded-opentype"), url("../fonts/HelveticaNeueCyr-Medium.woff") format("woff"), url("../fonts/HelveticaNeueCyr-Medium.ttf") format("truetype"), url("../fonts/HelveticaNeueCyr-Medium.svg#Helvetica Neue") format("svg");
-  font-weight: 500;
-  font-style: normal; }
+/*@include declare-font-face('name', 'file_name', 400);
+
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-  @font-face {
-    font-family: "Helvetica Neue";
-    src: url("../fonts/HelveticaNeueCyr-Medium.svg#Helvetica Neue") format("svg");
-    font-weight: 500;
-    font-style: normal; } }
+  @include svg-font-face('name', 'file_name', 400);
+}*/
 * {
   margin: 0;
   padding: 0;
@@ -261,7 +254,7 @@ div.wpcf7 .wpcf7-not-valid-tip {
   left: 0;
   right: 0;
   cursor: pointer;
-  font-family: "Helvetica Neue", "Arial", sans-serif;
+  font-family: "Arial", sans-serif;
   height: 30px;
   line-height: 30px;
   padding: 0 10px; }
@@ -269,7 +262,7 @@ div.wpcf7 .wpcf7-response-output {
   float: left;
   width: 100%;
   margin: 10px 0 0 0;
-  font-family: "Helvetica Neue", "Arial", sans-serif;
+  font-family: "Arial", sans-serif;
   line-height: 20px;
   padding: 5px 20px;
   text-align: center; }
@@ -297,7 +290,7 @@ div.wpcf7 input:not([type="submit"]), div.wpcf7 textarea {
   -o-border-radius: 5px;
   border-radius: 5px;
   margin: 0 auto 20px;
-  font: 400 16px "Helvetica Neue", "Arial", sans-serif; }
+  font: 400 16px "Arial", sans-serif; }
   div.wpcf7 input:not([type="submit"])::-webkit-input-placeholder, div.wpcf7 textarea::-webkit-input-placeholder {
     color: #999; }
   div.wpcf7 input:not([type="submit"]):-moz-placeholder, div.wpcf7 textarea:-moz-placeholder {
@@ -318,7 +311,7 @@ div.wpcf7 textarea {
   position: relative;
   display: block;
   width: 100%;
-  font: 400 14px/40px "Helvetica Neue", "Arial", sans-serif;
+  font: 400 14px/40px "Arial", sans-serif;
   height: 40px; }
   .selbel_w select {
     width: 100%;
@@ -520,7 +513,7 @@ div.wpcf7 textarea {
     transform: rotate(45deg) translate(7px, 7px); }
 
 html {
-  font: 400 16px / 1.6 "Helvetica Neue", "Arial", sans-serif; }
+  font: 400 16px / 1.6 "Arial", sans-serif; }
 
 body {
   display: -webkit-box;
