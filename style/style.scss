@@ -7,7 +7,7 @@ body {
   @include flexbox();
   @include flex-direction(column);
   min-height: 100vh;
-  background: #ff0000;
+  background: #fff;
   color: $black;
 }
 #main {
