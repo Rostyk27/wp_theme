@@ -528,7 +528,7 @@ body {
   -ms-flex-direction: column;
   flex-direction: column;
   min-height: 100vh;
-  background: #fff;
+  background: #ff0000;
   color: #333; }
 
 #main {
