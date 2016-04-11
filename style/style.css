@@ -1,56 +1,472 @@
 /*
-Error: File to import not found or unreadable: elementsreset.
-        on line 1 of style.scss
+flex grid
 
-1: @import 'elementsreset';
-2: 
-3: html {
-4:   font: 400 #{$font-base} / 1.6  $font;
-5: }
-6: body {
+EXAMPLE
+.flexgrid {
+  @include flex-grid(5, 4%);
+  > div {
+    margin-bottom: .4em;
+    background: #333;
+    padding: .8em;
+    color: #fff;
+  }
+}
 
-Backtrace:
-style.scss:1
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/tree/import_node.rb:67:in `rescue in import'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/tree/import_node.rb:45:in `import'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/tree/import_node.rb:28:in `imported_file'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/tree/import_node.rb:37:in `css_import?'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:311:in `visit_import'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/tree/visitors/base.rb:36:in `visit'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/stack.rb:79:in `block in with_base'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/stack.rb:115:in `with_frame'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/stack.rb:79:in `with_base'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:158:in `visit'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/tree/visitors/base.rb:52:in `map'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/tree/visitors/base.rb:36:in `visit'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:157:in `visit'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/tree/visitors/perform.rb:8:in `visit'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/tree/root_node.rb:36:in `css_tree'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/engine.rb:378:in `_render_with_sourcemap'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/engine.rb:295:in `render_with_sourcemap'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/plugin/compiler.rb:490:in `update_stylesheet'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/plugin/compiler.rb:209:in `each'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/plugin.rb:82:in `update_stylesheets'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/exec/sass_scss.rb:363:in `watch_or_update'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/exec/sass_scss.rb:51:in `process_result'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/exec/base.rb:52:in `parse'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/exec/base.rb:19:in `parse!'
-C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/bin/scss:13:in `<top (required)>'
-C:/Ruby21-x64/bin/scss:23:in `load'
-C:/Ruby21-x64/bin/scss:23:in `<main>'
 */
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: File to import not found or unreadable: elementsreset.\A         on line 1 of style.scss\A \A 1: @import 'elementsreset';\A 2: \A 3: html {\A 4:   font: 400 #{$font-base} / 1.6  $font;\A 5: }\A 6: body {"; }
+/*@include declare-font-face('name', 'file_name', 400);
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  @include svg-font-face('name', 'file_name', 400);
+}*/
+* {
+  margin: 0;
+  padding: 0;
+  min-width: 1px;
+  outline: 0 none;
+  box-sizing: border-box;
+  border-collapse: collapse;
+  -webkit-box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0); }
+
+*:before, *:after {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box; }
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -webkit-overflow-scrolling: touch;
+  -webkit-text-size-adjust: none;
+  -ms-text-size-adjust: none; }
+
+html, body {
+  height: 100%;
+  margin: 0; }
+
+hr {
+  height: 0;
+  border: 0;
+  font-size: 0;
+  clear: both;
+  display: block;
+  overflow: hidden; }
+
+article, aside, details, figcaption, figure, footer, header, nav, section, summary {
+  display: block; }
+
+ol, ul {
+  list-style: none; }
+
+h1, h2, h3, h4, h5 {
+  font-weight: normal; }
+
+mark {
+  background: none; }
+
+button {
+  background: rgba(255, 255, 255, 0);
+  border: medium none; }
+
+table {
+  border-spacing: 0; }
+
+td {
+  vertical-align: middle; }
+
+img {
+  max-width: 100%;
+  display: block;
+  height: auto; }
+
+a {
+  color: #ff4e50;
+  outline: 0 none;
+  text-decoration: none;
+  -webkit-transition: all 0.4s ease;
+  -khtml-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -ms-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease; }
+  a:hover {
+    outline: 0 none;
+    text-decoration: none; }
+  a > img {
+    border: 0; }
+
+input, select, textarea {
+  -webkit-transition: all 0.4s ease;
+  -khtml-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -ms-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  -webkit-border-radius: 0;
+  -khtml-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -webkit-appearance: none;
+  outline: 0 none;
+  width: 100%; }
+
+input[type="submit"], input[type="button"] {
+  cursor: pointer;
+  -webkit-appearance: none;
+  border: none;
+  width: auto; }
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color: #999; }
+input:-moz-placeholder, textarea:-moz-placeholder {
+  color: #999; }
+input::-moz-placeholder, textarea::-moz-placeholder {
+  color: #999; }
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+  color: #999; }
+
+::-moz-selection {
+  color: #fff;
+  background: #ff4e50; }
+
+::selection {
+  color: #fff;
+  background: #ff4e50; }
+
+:focus {
+  outline: none; }
+
+::-moz-focus-inner {
+  border: 0; }
+
+.fullframe {
+  height: 0;
+  margin: 0;
+  overflow: hidden;
+  padding-bottom: 56.5%;
+  position: relative;
+  z-index: 0; }
+  .fullframe > iframe, .fullframe > object, .fullframe > embed {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1; }
+
+.alignleft, .al {
+  float: left; }
+
+.alignright, .ar {
+  float: right; }
+
+.aligncenter, .ac {
+  margin-left: auto;
+  margin-right: auto; }
+
+.valign {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 94%; }
+
+.vfix {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  width: 0; }
+
+.wp-video {
+  margin-bottom: .75em;
+  width: auto !important; }
+  .wp-video .mejs-video {
+    width: auto !important;
+    height: auto !important; }
+
+.flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  justify-content: space-between; }
+
+.content img.alignright {
+  margin-left: 1.5em; }
+.content img.alignleft {
+  margin-right: 1.5em; }
+.content img.alignnone {
+  display: inline-block;
+  vertical-align: baseline;
+  margin: 0; }
+
+div.wpcf7 .wpcf7-form-control-wrap {
+  display: block !important;
+  margin-bottom: 20px;
+  clear: both; }
+div.wpcf7 .wpcf7-not-valid-tip {
+  background: #fff;
+  border: 1px solid #FF0000;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  cursor: pointer;
+  font-family: "Arial", sans-serif;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 10px; }
+div.wpcf7 .wpcf7-response-output {
+  float: left;
+  width: 100%;
+  margin: 10px 0 0 0;
+  font-family: "Arial", sans-serif;
+  line-height: 20px;
+  padding: 5px 20px;
+  text-align: center; }
+  div.wpcf7 .wpcf7-response-output.wpcf7-validation-errors {
+    background: #FF5F5F;
+    color: #fff; }
+  div.wpcf7 .wpcf7-response-output.wpcf7-mail-sent-ng {
+    background: #1091ae;
+    color: #fff; }
+  div.wpcf7 .wpcf7-response-output.wpcf7-mail-sent-ok {
+    background: #16A085;
+    color: #fff; }
+div.wpcf7 .ajax-loader {
+  display: none; }
+div.wpcf7 input:not([type="submit"]), div.wpcf7 textarea {
+  width: 100%;
+  border: 1px solid #086195;
+  padding: 0 12px;
+  display: block;
+  height: 49px;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  margin: 0 auto 20px;
+  font: 400 16px "Arial", sans-serif; }
+  div.wpcf7 input:not([type="submit"])::-webkit-input-placeholder, div.wpcf7 textarea::-webkit-input-placeholder {
+    color: #999; }
+  div.wpcf7 input:not([type="submit"]):-moz-placeholder, div.wpcf7 textarea:-moz-placeholder {
+    color: #999; }
+  div.wpcf7 input:not([type="submit"])::-moz-placeholder, div.wpcf7 textarea::-moz-placeholder {
+    color: #999; }
+  div.wpcf7 input:not([type="submit"]):-ms-input-placeholder, div.wpcf7 textarea:-ms-input-placeholder {
+    color: #999; }
+  div.wpcf7 input:not([type="submit"]):focus, div.wpcf7 textarea:focus {
+    background: rgba(8, 97, 149, 0.08); }
+div.wpcf7 textarea {
+  resize: none;
+  overflow: auto;
+  height: 150px;
+  padding: 10px; }
+
+.selbel_w {
+  position: relative;
+  display: block;
+  width: 100%;
+  font: 400 14px/40px "Arial", sans-serif;
+  height: 40px; }
+  .selbel_w select {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    position: relative;
+    display: block;
+    z-index: 1;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; }
+    .selbel_w select + span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #fff;
+      color: #555;
+      padding: 0 10px;
+      -webkit-border-radius: 5px;
+      -khtml-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -o-border-radius: 5px;
+      border-radius: 5px;
+      border: 1px solid #eee; }
+      .selbel_w select + span:after {
+        content: '';
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 9px 5px 0 5px;
+        border-color: #555 transparent transparent transparent;
+        position: absolute;
+        right: 13px;
+        top: 16px; }
+      .selbel_w select + span.err {
+        border-color: #ef4036; }
+    .selbel_w select option {
+      padding: 5px; }
+
+#menuopen {
+  display: none;
+  position: absolute;
+  top: 24px;
+  right: 0;
+  width: 25px;
+  height: 27px;
+  cursor: pointer;
+  z-index: 2000;
+  -webkit-transition: all 0.35s ease;
+  -khtml-transition: all 0.35s ease;
+  -moz-transition: all 0.35s ease;
+  -ms-transition: all 0.35s ease;
+  -o-transition: all 0.35s ease;
+  transition: all 0.35s ease; }
+  #menuopen:before, #menuopen:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    box-shadow: 0 5px 0 0 #ff4e50, 0 21px 0 0 #ff4e50;
+    -webkit-box-shadow: 0 5px 0 0 #ff4e50, 0 21px 0 0 #ff4e50;
+    -moz-box-shadow: 0 5px 0 0 #ff4e50, 0 21px 0 0 #ff4e50;
+    /*@include border-radius(3px);*/
+    -webkit-transition: all 0.35s ease;
+    -khtml-transition: all 0.35s ease;
+    -moz-transition: all 0.35s ease;
+    -ms-transition: all 0.35s ease;
+    -o-transition: all 0.35s ease;
+    transition: all 0.35s ease; }
+  #menuopen:after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    height: 5px;
+    -webkit-box-shadow: 0 5px 0 0 #ff4e50;
+    -khtml-box-shadow: 0 5px 0 0 #ff4e50;
+    -moz-box-shadow: 0 5px 0 0 #ff4e50;
+    -ms-box-shadow: 0 5px 0 0 #ff4e50;
+    -o-box-shadow: 0 5px 0 0 #ff4e50;
+    box-shadow: 0 5px 0 0 #ff4e50;
+    /*@include border-radius(3px);*/
+    -webkit-transition: all 0.35s ease;
+    -khtml-transition: all 0.35s ease;
+    -moz-transition: all 0.35s ease;
+    -ms-transition: all 0.35s ease;
+    -o-transition: all 0.35s ease;
+    transition: all 0.35s ease; }
+  #menuopen.active:before, #menuopen.active:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #ff4e50;
+    -webkit-box-shadow: none;
+    -khtml-box-shadow: none;
+    -moz-box-shadow: none;
+    -ms-box-shadow: none;
+    -o-box-shadow: none;
+    box-shadow: none;
+    /*@include border-radius(3px);*/ }
+  #menuopen.active:before {
+    -webkit-backface-visibility: hidden;
+    -khtml-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: rotate(-45deg) translate(-7px, 7px);
+    -khtml-transform: rotate(-45deg) translate(-7px, 7px);
+    -moz-transform: rotate(-45deg) translate(-7px, 7px);
+    -ms-transform: rotate(-45deg) translate(-7px, 7px);
+    -o-transform: rotate(-45deg) translate(-7px, 7px);
+    transform: rotate(-45deg) translate(-7px, 7px); }
+  #menuopen.active:after {
+    -webkit-backface-visibility: hidden;
+    -khtml-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: rotate(45deg) translate(7px, 7px);
+    -khtml-transform: rotate(45deg) translate(7px, 7px);
+    -moz-transform: rotate(45deg) translate(7px, 7px);
+    -ms-transform: rotate(45deg) translate(7px, 7px);
+    -o-transform: rotate(45deg) translate(7px, 7px);
+    transform: rotate(45deg) translate(7px, 7px); }
+
+html {
+  font: 400 16px / 1.6 "Arial", sans-serif; }
+
+body {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #fff;
+  color: #333; }
+
+#main {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0 auto;
+  -moz-box-flex: 1;
+  -moz-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  overflow: hidden; }
+
+.container {
+  margin: 0 auto;
+  width: 1140px;
+  max-width: 94%;
+  position: relative; }
+
+@media screen and (max-width: 1024px) {
+  #menuopen {
+    display: block; } }
+@media screen and (max-width: 767px) {
+  /*.animatedParent .animated {
+    -o-transition-property: none !important;
+    -moz-transition-property: none !important;
+    -ms-transition-property: none !important;
+    -webkit-transition-property: none !important;
+    transition-property: none !important;
+    -o-transform: none !important;
+    -moz-transform: none !important;
+    -ms-transform: none !important;
+    -webkit-transform: none !important;
+    transform: none !important;
+    -webkit-animation: none !important;
+    -moz-animation: none !important;
+    -o-animation: none !important;
+    -ms-animation: none !important;
+    animation: none !important;
+    opacity: 1
+  }*/ }
+
+/*# sourceMappingURL=style.css.map */
