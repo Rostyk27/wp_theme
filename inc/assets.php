@@ -1,4 +1,5 @@
 <?php
+
 // custom js/stylesheet
 function tt_add_jscss() {
 	if (!is_admin()) {
