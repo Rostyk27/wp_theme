@@ -39,16 +39,6 @@ function my_theme_register_required_plugins() {
             'slug'      => 'contact-form-7',
             'required'  => false,
         ),
-        /*array(
-            'name'      => 'Contact Form 7 Controls',
-            'slug'      => 'contact-form-7-extras',
-            'required'  => false,
-        ),
-        array(
-            'name'      => 'Contact Form 7 Lead info with country',
-            'slug'      => 'contact-form-7-lead-info-with-country',
-            'required'  => false,
-        ),*/
         array(
             'name'      => 'TinyMCE Advanced',
             'slug'      => 'tinymce-advanced',
