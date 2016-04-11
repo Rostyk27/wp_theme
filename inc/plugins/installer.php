@@ -50,11 +50,6 @@ function my_theme_register_required_plugins() {
             'required'  => false,
         ),
         array(
-            'name'      => 'AJAX Thumbnail Rebuild',
-            'slug'      => 'ajax-thumbnail-rebuild',
-            'required'  => false,
-        ),
-        array(
             'name'      => 'Drag & Drop Featured Image',
             'slug'      => 'drag-drop-featured-image',
             'required'  => false,
@@ -62,11 +57,6 @@ function my_theme_register_required_plugins() {
         array(
             'name'      => 'Quick Featured Images',
             'slug'      => 'quick-featured-images',
-            'required'  => false,
-        ),
-        array(
-            'name'      => 'WP No Category Base',
-            'slug'      => 'wp-no-category-base',
             'required'  => false,
         ),
 	    /*array(
