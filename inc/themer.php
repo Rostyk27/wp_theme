@@ -5,10 +5,10 @@ function theme($filepath = NULL){
 }
 
 // Run this code on 'after_theme_setup', when plugins have already been loaded.
-add_action('after_setup_theme', 'tt_activate_theme');
+add_action('after_setup_theme', 'wpa_activate_theme');
 
 // This function loads the plugins && update some wordpress options
-function tt_activate_theme() {
+function wpa_activate_theme() {
 
 	// Check to see if your plugin has already been loaded. This can be done in several ways - here are a few examples:
 	//
@@ -34,6 +34,14 @@ function tt_activate_theme() {
 		include_once('plugins/resize-image-after-upload.php');
 	}
 
+	if (!function_exists('no_category_base_refresh_rules')) {
+		include_once('plugins/no-category-base.php');
+	}
+
+	if (!function_exists('AjaxThumbnailRebuild')) {
+		include_once('plugins/ajax-thumbnail-rebuild/ajax-thumbnail-rebuild.php');
+	}
+
 	update_option('image_default_link_type','none');
 	update_option('uploads_use_yearmonth_folders', 0);
 	update_option('permalink_structure', '/%category%/%postname%/');
@@ -47,20 +55,6 @@ function tt_activate_theme() {
 		<?php   }
 	}
 }
-
-//Remove ACF menu item from
-add_filter('acf/settings/show_admin', 'my_acf_show_admin');
-
-function my_acf_show_admin( $show ) {
-	return current_user_can('manage_options');
-}
-
-//remove wp-logo
-function tt_clear_admin_bar() {
-	global $wp_admin_bar;
-	$wp_admin_bar->remove_menu('wp-logo');
-}
-add_action( 'wp_before_admin_bar_render', 'tt_clear_admin_bar' );
 
 if (!class_exists('AssetsMinifyInit')) {
 	//button for cleaning cache -> AssetsMinify
@@ -104,24 +98,6 @@ function vc_remove_wp_ver_css_js( $src ) {
 add_filter( 'style_loader_src', 'vc_remove_wp_ver_css_js', 9999 );
 add_filter( 'script_loader_src', 'vc_remove_wp_ver_css_js', 9999 );
 
-// Clean dashboard
-function remove_dashboard_widgets () {
-	remove_meta_box('dashboard_quick_press','dashboard','side'); //Quick Press widget
-	remove_meta_box('dashboard_recent_drafts','dashboard','side'); //Recent Drafts
-	remove_meta_box('dashboard_primary','dashboard','side'); //WordPress.com Blog
-	remove_meta_box('dashboard_secondary','dashboard','side'); //Other WordPress News
-	remove_meta_box('dashboard_incoming_links','dashboard','normal'); //Incoming Links
-	remove_meta_box('dashboard_plugins','dashboard','normal'); //Plugins
-	remove_meta_box('rg_forms_dashboard','dashboard','normal'); //Gravity Forms
-	remove_meta_box('icl_dashboard_widget','dashboard','normal'); //Multi Language Plugin
-	remove_action('welcome_panel','wp_welcome_panel');
-	//remove_meta_box('dashboard_activity','dashboard', 'normal'); //Activity
-	//remove_meta_box('dashboard_right_now','dashboard', 'normal'); //Right Now
-	//remove_meta_box('dashboard_recent_comments','dashboard','normal'); //Recent Comments
-}
-
-add_action('wp_dashboard_setup', 'remove_dashboard_widgets');
-
 // Compress HTML
 function ob_html_compress($buf){
 	return preg_replace(array('/<!--(?>(?!\[).)(.*)(?>(?!\]).)-->/Uis','/[[:blank:]]+/'),array('',' '),str_replace(array("\n","\r","\t"),'',$buf));
@@ -162,13 +138,6 @@ function clear_nav_menu_item_id($id, $item, $args) {
 }
 
 add_theme_support( 'post-thumbnails' ); // posts/pages support featured image
-add_filter( 'show_admin_bar', '__return_false' ); // remove Admin Bar
-
-// Remove the wordpress update notifications for all users except Super Administrator
-if (!current_user_can('update_plugins')) { // checks to see if current user can update plugins
-	add_action( 'init', create_function( '$a', "remove_action( 'init', 'wp_version_check' );" ), 2 );
-	add_filter( 'pre_option_update_core', create_function( '$a', "return null;" ) );
-}
 
 // Disables Kses only for textarea saves
 foreach (array('pre_term_description', 'pre_link_description', 'pre_link_notes', 'pre_user_description') as $filter) {
@@ -188,8 +157,7 @@ function remove_default_description($bloginfo) {
 add_filter('get_bloginfo_rss', 'remove_default_description');
 
 /* ===== New Body Classes ===== */
-
-function new_body_classes( $classes ){
+function wpa_body_classes( $classes ){
 	if( is_page() ){
 		global $post;
 		$temp = get_page_template();
@@ -217,6 +185,9 @@ function new_body_classes( $classes ){
 		foreach($classes as $k => $v) {
 			if($v == 'postid-'.$post->ID || $v == 'single-format-'.(!$f?'standard':$f)) unset($classes[$k]);
 		}
+	}
+	if ( is_multi_author() ) {
+		$classes[] = 'group-blog';
 	}
 	global $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
 
@@ -277,11 +248,10 @@ function new_body_classes( $classes ){
 
 	return $classes;
 }
-add_filter( 'body_class', 'new_body_classes' );
+add_filter( 'body_class', 'wpa_body_classes' );
 
 /* ===== Custom SEO Title ===== */
-
-function seo_title(){
+function wpa_title(){
 	global $post;
 	if(!defined('WPSEO_VERSION')) {
 		if(is_404()) {
@@ -353,44 +323,7 @@ if(defined('QTX_VERSION')) {
 	add_action('wp_footer', 'acf_qtranslate_strings', 10);
 }
 
-/* ===== Wordpress Search  ===== */
-
-// Wordpress ?s= redirect to /search/
-function tt_search_redirect() {
-	global $wp_rewrite;
-	if (!isset($wp_rewrite) || !is_object($wp_rewrite) || !$wp_rewrite->using_permalinks()) { return; }
-	$search_base = $wp_rewrite->search_base;
-	if (is_search() && !is_admin() && strpos($_SERVER['REQUEST_URI'], "/{$search_base}/") === false) {
-		wp_redirect(home_url("/{$search_base}/" . urlencode(get_query_var('s'))));
-		exit();
-	}
-}
-add_action('template_redirect', 'tt_search_redirect');
-
-// Fix for empty search queries redirecting to home page
-function tt_request_filter($query_vars) {
-	if (isset($_GET['s']) && empty($_GET['s']) && !is_admin()) {
-		$query_vars['s'] = ' ';
-	}
-	return $query_vars;
-}
-add_filter('request', 'tt_request_filter');
-
 /* ===== WP Login  ===== */
-
-// Changing the logo link from wordpress.org to root domain
-function tt_login_url() {  return home_url(); }
-add_filter( 'login_headerurl', 'tt_login_url' );
-
-// Changing the alt text on the logo to show your site name
-function tt_login_title() { return get_option( 'blogname' ); }
-add_filter( 'login_headertitle', 'tt_login_title' );
-
-// Return header 403 for wrong login
-function my_login_failed_403() {
-	status_header( 403 );
-}
-add_action( 'wp_login_failed', 'my_login_failed_403' );
 
 //Show empty categories in category widget
 function show_empty_widget_links($args) {
@@ -406,11 +339,116 @@ function foo_widget_title($title) {
 }
 add_filter('widget_title', 'foo_widget_title');
 
-//light function fo wp_get_attachment_image_src()
+//light function for wp_get_attachment_image_src()
 function image_src($id, $size = 'full', $background_image = false, $height = false) {
 	if ($image = wp_get_attachment_image_src($id, $size, true)) {
 		return $background_image ? 'background-image: url('.$image[0].');' . ($height?'height:'.$image[2].'px':'') : $image[0];
 	}
+}
+
+/* ===== Wordpress Search  ===== */
+
+// Wordpress ?s= redirect to /search/
+function wpa_search_redirect() {
+	global $wp_rewrite;
+	if (!isset($wp_rewrite) || !is_object($wp_rewrite) || !$wp_rewrite->using_permalinks()) { return; }
+	$search_base = $wp_rewrite->search_base;
+	if (is_search() && !is_admin() && strpos($_SERVER['REQUEST_URI'], "/{$search_base}/") === false) {
+		wp_redirect(home_url("/{$search_base}/" . urlencode(get_query_var('s'))));
+		exit();
+	}
+}
+add_action('template_redirect', 'wpa_search_redirect');
+
+// Fix for empty search queries redirecting to home page
+function wpa_request_filter($query_vars) {
+	if (isset($_GET['s']) && empty($_GET['s']) && !is_admin()) {
+		$query_vars['s'] = ' ';
+	}
+	return $query_vars;
+}
+add_filter('request', 'wpa_request_filter');
+
+
+//  Custom AJAX search
+add_filter( 'posts_search', '__search_by_title_only', 500, 2 );
+
+function __search_by_title_only( $search, &$wp_query ){
+	global $wpdb;
+	if ( empty( $search ) ) return $search;
+	$q = $wp_query->query_vars;
+	$n = ! empty( $q['exact'] ) ? '' : '%';
+	$search = $searchand = '';
+	foreach ( (array) $q['search_terms'] as $term ) {
+		$term = esc_sql( $wpdb->esc_like( $term ) );
+		$search .= "{$searchand}($wpdb->posts.post_title LIKE '{$n}{$term}{$n}')";
+		$searchand = ' AND ';
+	}
+	if ( !empty( $search ) ) {
+		$search = " AND ({$search}) ";
+		if ( ! is_user_logged_in() )
+			$search .= " AND ($wpdb->posts.post_password = '') ";
+	}
+	return $search;
+}
+
+function cf_search_join( $join ) {
+	global $wpdb;
+	$join .=' LEFT JOIN '.$wpdb->postmeta. ' ON '. $wpdb->posts . '.ID = ' . $wpdb->postmeta . '.post_id ';
+	return $join;
+}
+
+function cf_search_where( $where ) {
+	global $pagenow, $wpdb;
+	$where = preg_replace(
+		"/\(\s*".$wpdb->posts.".post_title\s+LIKE\s*(\'[^\']+\')\s*\)/",
+		"(".$wpdb->posts.".post_title LIKE $1) OR (".$wpdb->postmeta.".meta_value LIKE $1)", $where );
+	return $where;
+}
+
+function cf_search_distinct( $where ) {
+	global $wpdb;
+	return "DISTINCT";
+}
+
+function wpa_ajax_search(){
+	extract($_POST);
+	add_filter( 'posts_join', 'cf_search_join' );
+	add_filter( 'posts_where', 'cf_search_where' );
+	add_filter( 'posts_distinct', 'cf_search_distinct' );
+	$allsearch = new WP_Query("s=".$key."&showposts=-1&post_type=any&post_status=publish");
+	if($allsearch->have_posts()): while($allsearch->have_posts()) : $allsearch->the_post();
+		global $post; ?>
+		<p class="cfx">
+			<a href="<?php the_permalink(); ?>">
+				<?php if( has_post_thumbnail() ) the_post_thumbnail('thumbnail'); ?>
+				<span><?php the_title(); ?></span>
+			</a>
+		</p>
+	<?php endwhile; else :
+		echo '<mark>There were no search results. <br />Please try using more general terms to get more results.</mark>';
+	endif;
+	remove_filter( 'posts_join', 'cf_search_join' );
+	remove_filter( 'posts_where', 'cf_search_where' );
+	remove_filter( 'posts_distinct', 'cf_search_distinct' );
+	exit();
+}
+add_action('wp_ajax_wpa_ajax_search', 'wpa_ajax_search');
+add_action('wp_ajax_nopriv_wpa_ajax_search', 'wpa_ajax_search');
+
+// Contact form 7 remove AUTOTOP
+if(defined('WPCF7_VERSION')) {
+	function maybe_reset_autop( $form ) {
+		$form_instance = WPCF7_ContactForm::get_current();
+		$manager = WPCF7_ShortcodeManager::get_instance();
+		$form_meta = get_post_meta( $form_instance->id(), '_form', true );
+		$form = $manager->do_shortcode( $form_meta );
+		$form_instance->set_properties( array(
+			'form' => $form
+		) );
+		return $form;
+	}
+	add_filter( 'wpcf7_form_elements', 'maybe_reset_autop' );
 }
 
 // ACF Repeater Styles
@@ -445,17 +483,4 @@ if (class_exists('Wp_Scss_Settings')) {
 	if (empty($wpscss['css_dir']) && empty($wpscss['scss_dir'])) {
 		update_option('wpscss_options', array('css_dir' => '/style/', 'scss_dir' => '/style/', 'compiling_options' => 'scss_formatter_compressed'));
 	}
-}
-
-
-// Custom rules for editor
-function wpa_clear_theme_subpages(){
-	global $submenu;
-	unset($submenu['themes.php'][5]); // remove customize link
-	unset($submenu['themes.php'][6]); // remove themes link
-}
-if ( !current_user_can( 'activate_plugins' )) {
-	$roleObject = get_role( 'editor' );
-	$roleObject->add_cap( 'edit_theme_options' );
-	add_action('admin_menu', 'wpa_clear_theme_subpages');
 }

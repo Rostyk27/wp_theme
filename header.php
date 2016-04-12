@@ -7,10 +7,10 @@ if( defined('WP_DEBUG') && true !== WP_DEBUG) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-a="<?php echo admin_url('admin-ajax.php'); ?>">
 <head>
 	<meta charset="UTF-8">
-    <title><?php seo_title(); ?></title>
+    <title><?php wpa_title(); ?></title>
 	<meta name="MobileOptimized" content="width" />
     <meta name="HandheldFriendly" content="True"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui, minimum-scale=1.0, maximum-scale=1.0"/>
@@ -29,6 +29,5 @@ if( defined('WP_DEBUG') && true !== WP_DEBUG) {
             <nav id="menu">
                 <?php wp_nav_menu(array('container' => false, 'items_wrap' => '<ul id="%1$s">%3$s</ul>', 'theme_location'  => 'main_menu')); ?>
             </nav>
-            <hr/>
         </div>
     </header>

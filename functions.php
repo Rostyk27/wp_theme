@@ -104,12 +104,12 @@ function get_current_url() {
 	return str_replace('www.', '', $pageURL);
 }
 
-/*function example_ajax(){
+/*function wpa_example_ajax(){
 	extract($_POST);
 
 	var_dump($action);
 
 	exit;
 }
-add_action('wp_ajax_example_ajax', 'example_ajax');
-add_action('wp_ajax_nopriv_example_ajax', 'example_ajax');*/
+add_action('wp_ajax_wpa_example_ajax', 'wpa_example_ajax');
+add_action('wp_ajax_nopriv_wpa_example_ajax', 'wpa_example_ajax');*/
