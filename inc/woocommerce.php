@@ -94,15 +94,6 @@ function woocommerce_header_add_to_cart_fragment( $fragments ) { ob_start(); ?>
     return $fragments;
 }
 
-add_filter( 'woocommerce_billing_fields', 'custom_woocommerce_billing_fields' );
-
-function custom_woocommerce_billing_fields( $fields ) {
-    unset($fields['billing_company']);
-    unset($fields['billing_postcode']);
-    unset($fields['billing_state']);
-    return $fields;
-}
-
 function plural_form($n, $forms) {
     return $n%10==1&&$n%100!=11?$forms[0]:($n%10>=2&&$n%10<=4&&($n%100<10||$n%100>=20)?$forms[1]:$forms[2]);
 }

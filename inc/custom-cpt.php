@@ -69,16 +69,3 @@ function register_cpts() {
     ));
     flush_rewrite_rules();
 }
-
-if (!class_exists('WCMF_bootstrap')) {
-    /**
-        Plugin Name:  Filterama
-        Plugin URI:   https://github.com/franz-josef-kaiser/filterama
-        Description:  Adds one taxonomy filter/drop-down/select box for each taxonomy attached to a (custom) post types list in the admin post list page.
-        Author:       Franz Josef Kaiser <wecodemore@gmail.com>
-        Author URI:   http://unserkaiser.com
-        Contributors: userabuser, kai-ser
-        Copyright © 2012-2013 Franz Josef Kaiser
-    */
-    include_once('plugins/filterama/init.php');
-}
