@@ -20,15 +20,6 @@ $(document).ready(function () {
         prevButton: '#parent .swiper-button-prev'
     });
 
-    //  WP Gallery extension
-    $('.wpa_slideshow .wpa__slides').bxSlider({
-        adaptiveHeight: true,
-        prevText: '',
-        nextText: '',
-        auto: true,
-        pause: 7e3
-    });
-
     $("#menuopen").click(function () {
         $(this).toggleClass('active').next().stop().slideToggle(400);
     });

@@ -56,7 +56,7 @@ function wpa_activate_theme() {
 	}
 }
 
-if (!class_exists('AssetsMinifyInit')) {
+/*if (!class_exists('AssetsMinifyInit')) {
 	//button for cleaning cache -> AssetsMinify
 	function am_remove_cache_btn($wp_admin_bar){
 		$args = array(
@@ -67,7 +67,7 @@ if (!class_exists('AssetsMinifyInit')) {
 		$wp_admin_bar->add_node($args);
 	}
 	add_action('admin_bar_menu', 'am_remove_cache_btn', 80);
-}
+}*/
 
 /* ===== Theme Clean/Settings ===== */
 
