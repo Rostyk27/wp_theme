@@ -54,26 +54,17 @@ function my_theme_register_required_plugins() {
             'slug'      => 'drag-drop-featured-image',
             'required'  => false,
         ),
-        array(
+        /*array(
             'name'      => 'Quick Featured Images',
             'slug'      => 'quick-featured-images',
             'required'  => false,
-        ),
-	    /*array(
-		    'name' => 'Post Thumbnail Editor',
-		    'slug' => 'post-thumbnail-editor',
-		    'required' => true,
-	    ),*/
-	    array(
-		    'name' => 'Optimize Database after Deleting Revisions',
-		    'slug' => 'rvg-optimize-database',
-		    'required' => false,
-	    ),
+        ),*/
 	    /*array(
 		    'name' => 'Wp-scss',
 		    'slug' => 'wp-scss',
 		    'required' => true,
 	    ),*/
+        /*define( 'WP_POST_REVISIONS', 3 ); add this to wp-config!*/
         array(
             'name'               => 'Advanced Custom Fields: PRO',
             'slug'               => 'advanced-custom-fields-pro',
