@@ -92,99 +92,99 @@ class AjaxThumbnailRebuild {
         ?>
         <div id="message" class="updated fade" style="display:none"></div>
         <script type="text/javascript">
-        // <![CDATA[
+            // <![CDATA[
 
-        function setMessage(msg) {
-            jQuery("#message").html(msg);
-            jQuery("#message").show();
-        }
-
-        function regenerate() {
-            jQuery("#ajax_thumbnail_rebuild").prop("disabled", true);
-            setMessage("<p><?php _e('Reading attachments...', 'ajax-thumbnail-rebuild') ?></p>");
-
-            inputs = jQuery( 'input:checked' );
-            var thumbnails= '';
-            if( inputs.length != jQuery( 'input[type=checkbox]' ).length ){
-                inputs.each( function(){
-                    thumbnails += '&thumbnails[]='+jQuery(this).val();
-                } );
+            function setMessage(msg) {
+                jQuery("#message").html(msg);
+                jQuery("#message").show();
             }
 
-            var onlyfeatured = jQuery("#onlyfeatured").prop('checked') ? 1 : 0;
+            function regenerate() {
+                jQuery("#ajax_thumbnail_rebuild").prop("disabled", true);
+                setMessage("<p><?php _e('Reading attachments...', 'ajax-thumbnail-rebuild') ?></p>");
 
-            jQuery.ajax({
-                url: "<?php echo admin_url('admin-ajax.php'); ?>",
-                type: "POST",
-                data: "action=ajax_thumbnail_rebuild&do=getlist&onlyfeatured="+onlyfeatured,
-                success: function(result) {
-                    var list = eval(result);
-                    var curr = 0;
+                inputs = jQuery( 'input:checked' );
+                var thumbnails= '';
+                if( inputs.length != jQuery( 'input[type=checkbox]' ).length ){
+                    inputs.each( function(){
+                        thumbnails += '&thumbnails[]='+jQuery(this).val();
+                    } );
+                }
 
-                    if (!list) {
-                        setMessage("<?php _e('No attachments found.', 'ajax-thumbnail-rebuild')?>");
-                        jQuery("#ajax_thumbnail_rebuild").prop("disabled", false);
-                        return;
-                    }
+                var onlyfeatured = jQuery("#onlyfeatured").prop('checked') ? 1 : 0;
 
-                    function regenItem() {
-                        if (curr >= list.length) {
+                jQuery.ajax({
+                    url: "<?php echo admin_url('admin-ajax.php'); ?>",
+                    type: "POST",
+                    data: "action=ajax_thumbnail_rebuild&do=getlist&onlyfeatured="+onlyfeatured,
+                    success: function(result) {
+                        var list = eval(result);
+                        var curr = 0;
+
+                        if (!list) {
+                            setMessage("<?php _e('No attachments found.', 'ajax-thumbnail-rebuild')?>");
                             jQuery("#ajax_thumbnail_rebuild").prop("disabled", false);
-                            setMessage("<?php _e('Done.', 'ajax-thumbnail-rebuild') ?>");
                             return;
                         }
-                        setMessage(<?php printf( __('"Rebuilding " + %s + " of " + %s + " (" + %s + ")..."', 'ajax-thumbnail-rebuild'), "(curr+1)", "list.length", "list[curr].title"); ?>);
 
-                        jQuery.ajax({
-                            url: "<?php echo admin_url('admin-ajax.php'); ?>",
-                            type: "POST",
-                            data: "action=ajax_thumbnail_rebuild&do=regen&id=" + list[curr].id + thumbnails,
-                            success: function(result) {
-                                curr = curr + 1;
-                                if (result != '-1') {
-                                    jQuery("#thumb").show();
-                                    jQuery("#thumb-img").attr("src",result);
-                                }
-                                regenItem();
+                        function regenItem() {
+                            if (curr >= list.length) {
+                                jQuery("#ajax_thumbnail_rebuild").prop("disabled", false);
+                                setMessage("<?php _e('Done.', 'ajax-thumbnail-rebuild') ?>");
+                                return;
                             }
-                        });
+                            setMessage(<?php printf( __('"Rebuilding " + %s + " of " + %s + " (" + %s + ")..."', 'ajax-thumbnail-rebuild'), "(curr+1)", "list.length", "list[curr].title"); ?>);
+
+                            jQuery.ajax({
+                                url: "<?php echo admin_url('admin-ajax.php'); ?>",
+                                type: "POST",
+                                data: "action=ajax_thumbnail_rebuild&do=regen&id=" + list[curr].id + thumbnails,
+                                success: function(result) {
+                                    curr = curr + 1;
+                                    if (result != '-1') {
+                                        jQuery("#thumb").show();
+                                        jQuery("#thumb-img").attr("src",result);
+                                    }
+                                    regenItem();
+                                }
+                            });
+                        }
+
+                        regenItem();
+                    },
+                    error: function(request, status, error) {
+                        setMessage("<?php _e('Error', 'ajax-thumbnail-rebuild') ?>" + request.status);
                     }
+                });
+            }
 
-                    regenItem();
-                },
-                error: function(request, status, error) {
-                    setMessage("<?php _e('Error', 'ajax-thumbnail-rebuild') ?>" + request.status);
-                }
-            });
-        }
-
-        jQuery(document).ready(function() {
-            jQuery('#size-toggle').click(function() {
-                jQuery("#sizeselect").find("input[type=checkbox]").each(function() {
-                    jQuery(this).prop("checked", !jQuery(this).prop("checked"));
+            jQuery(document).ready(function() {
+                jQuery('#size-toggle').click(function() {
+                    jQuery("#sizeselect").find("input[type=checkbox]").each(function() {
+                        jQuery(this).prop("checked", !jQuery(this).prop("checked"));
+                    });
                 });
             });
-        });
 
-        // ]]>
+            // ]]>
         </script>
 
         <form method="post" action="" style="display:inline; float:left; padding-right:30px;">
             <h4><?php _e('Select which thumbnails you want to rebuild', 'ajax-thumbnail-rebuild'); ?>:</h4>
             <a href="javascript:void(0);" id="size-toggle"><?php _e('Toggle all', 'ajax-thumbnail-rebuild'); ?></a>
             <div id="sizeselect">
-            <?php
-            foreach ( ajax_thumbnail_rebuild_get_sizes() as $s ):
-            ?>
+                <?php
+                foreach ( ajax_thumbnail_rebuild_get_sizes() as $s ):
+                    ?>
 
-                <label>
-                    <input type="checkbox" name="thumbnails[]" id="sizeselect" checked="checked" value="<?php echo $s['name'] ?>" />
-                    <em><?php echo $s['name'] ?></em>
-                    &nbsp;(<?php echo $s['width'] ?>x<?php echo $s['height'] ?>
-                    <?php if ($s['crop']) _e('cropped', 'ajax-thumbnail-rebuild'); ?>)
-                </label>
-                <br/>
-            <?php endforeach;?>
+                    <label>
+                        <input type="checkbox" name="thumbnails[]" id="sizeselect" checked="checked" value="<?php echo $s['name'] ?>" />
+                        <em><?php echo $s['name'] ?></em>
+                        &nbsp;(<?php echo $s['width'] ?>x<?php echo $s['height'] ?>
+                        <?php if ($s['crop']) _e('cropped', 'ajax-thumbnail-rebuild'); ?>)
+                    </label>
+                    <br/>
+                <?php endforeach;?>
             </div>
             <p>
                 <label>
@@ -194,7 +194,7 @@ class AjaxThumbnailRebuild {
             </p>
 
             <p><?php _e("Note: If you've changed the dimensions of your thumbnails, existing thumbnail images will not be deleted.",
-            'ajax-thumbnail-rebuild'); ?></p>
+                    'ajax-thumbnail-rebuild'); ?></p>
             <input type="button" onClick="javascript:regenerate();" class="button"
                    name="ajax_thumbnail_rebuild" id="ajax_thumbnail_rebuild"
                    value="<?php _e( 'Rebuild All Thumbnails', 'ajax-thumbnail-rebuild' ) ?>" />
@@ -204,10 +204,10 @@ class AjaxThumbnailRebuild {
         <div id="thumb" style="display:none;"><h4><?php _e('Last image', 'ajax-thumbnail-rebuild'); ?>:</h4><img id="thumb-img" /></div>
 
         <p style="clear:both; padding-top:2em;">
-        <?php printf( __("If you find this plugin useful, I'd be happy to read your comments on the %splugin homepage%s. If you experience any problems, feel free to leave a comment too.",
-                 'ajax-thumbnail-rebuild'),
-                     '<a href="http://breiti.cc/wordpress/ajax-thumbnail-rebuild" target="_blank">', '</a>');
-        ?>
+            <?php printf( __("If you find this plugin useful, I'd be happy to read your comments on the %splugin homepage%s. If you experience any problems, feel free to leave a comment too.",
+                'ajax-thumbnail-rebuild'),
+                '<a href="http://breiti.cc/wordpress/ajax-thumbnail-rebuild" target="_blank">', '</a>');
+            ?>
         </p>
 
         <?php
@@ -341,4 +341,5 @@ function wp_generate_attachment_metadata_custom( $attachment_id, $file, $thumbna
 
 load_plugin_textdomain('ajax-thumbnail-rebuild', false, basename( dirname( __FILE__ ) ) . '/languages' );
 
-add_action( 'plugins_loaded', create_function( '', 'global $AjaxThumbnailRebuild; $AjaxThumbnailRebuild = new AjaxThumbnailRebuild();' ) );
+global $AjaxThumbnailRebuild;
+$AjaxThumbnailRebuild = new AjaxThumbnailRebuild();
