@@ -119,13 +119,17 @@ input[type="submit"], input[type="button"] {
   width: auto; }
 
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
-  color: #999; }
+  color: #999;
+  opacity: 1; }
 input:-moz-placeholder, textarea:-moz-placeholder {
-  color: #999; }
+  color: #999;
+  opacity: 1; }
 input::-moz-placeholder, textarea::-moz-placeholder {
-  color: #999; }
+  color: #999;
+  opacity: 1; }
 input:-ms-input-placeholder, textarea:-ms-input-placeholder {
-  color: #999; }
+  color: #999;
+  opacity: 1; }
 
 ::-moz-selection {
   color: #fff;
