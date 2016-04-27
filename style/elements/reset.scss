@@ -216,7 +216,7 @@ div.wpcf7 {
     padding: 0 12px;
     font: 400 14px $font;
     color: #999;
-    @include placeholder {color: #999}
+    @include placeholder {color: #999;opacity: 1}
     &:focus {
       background: rgba(8, 97, 149, 0.08);
     }

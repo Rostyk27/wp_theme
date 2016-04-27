@@ -256,13 +256,17 @@ div.wpcf7 {
     font: 400 14px "Arial", sans-serif;
     color: #999; }
     div.wpcf7 input:not([type="submit"])::-webkit-input-placeholder, div.wpcf7 textarea::-webkit-input-placeholder {
-      color: #999; }
+      color: #999;
+      opacity: 1; }
     div.wpcf7 input:not([type="submit"]):-moz-placeholder, div.wpcf7 textarea:-moz-placeholder {
-      color: #999; }
+      color: #999;
+      opacity: 1; }
     div.wpcf7 input:not([type="submit"])::-moz-placeholder, div.wpcf7 textarea::-moz-placeholder {
-      color: #999; }
+      color: #999;
+      opacity: 1; }
     div.wpcf7 input:not([type="submit"]):-ms-input-placeholder, div.wpcf7 textarea:-ms-input-placeholder {
-      color: #999; }
+      color: #999;
+      opacity: 1; }
     div.wpcf7 input:not([type="submit"]):focus, div.wpcf7 textarea:focus {
       background: rgba(8, 97, 149, 0.08); }
   div.wpcf7 textarea {
