@@ -213,7 +213,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 div.wpcf7 .wpcf7-form-control-wrap {
   display: block !important;
   margin-bottom: 20px;
-  clear: both; }
+  clear: both;
+  position: relative; }
 div.wpcf7 .wpcf7-not-valid-tip {
   background: #fff;
   border: 1px solid #FF0000;
