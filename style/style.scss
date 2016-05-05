@@ -6,6 +6,8 @@ html {
 body {
   @include flexbox();
   @include flex-direction(column);
+  max-width: 1920px;
+  margin: 0 auto;
   min-height: 100vh;
   background: #fff;
   color: $black;

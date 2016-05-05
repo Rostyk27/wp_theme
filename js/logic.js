@@ -1,4 +1,7 @@
 $ = jQuery;
+
+FastClick.attach(document.body);
+
 $(document).ready(function () {
     "use strict";
 //  contact form 7
@@ -7,10 +10,6 @@ $(document).ready(function () {
         $(this).fadeOut(500,function(){
             $(this).remove();
         });
-    });
-
-    $(function() {
-        FastClick.attach(document.body);
     });
 
     var swiper = new Swiper('#parent > .swiper-container', {

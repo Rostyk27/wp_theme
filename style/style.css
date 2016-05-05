@@ -39,7 +39,6 @@ html {
   -ms-text-size-adjust: none; }
 
 html, body {
-  height: 100%;
   margin: 0; }
 
 hr {
@@ -365,6 +364,8 @@ body {
   -moz-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  max-width: 1920px;
+  margin: 0 auto;
   min-height: 100vh;
   background: #fff;
   color: #333; }
