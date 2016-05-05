@@ -214,73 +214,6 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   vertical-align: baseline;
   margin: 0; }
 
-div.wpcf7 {
-  position: relative; }
-  div.wpcf7 .wpcf7-form-control-wrap {
-    display: block !important;
-    margin-bottom: 20px;
-    clear: both;
-    position: relative; }
-  div.wpcf7 .wpcf7-not-valid-tip {
-    background: #fff;
-    border: 1px solid #FF0000;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    cursor: pointer;
-    font: 400 14px/45px "Arial", sans-serif;
-    height: 45px;
-    padding: 0 12px; }
-  div.wpcf7 .wpcf7-response-output {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    margin: 10px 0 0 0;
-    font: 400 14px/1.4287 "Arial", sans-serif;
-    padding: 5px 20px;
-    text-align: center; }
-    div.wpcf7 .wpcf7-response-output.wpcf7-validation-errors {
-      background: #FF5F5F;
-      color: #fff; }
-    div.wpcf7 .wpcf7-response-output.wpcf7-mail-sent-ng {
-      background: #1091ae;
-      color: #fff; }
-    div.wpcf7 .wpcf7-response-output.wpcf7-mail-sent-ok {
-      background: #16A085;
-      color: #fff; }
-  div.wpcf7 input:not([type="submit"]), div.wpcf7 textarea {
-    display: block;
-    width: 100%;
-    height: 45px;
-    border: 1px solid #bfbfbf;
-    padding: 0 12px;
-    font: 400 14px "Arial", sans-serif;
-    color: #999; }
-    div.wpcf7 input:not([type="submit"])::-webkit-input-placeholder, div.wpcf7 textarea::-webkit-input-placeholder {
-      color: #999;
-      opacity: 1; }
-    div.wpcf7 input:not([type="submit"]):-moz-placeholder, div.wpcf7 textarea:-moz-placeholder {
-      color: #999;
-      opacity: 1; }
-    div.wpcf7 input:not([type="submit"])::-moz-placeholder, div.wpcf7 textarea::-moz-placeholder {
-      color: #999;
-      opacity: 1; }
-    div.wpcf7 input:not([type="submit"]):-ms-input-placeholder, div.wpcf7 textarea:-ms-input-placeholder {
-      color: #999;
-      opacity: 1; }
-    div.wpcf7 input:not([type="submit"]):focus, div.wpcf7 textarea:focus {
-      background: rgba(8, 97, 149, 0.08); }
-  div.wpcf7 textarea {
-    resize: none;
-    overflow: auto;
-    height: 100px;
-    padding: 10px 12px; }
-  div.wpcf7 .screen-reader-response, div.wpcf7 .ajax-loader {
-    display: none; }
-
 .selbel_w {
   position: relative;
   display: block;
@@ -450,6 +383,96 @@ body {
   width: 1140px;
   max-width: 94%;
   position: relative; }
+
+div.wpcf7 {
+  position: relative; }
+  div.wpcf7 .wpcf7-form-control-wrap {
+    display: block !important;
+    margin-bottom: 1.25rem;
+    clear: both;
+    position: relative;
+    -webkit-flex-basis: 48%;
+    -moz-flex-basis: 48%;
+    -ms-flex-preferred-size: 48%;
+    flex-basis: 48%; }
+  div.wpcf7 .wpcf7-not-valid-tip {
+    background: #fff;
+    border: 1px solid #ff5f5f;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+    font: 700 16px/45px "Arial", sans-serif;
+    color: #1d3408;
+    height: 45px;
+    padding: 0 8px;
+    -webkit-border-radius: 0;
+    -khtml-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0; }
+  div.wpcf7 .wpcf7-response-output {
+    position: relative;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin: 25px 0 0 0;
+    font: 700 16px/1.42857 "Arial", sans-serif;
+    padding: 7px 20px;
+    text-align: center;
+    color: #fff;
+    -webkit-border-radius: 0;
+    -khtml-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0; }
+    div.wpcf7 .wpcf7-response-output.wpcf7-validation-errors {
+      background: #ff5f5f; }
+    div.wpcf7 .wpcf7-response-output.wpcf7-mail-sent-ng {
+      background: #1091ae; }
+    div.wpcf7 .wpcf7-response-output.wpcf7-mail-sent-ok {
+      background: #16a085; }
+  div.wpcf7 input:not([type="submit"]), div.wpcf7 textarea {
+    display: block;
+    width: 100%;
+    height: 45px;
+    border: 2px solid transparent;
+    padding: 0 10px;
+    background: #e5f5c6;
+    font: 400 18px "Arial", sans-serif;
+    color: #1d3408;
+    -webkit-border-radius: 0;
+    -khtml-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0; }
+    div.wpcf7 input:not([type="submit"])::-webkit-input-placeholder, div.wpcf7 textarea::-webkit-input-placeholder {
+      color: #1d3408;
+      opacity: 1; }
+    div.wpcf7 input:not([type="submit"]):-moz-placeholder, div.wpcf7 textarea:-moz-placeholder {
+      color: #1d3408;
+      opacity: 1; }
+    div.wpcf7 input:not([type="submit"])::-moz-placeholder, div.wpcf7 textarea::-moz-placeholder {
+      color: #1d3408;
+      opacity: 1; }
+    div.wpcf7 input:not([type="submit"]):-ms-input-placeholder, div.wpcf7 textarea:-ms-input-placeholder {
+      color: #1d3408;
+      opacity: 1; }
+    div.wpcf7 input:not([type="submit"]):focus, div.wpcf7 textarea:focus {
+      border-color: #e0e9cc;
+      background: #f6ffe0; }
+  div.wpcf7 textarea {
+    resize: none;
+    overflow: auto;
+    height: 110px;
+    padding: 10px 12px; }
+  div.wpcf7 .screen-reader-response, div.wpcf7 .ajax-loader {
+    display: none; }
 
 @media screen and (max-width: 1024px) {
   #menuopen {
