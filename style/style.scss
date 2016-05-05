@@ -34,6 +34,10 @@ header {
 //cf7
 div.wpcf7 {
   position: relative;
+  .inputs_wrap {
+    @include flexbox();
+    @include justify-content(space-between);
+  }
   .wpcf7-form-control-wrap {
     display: block !important;
     margin-bottom: rem(20);
