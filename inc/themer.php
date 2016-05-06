@@ -4,6 +4,17 @@ function theme($filepath = NULL){
 	return preg_replace( '(https?://)', '//', get_stylesheet_directory_uri() . ($filepath?'/' . $filepath:'') );
 }
 
+// JS Defer Load
+function wpa_defer_scripts($url) {
+	if ( strpos( $url, '#defer') === false )
+		return $url;
+	else if ( is_admin() )
+		return str_replace( '?#defer', '', $url );
+	else
+		return str_replace( '?#defer', '', $url )."' defer='defer";
+}
+add_filter( 'clean_url', 'wpa_defer_scripts', 11, 1 );
+
 // Run this code on 'after_theme_setup', when plugins have already been loaded.
 add_action('after_setup_theme', 'wpa_activate_theme');
 

@@ -6,11 +6,13 @@ html {
 body {
   @include flexbox();
   @include flex-direction(column);
+  @include transition();
   max-width: 1920px;
   margin: 0 auto;
   min-height: 100vh;
   background: #fff;
   color: $black;
+  opacity: 1;
 }
 #main {
   @include flex(1, 0, auto);
