@@ -6,12 +6,13 @@ function theme($filepath = NULL){
 
 // JS Defer Load
 function wpa_defer_scripts($url) {
-	if ( strpos( $url, '#defer') === false )
+	if ( strpos( $url, '#defer') === false ) {
 		return $url;
-	else if ( is_admin() )
-		return str_replace( '?#defer', '', $url );
-	else
-		return str_replace( '?#defer', '', $url )."' defer='defer";
+	} else if ( is_admin() ) {
+		return str_replace( '#defer', '', $url );
+	} else {
+		return str_replace( '#defer', '', $url ) . "' defer='defer";
+	}
 }
 add_filter( 'clean_url', 'wpa_defer_scripts', 11, 1 );
 
