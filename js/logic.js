@@ -2,6 +2,10 @@ $ = jQuery;
 
 FastClick.attach(document.body);
 
+// WebFontConfig = {
+//     google: { families: [ 'Open+Sans:400,300,400italic,600,700:latin', 'Roboto:400,100,300,500,700:latin' ] }
+// };
+
 $(document).ready(function () {
     "use strict";
 //  contact form 7
