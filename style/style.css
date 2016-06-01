@@ -350,7 +350,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     transform: rotate(45deg) translate(7px, 7px); }
 
 html {
-  font: 400 16px / 1.6 "Arial", sans-serif; }
+  font: 400 16px/1.6 "Arial", sans-serif; }
 
 body {
   display: -webkit-box;
@@ -364,12 +364,12 @@ body {
   -moz-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-transition: all 0.4s ease;
-  -khtml-transition: all 0.4s ease;
-  -moz-transition: all 0.4s ease;
-  -ms-transition: all 0.4s ease;
-  -o-transition: all 0.4s ease;
-  transition: all 0.4s ease;
+  -webkit-transition: opacity 1s ease;
+  -khtml-transition: opacity 1s ease;
+  -moz-transition: opacity 1s ease;
+  -ms-transition: opacity 1s ease;
+  -o-transition: opacity 1s ease;
+  transition: opacity 1s ease;
   max-width: 1920px;
   margin: 0 auto;
   min-height: 100vh;

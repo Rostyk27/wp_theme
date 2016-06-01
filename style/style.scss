@@ -1,12 +1,12 @@
 @import 'elements/reset';
 
 html {
-  font: 400 #{$font-base} / 1.6  $font;
+  font: 400 #{$font-base}/1.6  $font;
 }
 body {
   @include flexbox();
   @include flex-direction(column);
-  @include transition();
+  @include transition(opacity, 1s);
   max-width: 1920px;
   margin: 0 auto;
   min-height: 100vh;
