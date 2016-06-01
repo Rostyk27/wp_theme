@@ -17,7 +17,7 @@
 <div id="main">
     <header>
         <div class="container">
-            <a class="logo" href="<?php echo domain_name(); ?>">
+            <a class="logo" href="<?php echo site_url(); ?>">
                 <img src="<?php echo theme('images/logo.png'); ?>" alt="logo">
             </a>
             <button id="menuopen"></button>
