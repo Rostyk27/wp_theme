@@ -54,6 +54,10 @@ class CssRewriteFilter extends BaseCssFilter
             } else {
                 $path = '';
                 while (0 !== strpos($sourcePath, $targetDir)) {
+                    //fix for wp-includes files
+                    if( strpos($sourcePath,  WPINC) !== false ) {
+                        $path .= '../';
+                    }
                     if (false !== $pos = strrpos($targetDir, '/')) {
                         $targetDir = substr($targetDir, 0, $pos);
                         $path .= '../';

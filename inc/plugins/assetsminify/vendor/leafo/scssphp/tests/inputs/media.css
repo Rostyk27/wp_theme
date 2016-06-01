@@ -1,0 +1,45 @@
+/*
+Error: Invalid CSS after "@media ": expected media query (e.g. print, screen, print and screen), was "{"
+        on line 3 of media.scss
+
+1: 
+2: // media syntax
+3: @media {
+4:     div { color: blue; }
+5: }
+6: @media what {
+7:     div { color: blue; }
+8: }
+
+Backtrace:
+media.scss:3
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/scss/parser.rb:1179:in `expected'
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/scss/parser.rb:1115:in `expected'
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/scss/parser.rb:1095:in `expr!'
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/scss/parser.rb:407:in `media_directive'
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/scss/parser.rb:220:in `special_directive'
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/scss/parser.rb:195:in `directive'
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/scss/parser.rb:673:in `block_child'
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/scss/parser.rb:663:in `block_contents'
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/scss/parser.rb:123:in `stylesheet'
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/scss/parser.rb:39:in `parse'
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/engine.rb:403:in `_to_tree'
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/engine.rb:378:in `_render_with_sourcemap'
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/engine.rb:295:in `render_with_sourcemap'
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/plugin/compiler.rb:490:in `update_stylesheet'
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/plugin/compiler.rb:209:in `each'
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/plugin.rb:82:in `update_stylesheets'
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/exec/sass_scss.rb:363:in `watch_or_update'
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/exec/sass_scss.rb:51:in `process_result'
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/exec/base.rb:52:in `parse'
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/exec/base.rb:19:in `parse!'
+C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.21/bin/scss:13:in `<top (required)>'
+C:/Ruby21-x64/bin/scss:23:in `load'
+C:/Ruby21-x64/bin/scss:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"@media \": expected media query (e.g. print, screen, print and screen), was \"{\"\A         on line 3 of media.scss\A \A 1: \A 2: // media syntax\A 3: @media {\A 4:     div { color: blue; }\A 5: }\A 6: @media what {\A 7:     div { color: blue; }\A 8: }"; }
