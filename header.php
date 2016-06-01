@@ -7,7 +7,7 @@ if( defined('WP_DEBUG') && true !== WP_DEBUG) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en" data-a="<?php echo admin_url('admin-ajax.php'); ?>">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
     <title><?php wpa_title(); ?></title>
@@ -18,7 +18,7 @@ if( defined('WP_DEBUG') && true !== WP_DEBUG) {
     <link rel="shortcut icon" href="<?php echo theme('images/favicon.ico'); ?>" type="image/x-icon" sizes="16x16"/>
     <?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?> data-hash="<?php wpa_fontbase64(true); ?>" data-a="<?php echo admin_url('admin-ajax.php'); ?>" >
 <div id="main">
     <header>
         <div class="container">

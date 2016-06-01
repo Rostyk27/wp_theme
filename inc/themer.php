@@ -488,11 +488,24 @@ function acf_repeater_even() {
 }
 add_action('admin_footer', 'acf_repeater_even');
 
-/* Update wp-scss setings
-   ========================================================================== */
-if (class_exists('Wp_Scss_Settings')) {
-	$wpscss = get_option('wpscss_options');
-	if (empty($wpscss['css_dir']) && empty($wpscss['scss_dir'])) {
-		update_option('wpscss_options', array('css_dir' => '/style/', 'scss_dir' => '/style/', 'compiling_options' => 'scss_formatter_compressed'));
+function wpa_fontbase64($fonthash) {
+	$font = get_stylesheet_directory() . '/fonts.css';
+	$md5 = filemtime( $font );
+	if($fonthash) {
+		echo $md5;
+	} else {
+		$minfont = file_get_contents( $font );
+		$minfont = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $minfont);
+		$minfont = str_replace(array(': ',' : '), ':', $minfont);
+		$minfont = str_replace(array("\r\n", "\r", "\n", "\t", '  ', '    ', '    '), '', $minfont);
+		$minfont = str_replace(';}','}', $minfont);
+		$fontpack = array(
+			'md5'      => $md5,
+			'value'    => $minfont
+		);
+		echo json_encode($fontpack);
+		exit;
 	}
 }
+add_action('wp_ajax_wpa_fontbase64', 'wpa_fontbase64');
+add_action('wp_ajax_nopriv_wpa_fontbase64', 'wpa_fontbase64');
