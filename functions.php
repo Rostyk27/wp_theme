@@ -3,36 +3,18 @@
 // Theme globals
 require_once('inc/defines.php');
 
-// Recommended plugins installer
-require_once 'inc/plugins/installer.php';
-
 // Run pre-installed plugins
 require_once('inc/themer.php');
 
-// Include custom assets
-require_once('inc/assets.php');
-
-// Custom admin area functions
-require_once('inc/wpadmin/admin-addons.php');
-
-// Custom shortcodes
-require_once('inc/shortcodes.php');
-
-// Custom Posts Duplicator
-require_once('inc/duplicator.php');
-
 // uncomment if need CPT
 //require_once('inc/custom-cpt.php');
-
-// Custom breadcrumbs
-//require_once('inc/breadcrumbs.php');
 
 //register menus
 register_nav_menus(array(
     'main_menu' => 'Main menu'
 ));
 
-//images sizes
+//Custom images sizes
 //add_image_size( 'image_name', 'x', 'y', true );
 
 //register sidebar
@@ -45,9 +27,9 @@ foreach ( $reg_sidebars as $id => $name ) {
 		array (
 			'name'          => __( $name ),
 			'id'            => $id,
-			'before_widget' => '<div class="widget cfx %2$s">',
+			'before_widget' => '<div class="widget %2$s">',
 			'after_widget'  => '</div>',
-			'before_title'  => '<mark class="widget-title">',
+			'before_title'  => '<mark class="widget_title">',
 			'after_title'   => '</mark>',
 		)
 	);
