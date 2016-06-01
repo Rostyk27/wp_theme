@@ -13,7 +13,7 @@ require_once('inc/themer.php');
 require_once('inc/assets.php');
 
 // Custom admin area functions
-require_once('inc/admin-assets/admin-addons.php');
+require_once('inc/wpadmin/admin-addons.php');
 
 // Custom shortcodes
 require_once('inc/shortcodes.php');
