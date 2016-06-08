@@ -7,7 +7,7 @@ add_filter('admin_footer_text', 'remove_footer_admin');*/
 
 // Login area branding styles
 function wp_login_candy() {
-    wp_enqueue_style( 'wpcandy', theme('inc/admin-assets/admin-area.css'), false );
+    wp_enqueue_style( 'wpcandy', theme('inc/wpadmin/admin-area.css'), false );
 }
 add_action( 'login_enqueue_scripts', 'wp_login_candy', 10 );
 
@@ -17,7 +17,7 @@ function wpa_media_add_js($hook) {
     // Check if we are on upload.php and enqueue script
     if ( $hook != 'upload.php' )
         return;
-    wp_enqueue_script( 'wpa_media_js', theme('inc/admin-assets/admin-area.js'), array('jquery'), 1.0, true );
+    wp_enqueue_script( 'wpa_media_js', theme('inc/wpadmin/admin-area.js'), array('jquery'), 1.0, true );
 
     // Make enabled languages visible for javascript
 //    global $q_config;
