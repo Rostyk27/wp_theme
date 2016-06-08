@@ -12,6 +12,16 @@ if(defined('QTX_VERSION')) {
         $attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
         $attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
         $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
+
+        //     Example link: http://google.com|en|http://google.com.ua|ua|
+        if(preg_match_all('~(.*?)\|(\w{2,})\|~', $item->url, $matches)) {
+            $ext_url = '';
+            foreach ($matches[1] as $i => $match) {
+               $ext_url .= "[:{$matches[2][$i]}]$match";
+            }
+         $item->url = esc_attr( __( $ext_url ) );
+        }
+
         // Determine integration with qTranslate Plugin
         if (function_exists('qtranxf_convertURL')) {
             $attributes .= ! empty( $item->url ) ? ' href="' . qtranxf_convertURL(esc_attr( $item->url )) .'"' : '';
