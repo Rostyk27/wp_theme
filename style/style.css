@@ -204,10 +204,27 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   -moz-justify-content: space-between;
   justify-content: space-between; }
 
+.flex_start {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  -webkit-align-items: flex-start;
+  -moz-align-items: flex-start;
+  align-items: flex-start;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  justify-content: space-between; }
+
 .content img.alignright {
-  margin-left: 1.5em; }
+  margin: 0 0 1.5em 1.5em; }
 .content img.alignleft {
-  margin-right: 1.5em; }
+  margin: 0 1.5em 1.5em 0; }
 .content img.alignnone {
   display: inline-block;
   vertical-align: baseline;
@@ -263,7 +280,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   display: none;
   position: absolute;
   top: 24px;
-  right: 0;
+  right: 3%;
   width: 25px;
   height: 27px;
   cursor: pointer;
@@ -434,13 +451,12 @@ div.wpcf7 {
     -o-border-radius: 0;
     border-radius: 0; }
   div.wpcf7 .wpcf7-response-output {
-    position: relative;
+    position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    margin: 25px 0 0 0;
     font: 700 16px/1.42857 "Arial", sans-serif;
-    padding: 7px 20px;
+    padding: 7px 10px;
     text-align: center;
     color: #fff;
     -webkit-border-radius: 0;
@@ -450,11 +466,14 @@ div.wpcf7 {
     -o-border-radius: 0;
     border-radius: 0; }
     div.wpcf7 .wpcf7-response-output.wpcf7-validation-errors {
-      background: #ff5f5f; }
+      background: #ff5f5f;
+      position: relative; }
     div.wpcf7 .wpcf7-response-output.wpcf7-mail-sent-ng {
-      background: #1091ae; }
+      background: #1091ae;
+      position: relative; }
     div.wpcf7 .wpcf7-response-output.wpcf7-mail-sent-ok {
-      background: #16a085; }
+      background: #16a085;
+      position: relative; }
   div.wpcf7 input:not([type="submit"]), div.wpcf7 textarea {
     display: block;
     width: 100%;
@@ -490,6 +509,15 @@ div.wpcf7 {
     overflow: auto;
     height: 110px;
     padding: 10px 12px; }
+  div.wpcf7 button.button {
+    cursor: pointer;
+    -webkit-transition: all 0.4s ease;
+    -khtml-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -ms-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    margin: 0.9375rem 0 1.25rem; }
   div.wpcf7 .screen-reader-response, div.wpcf7 .ajax-loader {
     display: none; }
 

@@ -151,11 +151,16 @@ input, textarea {@include placeholder {color: #999;opacity: 1}}
   @include align-items(center);
   @include justify-content(space-between);
 }
+.flex_start {
+  @include flexbox();
+  @include align-items(flex-start);
+  @include justify-content(space-between);
+}
 
 .content {
   img {
-    &.alignright { margin-left: 1.5em }
-    &.alignleft { margin-right: 1.5em }
+    &.alignright { margin: 0 0 1.5em 1.5em }
+    &.alignleft { margin: 0 1.5em 1.5em 0 }
     &.alignnone {
       display: inline-block;
       vertical-align: baseline;
@@ -202,13 +207,9 @@ input, textarea {@include placeholder {color: #999;opacity: 1}}
         right: 13px;
         top: 16px;
       }
-      &.err {
-        border-color: #ef4036
-      }
+      &.err {border-color: #ef4036}
     }
-    option {
-      padding: 5px
-    }
+    option {padding: 5px}
   }
 }
 
@@ -222,7 +223,7 @@ $button-color: $color; // The color of button
   display: none;
   position: absolute;
   top: 24px;
-  right: 0;
+  right: 3%;
   width: 25px;
   height: 27px;
   cursor: pointer;

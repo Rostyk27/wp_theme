@@ -24,7 +24,7 @@ $(document).ready(function () {
     });
 
     $("#menuopen").click(function () {
-        $(this).toggleClass('active').next().stop().slideToggle(400);
+        $(this).toggleClass('active').next().stop().toggleClass('active');
     });
 });
 

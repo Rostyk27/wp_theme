@@ -65,19 +65,18 @@ div.wpcf7 {
     @include border-radius(0);
   }
   .wpcf7-response-output {
-    position: relative;
+    position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    margin: 25px 0 0 0;
     font: 700 16px/1.42857 $font;
-    padding: 7px 20px;
+    padding: 7px 10px;
     text-align: center;
     color: #fff;
     @include border-radius(0);
-    &.wpcf7-validation-errors {background: #ff5f5f}
-    &.wpcf7-mail-sent-ng {background: #1091ae}
-    &.wpcf7-mail-sent-ok {background: #16a085}
+    &.wpcf7-validation-errors {background: #ff5f5f; position: relative}
+    &.wpcf7-mail-sent-ng {background: #1091ae; position: relative}
+    &.wpcf7-mail-sent-ok {background: #16a085; position: relative}
   }
   input:not([type="submit"]), textarea {
     display: block;
@@ -100,6 +99,11 @@ div.wpcf7 {
     overflow: auto;
     height: 110px;
     padding: 10px 12px;
+  }
+  button.button {
+    cursor: pointer;
+    @include transition();
+    margin: rem(15) 0 rem(20);
   }
   .screen-reader-response, .ajax-loader {display: none}
 }
