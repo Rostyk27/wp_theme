@@ -247,6 +247,9 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     -webkit-appearance: menulist-button; }
     .selbel_w select + span {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
       position: absolute;
       top: 0;
       left: 0;
