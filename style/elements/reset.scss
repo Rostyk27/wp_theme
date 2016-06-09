@@ -185,6 +185,7 @@ input, textarea {@include placeholder {color: #999;opacity: 1}}
     z-index: 1;
     opacity: 0;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -webkit-appearance: menulist-button;
     + span {
       position: absolute;
       top: 0;
