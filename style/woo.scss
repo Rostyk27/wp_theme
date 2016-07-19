@@ -1,32 +1,8 @@
 /* WooCommerce Custom Styles */
 @import 'elements/mixins';
 
-// responsive fonts + line-heights + padding & margin !!!
-$font-base: 16px;
-/// Strips the unit from a number.
-@function strip-units($value) {
-  @return ($value / ($value * 0 + 1));
-}
-// Convert pixels to rems
-// eg. for a relational value of 12px write rem(12)
-// Assumes $font-base is the font-size of <html>
-@function rem($pxval) {
-  @if not unitless($pxval) {
-    $pxval: strip-units($pxval);
-  }
-  $base: $font-base;
-  @if not unitless($base) {
-    $base: strip-units($base);
-  }
-  @return ($pxval / $base) * 1rem;
-}
-
-$container: 1140px;
-$color: #ff4e50;
-$black: #333;
 $orange: orange;
 $green: green;
-$font: 'Arial', sans-serif;
 
 .products {
   @include flex-grid(4, 2.4%);
@@ -43,7 +19,7 @@ $font: 'Arial', sans-serif;
         @include transition();
       }
       img {
-        @include box-shadow(0 0 0 rgba(#fff, 0));
+        box-shadow: 0 0 0 rgba(#fff, 0);
       }
       .onsale {
         position: absolute;
@@ -228,7 +204,7 @@ $font: 'Arial', sans-serif;
     display: block;
     height: 42px;
     font: 400 15px $font;
-    @include border-radius(0);
+    border-radius: 0;
     @include placeholder {
       color: $color;
       font-size: 14px;
@@ -1128,7 +1104,7 @@ table.variations {
     margin-right: 15px;
     font-weight: 700;
     border: 1px solid;
-    @include border-radius(100%);
+    border-radius: 50%;
     width: 27px;
     height: 27px;
     text-align: center;
@@ -1252,7 +1228,7 @@ table.variations {
       line-height: 1.7;
       color: #fff;
       background: $color;
-      @include border-radius(100%);
+      border-radius: 50%;
       text-align: center;
     }
   }

@@ -1,45 +1,11 @@
 @import 'mixins';
 
-/*@include declare-font-face('name', 'file_name', 400);
-
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-  @include svg-font-face('name', 'file_name', 400);
-}*/
-
-// responsive fonts + line-heights + padding & margin !!!
-$font-base: 16px;
-/// Strips the unit from a number.
-@function strip-units($value) {
-  @return ($value / ($value * 0 + 1));
-}
-// Convert pixels to rems
-// eg. for a relational value of 12px write rem(12)
-// Assumes $font-base is the font-size of <html>
-@function rem($pxval) {
-  @if not unitless($pxval) {
-    $pxval: strip-units($pxval);
-  }
-  $base: $font-base;
-  @if not unitless($base) {
-    $base: strip-units($base);
-  }
-  @return ($pxval / $base) * 1rem;
-}
-
-
-$container: 1140px;
-$color: #ff4e50;
-$black: #333;
-$font: 'Arial', sans-serif;
-
-
 * {
   margin: 0;
   padding: 0;
   min-width: 1px;
   outline: 0 none;
   box-sizing: border-box;
-  border-collapse: collapse;
   -webkit-box-sizing: border-box;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
@@ -66,12 +32,12 @@ hr {
 }
 
 article, aside, details, figcaption, figure, footer, header, nav, section, summary {display: block}
-ol, ul {list-style: none;}
-h1, h2, h3, h4, h5 {font-weight: normal;}
-mark {background: none;}
-button {background: rgba(255, 255, 255, 0); border: medium none;}
-table {border-spacing: 0;}
-td {vertical-align: middle;}
+ol, ul {list-style: none}
+h1, h2, h3, h4, h5 {font-weight: normal}
+mark {background: none}
+button {background: rgba(255, 255, 255, 0); border: medium none}
+table {border-spacing: 0}
+td {vertical-align: middle}
 
 img {
   max-width: 100%;
@@ -93,7 +59,7 @@ a {
 
 input, select, textarea {
   @include transition();
-  @include border-radius(0);
+  border-radius: 0;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -webkit-appearance: none;
@@ -109,10 +75,10 @@ input[type="submit"], input[type="button"] {
 input, textarea {@include placeholder {color: #999;opacity: 1}}
 
 // selection
-::-moz-selection {color: #fff; background: $color;}
-::selection {color: #fff; background: $color;}
-:focus {outline:none;}
-::-moz-focus-inner {border:0;}
+::-moz-selection {color: #fff; background: $color}
+::selection {color: #fff; background: $color}
+:focus {outline: none}
+::-moz-focus-inner {border: 0}
 
 // fullframe video
 .fullframe {height: 0;margin: 0;overflow: hidden;padding-bottom: 56.5%;position: relative;z-index: 0;
@@ -198,7 +164,7 @@ input, textarea {@include placeholder {color: #999;opacity: 1}}
       background: #fff;
       color: #555;
       padding: 0 10px;
-      @include border-radius(5px);
+      border-radius: 5px;
       border: 1px solid #eee;
       &:after {
         content: '';
@@ -220,7 +186,7 @@ input, textarea {@include placeholder {color: #999;opacity: 1}}
 
 // menu button
 $line-thickness: 5px; // The thickness of the button lines, also need to improve -> &:after {top: ?px} !
-$line-position: 21px; // The spacing between lines, also need to improve -> &:after {top: ?px} !
+$line-position: 21px; // The spacing between lines, also need to change -> &:after {top: ?px} !
 $button-color: $color; // The color of button
 
 #menuopen {
@@ -231,8 +197,8 @@ $button-color: $color; // The color of button
   width: 25px;
   height: 27px;
   cursor: pointer;
-  z-index: 2000;
-  @include transition(all, .35s, ease);
+  z-index: 1990;
+  @include transition();
   &:before, &:after {
     content: '';
     position: absolute;
@@ -241,19 +207,15 @@ $button-color: $color; // The color of button
     right: 0;
     height: $line-thickness;
     box-shadow: 0 $line-thickness 0 0 $button-color, 0 $line-position 0 0 $button-color;
-    -webkit-box-shadow: 0 $line-thickness 0 0 $button-color, 0 $line-position 0 0 $button-color;
-    -moz-box-shadow: 0 $line-thickness 0 0 $button-color, 0 $line-position 0 0 $button-color;
-    /*@include border-radius(3px);*/
-    @include transition(all, .35s, ease);
+    @include transition();
   }
   &:after {
     content: '';
     position: absolute;
-    top: 8px; // Need to improve if both $line-thickness and $line-position changed !
+    top: 8px; // Need to change if both $line-thickness and $line-position changed !
     height: $line-thickness;
-    @include box-shadow(0 $line-thickness 0 0 $button-color);
-    /*@include border-radius(3px);*/
-    @include transition(all, .35s, ease);
+    box-shadow: 0 $line-thickness 0 0 $button-color;
+    @include transition();
   }
   &.active:before, &.active:after {
     position: absolute;
@@ -261,20 +223,14 @@ $button-color: $color; // The color of button
     left: 0;
     right: 0;
     background: $button-color;
-    @include box-shadow(none);
-    /*@include border-radius(3px);*/
+    box-shadow: none;
   }
   &.active:before {
-    @include backface-visibility();
-    @include transform(rotate(-45deg) translate(-7px, 7px));
+    backface-visibility: hidden;
+    @include transform(rotate(-45deg) translate(-9px, 9px));
   }
   &.active:after {
-    @include backface-visibility();
-    @include transform(rotate(45deg) translate(7px, 7px));
+    backface-visibility: hidden;
+    @include transform(rotate(45deg) translate(9px, 9px));
   }
 }
-// menu button
-
-
-// fontastic
-// fontastic

@@ -13,18 +13,12 @@ EXAMPLE
 }
 
 */
-/*@include declare-font-face('name', 'file_name', 400);
-
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-  @include svg-font-face('name', 'file_name', 400);
-}*/
 * {
   margin: 0;
   padding: 0;
   min-width: 1px;
   outline: 0 none;
   box-sizing: border-box;
-  border-collapse: collapse;
   -webkit-box-sizing: border-box;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0); }
 
@@ -80,12 +74,10 @@ a {
   color: #ff4e50;
   outline: 0 none;
   text-decoration: none;
-  -webkit-transition: all 0.4s ease;
-  -khtml-transition: all 0.4s ease;
-  -moz-transition: all 0.4s ease;
-  -ms-transition: all 0.4s ease;
-  -o-transition: all 0.4s ease;
-  transition: all 0.4s ease; }
+  -webkit-transition: all 0.35s ease;
+  -moz-transition: all 0.35s ease;
+  -ms-transition: all 0.35s ease;
+  transition: all 0.35s ease; }
   a:hover {
     outline: 0 none;
     text-decoration: none; }
@@ -93,17 +85,10 @@ a {
     border: 0; }
 
 input, select, textarea {
-  -webkit-transition: all 0.4s ease;
-  -khtml-transition: all 0.4s ease;
-  -moz-transition: all 0.4s ease;
-  -ms-transition: all 0.4s ease;
-  -o-transition: all 0.4s ease;
-  transition: all 0.4s ease;
-  -webkit-border-radius: 0;
-  -khtml-border-radius: 0;
-  -moz-border-radius: 0;
-  -ms-border-radius: 0;
-  -o-border-radius: 0;
+  -webkit-transition: all 0.35s ease;
+  -moz-transition: all 0.35s ease;
+  -ms-transition: all 0.35s ease;
+  transition: all 0.35s ease;
   border-radius: 0;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -258,11 +243,6 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
       background: #fff;
       color: #555;
       padding: 0 10px;
-      -webkit-border-radius: 5px;
-      -khtml-border-radius: 5px;
-      -moz-border-radius: 5px;
-      -ms-border-radius: 5px;
-      -o-border-radius: 5px;
       border-radius: 5px;
       border: 1px solid #eee; }
       .selbel_w select + span:after {
@@ -288,12 +268,10 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   width: 25px;
   height: 27px;
   cursor: pointer;
-  z-index: 2000;
+  z-index: 1990;
   -webkit-transition: all 0.35s ease;
-  -khtml-transition: all 0.35s ease;
   -moz-transition: all 0.35s ease;
   -ms-transition: all 0.35s ease;
-  -o-transition: all 0.35s ease;
   transition: all 0.35s ease; }
   #menuopen:before, #menuopen:after {
     content: '';
@@ -303,32 +281,19 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     right: 0;
     height: 5px;
     box-shadow: 0 5px 0 0 #ff4e50, 0 21px 0 0 #ff4e50;
-    -webkit-box-shadow: 0 5px 0 0 #ff4e50, 0 21px 0 0 #ff4e50;
-    -moz-box-shadow: 0 5px 0 0 #ff4e50, 0 21px 0 0 #ff4e50;
-    /*@include border-radius(3px);*/
     -webkit-transition: all 0.35s ease;
-    -khtml-transition: all 0.35s ease;
     -moz-transition: all 0.35s ease;
     -ms-transition: all 0.35s ease;
-    -o-transition: all 0.35s ease;
     transition: all 0.35s ease; }
   #menuopen:after {
     content: '';
     position: absolute;
     top: 8px;
     height: 5px;
-    -webkit-box-shadow: 0 5px 0 0 #ff4e50;
-    -khtml-box-shadow: 0 5px 0 0 #ff4e50;
-    -moz-box-shadow: 0 5px 0 0 #ff4e50;
-    -ms-box-shadow: 0 5px 0 0 #ff4e50;
-    -o-box-shadow: 0 5px 0 0 #ff4e50;
     box-shadow: 0 5px 0 0 #ff4e50;
-    /*@include border-radius(3px);*/
     -webkit-transition: all 0.35s ease;
-    -khtml-transition: all 0.35s ease;
     -moz-transition: all 0.35s ease;
     -ms-transition: all 0.35s ease;
-    -o-transition: all 0.35s ease;
     transition: all 0.35s ease; }
   #menuopen.active:before, #menuopen.active:after {
     position: absolute;
@@ -336,42 +301,22 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     left: 0;
     right: 0;
     background: #ff4e50;
-    -webkit-box-shadow: none;
-    -khtml-box-shadow: none;
-    -moz-box-shadow: none;
-    -ms-box-shadow: none;
-    -o-box-shadow: none;
-    box-shadow: none;
-    /*@include border-radius(3px);*/ }
+    box-shadow: none; }
   #menuopen.active:before {
-    -webkit-backface-visibility: hidden;
-    -khtml-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -ms-backface-visibility: hidden;
-    -o-backface-visibility: hidden;
     backface-visibility: hidden;
-    -webkit-transform: rotate(-45deg) translate(-7px, 7px);
-    -khtml-transform: rotate(-45deg) translate(-7px, 7px);
-    -moz-transform: rotate(-45deg) translate(-7px, 7px);
-    -ms-transform: rotate(-45deg) translate(-7px, 7px);
-    -o-transform: rotate(-45deg) translate(-7px, 7px);
-    transform: rotate(-45deg) translate(-7px, 7px); }
+    -webkit-transform: rotate(-45deg) translate(-9px, 9px);
+    -moz-transform: rotate(-45deg) translate(-9px, 9px);
+    -ms-transform: rotate(-45deg) translate(-9px, 9px);
+    transform: rotate(-45deg) translate(-9px, 9px); }
   #menuopen.active:after {
-    -webkit-backface-visibility: hidden;
-    -khtml-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -ms-backface-visibility: hidden;
-    -o-backface-visibility: hidden;
     backface-visibility: hidden;
-    -webkit-transform: rotate(45deg) translate(7px, 7px);
-    -khtml-transform: rotate(45deg) translate(7px, 7px);
-    -moz-transform: rotate(45deg) translate(7px, 7px);
-    -ms-transform: rotate(45deg) translate(7px, 7px);
-    -o-transform: rotate(45deg) translate(7px, 7px);
-    transform: rotate(45deg) translate(7px, 7px); }
+    -webkit-transform: rotate(45deg) translate(9px, 9px);
+    -moz-transform: rotate(45deg) translate(9px, 9px);
+    -ms-transform: rotate(45deg) translate(9px, 9px);
+    transform: rotate(45deg) translate(9px, 9px); }
 
 html {
-  font: 400 16px/1.6 "Arial", sans-serif; }
+  font: 400 21px/1.6 "Arial", sans-serif; }
 
 body {
   display: -webkit-box;
@@ -386,10 +331,8 @@ body {
   -ms-flex-direction: column;
   flex-direction: column;
   -webkit-transition: opacity 1s ease;
-  -khtml-transition: opacity 1s ease;
   -moz-transition: opacity 1s ease;
   -ms-transition: opacity 1s ease;
-  -o-transition: opacity 1s ease;
   transition: opacity 1s ease;
   max-width: 1920px;
   margin: 0 auto;
@@ -428,7 +371,7 @@ div.wpcf7 {
     justify-content: space-between; }
   div.wpcf7 .wpcf7-form-control-wrap {
     display: block !important;
-    margin-bottom: 1.25rem;
+    margin-bottom: 0.95238rem;
     clear: both;
     position: relative;
     -webkit-flex-basis: 48%;
@@ -448,11 +391,6 @@ div.wpcf7 {
     color: #1d3408;
     height: 45px;
     padding: 0 8px;
-    -webkit-border-radius: 0;
-    -khtml-border-radius: 0;
-    -moz-border-radius: 0;
-    -ms-border-radius: 0;
-    -o-border-radius: 0;
     border-radius: 0; }
   div.wpcf7 .wpcf7-response-output {
     position: absolute;
@@ -463,11 +401,6 @@ div.wpcf7 {
     padding: 7px 10px;
     text-align: center;
     color: #fff;
-    -webkit-border-radius: 0;
-    -khtml-border-radius: 0;
-    -moz-border-radius: 0;
-    -ms-border-radius: 0;
-    -o-border-radius: 0;
     border-radius: 0; }
     div.wpcf7 .wpcf7-response-output.wpcf7-validation-errors {
       background: #ff5f5f;
@@ -487,11 +420,6 @@ div.wpcf7 {
     background: #e5f5c6;
     font: 400 18px "Arial", sans-serif;
     color: #1d3408;
-    -webkit-border-radius: 0;
-    -khtml-border-radius: 0;
-    -moz-border-radius: 0;
-    -ms-border-radius: 0;
-    -o-border-radius: 0;
     border-radius: 0; }
     div.wpcf7 input:not([type="submit"])::-webkit-input-placeholder, div.wpcf7 textarea::-webkit-input-placeholder {
       color: #1d3408;
@@ -515,37 +443,12 @@ div.wpcf7 {
     padding: 10px 12px; }
   div.wpcf7 button.button {
     cursor: pointer;
-    -webkit-transition: all 0.4s ease;
-    -khtml-transition: all 0.4s ease;
-    -moz-transition: all 0.4s ease;
-    -ms-transition: all 0.4s ease;
-    -o-transition: all 0.4s ease;
-    transition: all 0.4s ease;
-    margin: 0.9375rem 0 1.25rem; }
+    -webkit-transition: all 0.35s ease;
+    -moz-transition: all 0.35s ease;
+    -ms-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+    margin: 0.71429rem 0 0.95238rem; }
   div.wpcf7 .screen-reader-response, div.wpcf7 .ajax-loader {
     display: none; }
-
-@media screen and (max-width: 1024px) {
-  #menuopen {
-    display: block; } }
-@media screen and (max-width: 767px) {
-  /*.animatedParent .animated {
-    -o-transition-property: none !important;
-    -moz-transition-property: none !important;
-    -ms-transition-property: none !important;
-    -webkit-transition-property: none !important;
-    transition-property: none !important;
-    -o-transform: none !important;
-    -moz-transform: none !important;
-    -ms-transform: none !important;
-    -webkit-transform: none !important;
-    transform: none !important;
-    -webkit-animation: none !important;
-    -moz-animation: none !important;
-    -o-animation: none !important;
-    -ms-animation: none !important;
-    animation: none !important;
-    opacity: 1
-  }*/ }
 
 /*# sourceMappingURL=style.css.map */

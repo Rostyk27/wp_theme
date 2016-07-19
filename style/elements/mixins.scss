@@ -1,60 +1,55 @@
-@mixin css3-prefix($property, $value){
+// responsive fonts + padding & margin !!!
+$font-base: 21px;
+/// Strips the unit from a number.
+@function strip-units($value) {
+  @return ($value / ($value * 0 + 1));
+}
+// Convert pixels to rems
+// eg. for a relational value of 12px write rem(12)
+// Assumes $font-base is the font-size of <html>
+@function rem($pxval) {
+  @if not unitless($pxval) {
+    $pxval: strip-units($pxval);
+  }
+  $base: $font-base;
+  @if not unitless($base) {
+    $base: strip-units($base);
+  }
+  @return ($pxval / $base) * 1rem;
+}
+
+$container: 1140px;
+$color: #ff4e50;
+$black: #333;
+$font: 'Arial', sans-serif;
+
+@mixin prefixer($property, $value){
   -webkit-#{$property}: #{$value};
-  -khtml-#{$property}: #{$value};
   -moz-#{$property}: #{$value};
   -ms-#{$property}: #{$value};
-  -o-#{$property}: #{$value};
   #{$property}: #{$value}
 }
 
-@mixin border-radius($radius) {
-  @include css3-prefix('border-radius', $radius);
-}
-
-@mixin box-shadow($shadow) {
-  @include css3-prefix('box-shadow', $shadow);
-}
-
-@mixin backface-visibility($back: hidden) {
-  @include css3-prefix('backface-visibility', $back);
-}
-
-@mixin user-select($select) {
-  -webkit-touch-callout: $select;
-  @include css3-prefix('user-select', $select);
-}
-
 @mixin columns($count: 2, $gap: 0) {
-  @include css3-prefix('column-count', $count);
-  @include css3-prefix('column-gap', $gap);
+  @include prefixer('column-count', $count);
+  @include prefixer('column-gap', $gap);
 }
 
-@mixin background-size($size) {
-  @include css3-prefix('background-size', $size);
-}
-
-@mixin transition($property: all, $duration: .4s, $easing: ease) {
+@mixin transition($property: all, $duration: 0.35s, $easing: ease) {
   $transitions: ($property $duration $easing);
-  @include css3-prefix('transition', $transitions);
+  @include prefixer('transition', $transitions);
 }
 
 @mixin imagenize() {
   image-rendering: -moz-crisp-edges;
-  image-rendering:   -o-crisp-edges;
+  image-rendering: -o-crisp-edges;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
   -ms-interpolation-mode: nearest-neighbor;
 }
 
-@mixin transform($params, $backface: false) {
-  @include css3-prefix('transform', $params);
-  @if $backface {
-    -webkit-backface-visibility:hidden;
-    backface-visibility:hidden;
-  }
-}
-@mixin transform-origin($params) {
-  @include css3-prefix('transform-origin', $params);
+@mixin transform($params) {
+  @include prefixer('transform', $params);
 }
 
 @mixin center($horizontal: true, $vertical: true) {
@@ -62,19 +57,13 @@
   @if ($horizontal and $vertical) {
     top: 50%;
     left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    @include transform(translate(-50%, -50%));
   } @else if ($horizontal) {
     left: 50%;
-    -webkit-transform: translate(-50%, 0);
-    -moz-transform: translate(-50%, 0);
-    transform: translate(-50%, 0);
+    @include transform(translate(-50%, 0));
   } @else if ($vertical) {
     top: 50%;
-    -webkit-transform: translate(0, -50%);
-    -moz-transform: translate(0, -50%);
-    transform: translate(0, -50%);
+    @include transform(translate(0, -50%));
   }
 }
 
@@ -96,7 +85,7 @@
   }
 }
 @mixin animation($str) {
-  @include css3-prefix('animation', $str);
+  @include prefixer('animation', $str);
 }
 
 @mixin placeholder {

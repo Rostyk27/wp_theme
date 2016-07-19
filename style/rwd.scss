@@ -1,0 +1,24 @@
+@import 'elements/mixins';
+
+@media screen and (max-width: 1024px) {
+  //html {font-size: 19px}
+  #menuopen {display: block}
+}
+
+
+@media screen and (max-width: 767px) {
+  //.animatedParent .animated {
+  //  @include prefixer(transition-property, none !important);
+  //  @include prefixer(animation, none !important);
+  //  @include transform(none !important);
+  //  opacity: 1
+  //}
+}
+
+
+@media screen and (max-width: 640px) {}
+
+
+@media screen and (max-width: 480px) {
+  //html {font-size: 16px}
+}
