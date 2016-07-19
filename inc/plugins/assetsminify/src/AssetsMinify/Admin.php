@@ -37,12 +37,6 @@ class Admin {
         add_action('admin_init', array( $this, 'options') );
         add_action('admin_menu', array( $this, 'menu') );
 
-//        if ( isset($_GET['empty_cache']) ) {
-//            var_dump('asdasdsd');
-//            $this->cache->flush();
-//            wp_redirect( admin_url( "options-general.php?page=assets-minify" ) );
-//        }
-
         if ( isset($_GET['empty_cache']) ) {
             $uploadsDir = wp_upload_dir();
             $filesList = glob($uploadsDir['basedir'] . '/am_assets/' . "*.*");
