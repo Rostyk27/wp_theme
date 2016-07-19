@@ -1,5 +1,10 @@
-// responsive fonts + padding & margin !!!
 $font-base: 21px;
+$container: 1140px;
+$color: #ff4e50;
+$black: #333;
+$font: 'Arial', sans-serif;
+
+// responsive fonts + padding & margin !!!
 /// Strips the unit from a number.
 @function strip-units($value) {
   @return ($value / ($value * 0 + 1));
@@ -18,11 +23,6 @@ $font-base: 21px;
   @return ($pxval / $base) * 1rem;
 }
 
-$container: 1140px;
-$color: #ff4e50;
-$black: #333;
-$font: 'Arial', sans-serif;
-
 @mixin prefixer($property, $value){
   -webkit-#{$property}: #{$value};
   -moz-#{$property}: #{$value};
@@ -39,6 +39,7 @@ $font: 'Arial', sans-serif;
   $transitions: ($property $duration $easing);
   @include prefixer('transition', $transitions);
 }
+.ani {@include transition()}
 
 @mixin imagenize() {
   image-rendering: -moz-crisp-edges;

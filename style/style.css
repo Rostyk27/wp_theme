@@ -1,3 +1,9 @@
+.ani, a, input, select, textarea, #menuopen, #menuopen:before, #menuopen:after, div.wpcf7 button.button {
+  -webkit-transition: all 0.35s ease;
+  -moz-transition: all 0.35s ease;
+  -ms-transition: all 0.35s ease;
+  transition: all 0.35s ease; }
+
 /*
 flex grid
 
@@ -73,11 +79,7 @@ img {
 a {
   color: #ff4e50;
   outline: 0 none;
-  text-decoration: none;
-  -webkit-transition: all 0.35s ease;
-  -moz-transition: all 0.35s ease;
-  -ms-transition: all 0.35s ease;
-  transition: all 0.35s ease; }
+  text-decoration: none; }
   a:hover {
     outline: 0 none;
     text-decoration: none; }
@@ -85,10 +87,6 @@ a {
     border: 0; }
 
 input, select, textarea {
-  -webkit-transition: all 0.35s ease;
-  -moz-transition: all 0.35s ease;
-  -ms-transition: all 0.35s ease;
-  transition: all 0.35s ease;
   border-radius: 0;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -268,11 +266,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   width: 25px;
   height: 27px;
   cursor: pointer;
-  z-index: 1990;
-  -webkit-transition: all 0.35s ease;
-  -moz-transition: all 0.35s ease;
-  -ms-transition: all 0.35s ease;
-  transition: all 0.35s ease; }
+  z-index: 1990; }
   #menuopen:before, #menuopen:after {
     content: '';
     position: absolute;
@@ -280,21 +274,13 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     left: 0;
     right: 0;
     height: 5px;
-    box-shadow: 0 5px 0 0 #ff4e50, 0 21px 0 0 #ff4e50;
-    -webkit-transition: all 0.35s ease;
-    -moz-transition: all 0.35s ease;
-    -ms-transition: all 0.35s ease;
-    transition: all 0.35s ease; }
+    box-shadow: 0 5px 0 0 #ff4e50, 0 21px 0 0 #ff4e50; }
   #menuopen:after {
     content: '';
     position: absolute;
     top: 8px;
     height: 5px;
-    box-shadow: 0 5px 0 0 #ff4e50;
-    -webkit-transition: all 0.35s ease;
-    -moz-transition: all 0.35s ease;
-    -ms-transition: all 0.35s ease;
-    transition: all 0.35s ease; }
+    box-shadow: 0 5px 0 0 #ff4e50; }
   #menuopen.active:before, #menuopen.active:after {
     position: absolute;
     top: 0;
@@ -443,10 +429,6 @@ div.wpcf7 {
     padding: 10px 12px; }
   div.wpcf7 button.button {
     cursor: pointer;
-    -webkit-transition: all 0.35s ease;
-    -moz-transition: all 0.35s ease;
-    -ms-transition: all 0.35s ease;
-    transition: all 0.35s ease;
     margin: 0.71429rem 0 0.95238rem; }
   div.wpcf7 .screen-reader-response, div.wpcf7 .ajax-loader {
     display: none; }

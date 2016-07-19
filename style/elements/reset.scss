@@ -49,7 +49,7 @@ a {
   color: $color;
   outline: 0 none;
   text-decoration: none;
-  @include transition();
+  @extend .ani;
   &:hover {
     outline: 0 none;
     text-decoration: none;
@@ -58,7 +58,7 @@ a {
 }
 
 input, select, textarea {
-  @include transition();
+  @extend .ani;
   border-radius: 0;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -198,7 +198,7 @@ $button-color: $color; // The color of button
   height: 27px;
   cursor: pointer;
   z-index: 1990;
-  @include transition();
+  @extend .ani;
   &:before, &:after {
     content: '';
     position: absolute;
@@ -207,7 +207,7 @@ $button-color: $color; // The color of button
     right: 0;
     height: $line-thickness;
     box-shadow: 0 $line-thickness 0 0 $button-color, 0 $line-position 0 0 $button-color;
-    @include transition();
+    @extend .ani;
   }
   &:after {
     content: '';
@@ -215,7 +215,7 @@ $button-color: $color; // The color of button
     top: 8px; // Need to change if both $line-thickness and $line-position changed !
     height: $line-thickness;
     box-shadow: 0 $line-thickness 0 0 $button-color;
-    @include transition();
+    @extend .ani;
   }
   &.active:before, &.active:after {
     position: absolute;
