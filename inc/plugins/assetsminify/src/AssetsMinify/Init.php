@@ -43,7 +43,7 @@ class Init {
 			add_action( 'wp_print_scripts', array( $this->js, 'extract' ) );
 
 		//Inclusion of scripts in <head> and before </body>
-		add_action( 'wp_head',   array( $this, 'header' ) );
+		add_action( 'wp_head', array( $this, 'header' ) );
 		add_action( 'wp_footer', array( $this, 'footer' ) );
 	}
 

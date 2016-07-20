@@ -4,14 +4,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-    <title><?php wpa_title(); ?></title>
-	<meta name="MobileOptimized" content="width" />
-    <meta name="HandheldFriendly" content="True"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui, minimum-scale=1.0, maximum-scale=1.0"/>
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <link rel="shortcut icon" href="<?php echo theme('images/favicon.ico'); ?>" type="image/x-icon" sizes="16x16"/>
-    <?php wp_head(); ?>
+<meta charset="UTF-8">
+<title><?php wpa_title(); ?></title>
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="True"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui, minimum-scale=1.0, maximum-scale=1.0"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<link rel="shortcut icon" href="<?php echo theme('images/favicon.ico'); ?>" type="image/x-icon" sizes="16x16"/>
+<?php wp_head(); ?>
+<style>body{opacity:0}</style>
 </head>
 <body <?php body_class(); ?> data-hash="<?php wpa_fontbase64(true); ?>" data-a="<?php echo admin_url('admin-ajax.php'); ?>" >
 <div id="main">

@@ -18,8 +18,7 @@ function tt_add_jscss() {
 		wp_enqueue_script('googlemaps', '//maps.googleapis.com/maps/api/js?v=3.exp', false, null, false);
 	}
 
-	wp_enqueue_script('jquery', get_stylesheet_directory_uri(). '/js/libs/jquery.js', array(), '', false);
-	wp_enqueue_script('fontsLocalStorage', get_stylesheet_directory_uri(). '/js/libs/_fontsLocalStorage.js', false, null, true);
+	wp_enqueue_script('jquery', get_stylesheet_directory_uri(). '/js/libs/_jquery.js', false, null, false);
 
 	if($js_lib = directoryToArray( get_stylesheet_directory(),'/js/libs/', array('js') )) {
 		foreach($js_lib as $name => $js){

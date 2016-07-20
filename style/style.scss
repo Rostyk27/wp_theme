@@ -6,7 +6,7 @@ html {
 body {
   @include flexbox();
   @include flex-direction(column);
-  @include transition(opacity, 1s);
+  @include transition(opacity, .1s);
   max-width: 1920px;
   margin: 0 auto;
   min-height: 100vh;

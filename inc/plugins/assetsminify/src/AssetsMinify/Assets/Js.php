@@ -136,7 +136,7 @@ class Js extends Factory {
      */
     protected function dump( $filename, $async = true ) {
         preg_match("/head/i" , $filename, $matches);
-        echo "<script ".(count($matches) == 0?'defer':'')." src='" . $this->cache->getUrl() . $filename . "'" . ($async ? " async" : "") . "></script>";
+        echo "<script ".(count($matches) == 0?'defer ':'')."src='" . $this->cache->getUrl() . $filename . "'" . ($async ? " async" : "") . "></script>\r\n";
     }
 
     /**

@@ -134,6 +134,6 @@ class Css extends Factory {
      * @param string $media The media attribute - Default = all
      */
     protected function dump( $filename, $media = 'all' ) {
-        echo '<style>body{opacity:0}</style><noscript id="deferred-styles"><link rel="stylesheet" type="text/css" href="' . $this->cache->getUrl() . $filename . '"/></noscript><script>var loadDeferredStyles = function() {"use strict";var addStylesNode = document.getElementById("deferred-styles");var replacement = document.createElement("div");replacement.innerHTML = addStylesNode.textContent;document.body.appendChild(replacement);addStylesNode.parentElement.removeChild(addStylesNode);};var raf = requestAnimationFrame || mozRequestAnimationFrame || webkitRequestAnimationFrame || msRequestAnimationFrame;if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });else window.addEventListener("load", loadDeferredStyles);</script>';
+        echo '<noscript id="wf_ds"><link rel="stylesheet" type="text/css" href="' . $this->cache->getUrl() . $filename . '"/></noscript>'."\r\n";
     }
 }
