@@ -2,10 +2,6 @@ $ = jQuery;
 
 FastClick.attach(document.body);
 
-// WebFontConfig = {
-//     google: { families: [ 'Open+Sans:400,300,400italic,600,700:latin', 'Roboto:400,100,300,500,700:latin' ] }
-// };
-
 $(document).ready(function () {
     "use strict";
 //  contact form 7
@@ -16,13 +12,6 @@ $(document).ready(function () {
         });
     });
 
-    var swiper = new Swiper('#parent > .swiper-container', {
-        pagination: '#parent .swiper-pagination',
-        paginationClickable: true,
-        nextButton: '#parent .swiper-button-next',
-        prevButton: '#parent .swiper-button-prev'
-    });
-
     $("#menuopen").click(function () {
         $(this).toggleClass('active').next().stop().toggleClass('active');
     });
@@ -30,6 +19,16 @@ $(document).ready(function () {
 
 $(window).load(function(){
     "use strict";
+
+    $('.main_swiper').each(function(){
+        var t = this,
+        main_swiper = new Swiper( t, {
+            nextButton          : $('.custom_next', t),
+            prevButton          : $('.custom_prev', t),
+            pagination          : $('.custom_pager', t),
+            paginationClickable : true
+        });
+    });
 
     //  fluid video (iframe)
     $('.content article iframe').each(function(i) {
