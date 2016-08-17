@@ -43,16 +43,6 @@ function register_cpts() {
             'labels' => array(
             'name' => 'Custom Post Type',
             'singular_name' => 'Custom Post Type',
-            'add_new' => 'Add New',
-            'add_new_item' => 'Add New',
-            'edit_item' => 'Edit',
-            'new_item' => 'New',
-            'all_items' => 'All',
-            'view_item' => 'View',
-            'search_items' => 'Search',
-            'not_found' =>  'Not found',
-            'not_found_in_trash' => 'No found in Trash',
-            'parent_item_colon' => '',
             'menu_name' => 'Custom Post Type'
         ),
         'public'                => true,
@@ -67,5 +57,7 @@ function register_cpts() {
         'query_var'             => true,
         'menu_icon'             => 'dashicons-admin-page',
     ));
-    flush_rewrite_rules();
+    if( defined('WP_DEBUG') && true !== WP_DEBUG) {
+        flush_rewrite_rules();
+    }
 }
