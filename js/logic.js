@@ -6,7 +6,7 @@
     'use strict';
 
 $(document).ready(function () {
-    "use strict";
+
 //  contact form 7
     $(this).on('click', '.wpcf7-not-valid-tip', function(){
         $(this).prev().trigger('focus');
@@ -21,7 +21,6 @@ $(document).ready(function () {
 });
 
 $(window).on('load', function(){
-    "use strict";
 
     $('.main_swiper').each(function(){
         var t = this,
