@@ -1,6 +1,9 @@
-$ = jQuery;
+/*jslint browser: true, white: true, plusplus: true, regexp: true, indent: 4, maxerr: 50, es5: true */
+/*jshint multistr: true, latedef: nofunc */
+/*global jQuery, $, Swiper*/
 
-FastClick.attach(document.body);
+(function() {
+    'use strict';
 
 $(document).ready(function () {
     "use strict";
@@ -17,7 +20,7 @@ $(document).ready(function () {
     });
 });
 
-$(window).load(function(){
+$(window).on('load', function(){
     "use strict";
 
     $('.main_swiper').each(function(){
@@ -42,4 +45,10 @@ $(window).load(function(){
         $('.mejs-video .mejs-inner', this).addClass('fullframe');
     });
 
+})
+.bind('orientationchange resize', function() {
+    window.console.log('resize');
+}).resizeEnd(function(){
+    window.console.log('resizeEnd');
 });
+}(jQuery));
