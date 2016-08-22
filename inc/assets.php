@@ -29,7 +29,7 @@ function tt_add_jscss() {
 	wp_enqueue_script('libs', get_stylesheet_directory_uri(). '/js/lib.js', array('jquery'), null, true);
 	wp_enqueue_script('logic', get_stylesheet_directory_uri(). '/js/logic.js', array('libs'), null, true);
 
-	wp_enqueue_style('libs', get_stylesheet_directory_uri(). '/style/libs.css' );
+	wp_enqueue_style('libs', get_stylesheet_directory_uri(). '/style/elements/libs.css' );
 	wp_enqueue_style('scss', get_stylesheet_directory_uri(). '/style/style.scss' );
 
 	if(class_exists('Woocommerce')) {
