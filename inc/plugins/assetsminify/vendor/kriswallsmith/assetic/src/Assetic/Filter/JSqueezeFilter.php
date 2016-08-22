@@ -22,8 +22,20 @@ use Assetic\Asset\AssetInterface;
 class JSqueezeFilter implements FilterInterface
 {
     private $singleLine = true;
-    private $keepImportantComments = true;
-    private $specialVarRx = \JSqueeze::SPECIAL_VAR_RX;
+    private $keepImportantComments = false;
+    private $specialVarRx = false;
+    private $defaultRx;
+
+    public function __construct() {
+        // JSqueeze is namespaced since 2.x, this works with both 1.x and 2.x
+        if (class_exists('\\Patchwork\\JSqueeze')) {
+            $this->className = '\\Patchwork\\JSqueeze';
+            $this->defaultRx = \Patchwork\JSqueeze::SPECIAL_VAR_PACKER;
+        } else {
+            $this->className = '\\JSqueeze';
+            $this->defaultRx = \JSqueeze::SPECIAL_VAR_RX;
+        }
+    }
 
     public function setSingleLine($bool)
     {
