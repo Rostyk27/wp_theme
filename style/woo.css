@@ -1,4 +1,10 @@
 /* WooCommerce Custom Styles */
+.bg {
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  -webkit-background-size: cover;
+  background-size: cover; }
+
 .ani {
   -webkit-transition: all 0.35s ease;
   -moz-transition: all 0.35s ease;

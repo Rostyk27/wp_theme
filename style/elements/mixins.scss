@@ -4,6 +4,12 @@ $color: #ff4e50;
 $black: #333;
 $font: 'Arial', sans-serif;
 
+.bg {
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  -webkit-background-size: cover; background-size: cover;
+}
+
 // responsive fonts + padding & margin !!!
 /// Strips the unit from a number.
 @function strip-units($value) {
