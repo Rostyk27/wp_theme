@@ -57,7 +57,7 @@ a {
   > img {border: 0}
 }
 
-input:not(input[type="radio"]):not(input[type="checkbox"]), select, textarea {
+input:not([type="radio"]):not([type="checkbox"]), select, textarea {
   @extend .ani;
   border-radius: 0;
   box-sizing: border-box;

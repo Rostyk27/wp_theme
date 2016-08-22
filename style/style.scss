@@ -80,7 +80,7 @@ div.wpcf7 {
     &.wpcf7-mail-sent-ng {background: #1091ae; position: relative}
     &.wpcf7-mail-sent-ok {background: #16a085; position: relative}
   }
-  input:not([type="submit"]):not(input[type="radio"]):not(input[type="checkbox"]), textarea {
+  input:not([type="submit"]):not([type="radio"]):not([type="checkbox"]), textarea {
     display: block;
     width: 100%;
     height: 45px;
