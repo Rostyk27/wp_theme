@@ -7,13 +7,13 @@ html {
 body {
   @include flexbox();
   @include flex-direction(column);
-  @include transition(opacity, .1s);
   max-width: 1920px;
   margin: 0 auto;
   min-height: 100vh;
   background: #fff;
   color: $black;
   opacity: 1;
+  &.firefox {@include transition(opacity, 2s)}
 }
 #main {
   @include flex(1, 0, auto);

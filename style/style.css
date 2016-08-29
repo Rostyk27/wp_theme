@@ -323,16 +323,17 @@ body {
   -moz-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-transition: opacity 0.1s ease;
-  -moz-transition: opacity 0.1s ease;
-  -ms-transition: opacity 0.1s ease;
-  transition: opacity 0.1s ease;
   max-width: 1920px;
   margin: 0 auto;
   min-height: 100vh;
   background: #fff;
   color: #333;
   opacity: 1; }
+  body.firefox {
+    -webkit-transition: opacity 2s ease;
+    -moz-transition: opacity 2s ease;
+    -ms-transition: opacity 2s ease;
+    transition: opacity 2s ease; }
 
 #main {
   -webkit-box-flex: 1;
