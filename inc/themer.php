@@ -1,7 +1,24 @@
 <?php
 
-require_once 'qtranslate.php';
-require_once 'search_query.php';
+/* BEGIN: Theme config params*/
+
+//define ('GOOGLEMAPS', TRUE);
+define ('HOME_PAGE_ID', get_option('page_on_front'));
+define ('BLOG_ID', get_option('page_for_posts'));
+define ('POSTS_PER_PAGE', get_option('posts_per_page'));
+define ('ALOAD', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNgYAAAAAMAASsJTYQAAAAASUVORK5CYII=');
+if(class_exists('Woocommerce')) :
+	define ('SHOP_ID', get_option('woocommerce_shop_page_id'));
+	define ('ACCOUNT_ID', get_option('woocommerce_myaccount_page_id'));
+	define ('CART_ID', get_option('woocommerce_cart_page_id'));
+	define ('CHECKOUT_ID', get_option('woocommerce_checkout_page_id'));
+	require_once('woocommerce.php');
+endif;
+
+/* END: Theme config params */
+
+//require_once 'qtranslate.php';
+//require_once 'search_query.php';
 
 // Recommended plugins installer
 require_once 'plugins/installer.php';
@@ -39,6 +56,15 @@ function wpa_defer_scripts($url) {
 	}
 }
 
+/* Update wp-scss setings
+   ========================================================================== */
+if (class_exists('Wp_Scss_Settings')) {
+	$wpscss = get_option('wpscss_options');
+	if (empty($wpscss['css_dir']) && empty($wpscss['scss_dir'])) {
+		update_option('wpscss_options', array('css_dir' => '/style/', 'scss_dir' => '/style/', 'compiling_options' => 'scss_formatter_compressed'));
+	}
+}
+
 // Run this code on 'after_theme_setup', when plugins have already been loaded.
 add_action('after_setup_theme', 'wpa_activate_theme');
 
@@ -55,11 +81,6 @@ function wpa_activate_theme() {
 	//
 	// Check for a constant:
 	//	if (!defined('MY_PLUGIN_CONSTANT')) {
-
-	if (!class_exists('AssetsMinifyInit')) {
-		include_once('plugins/assetsminify/plugin.php');
-		update_option('am_async_flag', 0);
-	}
 
 	if (!function_exists('ctl_schedule_conversion')) {
 		include_once('plugins/cyr-to-lat.php');

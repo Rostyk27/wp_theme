@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AACA,WAAY;EACR,OAAO,EAAE,sBAAuB;;AAGpC,WAAY;EACR,OAAO,EAAE,iBAAiB;;AAG9B,UAAW;EACP,OAAO,EAAE,aAAa",
-"sources": ["ie7.scss"],
-"names": [],
-"file": "ie7.css"
-}

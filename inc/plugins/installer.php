@@ -18,6 +18,11 @@ add_action( 'tgmpa_register', 'wpa_register_recommended_plugins', 10 );
 function wpa_register_recommended_plugins() {
     $plugins = array(
         array(
+            'name' => 'Wp-scss',
+            'slug' => 'wp-scss',
+            'required' => true,
+        ),
+        array(
             'name'      => 'Contact Form 7',
             'slug'      => 'contact-form-7',
             'required'  => false,

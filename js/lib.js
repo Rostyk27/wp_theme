@@ -1,46 +1,9 @@
 /*jslint browser: true, white: true, vars: true, plusplus: true, regexp: true, indent: 4, maxerr: 50 */
 /*global $, jQuery*/
 
-function aload(nodes) {
-    'use strict';
-    nodes = nodes || window.document.querySelectorAll('[data-aload]');
-    if (nodes.length === undefined) {
-        nodes = [nodes];
-    }
-    var i = 0,
-        len = nodes.length,
-        node;
-    for (i; i < len; i += 1) {
-        node = nodes[i];
-        node[ node.tagName !== 'LINK' ? 'src' : 'href' ] = node.getAttribute('data-aload');
-        node.removeAttribute('data-aload');
-    }
-    return nodes;
-}
-window.onload = function () {
-    'use strict';
-    aload();
-};
-
 var hash = window.location.hash,
     supportsTouch = window.hasOwnProperty('ontouchstart') || window.navigator.msPointerEnabled ? true : false,
     TouchClickEvent = supportsTouch ? 'touchstart' : 'click';
-
-/*
- equalHeight
- usage: equalHeight('selector');
- */
-function equalHeight(group) {
-    'use strict';
-    var tallest = 0;
-    $(group).height('').each(function() {
-        var thisHeight = $(this).outerHeight();
-        if(thisHeight > tallest) {
-            tallest = thisHeight;
-        }
-    });
-    $(group).height(tallest);
-}
 
 //return document
 function screen(method){
@@ -180,3 +143,7 @@ var loadlater = (function () {
         });
     });
 }());
+
+
+// https://github.com/nielse63/jQuery-ResizeEnd
+(function(e,d,a){var b,f,c;c="resizeEnd";f={delay:250};b=function(h,g,i){if(typeof g==="function"){i=g;g={}}i=i||null;this.element=h;this.settings=e.extend({},f,g);this._defaults=f;this._name=c;this._timeout=false;this._callback=i;return this.init()};b.prototype={init:function(){var g,h;h=this;g=e(this.element);return g.on("resize",function(){return h.initResize()})},getUTCDate:function(h){var g;h=h||new Date();g=Date.UTC(h.getUTCFullYear(),h.getUTCMonth(),h.getUTCDate(),h.getUTCHours(),h.getUTCMinutes(),h.getUTCSeconds(),h.getUTCMilliseconds());return g},initResize:function(){var g;g=this;g.controlTime=g.getUTCDate();if(g._timeout===false){g._timeout=true;return setTimeout(function(){return g.runCallback(g)},g.settings.delay)}},runCallback:function(h){var g;g=h.getUTCDate();if(g-h.controlTime<h.settings.delay){return setTimeout(function(){return h.runCallback(h)},h.settings.delay)}else{h._timeout=false;return h._callback()}}};return e.fn[c]=function(g,h){return this.each(function(){if(!e.data(this,"plugin_"+c)){return e.data(this,"plugin_"+c,new b(this,g,h))}})}})(jQuery,window,document);

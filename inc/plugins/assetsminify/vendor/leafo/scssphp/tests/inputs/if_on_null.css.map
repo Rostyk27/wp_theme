@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAKA,IAAK;EACH,gBAAgB,EALP,KAA2B",
-"sources": ["if_on_null.scss"],
-"names": [],
-"file": "if_on_null.css"
-}

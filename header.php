@@ -12,7 +12,6 @@
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <link rel="shortcut icon" href="<?php echo theme('images/favicon.ico'); ?>" type="image/x-icon" sizes="16x16"/>
 <?php wp_head(); ?>
-<style>body{opacity:0}</style>
 </head>
 <body <?php body_class(); ?> data-hash="<?php wpa_fontbase64(true); ?>" data-a="<?php echo admin_url('admin-ajax.php'); ?>" >
 <div id="main">

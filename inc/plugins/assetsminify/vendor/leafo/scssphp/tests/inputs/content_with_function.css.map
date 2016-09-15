@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAYQ,IAAK;EACD,OAAO,EAAgB,IAAI",
-"sources": ["content_with_function.scss"],
-"names": [],
-"file": "content_with_function.css"
-}

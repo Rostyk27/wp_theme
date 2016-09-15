@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,OAAQ;EACJ,cAAc,EAAE,0FAMa;;AAGjC,WAAY;EACR,cAAc,EAAE,gGAMa;;AAGjC,KAAM;EACF,cAAc,EAAE,gEAEmC;;AAavD,QAAS;EARL,OAAO,EASQ,GAAE;EARjB,MAAM,EAAE,0BAA2C;;AAWvD,QAAS;EATL,OAAO,EAAE,GAAc;EACvB,MAAM,EAAE,iBAAuB;;AAYnC,IAAK;EACH,gBAAgB,EAAE,OAAoB;EACtC,KAAK,EAAE,OAAoB",
-"sources": ["filter_effects.scss"],
-"names": [],
-"file": "filter_effects.css"
-}
