@@ -1,8 +1,8 @@
-$font-base: 21px;
+$font-base: 30px;
 $container: 1140px;
 $color: #ff4e50;
-$black: #333;
-$font: 'Arial', sans-serif;
+$default: #333;
+$font: 'Open Sans', sans-serif;
 
 .bg {
   background-repeat: no-repeat;
@@ -542,17 +542,35 @@ EXAMPLE
 
 */
 
-// Tusko's version
 
-@mixin flex-grid($columnNumber, $spacingPercent) {
+//@mixin flex-grid($columnNumber, $spacingPercent) {
+//  $contentPercent: 100%;
+//  $sideMargin: ($spacingPercent/2);
+//  $marginInt: strip-units($sideMargin);
+//  @include justify-content(flex-start);
+//  @include flex-flow(wrap);
+//  @include transition();
+//  @include flexbox();
+//  margin: 0 -$sideMargin;
+//  width: $contentPercent + $spacingPercent;
+//  > * {
+//    width: ($contentPercent/$columnNumber) - $spacingPercent;
+//    margin: 0 #{$sideMargin} ($marginInt + ($marginInt / $columnNumber) * 1em)
+//  }
+//}
+
+// Tusko's version
+@mixin flex-grid($columnNumber, $spacingPercent, $rebuild: null) {
   $contentPercent: 100%;
   $sideMargin: ($spacingPercent/2);
   $marginInt: strip-units($sideMargin);
-  @include justify-content(flex-start);
-  @include flex-flow(wrap);
-  @include transition();
-  @include flexbox();
-  margin: 0 -$sideMargin;
+  @if $rebuild == null {
+    @include justify-content(flex-start);
+    @include flex-flow(wrap);
+    @include transition();
+    @include flexbox();
+  }
+  margin: #{0} -#{$sideMargin};
   width: $contentPercent + $spacingPercent;
   > * {
     width: ($contentPercent/$columnNumber) - $spacingPercent;

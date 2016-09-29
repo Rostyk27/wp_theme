@@ -20,16 +20,27 @@ $(document).ready(function () {
     });
 });
 
+$(document).on('opening', '.remodal', function(e) {
+    var t = $(e.currentTarget).find('iframe');
+    if(t!==null){
+        t.attr('src',t.attr('src')+'&autoplay=1');
+    }
+});
+
+$(document).on('closing', '.remodal', function(e) {
+    var t=$(e.currentTarget).find('iframe');
+    if(t.length>0) {
+        t.attr('src',t.attr('src').replace('&autoplay=1',''));
+    }
+});
+
 $(window).on('load', function(){
 
-    $('.main_swiper').each(function(){
-        var t = this,
-        main_swiper = new Swiper( t, {
-            nextButton          : $('.custom_next', t),
-            prevButton          : $('.custom_prev', t),
-            pagination          : $('.custom_pager', t),
-            paginationClickable : true
-        });
+    var home_slider = new Swiper('.home_slider', {
+        pagination: '.home_slider .swiper-pagination',
+        paginationClickable: true,
+        prevButton: '.home_slider .custom_prev',
+        nextButton: '.home_slider .custom_next'
     });
 
     //  fluid video (iframe)

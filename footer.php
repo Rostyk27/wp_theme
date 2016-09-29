@@ -1,8 +1,8 @@
 </div>
 <footer>
     <div class="container flex">
-        <?php if($copy = get_field('copy', 'option')) echo '<div class="copy">' . $copy . '</div>'; ?>
-        <?php if($dev = get_field('dev', 'option')) echo '<div class="dev">' . $dev . '</div>'; ?>
+        <?php echo (get_field('copy', 'option') ? '<div class="copy">' . get_field('copy', 'option') . '</div>' : ''); ?>
+        <?php echo (get_field('dev', 'option') ? '<div class="dev">' . get_field('dev', 'option') . '</div>' : ''); ?>
     </div>
 </footer>
 <a href="#modal">Call modal!</a>

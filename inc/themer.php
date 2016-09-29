@@ -422,7 +422,7 @@ function wpa_init() {
 	//Widgets extension
 	add_filter('widget_categories_args','show_empty_widget_links');
 	add_filter('widget_tag_cloud_args','show_empty_widget_links');
-	add_filter('widget_title', 'wpa_widget_title');
+//	add_filter('widget_title', 'wpa_widget_title');
 }
 add_action( 'init', 'wpa_init', 9999 );
 
