@@ -34,6 +34,67 @@ header {}
 
 #menu {}
 
+.some {
+  a {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 19px;
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    margin: 0 5px;
+    position: relative;
+    z-index: 0;
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 0;
+      background: #fff;
+      @extend .ani;
+      z-index: -1;
+    }
+    &:hover:after {
+      right: auto;
+      left: 0;
+      width: 100%;
+    }
+    &.i-ggl {
+      font-size: 16px;
+      background: #d64c3f;
+      &:hover {color: #d64c3f}
+    }
+    &.i-fcbk {
+      background: #3a5898;
+      &:hover {color: #3a5898}
+    }
+    &.i-twttr {
+      background: #5eaade;
+      &:hover {color: #5eaade}
+    }
+    &.i-lnkdn {
+      background: #0076b4;
+      &:hover {color: #0076b4}
+    }
+    &.i-tb {
+      background: #de2c2a;
+      &:hover {color: #de2c2a}
+    }
+    &.i-pntrst {
+      background: #b7030e;
+      &:hover {color: #b7030e}
+    }
+    &.i-lp {
+      background: #c62221;
+      &:hover {color: #c62221}
+    }
+  }
+}
+
 footer {}
 
 //cf7

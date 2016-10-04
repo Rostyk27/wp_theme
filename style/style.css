@@ -4,7 +4,7 @@
   -webkit-background-size: cover;
   background-size: cover; }
 
-.ani, a, input:not([type="radio"]):not([type="checkbox"]), select, textarea, #menuopen, #menuopen:before, #menuopen:after, div.wpcf7 button.button {
+.ani, a, input:not([type="radio"]):not([type="checkbox"]), select, textarea, #menuopen, #menuopen:before, #menuopen:after, .some a:after, div.wpcf7 button.button {
   -webkit-transition: all 0.35s ease;
   -moz-transition: all 0.35s ease;
   -ms-transition: all 0.35s ease;
@@ -344,6 +344,61 @@ body {
   width: 1140px;
   max-width: 94%;
   position: relative; }
+
+.some a {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 19px;
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  margin: 0 5px;
+  position: relative;
+  z-index: 0; }
+  .some a:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 0;
+    background: #fff;
+    z-index: -1; }
+  .some a:hover:after {
+    right: auto;
+    left: 0;
+    width: 100%; }
+  .some a.i-ggl {
+    font-size: 16px;
+    background: #d64c3f; }
+    .some a.i-ggl:hover {
+      color: #d64c3f; }
+  .some a.i-fcbk {
+    background: #3a5898; }
+    .some a.i-fcbk:hover {
+      color: #3a5898; }
+  .some a.i-twttr {
+    background: #5eaade; }
+    .some a.i-twttr:hover {
+      color: #5eaade; }
+  .some a.i-lnkdn {
+    background: #0076b4; }
+    .some a.i-lnkdn:hover {
+      color: #0076b4; }
+  .some a.i-tb {
+    background: #de2c2a; }
+    .some a.i-tb:hover {
+      color: #de2c2a; }
+  .some a.i-pntrst {
+    background: #b7030e; }
+    .some a.i-pntrst:hover {
+      color: #b7030e; }
+  .some a.i-lp {
+    background: #c62221; }
+    .some a.i-lp:hover {
+      color: #c62221; }
 
 div.wpcf7 {
   position: relative; }
