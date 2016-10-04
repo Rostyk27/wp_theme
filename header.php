@@ -1,6 +1,4 @@
-<?php if( defined('WP_DEBUG') && true !== WP_DEBUG) {
-	ob_start('ob_html_compress');
-} ?>
+<?php if( @!WP_DEBUG) {	ob_start('ob_html_compress'); } ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
