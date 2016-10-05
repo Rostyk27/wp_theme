@@ -1,4 +1,11 @@
-<?php get_header();  /*$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;*/  ?>
+<?php get_header();  /*$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;*/
+if(is_home()) {
+    $queryname = 'Blog';
+} else {
+    $queryname = 'Archive of ' . get_the_archive_title();
+}
+?>
+<h1><?php echo $queryname ?></h1>
 <section class="content">
     <div class="container flex_start">
         <article>
