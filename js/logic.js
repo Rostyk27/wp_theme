@@ -18,6 +18,48 @@ $(document).ready(function () {
     $("#menuopen").click(function () {
         $(this).toggleClass('active').next().stop().toggleClass('active');
     });
+
+    $('#menu .menu-item-has-children > a').after('<span />');
+    $('#menu').on('click', '.menu-item-has-children > a + span', function(){
+        $(this).toggleClass('open').next().stop().slideToggle(350).parent().toggleClass('active');
+    });
+
+    $(this).on('focus', '.wpcf7-form-control:not([type="submit"])', function () {
+        $(this).parent().addClass('active');
+    });
+
+    $(this).on('blur', '.wpcf7-form-control:not([type="submit"])', function(){
+        if($(this).val() !== "") {
+            $(this).parent().addClass('active');
+        } else {
+            $(this).parent().removeClass('active');
+        }
+    });
+
+    $('.ripple').on('click', function (event) {
+
+        var $div = $('<div/>'),
+            btnOffset = $(this).offset(),
+            xPos = event.pageX - btnOffset.left,
+            yPos = event.pageY - btnOffset.top;
+
+        $div.addClass('ripple-effect');
+        var $ripple = $(".ripple-effect");
+
+        $ripple.css("height", $(this).height());
+        $ripple.css("width", $(this).height());
+        $div
+            .css({
+                top: yPos - ($ripple.height()/2),
+                left: xPos - ($ripple.width()/2),
+                background: $(this).data("ripple-color")
+            })
+            .appendTo($(this));
+
+        window.setTimeout(function(){
+            $div.remove();
+        }, 1000);
+    });
 });
 
 $(document).on('opening', '.remodal', function(e) {

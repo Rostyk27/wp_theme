@@ -7,7 +7,7 @@ if(is_home()) {
 ?>
 <h1><?php echo $queryname ?></h1>
 <section class="content">
-    <div class="container flex_start">
+    <div class="container aparent">
         <article>
             <h2><?php echo get_the_title(BLOG_ID); ?></h2>
             <div class="posts">
@@ -17,14 +17,22 @@ if(is_home()) {
                             <a class="thumb" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('single');?></a>
                             <time datetime="<?php echo get_the_date('F j, Y'); ?>"><?php echo get_the_date('F j, Y'); ?></time>
                             <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-                            <p><?php echo wp_trim_words(get_the_content(), 65, ''); ?><a href="<?php the_permalink(); ?>" class="lm">Learn More ></a></p>
+                            <p><?php echo wp_trim_words(get_the_content(), 65, ''); ?>
+                                <span class="rm">
+                                    <a href="<?php the_permalink(); ?>">Read More</a>
+                                </span>
+                            </p>
                         </div>
                     <?php } else { ?>
                         <div class="blogpost">
                             <a  class="thumb" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('blog');?></a>
                             <time datetime="<?php echo get_the_date('F j, Y'); ?>"><?php echo get_the_date('F j, Y'); ?></time>
                             <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-                            <p><?php echo wp_trim_words(get_the_content(), 45, ''); ?><a href="<?php the_permalink(); ?>" class="lm">Learn More ></a></p>
+                            <p><?php echo wp_trim_words(get_the_content(), 40, ''); ?>
+                                <span class="rm">
+                                    <a href="<?php the_permalink(); ?>">Read More</a>
+                                </span>
+                            </p>
                         </div>
                     <?php } ?>
                     <?php $p++; endwhile; ?>

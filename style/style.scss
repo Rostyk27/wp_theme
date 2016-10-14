@@ -32,7 +32,135 @@ body {
 
 header {}
 
-#menu {}
+#menu {
+  @extend .ani;
+  li {
+    &.current-menu-item > a {}
+    &.menu-item-has-children {
+      &:before {
+        //content: '';
+        //background: #000;
+        position: absolute;
+        left: -25px;
+        right: -155px;
+        top: 0;
+        height: 40px;
+        z-index: -1;
+        display: none;
+      }
+      &:hover {
+        &:before {display: block}
+        > .sub-menu {
+          opacity: 1;
+          visibility: visible;
+          @include transform(translateY(0));
+        }
+      }
+    }
+  }
+  .sub-menu {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: -130px;
+    top: 100%;
+    @extend .ani;
+    opacity: 0;
+    visibility: hidden;
+    @include transform(translateY(20px));
+    z-index: 3;
+    margin-top: 19px;
+    li {
+      display: block;
+      margin: 0 0 3px;
+      background: #fff;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    a {
+      display: block;
+      padding: 13px 19px 14px;
+    }
+  }
+}
+
+.custom_prev, .custom_next {
+  font-size: 51px;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  margin-top: -26px;
+  cursor: pointer;
+  @extend .ani;
+  z-index: 1;
+  &.swiper-button-disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+}
+.custom_prev {
+  left: 3.5%;
+  &:hover {left: 3%}
+  &.swiper-button-disabled:hover {left: 3.5%}
+}
+.custom_next {
+  right: 3.5%;
+  @include transform(rotate(180deg));
+  &:hover {right: 3%}
+  &.swiper-button-disabled:hover {right: 3.5%}
+}
+.swiper-pagination {
+  bottom: 30px !important;
+  .swiper-pagination-bullet {
+    background: none;
+    width: auto;
+    height: auto;
+    opacity: 1;
+    &:after {
+      content: '\e908';
+      //font-family: $i;
+      font-size: 21px;
+      color: #fff;
+      opacity: 0.4;
+      @extend .ani;
+    }
+    &:hover, &.swiper-pagination-bullet-active {
+      &:after {
+        color: $color;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+
+.wp-pagenavi {
+  margin-top: rem(80);
+  > * {
+    display: inline-block;
+    font: 400 18px/36px $font;
+    color: #acacac;
+    background: transparent;
+    border: 3px solid #acacac;
+    width: 42px;
+    margin: 0 5px;
+    text-align: center;
+    //border-radius: 50%;
+  }
+  a:hover {
+    background: $color;
+    border-color: $color;
+    color: #fff;
+  }
+  .current {
+    background: $color;
+    border-color: $color;
+    color: #fff;
+    cursor: default;
+  }
+  .first, .last {font-size: 14px}
+  //.extend {display: none}
+}
 
 .some {
   a {
@@ -64,34 +192,57 @@ header {}
       width: 100%;
     }
     &.i-ggl {
-      font-size: 16px;
-      background: #d64c3f;
-      &:hover {color: #d64c3f}
+      //font-size: 16px;
+      background: #db4437;
+      &:hover {color: #db4437}
     }
     &.i-fcbk {
-      background: #3a5898;
-      &:hover {color: #3a5898}
+      background: #3b5998;
+      &:hover {color: #3b5998}
     }
     &.i-twttr {
-      background: #5eaade;
-      &:hover {color: #5eaade}
+      background: #1da1f2;
+      &:hover {color: #1da1f2}
     }
     &.i-lnkdn {
-      background: #0076b4;
-      &:hover {color: #0076b4}
+      background: #0177b5;
+      &:hover {color: #0177b5}
     }
     &.i-tb {
-      background: #de2c2a;
-      &:hover {color: #de2c2a}
+      background: #cc181e;
+      &:hover {color: #cc181e}
     }
     &.i-pntrst {
-      background: #b7030e;
-      &:hover {color: #b7030e}
+      background: #d50c22;
+      &:hover {color: #d50c22}
+    }
+    &.i-nstgrm {
+      background: #be3094;
+      &:hover {color: #be3094}
     }
     &.i-lp {
       background: #c62221;
       &:hover {color: #c62221}
     }
+  }
+}
+
+.shrs {
+  a {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 20px;
+    color: #3ddde4;
+    width: 32px;
+    line-height: 32px;
+    text-align: center;
+    border-radius: 50%;
+    &:hover {color: #fff}
+    &.i-ggl:hover {background: #db4437}
+    &.i-fcbk:hover {background: #3b5998}
+    &.i-twttr:hover {background: #1da1f2}
+    &.i-lnkdn:hover {background: #0177b5}
+    &.i-pntrst:hover {background: #d50c22}
   }
 }
 
@@ -113,16 +264,16 @@ div.wpcf7 {
   }
   .wpcf7-not-valid-tip {
     background: #fff;
-    border: 1px solid #ff5f5f;
+    border: 2px solid #ff5f5f;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     cursor: pointer;
-    font: 400 16px/45px $font;
-    color: #1d3408;
-    height: 45px;
+    font: 400 16px/48px $font;
+    color: $default;
+    height: 50px;
     padding: 0 8px;
     border-radius: 0;
   }
@@ -143,18 +294,15 @@ div.wpcf7 {
   input:not([type="submit"]):not([type="radio"]):not([type="checkbox"]), textarea {
     display: block;
     width: 100%;
-    height: 45px;
-    border: 2px solid transparent;
+    height: 50px;
+    border: 2px solid $color;
     padding: 0 10px;
-    background: #e5f5c6;
+    background: #fff;
     font: 400 18px $font;
-    color: #1d3408;
-    @include placeholder {color: #1d3408;opacity: 1}
+    color: $default;
+    @include placeholder {color: $default; opacity: 1}
     border-radius: 0;
-    &:focus {
-      border-color: #e0e9cc;
-      background: #f6ffe0;
-    }
+    &:focus {border-color: rgba($color, 0.4)}
   }
   textarea {
     resize: none;
@@ -168,4 +316,33 @@ div.wpcf7 {
     margin: rem(15) 0 rem(20);
   }
   .screen-reader-response, .ajax-loader {display: none}
+}
+
+.page404 {padding: rem(100) 0}
+
+.ripple {
+  overflow: hidden;
+  position: relative;
+  z-index: 0;
+}
+
+@include keyframes(ripple-animation) {
+  from {
+    @include transform(scale(1));
+    opacity: 0.6;
+  }
+  to {
+    @include transform(scale(50));
+    opacity: 0;
+  }
+}
+
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  width: 7px;
+  height: 7px;
+  background: #337a82;
+  z-index: -1;
+  @include animation(ripple-animation 1.1s);
 }

@@ -122,6 +122,15 @@ input, textarea {@include placeholder {color: #999;opacity: 1}}
   @include align-items(flex-start);
   @include justify-content(space-between);
 }
+.aparent {
+  @extend .flex_start;
+  article {@include flex(1,1,0)}
+  aside {
+    width: 350px;
+    max-width: 100%;
+    margin-left: 3.5%;
+  }
+}
 
 .content {
   img {
