@@ -2,7 +2,7 @@
 /*jshint multistr: true, latedef: nofunc */
 /*global jQuery, $, Swiper*/
 
-(function() {
+(function(window) {
     'use strict';
 
 $(document).ready(function () {
@@ -103,4 +103,4 @@ $(window).on('load', function(){
 }).resizeEnd(function(){
     window.console.log('resizeEnd');
 });
-}(jQuery));
+}(window, jQuery));
