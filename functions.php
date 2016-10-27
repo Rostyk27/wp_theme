@@ -83,6 +83,10 @@ function get_current_url() {
 	return str_replace('www.', '', $pageURL);
 }
 
+function get_loader(){
+	return '<div class="showbox"><div class="loader"><svg class="circular" viewBox="25 25 50 50"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div></div>';
+}
+
 /*function wpa_example_ajax(){
 	extract($_POST);
 
