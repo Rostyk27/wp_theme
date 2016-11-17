@@ -201,7 +201,8 @@ $button-color: $color; // The color of button
 #menuopen {
   display: none;
   position: absolute;
-  top: 24px;
+  @include transform(translateY(-50%));
+  top: 50%;
   right: 3%;
   width: 25px;
   height: 27px;

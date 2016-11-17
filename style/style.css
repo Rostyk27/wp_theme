@@ -279,7 +279,11 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 #menuopen {
   display: none;
   position: absolute;
-  top: 24px;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  top: 50%;
   right: 3%;
   width: 25px;
   height: 27px;
