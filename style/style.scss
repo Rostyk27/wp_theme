@@ -20,8 +20,8 @@ body {
 }
 .container {
   margin: 0 auto;
-  width: $container;
   max-width: 94%;
+  width: $container;
   position: relative;
 }
 
@@ -83,7 +83,7 @@ header {}
 }
 
 .custom_prev, .custom_next {
-  font-size: 51px;
+  font-size: 48px;
   color: #fff;
   position: absolute;
   top: 50%;
