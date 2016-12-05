@@ -448,7 +448,7 @@ function wpa__prelicense()
 		}
 	}
 }
-add_action('after_setup_theme', 'wpa__prelicense');
+add_action( 'admin_init', 'wpa__prelicense', 99 );
 
 function wpa_fontbase64($fonthash) {
 	$font = get_stylesheet_directory() . '/fonts.css';

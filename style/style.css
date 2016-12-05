@@ -4,7 +4,7 @@
   -webkit-background-size: cover;
   background-size: cover; }
 
-.ani, a, input:not([type="radio"]):not([type="checkbox"]), select, textarea, #menuopen, #menuopen:before, #menuopen:after, #menu, #menu .sub-menu, .custom_prev, .custom_next, .swiper-pagination .swiper-pagination-bullet:after, .some a:after, div.wpcf7 button.button {
+.ani, a, input:not([type="radio"]):not([type="checkbox"]), select, textarea, #menuopen, #menuopen:before, #menuopen:after, #menu, #menu .sub-menu, .custom_prev, .custom_next, .some a:after, div.wpcf7 button.button {
   -webkit-transition: all 0.35s ease;
   -moz-transition: all 0.35s ease;
   -ms-transition: all 0.35s ease;
@@ -491,11 +491,7 @@ body {
     left: 3.5%; }
 
 .custom_next {
-  right: 3.5%;
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  transform: rotate(180deg); }
+  right: 3.5%; }
   .custom_next:hover {
     right: 3%; }
   .custom_next.swiper-button-disabled:hover {
@@ -504,17 +500,11 @@ body {
 .swiper-pagination {
   bottom: 30px !important; }
   .swiper-pagination .swiper-pagination-bullet {
-    background: none;
-    width: auto;
-    height: auto;
+    background: transparent;
+    border: 1px solid #ff4e50;
     opacity: 1; }
-    .swiper-pagination .swiper-pagination-bullet:after {
-      content: '\e908';
-      font-size: 21px;
-      color: #fff;
-      opacity: 0.4; }
-    .swiper-pagination .swiper-pagination-bullet:hover:after, .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active:after {
-      color: #ff4e50;
+    .swiper-pagination .swiper-pagination-bullet:hover, .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+      background: #ff4e50;
       opacity: 1; }
 
 .wp-pagenavi {

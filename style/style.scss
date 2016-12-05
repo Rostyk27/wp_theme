@@ -105,30 +105,18 @@ header {}
 }
 .custom_next {
   right: 3.5%;
-  @include transform(rotate(180deg));
   &:hover {right: 3%}
   &.swiper-button-disabled:hover {right: 3.5%}
 }
 .swiper-pagination {
   bottom: 30px !important;
   .swiper-pagination-bullet {
-    background: none;
-    width: auto;
-    height: auto;
+    background: transparent;
+    border: 1px solid $color;
     opacity: 1;
-    &:after {
-      content: '\e908';
-      //font-family: $i;
-      font-size: 21px;
-      color: #fff;
-      opacity: 0.4;
-      @extend .ani;
-    }
     &:hover, &.swiper-pagination-bullet-active {
-      &:after {
-        color: $color;
-        opacity: 1;
-      }
+      background: $color;
+      opacity: 1;
     }
   }
 }
