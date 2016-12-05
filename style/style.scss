@@ -60,26 +60,24 @@ header {}
   }
   .sub-menu {
     display: block;
+    background: #fff;
     position: absolute;
-    left: 0;
     right: -130px;
     top: 100%;
-    @extend .ani;
+    left: 0;
     opacity: 0;
     visibility: hidden;
-    @include transform(translateY(20px));
+    @include transform(translateY(10px));
+    margin-top: 10px;
+    @extend .ani;
     z-index: 3;
-    margin-top: 19px;
     li {
       display: block;
-      margin: 0 0 3px;
-      background: #fff;
-      font-size: 14px;
-      font-weight: 500;
+      border-bottom: 1px solid #ccc;
     }
     a {
       display: block;
-      padding: 13px 19px 14px;
+      padding: 10px 15px;
     }
   }
 }
@@ -120,6 +118,9 @@ header {}
     }
   }
 }
+
+
+footer {}
 
 
 .wp-pagenavi {
@@ -233,8 +234,6 @@ header {}
     &.i-pntrst:hover {background: #d50c22}
   }
 }
-
-footer {}
 
 //cf7
 div.wpcf7 {
