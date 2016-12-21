@@ -10,21 +10,6 @@
   -ms-transition: all 0.35s ease;
   transition: all 0.35s ease; }
 
-/*
-flex grid
-
-EXAMPLE
-.flexgrid {
-  @include flex-grid(5, 4%);
-  > div {
-    margin-bottom: .4em;
-    background: #333;
-    padding: .8em;
-    color: #fff;
-  }
-}
-
-*/
 * {
   margin: 0;
   padding: 0;
@@ -426,8 +411,8 @@ body {
 
 .container {
   margin: 0 auto;
-  width: 1140px;
   max-width: 94%;
+  width: 1140px;
   position: relative; }
 
 #menu li.menu-item-has-children:before {
@@ -470,7 +455,7 @@ body {
     padding: 10px 15px; }
 
 .custom_prev, .custom_next {
-  font-size: 51px;
+  font-size: 48px;
   color: #fff;
   position: absolute;
   top: 50%;
