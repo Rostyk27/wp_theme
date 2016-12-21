@@ -3,6 +3,10 @@
 html {
   font: 400 #{$font-base}/1.6 $font;
   background: #f5f5f5;
+  @include rwd(1151) {font-size: 27px}
+  @include rwd(1024) {font-size: 24px}
+  @include rwd(767) {font-size: 21px}
+  @include rwd(480) {font-size: 18px}
 }
 body {
   @include flexbox();
@@ -30,7 +34,12 @@ body {
   &:hover {}
 }
 
-header {}
+header {
+  @include rwd(1024) {
+    position: relative;
+    > .container {position: static}
+  }
+}
 
 #menu {
   @extend .ani;
@@ -80,6 +89,96 @@ header {}
       padding: 10px 15px;
     }
   }
+  @include rwd(1024) {
+    width: 50%;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 0;
+    border-top: 1px solid $color;
+    z-index: 2;
+    @include transform(translateX(101%));
+    &.active {@include transform(translateX(0))}
+    ul {
+      margin: 0;
+      background: #fff;
+    }
+    li {
+      display: block;
+      line-height: 1.5;
+      margin: 0;
+      text-align: center;
+      border-bottom: 1px solid #ccc;
+      &.menu-item-has-children {
+        > a {border-bottom: 1px solid transparent}
+        &.active > a {border-bottom-color: #ccc}
+        > a + span {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 54px;
+          height: 42px;
+          cursor: pointer;
+          z-index: 99;
+          &:after, &:before {
+            content: '';
+            position: absolute;
+            @include transform(translate(-50%,-50%));
+            top: 50%;
+            left: 50%;
+            background: $color;
+            width: 22px;
+            height: 4px;
+            @include transition();
+          }
+          &:before {
+            width: 4px;
+            height: 22px;
+          }
+          &.open {
+            &:after {@include transform(translate(-50%,-50%) rotate(180deg))}
+            &:before {@include transform(translate(-50%,-50%) rotate(-90deg))}
+          }
+        }
+        &.current-menu-item > a + span {
+          &:after, &:before {background: #fff}
+        }
+      }
+      &.current-menu-item {
+        > a {
+          color: #fff;
+          background: $color;
+        }
+      }
+    }
+    a {
+      display: block;
+      padding: 10px 0 8px;
+      &:hover {color: $default}
+    }
+    .sub-menu {
+      display: none;
+      position: static;
+      @include transition(none,0s);
+      opacity: 1;
+      visibility: visible;
+      @include transform(translateY(0));
+      top: auto;
+      left: auto;
+      right: auto;
+      padding: 0;
+      margin: 0;
+      box-shadow: none;
+      li {
+        margin: 0;
+        background: #f8f8f8;
+        &:last-of-type {border: none}
+      }
+      a {padding: 10px 0 8px}
+    }
+  }
+  @include rwd(767) {width: 67%}
+  @include rwd(480) {width: 100%}
 }
 
 .custom_prev, .custom_next {

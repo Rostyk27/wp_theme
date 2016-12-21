@@ -91,27 +91,6 @@ input, textarea {@include placeholder {color: #999;opacity: 1}}
 .alignright, .ar {float: right}
 .aligncenter, .ac {margin-left: auto;margin-right: auto}
 
-.valign {
-  display: inline-block;
-  vertical-align: middle;
-  max-width: 94%
-}
-.vfix {
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
-  width: 0
-}
-
-.wp-video {
-  margin-bottom: .75em;
-  width: auto !important;
-  .mejs-video {
-    width: auto!important;
-    height: auto!important;
-  }
-}
-
 .flex {
   @include flexbox();
   @include align-items(center);
@@ -124,7 +103,7 @@ input, textarea {@include placeholder {color: #999;opacity: 1}}
 }
 .aparent {
   @extend .flex_start;
-  article {@include flex(1,1,0)}
+  article {@include flex(1)}
   aside {
     width: 350px;
     max-width: 100%;
@@ -209,6 +188,7 @@ $button-color: $color; // The color of button
   cursor: pointer;
   z-index: 1990;
   @extend .ani;
+  @include rwd(1024) {display: block}
   &:before, &:after {
     content: '';
     position: absolute;

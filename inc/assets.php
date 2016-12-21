@@ -35,8 +35,6 @@ function tt_add_jscss() {
 	if(class_exists('Woocommerce')) {
 		wp_enqueue_style('custom-woo', get_stylesheet_directory_uri(). '/style/woo.css' );
 	}
-
-	wp_enqueue_style('responsive', get_stylesheet_directory_uri(). '/style/rwd.css' );
 }
 add_action('wp_enqueue_scripts', 'tt_add_jscss');
 
