@@ -5,9 +5,9 @@ $default: #333;
 $font: 'Open Sans', sans-serif;
 
 .bg {
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  -webkit-background-size: cover; background-size: cover;
 }
 
 // responsive fonts + padding & margin !!!
