@@ -340,13 +340,12 @@ div.wpcf7 {
   .inputs_wrap {
     @include flexbox();
     @include justify-content(space-between);
+    > * {@include flex-basis(48%)}
   }
   .wpcf7-form-control-wrap {
     display: block !important;
     margin-bottom: rem(20);
-    clear: both;
     position: relative;
-    @include flex-basis(48%);
   }
   .wpcf7-not-valid-tip {
     background: #fff;
@@ -368,26 +367,26 @@ div.wpcf7 {
     top: 100%;
     left: 0;
     right: 0;
-    font: 400 16px/1.42857 $font;
+    font: 400 16px/1.4 $font;
     padding: 7px 10px;
     text-align: center;
     color: #fff;
     border-radius: 0;
-    &.wpcf7-validation-errors {background: #ff5f5f; position: relative}
     &.wpcf7-mail-sent-ng {background: #1091ae; position: relative}
     &.wpcf7-mail-sent-ok {background: #16a085; position: relative}
+    &.wpcf7-validation-errors, &.wpcf7-spam-blocked {background: #ff5f5f; position: relative}
   }
   input:not([type="submit"]):not([type="radio"]):not([type="checkbox"]), textarea {
     display: block;
     width: 100%;
     height: 50px;
-    border: 2px solid $color;
-    padding: 0 10px;
-    background: #fff;
     font: 400 18px $font;
     color: $default;
-    @include placeholder {color: $default; opacity: 1}
+    padding: 0 10px;
+    background: #fff;
     border-radius: 0;
+    border: 2px solid $color;
+    @include placeholder {color: $default; opacity: 1}
     &:focus {border-color: rgba($color, 0.4)}
   }
   textarea {
@@ -397,8 +396,8 @@ div.wpcf7 {
     padding: 10px 12px;
   }
   button.button {
-    cursor: pointer;
     @extend .ani;
+    cursor: pointer;
     margin: rem(15) 0 rem(20);
   }
   .screen-reader-response, .ajax-loader {display: none}
