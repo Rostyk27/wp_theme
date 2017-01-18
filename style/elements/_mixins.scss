@@ -1,5 +1,4 @@
 $font-base: 30px;
-$container: 1140px;
 $color: #ff4e50;
 $default: #333;
 $font: 'Open Sans', sans-serif;
@@ -153,16 +152,12 @@ $font: 'Open Sans', sans-serif;
 
 @mixin flexbox {
   display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
 @mixin inline-flex {
-  display: -webkit-inline-box;
   display: -webkit-inline-flex;
-  display: -moz-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
@@ -184,7 +179,6 @@ $font: 'Open Sans', sans-serif;
     -webkit-box-orient: horizontal;
   }
   -webkit-flex-direction: $value;
-  -moz-flex-direction: $value;
   -ms-flex-direction: $value;
   flex-direction: $value;
 }
@@ -194,9 +188,8 @@ $font: 'Open Sans', sans-serif;
 @mixin flex-wrap($value: nowrap) {
   // No Webkit Box fallback.
   -webkit-flex-wrap: $value;
-  -moz-flex-wrap: $value;
   @if $value == nowrap {
-    -ms-flex-wrap: none;
+    -ms-flex-wrap: nowrap;
   } @else {
     -ms-flex-wrap: $value;
   }
@@ -208,7 +201,6 @@ $font: 'Open Sans', sans-serif;
 @mixin flex-flow($values: (row nowrap)) {
   // No Webkit Box fallback.
   -webkit-flex-flow: $values;
-  -moz-flex-flow: $values;
   -ms-flex-flow: $values;
   flex-flow: $values;
 }
@@ -217,7 +209,6 @@ $font: 'Open Sans', sans-serif;
 @mixin order($int: 0) {
   -webkit-box-ordinal-group: $int + 1;
   -webkit-order: $int;
-  -moz-order: $int;
   -ms-flex-order: $int;
   order: $int;
 }
@@ -226,7 +217,6 @@ $font: 'Open Sans', sans-serif;
 @mixin flex-grow($int: 0) {
   -webkit-box-flex: $int;
   -webkit-flex-grow: $int;
-  -moz-flex-grow: $int;
   -ms-flex-positive: $int;
   flex-grow: $int;
 }
@@ -234,7 +224,6 @@ $font: 'Open Sans', sans-serif;
 // Default: 1
 @mixin flex-shrink($int: 1) {
   -webkit-flex-shrink: $int;
-  -moz-flex-shrink: $int;
   -ms-flex-negative: $int;
   flex-shrink: $int;
 }
@@ -243,7 +232,6 @@ $font: 'Open Sans', sans-serif;
 // Default: auto
 @mixin flex-basis($value: auto) {
   -webkit-flex-basis: $value;
-  -moz-flex-basis: $value;
   -ms-flex-preferred-size: $value;
   flex-basis: $value;
 }
@@ -258,7 +246,6 @@ $font: 'Open Sans', sans-serif;
   -webkit-box-flex: $fg-boxflex;
   -webkit-flex: $fg $fs $fb;
   -moz-box-flex: $fg-boxflex;
-  -moz-flex: $fg $fs $fb;
   -ms-flex: $fg $fs $fb;
   flex: $fg $fs $fb;
 }
@@ -282,7 +269,6 @@ $font: 'Open Sans', sans-serif;
     -ms-flex-pack: $value;
   }
   -webkit-justify-content: $value;
-  -moz-justify-content: $value;
   justify-content: $value;
 }
 
@@ -300,7 +286,6 @@ $font: 'Open Sans', sans-serif;
     -ms-flex-align: $value;
   }
   -webkit-align-items: $value;
-  -moz-align-items: $value;
   align-items: $value;
 }
 
@@ -309,7 +294,6 @@ $font: 'Open Sans', sans-serif;
 @mixin align-self($value: auto) {
   // No Webkit Box Fallback.
   -webkit-align-self: $value;
-  -moz-align-self: $value;
   @if $value == flex-start {
     -ms-flex-item-align: start;
   } @else if $value == flex-end {
@@ -324,7 +308,6 @@ $font: 'Open Sans', sans-serif;
 // Default: stretch
 @mixin align-content($value: stretch) {
   -webkit-align-content: $value;
-  -moz-align-content: $value;
   @if $value == flex-start {
     -ms-flex-line-pack: start;
   } @else if $value == flex-end {

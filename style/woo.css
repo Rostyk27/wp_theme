@@ -1,9 +1,8 @@
 /* WooCommerce Custom Styles */
 .bg {
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: 50% 50%;
-  -webkit-background-size: cover;
-  background-size: cover; }
+  background-position: 50% 50%; }
 
 .ani {
   -webkit-transition: all 0.35s ease;
@@ -15,10 +14,8 @@
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   -webkit-justify-content: flex-start;
-  -moz-justify-content: flex-start;
   justify-content: flex-start;
   -webkit-flex-flow: wrap;
-  -moz-flex-flow: wrap;
   -ms-flex-flow: wrap;
   flex-flow: wrap;
   -webkit-transition: all 0.35s ease;
@@ -26,8 +23,6 @@
   -ms-transition: all 0.35s ease;
   transition: all 0.35s ease;
   display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
   margin: 0 -1.2%;
@@ -254,10 +249,8 @@
     -webkit-box-pack: start;
     -ms-flex-pack: start;
     -webkit-justify-content: flex-start;
-    -moz-justify-content: flex-start;
     justify-content: flex-start;
     -webkit-flex-flow: wrap;
-    -moz-flex-flow: wrap;
     -ms-flex-flow: wrap;
     flex-flow: wrap;
     -webkit-transition: all 0.35s ease;
@@ -265,8 +258,6 @@
     -ms-transition: all 0.35s ease;
     transition: all 0.35s ease;
     display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-flex;
     display: -ms-flexbox;
     display: flex;
     margin: 0 -1%;
@@ -366,23 +357,18 @@
       padding: 10px 0; }
       .shop_table tr td.actions .coupon {
         display: -webkit-box;
-        display: -webkit-flex;
-        display: -moz-flex;
         display: -ms-flexbox;
         display: flex;
         -webkit-flex-wrap: wrap;
-        -moz-flex-wrap: wrap;
         -ms-flex-wrap: wrap;
         flex-wrap: wrap;
         margin: 0.33333rem 0 1rem; }
         .shop_table tr td.actions .coupon label {
           -webkit-flex-basis: 100%;
-          -moz-flex-basis: 100%;
           -ms-flex-preferred-size: 100%;
           flex-basis: 100%; }
         .shop_table tr td.actions .coupon #coupon_code {
           -webkit-flex-basis: 300px;
-          -moz-flex-basis: 300px;
           -ms-flex-preferred-size: 300px;
           flex-basis: 300px;
           margin-bottom: 0;
@@ -442,32 +428,25 @@
   margin-bottom: 15px; }
   .woocommerce-info + .login {
     display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-flex;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     -webkit-justify-content: space-between;
-    -moz-justify-content: space-between;
     justify-content: space-between;
     -webkit-flex-wrap: wrap;
-    -moz-flex-wrap: wrap;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     margin-bottom: 30px; }
     .woocommerce-info + .login > * {
       -webkit-flex-basis: 100%;
-      -moz-flex-basis: 100%;
       -ms-flex-preferred-size: 100%;
       flex-basis: 100%;
       -webkit-align-self: flex-end;
-      -moz-align-self: flex-end;
       -ms-flex-item-align: end;
       align-self: flex-end; }
     .woocommerce-info + .login .form-row-first, .woocommerce-info + .login .form-row-last {
       -webkit-flex-basis: 48%;
-      -moz-flex-basis: 48%;
       -ms-flex-preferred-size: 48%;
       flex-basis: 48%; }
     .woocommerce-info + .login > p:first-child {
@@ -479,18 +458,14 @@
       display: inline-block !important; }
   .woocommerce-info + .checkout_coupon {
     display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-flex;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;
     -ms-flex-align: center;
     -webkit-align-items: center;
-    -moz-align-items: center;
     align-items: center; }
     .woocommerce-info + .checkout_coupon .form-row-first {
       -webkit-flex-basis: 300px;
-      -moz-flex-basis: 300px;
       -ms-flex-preferred-size: 300px;
       flex-basis: 300px; }
     .woocommerce-info + .checkout_coupon .clear {
@@ -514,40 +489,31 @@
 #customer_details {
   margin: 1rem 0 0;
   display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   -webkit-justify-content: space-between;
-  -moz-justify-content: space-between;
   justify-content: space-between; }
   #customer_details .col-1 {
     -webkit-flex-basis: 59%;
-    -moz-flex-basis: 59%;
     -ms-flex-preferred-size: 59%;
     flex-basis: 59%; }
   #customer_details .col-2 {
     -webkit-flex-basis: 38.6%;
-    -moz-flex-basis: 38.6%;
     -ms-flex-preferred-size: 38.6%;
     flex-basis: 38.6%; }
 
 #customer_login {
   display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   -webkit-justify-content: space-between;
-  -moz-justify-content: space-between;
   justify-content: space-between; }
   #customer_login > div {
     -webkit-flex-basis: 48.5%;
-    -moz-flex-basis: 48.5%;
     -ms-flex-preferred-size: 48.5%;
     flex-basis: 48.5%; }
   #customer_login .register label small {
@@ -565,27 +531,21 @@
 
 .edit-account {
   display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   -webkit-justify-content: space-between;
-  -moz-justify-content: space-between;
   justify-content: space-between;
   -webkit-flex-wrap: wrap;
-  -moz-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap; }
   .edit-account > * {
     -webkit-flex-basis: 100%;
-    -moz-flex-basis: 100%;
     -ms-flex-preferred-size: 100%;
     flex-basis: 100%; }
   .edit-account .form-row-first, .edit-account .form-row-last {
     -webkit-flex-basis: 48.5%;
-    -moz-flex-basis: 48.5%;
     -ms-flex-preferred-size: 48.5%;
     flex-basis: 48.5%; }
   .edit-account .clear {
@@ -605,41 +565,32 @@
 
 .woocommerce-billing-fields {
   display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-flex-wrap: wrap;
-  -moz-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   -webkit-justify-content: space-between;
-  -moz-justify-content: space-between;
   justify-content: space-between; }
   .woocommerce-billing-fields > h3 {
     -webkit-flex-basis: 100%;
-    -moz-flex-basis: 100%;
     -ms-flex-preferred-size: 100%;
     flex-basis: 100%; }
   .woocommerce-billing-fields .form-row {
     -webkit-flex-basis: 48%;
-    -moz-flex-basis: 48%;
     -ms-flex-preferred-size: 48%;
     flex-basis: 48%;
     -webkit-align-self: flex-end;
-    -moz-align-self: flex-end;
     -ms-flex-item-align: end;
     align-self: flex-end; }
     .woocommerce-billing-fields .form-row.create-account {
       -webkit-flex-basis: 100%;
-      -moz-flex-basis: 100%;
       -ms-flex-preferred-size: 100%;
       flex-basis: 100%; }
   .woocommerce-billing-fields #billing_city_field {
     -webkit-flex-basis: 100%;
-    -moz-flex-basis: 100%;
     -ms-flex-preferred-size: 100%;
     flex-basis: 100%; }
   .woocommerce-billing-fields .clear {
@@ -679,43 +630,34 @@ section.title h3 {
 
 .for_flex_address_form form[method="post"] {
   display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-flex-wrap: wrap;
-  -moz-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   -webkit-justify-content: space-between;
-  -moz-justify-content: space-between;
   justify-content: space-between; }
   .for_flex_address_form form[method="post"] > * {
     -webkit-flex-basis: 32%;
-    -moz-flex-basis: 32%;
     -ms-flex-preferred-size: 32%;
     flex-basis: 32%;
     -webkit-align-self: flex-end;
-    -moz-align-self: flex-end;
     -ms-flex-item-align: end;
     align-self: flex-end; }
   .for_flex_address_form form[method="post"] .clear {
     display: none; }
   .for_flex_address_form form[method="post"] h3 {
     -webkit-flex-basis: 100%;
-    -moz-flex-basis: 100%;
     -ms-flex-preferred-size: 100%;
     flex-basis: 100%; }
   .for_flex_address_form form[method="post"] #billing_city_field {
     -webkit-flex-basis: 66%;
-    -moz-flex-basis: 66%;
     -ms-flex-preferred-size: 66%;
     flex-basis: 66%;
     -webkit-box-ordinal-group: 2;
     -webkit-order: 1;
-    -moz-order: 1;
     -ms-flex-order: 1;
     order: 1; }
   .for_flex_address_form form[method="post"] .button {
@@ -881,25 +823,20 @@ form.cart {
 
 article .summary {
   display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-flex-wrap: wrap;
-  -moz-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   -webkit-justify-content: space-between;
-  -moz-justify-content: space-between;
   justify-content: space-between; }
   article .summary .onsale {
     position: absolute;
     z-index: 1; }
   article .summary .for_images {
     -webkit-flex-basis: 42%;
-    -moz-flex-basis: 42%;
     -ms-flex-preferred-size: 42%;
     flex-basis: 42%;
     position: relative;
@@ -952,7 +889,6 @@ article .summary {
       content: none; }
   article .summary .woocommerce_product_desc {
     -webkit-flex-basis: 45%;
-    -moz-flex-basis: 45%;
     -ms-flex-preferred-size: 45%;
     flex-basis: 45%;
     position: relative;
@@ -983,7 +919,6 @@ article .summary {
       display: none; }
   article .summary .tab_related {
     -webkit-flex-basis: 100%;
-    -moz-flex-basis: 100%;
     -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
     margin-top: 1.16667rem; }
@@ -1219,8 +1154,6 @@ table.variations {
 
 .comment_container {
   display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
   position: relative; }
