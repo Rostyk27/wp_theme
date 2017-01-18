@@ -46,6 +46,7 @@ header {
   li {
     &.current-menu-item > a {}
     &.menu-item-has-children {
+      position: relative;
       &:before {
         //content: '';
         //background: #000;
