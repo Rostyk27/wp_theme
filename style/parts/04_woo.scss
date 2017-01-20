@@ -1,5 +1,4 @@
-/* WooCommerce Custom Styles */
-@import 'elements/mixins';
+// woocommerce custom styles
 
 .products {
   @include flex-grid(4, 2.4%);

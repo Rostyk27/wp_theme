@@ -1,14 +1,4 @@
-$fb: 30px;
-$cl: #ff4e50;
-$cl2: #29c662;
-$tx: #212121;
-$ft: 'Open Sans', sans-serif;
-
-.bg {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-}
+// mixins & vendors
 
 // responsive fonts + padding & margin !!!
 /// Strips the unit from a number.
@@ -55,7 +45,6 @@ $ft: 'Open Sans', sans-serif;
   $transitions: ($property $duration $easing);
   @include prefixer('transition', $transitions);
 }
-.ani {@include transition()}
 
 @mixin transform($params) {
   @include prefixer('transform', $params);
