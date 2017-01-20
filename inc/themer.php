@@ -33,7 +33,7 @@ require_once('wpadmin/admin-addons.php');
 require_once('shortcodes.php');
 
 // Custom Posts Duplicator
-require_once('duplicator.php');
+require_once('plugins/duplicator.php');
 
 // Prevent File Modifications
 if ( ! defined( 'DISALLOW_FILE_EDIT' ) ) {
