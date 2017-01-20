@@ -1,7 +1,8 @@
-$font-base: 30px;
-$color: #ff4e50;
-$default: #333;
-$font: 'Open Sans', sans-serif;
+$fb: 30px;
+$cl: #ff4e50;
+$cl2: #29c662;
+$tx: #212121;
+$ft: 'Open Sans', sans-serif;
 
 .bg {
   background-size: cover;
@@ -16,12 +17,12 @@ $font: 'Open Sans', sans-serif;
 }
 // Convert pixels to rems
 // eg. for a relational value of 12px write rem(12)
-// Assumes $font-base is the font-size of <html>
+// Assumes $fb is the font-size of <html>
 @function rem($pxval) {
   @if not unitless($pxval) {
     $pxval: strip-units($pxval);
   }
-  $base: $font-base;
+  $base: $fb;
   @if not unitless($base) {
     $base: strip-units($base);
   }
@@ -104,7 +105,7 @@ $font: 'Open Sans', sans-serif;
 }
 
 //SCSS Triangle
-@mixin triangle ($width:12px, $height:10px, $color:#000, $direction: top) {
+@mixin triangle ($width:12px, $height:10px, $cl:#000, $direction: top) {
   position: absolute;
   content: '';
   height: 0;
@@ -114,7 +115,7 @@ $font: 'Open Sans', sans-serif;
     border-top: 0;
     border-left: $width solid transparent;
     border-right: $width solid transparent;
-    border-bottom: $height solid $color;
+    border-bottom: $height solid $cl;
     top: -$height;
     left: 50%;
     @include transform(translateX(-50%));
@@ -122,7 +123,7 @@ $font: 'Open Sans', sans-serif;
     border-right: 0;
     border-top: $width solid transparent;
     border-bottom: $width solid transparent;
-    border-left: $height solid $color;
+    border-left: $height solid $cl;
     right: -$height;
     top: 50%;
     @include transform(translateY(-50%));
@@ -130,7 +131,7 @@ $font: 'Open Sans', sans-serif;
     border-bottom: 0;
     border-left: $width solid transparent;
     border-right: $width solid transparent;
-    border-top: $height solid $color;
+    border-top: $height solid $cl;
     bottom: -$height;
     left: 50%;
     @include transform(translateX(-50%));
@@ -138,7 +139,7 @@ $font: 'Open Sans', sans-serif;
     border-left: 0;
     border-top: $width solid transparent;
     border-bottom: $width solid transparent;
-    border-right: $height solid $color;
+    border-right: $height solid $cl;
     left: -$height;
     top: 50%;
     @include transform(translateY(-50%));

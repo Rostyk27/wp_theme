@@ -46,7 +46,7 @@ img {
 }
 
 a {
-  color: $color;
+  color: $cl;
   outline: 0 none;
   text-decoration: none;
   @extend .ani;
@@ -75,8 +75,8 @@ input[type="submit"], input[type="button"] {
 input, textarea {@include placeholder {color: #999;opacity: 1}}
 
 // selection
-::-moz-selection {color: #fff; background: $color}
-::selection {color: #fff; background: $color}
+::-moz-selection {color: #fff; background: $cl}
+::selection {color: #fff; background: $cl}
 :focus {outline: none}
 ::-moz-focus-inner {border: 0}
 
@@ -128,7 +128,7 @@ input, textarea {@include placeholder {color: #999;opacity: 1}}
   position: relative;
   display: block;
   width: 100%;
-  font: 400 14px/40px $font;
+  font: 400 14px/40px $ft;
   height: 40px;
   select {
     width: 100%;
@@ -175,7 +175,7 @@ input, textarea {@include placeholder {color: #999;opacity: 1}}
 // menu button
 $line-thickness: 5px; // The thickness of the button lines, also need to improve -> &:after {top: ?px} !
 $line-position: 21px; // The spacing between lines, also need to change -> &:after {top: ?px} !
-$button-color: $color; // The color of button
+$button-color: $cl; // The color of button
 
 #menuopen {
   display: none;
