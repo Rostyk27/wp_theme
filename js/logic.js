@@ -2,10 +2,8 @@
 /*jshint multistr: true, latedef: nofunc */
 /*global jQuery, $, Swiper*/
 
-(function(window) {
-    'use strict';
-
 $(document).ready(function () {
+    'use strict';
 
 //  contact form 7
     $(this).on('click', '.wpcf7-not-valid-tip', function(){
@@ -35,31 +33,6 @@ $(document).ready(function () {
             $(this).parent().removeClass('active');
         }
     });
-
-    $('.ripple').on('click', function (event) {
-
-        var $div = $('<div/>'),
-            btnOffset = $(this).offset(),
-            xPos = event.pageX - btnOffset.left,
-            yPos = event.pageY - btnOffset.top;
-
-        $div.addClass('ripple-effect');
-        var $ripple = $(".ripple-effect");
-
-        $ripple.css("height", $(this).height());
-        $ripple.css("width", $(this).height());
-        $div
-            .css({
-                top: yPos - ($ripple.height()/2),
-                left: xPos - ($ripple.width()/2),
-                background: $(this).data("ripple-color")
-            })
-            .appendTo($(this));
-
-        window.setTimeout(function(){
-            $div.remove();
-        }, 1000);
-    });
 });
 
 $(document).on('opening', '.remodal', function(e) {
@@ -77,6 +50,7 @@ $(document).on('closing', '.remodal', function(e) {
 });
 
 $(window).on('load', function(){
+    'use strict';
 
     var home_slider = new Swiper('.home_slider', {
         pagination: '.home_slider .swiper-pagination',
@@ -98,9 +72,8 @@ $(window).on('load', function(){
     });
 
 })
-.bind('orientationchange resize', function() {
-    window.console.log('resize');
-}).resizeEnd(function(){
-    window.console.log('resizeEnd');
+.bind('orientationchange resize', function(){
+    'use strict';
+    }).resizeEnd(function(){
+    'use strict';
 });
-}(window, jQuery));
