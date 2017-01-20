@@ -199,7 +199,7 @@
     border-bottom: 2px solid $cl;
     display: block;
     height: 42px;
-    font: 400 15px $ft;
+    font: 400 15px $ff;
     border-radius: 0;
     @include placeholder {
       color: $cl;
@@ -301,7 +301,7 @@
     th {
       border: none;
       padding: 10px;
-      font: 400 #{rem(13)} $ft;
+      font: 400 #{rem(13)} $ff;
       text-transform: uppercase;
       &.product-name, &.product-total {
         font-size: rem(16);
@@ -743,7 +743,7 @@ form.cart {
     border-bottom: 1px solid #ef4036;
     color: #ef4036 !important;
     display: block;
-    font: 400 #{rem(15)}/#{rem(38)} $ft !important;
+    font: 400 #{rem(15)}/#{rem(38)} $ff !important;
     list-style: none !important;
     margin: 20px 0;
     text-align: center;
@@ -810,7 +810,7 @@ form.cart {
           color: #4f91cd;
           cursor: pointer;
           display: inline-block;
-          font: 500 15px/40px $ft;
+          font: 500 15px/40px $ff;
           height: 40px;
           letter-spacing: 1.666px;
           margin-bottom: 20px;
@@ -961,7 +961,7 @@ article {
 }
 
 .product_title {
-  font: 400 #{rem(24)}/1.1 $ft;
+  font: 400 #{rem(24)}/1.1 $ff;
   letter-spacing: rem(2);
   text-transform: uppercase;
   margin-bottom: rem(70);
@@ -1006,7 +1006,7 @@ table.variations {
 }
 
 #rozmiry {
-  font: 400 12px/36px $ft;
+  font: 400 12px/36px $ff;
   color: $cl;
   height: 36px;
   border: none;
@@ -1016,7 +1016,7 @@ table.variations {
   padding-right: 22px;
   option {
     padding: 3px 5px;
-    font: 400 11px $ft;
+    font: 400 11px $ff;
   }
 }
 

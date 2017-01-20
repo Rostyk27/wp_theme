@@ -45,6 +45,8 @@
   $transitions: ($property $duration $easing);
   @include prefixer('transition', $transitions);
 }
+.ani {@include transition()}
+.bg { background-size: cover; background-repeat: no-repeat; background-position: 50% 50%; }
 
 @mixin transform($params) {
   @include prefixer('transform', $params);

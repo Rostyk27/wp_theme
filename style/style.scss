@@ -1,44 +1,17 @@
 $fb: 30px;
+$fp: 16px;
 $cl: #33d3ff;
 $cl2: #29c662;
 $tx: #212121;
-$ft: 'Open Sans', sans-serif;
-$ft2: 'Noto', $ft;
+$ff: 'Open Sans', sans-serif;
 
 @import 'parts/00_mixins';
 @import 'parts/01_reset';
 @import 'parts/02_base';
-@import 'parts/03_libs';
-//@import 'parts/04_woo';
+@import 'parts/03_apps';
+@import 'parts/04_libs';
+//@import 'parts/05_woo';
 
-html {
-  font: 400 #{$fb}/1.6 $ft;
-  background: #f5f5f5;
-  @include rwd(1151) {font-size: 27px}
-  @include rwd(1024) {font-size: 24px}
-  @include rwd(767) {font-size: 21px}
-  @include rwd(480) {font-size: 18px}
-}
-body {
-  @include flexbox();
-  @include flex-direction(column);
-  min-height: 100vh;
-  max-width: 2048px;
-  margin: 0 auto;
-  background: #fff;
-  font-size: 16px;
-  color: $tx;
-}
-#main {
-  @include flex(1, 0, auto);
-  overflow: hidden;
-}
-.container {
-  width: 1140px;
-  max-width: 94%;
-  margin: 0 auto;
-  position: relative;
-}
 
 .content {}
 

@@ -1,25 +1,5 @@
-// basis tags & classes
+// base classes
 
-.ani {@include transition()}
-
-.bg {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-}
-
-
-// flex classes
-.flex {
-  @include flexbox();
-  @include align-items(center);
-  @include justify-content(space-between);
-}
-.flex_start {
-  @include flexbox();
-  @include align-items(flex-start);
-  @include justify-content(space-between);
-}
 .aparent {
   @extend .flex_start;
   article {@include flex(1)}
@@ -30,41 +10,42 @@
   }
 }
 
-
 // swiper controls
-.custom_prev, .custom_next {
-  font-size: 48px;
-  color: #fff;
-  position: absolute;
-  top: 50%;
-  margin-top: -26px;
-  cursor: pointer;
-  @extend .ani;
-  z-index: 1;
-  &.swiper-button-disabled {
-    opacity: 0.4;
-    cursor: default;
+.swiper-container {
+  .custom_prev, .custom_next {
+    font-size: 48px;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    margin-top: -26px;
+    cursor: pointer;
+    @extend .ani;
+    z-index: 1;
+    &.swiper-button-disabled {
+      opacity: 0.4;
+      cursor: default;
+    }
   }
-}
-.custom_prev {
-  left: 3.5%;
-  &:hover {left: 3%}
-  &.swiper-button-disabled:hover {left: 3.5%}
-}
-.custom_next {
-  right: 3.5%;
-  &:hover {right: 3%}
-  &.swiper-button-disabled:hover {right: 3.5%}
-}
-.swiper-pagination {
-  bottom: 30px !important;
-  .swiper-pagination-bullet {
-    background: transparent;
-    border: 1px solid $cl;
-    opacity: 1;
-    &:hover, &.swiper-pagination-bullet-active {
-      background: $cl;
+  .custom_prev {
+    left: 3.5%;
+    &:hover {left: 3%}
+    &.swiper-button-disabled:hover {left: 3.5%}
+  }
+  .custom_next {
+    right: 3.5%;
+    &:hover {right: 3%}
+    &.swiper-button-disabled:hover {right: 3.5%}
+  }
+  .swiper-pagination {
+    bottom: 30px !important;
+    .swiper-pagination-bullet {
+      background: transparent;
+      border: 1px solid $cl;
       opacity: 1;
+      &:hover, &.swiper-pagination-bullet-active {
+        background: $cl;
+        opacity: 1;
+      }
     }
   }
 }
@@ -92,7 +73,7 @@ div.wpcf7 {
     right: 0;
     bottom: 0;
     cursor: pointer;
-    font: 400 16px/48px $ft;
+    font: 400 16px/48px $ff;
     color: $tx;
     height: 50px;
     padding: 0 8px;
@@ -103,7 +84,7 @@ div.wpcf7 {
     top: 100%;
     left: 0;
     right: 0;
-    font: 400 16px/1.4 $ft;
+    font: 400 16px/1.4 $ff;
     padding: 7px 10px;
     text-align: center;
     color: #fff;
@@ -116,7 +97,7 @@ div.wpcf7 {
     display: block;
     width: 100%;
     height: 50px;
-    font: 400 18px $ft;
+    font: 400 18px $ff;
     color: $tx;
     padding: 0 10px;
     background: #fff;
@@ -145,7 +126,7 @@ div.wpcf7 {
   margin-top: rem(80);
   > * {
     display: inline-block;
-    font: 400 18px/36px $ft;
+    font: 400 18px/36px $ff;
     color: #acacac;
     background: transparent;
     border: 3px solid #acacac;
@@ -255,254 +236,4 @@ div.wpcf7 {
     &.i-lnkdn:hover {background: #0177b5}
     &.i-pntrst:hover {background: #d50c22}
   }
-}
-
-
-// wp content
-.alignleft {float: left}
-.alignright {float: right}
-.aligncenter {margin-left: auto; margin-right: auto}
-
-.content {
-  img {
-    &.alignright { margin: 0 0 1.5em 1.5em }
-    &.alignleft { margin: 0 1.5em 1.5em 0 }
-    &.alignnone {
-      margin: 0;
-      display: inline-block;
-      vertical-align: baseline;
-    }
-  }
-}
-
-
-// fullframe video
-.fullframe {height: 0;margin: 0;overflow: hidden;padding-bottom: 56.5%;position: relative;z-index: 0;
-  > {
-    iframe, object, embed {height: 100%;left: 0;position: absolute;top: 0;width: 100%;z-index: -1}
-  }
-}
-
-
-// custom select
-.selbel_w {
-  position: relative;
-  display: block;
-  width: 100%;
-  font: 400 14px/40px $ft;
-  height: 40px;
-  select {
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    position: relative;
-    display: block;
-    z-index: 1;
-    opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    -webkit-appearance: menulist-button;
-    + span {
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: #fff;
-      color: #555;
-      padding: 0 10px;
-      border-radius: 5px;
-      border: 1px solid #eee;
-      &:after {
-        content: '';
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 9px 5px 0 5px;
-        border-color: #555 transparent transparent transparent;
-        position: absolute;
-        right: 13px;
-        top: 16px;
-      }
-      &.err {border-color: #ef4036}
-    }
-    option {padding: 5px}
-  }
-}
-
-
-// menu button
-$line-thickness: 5px; // The thickness of the button lines, also need to improve -> &:after {top: ?px} !
-$line-position: 21px; // The spacing between lines, also need to change -> &:after {top: ?px} !
-$button-color: $cl; // The color of button
-
-#menuopen {
-  display: none;
-  position: absolute;
-  @include transform(translateY(-50%));
-  top: 50%;
-  right: 3%;
-  width: 25px;
-  height: 27px;
-  cursor: pointer;
-  z-index: 1990;
-  @extend .ani;
-  @include rwd(1024) {display: block}
-  &:before, &:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: $line-thickness;
-    box-shadow: 0 $line-thickness 0 0 $button-color, 0 $line-position 0 0 $button-color;
-    @extend .ani;
-  }
-  &:after {
-    content: '';
-    position: absolute;
-    top: 8px; // Need to change if both $line-thickness and $line-position changed !
-    height: $line-thickness;
-    box-shadow: 0 $line-thickness 0 0 $button-color;
-    @extend .ani;
-  }
-  &.active:before, &.active:after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: $button-color;
-    box-shadow: none;
-  }
-  &.active:before {
-    backface-visibility: hidden;
-    @include transform(rotate(-45deg) translate(-9px, 9px));
-  }
-  &.active:after {
-    backface-visibility: hidden;
-    @include transform(rotate(45deg) translate(9px, 9px));
-  }
-}
-
-
-//loader
-$load_yellow: yellow;
-$load_green: green;
-$load_blue: blue;
-$load_red: red;
-
-// scaling... any units
-$load_width: 40px;
-
-.showbox {
-  -webkit-transition: all .5s ease;
-  transition: all .5s ease;
-  display: inline-block;
-  vertical-align: top;
-  visibility: hidden;
-  opacity: 0;
-  margin: 0;
-  @include center();
-  position: fixed;
-  z-index: 98989;
-  &.is_loading {
-    visibility: visible;
-    opacity: 1
-  }
-  .loader {
-    position: relative;
-    margin: 0 auto;
-    width: $load_width;
-    &:before {
-      content:'';
-      display: block;
-      padding-top: 100%;
-    }
-  }
-  .circular {
-    -webkit-animation: rotate 2s linear infinite;
-    animation: rotate 2s linear infinite;
-    height: 100%;
-    transform-origin: center center;
-    width: 100%;
-    position: absolute;
-    top: 0; bottom: 0; left: 0; right: 0;
-    margin: auto;
-  }
-  .path {
-    stroke-dasharray: 1,200;
-    stroke-dashoffset: 0;
-    -webkit-animation:
-        dash 1.5s ease-in-out infinite,
-        color 3s ease-in-out infinite
-  ;
-    animation:
-        dash 1.5s ease-in-out infinite,
-        color 3s ease-in-out infinite
-  ;
-    stroke-linecap: round;
-  }
-}
-
-@keyframes rotate{
-  100%{
-    transform: rotate(360deg);
-  }
-}
-@keyframes dash{
-  0%{
-    stroke-dasharray: 1,200;
-    stroke-dashoffset: 0;
-  }
-  50%{
-    stroke-dasharray: 89,200;
-    stroke-dashoffset: -35px;
-  }
-  100%{
-    stroke-dasharray: 89,200;
-    stroke-dashoffset: -124px;
-  }
-}
-@keyframes color{
-  100%, 0%{
-    stroke: $load_red;
-  }
-  40%{
-    stroke: $load_blue;
-  }
-  66%{
-    stroke: $load_green;
-  }
-  80%, 90%{
-    stroke: $load_yellow;
-  }
-}
-
-
-// riiple effect
-.ripple {
-  overflow: hidden;
-  position: relative;
-  z-index: 0;
-}
-@include keyframes(ripple-animation) {
-  from {
-    @include transform(scale(1));
-    opacity: 0.6;
-  }
-  to {
-    @include transform(scale(50));
-    opacity: 0;
-  }
-}
-.ripple-effect {
-  position: absolute;
-  border-radius: 50%;
-  width: 7px;
-  height: 7px;
-  background: #337a82;
-  z-index: -1;
-  @include animation(ripple-animation 1.1s);
 }
