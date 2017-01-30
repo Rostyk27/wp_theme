@@ -14,7 +14,9 @@ if(is_home()) {
                 <?php if (have_posts()) : $p = 0; while (have_posts()) : the_post(); ?>
                     <?php if($p == 0 /*&& $paged == 1*/) { ?>
                         <div class="firstpost blogpost">
-                            <a class="thumb" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('single');?></a>
+                            <a class="thumb" href="<?php the_permalink(); ?>">
+                                <img src="<?php echo image_src( get_post_thumbnail_id( $post->ID ), 'single' ); ?>" alt="">
+                            </a>
                             <time datetime="<?php echo get_the_date('F j, Y'); ?>"><?php echo get_the_date('F j, Y'); ?></time>
                             <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
                             <p><?php echo wp_trim_words(get_the_content(), 65, ''); ?>
@@ -25,7 +27,9 @@ if(is_home()) {
                         </div>
                     <?php } else { ?>
                         <div class="blogpost">
-                            <a  class="thumb" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('blog');?></a>
+                            <a class="thumb" href="<?php the_permalink(); ?>">
+                                <img src="<?php echo image_src( get_post_thumbnail_id( $post->ID ), 'blog' ); ?>" alt="">
+                            </a>
                             <time datetime="<?php echo get_the_date('F j, Y'); ?>"><?php echo get_the_date('F j, Y'); ?></time>
                             <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
                             <p><?php echo wp_trim_words(get_the_content(), 40, ''); ?>
@@ -34,9 +38,8 @@ if(is_home()) {
                                 </span>
                             </p>
                         </div>
-                    <?php } ?>
-                    <?php $p++; endwhile; ?>
-                <?php endif; ?>
+                    <?php } $p++; ?>
+                <?php endwhile; endif; ?>
             </div>
             <?php if(function_exists('wp_pagenavi')){
                 wp_pagenavi();
