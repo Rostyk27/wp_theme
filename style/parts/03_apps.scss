@@ -1,55 +1,81 @@
 // css applications
 
-// menu button
-$line-thickness: 5px; // The thickness of the button lines, also need to improve -> &:after {top: ?px} !
-$line-position: 21px; // The spacing between lines, also need to change -> &:after {top: ?px} !
-$button-color: $cl; // The color of button
+// custom hamburger
+$h_bar_thickness: 1px;
+$h_color: #000;
+$h_spacing: 10px;
+$h_padding: 15px;
+$h_height: 60px;
+$h_width: 60px;
 
-#menuopen {
-  display: none;
-  position: absolute;
-  @include transform(translateY(-50%));
-  top: 50%;
-  right: 3%;
-  width: 25px;
-  height: 27px;
-  cursor: pointer;
-  z-index: 1990;
+$h_active_padding: 10px;
+$h_active_spacing: 10px;
+
+$h_bg_static: null !default;
+$h_bg_active: null !default;
+
+.nav_icon {
   @extend .ani;
+  @include transform( translateY(-50%) rotate(0deg) );
+  position: absolute;
+  right: 3%;
+  top: 50%;
+  display: none;
+  height: $h_height;
+  width: $h_width;
+  cursor: pointer;
+  text-indent: -9999px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  appearance: none;
+  box-shadow: none;
+  outline: none;
+  border: none;
+  z-index: 10;
   @include rwd(1024) {display: block}
-  &:before, &:after {
-    content: '';
+  @if $h_bg_static != null {
+    background: $h_bg_static;
+  }
+  i {
+    top: ($h_height / 2) - ($h_bar_thickness / 2) - $h_spacing;
+    @include transition( all .25s ease-in-out );
+    @include transform( rotate(0deg) );
+    height: $h_bar_thickness;
+    background: $h_color;
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: $line-thickness;
-    box-shadow: 0 $line-thickness 0 0 $button-color, 0 $line-position 0 0 $button-color;
-    @extend .ani;
+    right: $h_padding;
+    left: $h_padding;
+    display: block;
+    opacity: 1;
+    &:nth-child(2) {
+      top: ($h_height / 2) - ($h_bar_thickness / 2)
+    }
+    &:nth-child(3) {
+      top: ($h_height / 2) - ($h_bar_thickness / 2) + $h_spacing
+    }
   }
-  &:after {
-    content: '';
-    position: absolute;
-    top: 8px; // Need to change if both $line-thickness and $line-position changed !
-    height: $line-thickness;
-    box-shadow: 0 $line-thickness 0 0 $button-color;
-    @extend .ani;
-  }
-  &.active:before, &.active:after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: $button-color;
-    box-shadow: none;
-  }
-  &.active:before {
-    backface-visibility: hidden;
-    @include transform(rotate(-45deg) translate(-9px, 9px));
-  }
-  &.active:after {
-    backface-visibility: hidden;
-    @include transform(rotate(45deg) translate(9px, 9px));
+  &.is_active {
+    @if $h_bg_active != null {
+      background: $h_bg_active;
+    }
+    i {
+      left: $h_active_padding;
+      right: $h_active_padding;
+      &:nth-child(1) {
+        @include transform( rotate(135deg) );
+        top: ($h_height / 2) - ($h_bar_thickness / 2)
+      }
+      &:nth-child(2) {
+        @include transform( translate3d(-100%, 0, 0) );
+        opacity: 0;
+      }
+      &:nth-child(3) {
+        @include transform( rotate(-135deg) );
+        top: ($h_height / 2) - ($h_bar_thickness / 2)
+      }
+    }
   }
 }
 
@@ -64,15 +90,14 @@ $load_red: red;
 $load_width: 40px;
 
 .showbox {
-  -webkit-transition: all .5s ease;
-  transition: all .5s ease;
+  @extend .ani;
+  @include center();
+  position: fixed;
   display: inline-block;
   vertical-align: top;
   visibility: hidden;
   opacity: 0;
   margin: 0;
-  @include center();
-  position: fixed;
   z-index: 98989;
   &.is_loading {
     visibility: visible;

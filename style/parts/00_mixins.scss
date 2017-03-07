@@ -24,6 +24,11 @@
   @media screen and (max-width: $max-width) {@content}
 }
 
+@mixin rwd-min($px) {
+  $min-width: $px#{px};
+  @media screen and (min-width: $min-width) {@content}
+}
+
 @mixin prefixer($property, $value){
   -webkit-#{$property}: #{$value};
   -moz-#{$property}: #{$value};
@@ -45,8 +50,7 @@
   $transitions: ($property $duration $easing);
   @include prefixer('transition', $transitions);
 }
-.ani {@include transition()}
-.bg { background-size: cover; background-repeat: no-repeat; background-position: 50% 50%; }
+.ani { @include transition() }
 
 @mixin transform($params) {
   @include prefixer('transform', $params);

@@ -133,7 +133,7 @@ input, textarea {@include placeholder {color: $tx; opacity: 1}}
 }
 
 
-// flex classes
+// classes to extend
 .flex {
   @include flexbox();
   @include align-items(center);
@@ -144,3 +144,17 @@ input, textarea {@include placeholder {color: $tx; opacity: 1}}
   @include align-items(flex-start);
   @include justify-content(space-between);
 }
+
+.bg {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+.last_no_padding > *:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+@include rwd-min(768) { .rwd_show {display: none} }
+@include rwd(767) { .rwd_hide {display: none !important} }

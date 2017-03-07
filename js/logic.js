@@ -13,8 +13,9 @@ $(document).ready(function () {
         });
     });
 
-    $("#menuopen").click(function () {
-        $(this).toggleClass('active').next().stop().toggleClass('active');
+    $(".nav_icon").click(function () {
+        $(this).toggleClass('is_active').next().stop().toggleClass('is_open');
+        return false;
     });
 
     $('#menu .menu-item-has-children > a').after('<span />');

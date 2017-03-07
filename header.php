@@ -16,7 +16,7 @@
     <header>
         <div class="container">
             <?php echo (get_field('logo', 'option') ? '<a href="' . site_url() . '" class="logo"><img src="' . get_field('logo', 'option') . '" alt="logo"></a>' : ''); ?>
-            <button id="menuopen"></button>
-            <nav id="menu"><?php wp_nav_menu(array('container' => false, 'items_wrap' => '<ul id="%1$s">%3$s</ul>', 'theme_location'  => 'main_menu')); ?></nav>
+	        <a class="nav_icon" href=""><i></i><i></i><i></i></a>
+	        <nav id="menu"><?php wp_nav_menu(array('container' => false, 'items_wrap' => '<ul id="%1$s">%3$s</ul>', 'theme_location'  => 'main_menu')); ?></nav>
         </div>
     </header>

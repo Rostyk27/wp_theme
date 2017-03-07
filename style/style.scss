@@ -84,7 +84,7 @@ header {
     border-top: 1px solid $cl;
     z-index: 2;
     @include transform(translateX(101%));
-    &.active {@include transform(translateX(0))}
+    &.is_open {@include transform(translateX(0))}
     ul {
       margin: 0;
       background: #fff;
