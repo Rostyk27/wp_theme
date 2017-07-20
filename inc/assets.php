@@ -22,6 +22,7 @@ function tt_add_jscss() {
 	wp_enqueue_script('libs', get_stylesheet_directory_uri(). '/js/libs.js', array('jquery'), null, true);
 	wp_enqueue_script('logic', get_stylesheet_directory_uri(). '/js/logic.js', array('libs'), null, true);
 
+	wp_enqueue_style('libs', get_stylesheet_directory_uri(). '/style/parts/libs.css' );
 	wp_enqueue_style('style', get_stylesheet_directory_uri(). '/style/style.css' );
 }
 add_action('wp_enqueue_scripts', 'tt_add_jscss');
