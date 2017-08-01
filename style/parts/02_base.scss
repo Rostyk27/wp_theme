@@ -13,29 +13,19 @@
 // swiper controls
 .swiper-container {
   .custom_prev, .custom_next {
-    font-size: 48px;
-    color: #fff;
-    position: absolute;
-    top: 50%;
-    margin-top: -26px;
-    cursor: pointer;
     @extend .ani;
+    @include center(false, true);
+    font-size: rem(54);
+    color: #fff;
+    cursor: pointer;
     z-index: 1;
     &.swiper-button-disabled {
       opacity: 0.4;
       cursor: default;
     }
   }
-  .custom_prev {
-    left: 3.5%;
-    &:hover {left: 3%}
-    &.swiper-button-disabled:hover {left: 3.5%}
-  }
-  .custom_next {
-    right: 3.5%;
-    &:hover {right: 3%}
-    &.swiper-button-disabled:hover {right: 3.5%}
-  }
+  .custom_prev {left: rem(30)}
+  .custom_next {right: rem(30)}
   .swiper-pagination {
     bottom: 30px !important;
     .swiper-pagination-bullet {
@@ -55,7 +45,7 @@
 div.wpcf7 {
   position: relative;
   .inputs_wrap {
-    @include flexbox();
+    @include flexbox;
     @include justify-content(space-between);
     > * {@include flex-basis(48%)}
   }
@@ -116,8 +106,27 @@ div.wpcf7 {
     @extend .ani;
     cursor: pointer;
     margin: rem(15) 0 rem(20);
+    & + input {display: none}
   }
-  .screen-reader-response, .ajax-loader {display: none}
+  .ajax-loader {
+    @extend .ani;
+    @include prefixer(animation, swiper-preloader-spin 1s infinite linear);
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 -48px 0 24px;
+    border-radius: 100%;
+    border: 2px solid #f1f1f1;
+    border-top: 3px solid $cl;
+    opacity: 0;
+    visibility: hidden;
+    &.is-active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  .screen-reader-response {display: none}
 }
 
 

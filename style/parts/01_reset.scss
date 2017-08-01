@@ -22,20 +22,21 @@ html {
   -webkit-text-size-adjust: none;
   -webkit-overflow-scrolling: touch;
   -webkit-font-smoothing: antialiased;
-  @include rwd(1151) {font-size: 27px}
-  @include rwd(1024) {font-size: 24px}
-  @include rwd(767) {font-size: 21px}
-  @include rwd(480) {font-size: 18px}
+  @include rwd(1366) {font-size: $fb * 0.9}
+  @include rwd(1024) {font-size: $fb * 0.8}
+  @include rwd(767) {font-size: $fb * 0.7}
+  @include rwd(480) {font-size: $fb * 0.6}
 }
 body {
+  @include flexbox;
   @include flex-direction(column);
-  @include flexbox();
   min-height: 100vh;
-  max-width: 2048px;
+  max-width: 1920px;
   background: #fff;
   margin: 0 auto;
   font-size: $fp;
   color: $tx;
+  &.is_overflow {overflow: hidden}
 }
 #main {
   @include flex(1, 0, auto);
@@ -62,8 +63,8 @@ button {background: rgba(255, 255, 255, 0); border: medium none}
 h1, h2, h3, h4, h5 {font-weight: normal}
 td {vertical-align: middle}
 table {border-spacing: 0}
-ol, ul {list-style: none}
 mark {background: none}
+ul {list-style: none}
 
 img {
   height: auto;
@@ -135,14 +136,19 @@ input, textarea {@include placeholder {color: $tx; opacity: 1}}
 
 // classes to extend
 .flex {
-  @include flexbox();
+  @include flexbox;
   @include align-items(center);
   @include justify-content(space-between);
 }
 .flex_start {
-  @include flexbox();
+  @include flexbox;
   @include align-items(flex-start);
   @include justify-content(space-between);
+}
+.flex_center {
+  @include flexbox;
+  @include align-items(center);
+  @include justify-content(center);
 }
 
 .bg {
@@ -156,5 +162,5 @@ input, textarea {@include placeholder {color: $tx; opacity: 1}}
   padding-bottom: 0;
 }
 
-@include rwd-min(768) { .rwd_show {display: none} }
-@include rwd(767) { .rwd_hide {display: none !important} }
+@include rwd-min(1025) { .rwd_show {display: none !important} }
+@include rwd(1024) { .rwd_hide {display: none !important} }
