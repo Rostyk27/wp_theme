@@ -8,7 +8,7 @@ $h_padding: 15px;
 $h_height: 60px;
 $h_width: 60px;
 
-$h_active_padding: 10px;
+$h_active_padding: 12px;
 $h_active_spacing: 10px;
 
 $h_bg_static: null !default;
@@ -40,7 +40,7 @@ $h_bg_active: null !default;
   }
   i {
     top: ($h_height / 2) - ($h_bar_thickness / 2) - $h_spacing;
-    @include transition( all .25s ease-in-out );
+    @include transition( all, .25s, ease-in-out );
     @include transform( rotate(0deg) );
     height: $h_bar_thickness;
     background: $h_color;

@@ -215,7 +215,7 @@ function some() {
     if($some) {
         $soc .= '<div class="some">';
         foreach($some as $sm) {
-            $soc .= '<a class="i-'.$sm['icon'].'" target="_blank" href="'.$sm['link'].'" rel="nofollow"></a>';
+            $soc .= '<a class="i-'.$sm['icon'].'" target="_blank" href="'.$sm['link'].'" rel="noopener noreferrer"></a>';
         }
         $soc .= '</div>';
     }
