@@ -2,79 +2,91 @@
 /*jshint multistr: true, latedef: nofunc */
 /*global jQuery, $, Swiper*/
 
-$(document).ready(function () {
+$(document).ready(function() {
     'use strict';
 
-//  contact form 7
-    $(this).on('click', '.wpcf7-not-valid-tip', function(){
+    //  hamburger + menu
+    $(".nav_icon").click(function() {
+        $(this).toggleClass('is_active').next().stop().toggleClass('is_open');
+        return false;
+    });
+    $('#menu .menu-item-has-children > a').after('<span />');
+    $('#menu').on('click', '.menu-item-has-children > a + span', function() {
+        $(this).toggleClass('open').next().stop().toggle().parent().toggleClass('is_active');
+    });
+
+
+    //  contact form 7
+    $(this).on('click', '.wpcf7-not-valid-tip', function() {
         $(this).prev().trigger('focus');
         $(this).fadeOut(500,function(){
             $(this).remove();
         });
     });
-
-    $(".nav_icon").click(function () {
-        $(this).toggleClass('is_active').next().stop().toggleClass('is_open');
-        return false;
+    $(this).on('focus', '.wpcf7-form-control:not([type="submit"])', function() {
+        $(this).parent().addClass('is_active');
     });
-
-    $('#menu .menu-item-has-children > a').after('<span />');
-    $('#menu').on('click', '.menu-item-has-children > a + span', function(){
-        $(this).toggleClass('open').next().stop().slideToggle(350).parent().toggleClass('active');
-    });
-
-    $(this).on('focus', '.wpcf7-form-control:not([type="submit"])', function () {
-        $(this).parent().addClass('active');
-    });
-
-    $(this).on('blur', '.wpcf7-form-control:not([type="submit"])', function(){
+    $(this).on('blur', '.wpcf7-form-control:not([type="submit"])', function() {
         if($(this).val() !== "") {
-            $(this).parent().addClass('active');
+            $(this).parent().addClass('is_active');
         } else {
-            $(this).parent().removeClass('active');
+            $(this).parent().removeClass('is_active');
         }
     });
-});
-
-$(document).on('opening', '.remodal', function(e) {
-    var t = $(e.currentTarget).find('iframe');
-    if(t!==null){
-        t.attr('src',t.attr('src')+'&autoplay=1');
-    }
-});
-
-$(document).on('closing', '.remodal', function(e) {
-    var t=$(e.currentTarget).find('iframe');
-    if(t.length>0) {
-        t.attr('src',t.attr('src').replace('&autoplay=1',''));
-    }
-});
-
-$(window).on('load', function(){
-    'use strict';
-
-    var home_slider = new Swiper('.home_slider', {
-        pagination: '.home_slider .swiper-pagination',
-        paginationClickable: true,
-        prevButton: '.home_slider .custom_prev',
-        nextButton: '.home_slider .custom_next'
+    $(this).on( 'keyup', 'textarea', function() {
+        $(this).height( 0 );
+        $(this).height( this.scrollHeight );
     });
 
+
+    //  apps
+    // $('[data-fancybox]').fancybox({
+    //     smallBtn : false
+    // });
+    
+    // $('select').selectric({
+    //     disableOnMobile: false,
+    //     nativeOnMobile: false,
+    //     arrowButtonMarkup: ""
+    // });
+
+
+    //  custom
+});
+
+
+
+$(window).on('load', function() {
+    'use strict';
+
+    //  apps
+    // setTimeout(function() {
+    //     var home_slider = new Swiper('.home_slider', {
+    //         pagination: '.home_slider .swiper-pagination',
+    //         paginationClickable: true,
+    //         prevButton: '.home_slider .custom_prev',
+    //         nextButton: '.home_slider .custom_next'
+    //     });
+    // }, 500);
+
+
     //  fluid video (iframe)
-    $('.content article iframe').each(function(i) {
+    $('.content iframe').each(function(i) {
         var t = $(this),
             p = t.parent();
         if (p.is('p') && !p.hasClass('fullframe')) {
             p.addClass('fullframe');
         }
     });
-    $('.wp-video').each(function(){
+    $('.wp-video').each(function() {
         $('.mejs-video .mejs-inner', this).addClass('fullframe');
     });
 
-})
-.bind('orientationchange resize', function(){
+});
+
+
+
+$(window).resizeEnd(function() {
     'use strict';
-    }).resizeEnd(function(){
-    'use strict';
+    console.log("I'm resized!");
 });
