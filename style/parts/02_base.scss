@@ -13,7 +13,7 @@
 // swiper controls
 .swiper-container {
   .custom_prev, .custom_next {
-    @extend .ani;
+    @extend %ani;
     @include center(false, true);
     font-size: rem(54);
     color: #fff;
@@ -53,21 +53,23 @@ div.wpcf7 {
     display: block !important;
     margin-bottom: rem(20);
     position: relative;
+    &.is_active {box-shadow: 0 1px #ccc}
   }
   .wpcf7-not-valid-tip {
-    background: #fff;
-    border: 2px solid #ff5f5f;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    cursor: pointer;
-    font: 400 16px/48px $ff;
+    height: 40px;
+    font: 400 16px/40px $ff;
     color: $tx;
-    height: 50px;
-    padding: 0 8px;
+    padding: 0;
+    background: #fff;
     border-radius: 0;
+    border: 0;
+    border-bottom: 2px solid #ff5f5f;
+    cursor: pointer;
   }
   .wpcf7-response-output {
     position: absolute;
@@ -75,41 +77,38 @@ div.wpcf7 {
     left: 0;
     right: 0;
     font: 400 16px/1.4 $ff;
-    padding: 7px 10px;
-    text-align: center;
     color: #fff;
+    padding: rem(7) rem(10);
     border-radius: 0;
+    text-align: center;
     &.wpcf7-mail-sent-ng {background: #1091ae; position: relative}
     &.wpcf7-mail-sent-ok {background: #16a085; position: relative}
     &.wpcf7-validation-errors, &.wpcf7-spam-blocked {background: #ff5f5f; position: relative}
   }
   input:not([type="submit"]):not([type="radio"]):not([type="checkbox"]), textarea {
     display: block;
-    width: 100%;
-    height: 50px;
-    font: 400 18px $ff;
+    height: 40px;
+    font: 400 16px $ff;
     color: $tx;
-    padding: 0 10px;
     background: #fff;
-    border-radius: 0;
-    border: 2px solid $cl;
+    padding: 0;
+    border: 0;
+    border-bottom: 2px solid $cl;
     @include placeholder {color: $tx; opacity: 1}
-    &:focus {border-color: rgba($cl, 0.4)}
   }
   textarea {
+    @include transition(none 0.25s ease);
     resize: none;
-    overflow: auto;
-    height: 110px;
-    padding: 10px 12px;
+    overflow: hidden;
+    min-height: 40px;
+    line-height: 40px;
   }
   button.button {
-    @extend .ani;
-    cursor: pointer;
     margin: rem(15) 0 rem(20);
     & + input {display: none}
   }
   .ajax-loader {
-    @extend .ani;
+    @extend %ani;
     @include prefixer(animation, swiper-preloader-spin 1s infinite linear);
     width: 24px;
     height: 24px;
@@ -175,6 +174,7 @@ div.wpcf7 {
     position: relative;
     z-index: 0;
     &:after {
+      @extend %ani;
       content: '';
       position: absolute;
       top: 0;
@@ -182,7 +182,6 @@ div.wpcf7 {
       bottom: 0;
       width: 0;
       background: #fff;
-      @extend .ani;
       z-index: -1;
     }
     &:hover:after {
@@ -190,36 +189,36 @@ div.wpcf7 {
       left: 0;
       width: 100%;
     }
-    &.i-ggl {
+    &.i_ggl {
       //font-size: 16px;
       background: #db4437;
       &:hover {color: #db4437}
     }
-    &.i-fcbk {
+    &.i_fcbk {
       background: #3b5998;
       &:hover {color: #3b5998}
     }
-    &.i-twttr {
+    &.i_twttr {
       background: #1da1f2;
       &:hover {color: #1da1f2}
     }
-    &.i-lnkdn {
+    &.i_lnkdn {
       background: #0177b5;
       &:hover {color: #0177b5}
     }
-    &.i-tb {
+    &.i_tb {
       background: #cc181e;
       &:hover {color: #cc181e}
     }
-    &.i-pntrst {
+    &.i_pntrst {
       background: #d50c22;
       &:hover {color: #d50c22}
     }
-    &.i-nstgrm {
+    &.i_nstgrm {
       background: #be3094;
       &:hover {color: #be3094}
     }
-    &.i-lp {
+    &.i_lp {
       background: #c62221;
       &:hover {color: #c62221}
     }
@@ -239,10 +238,10 @@ div.wpcf7 {
     text-align: center;
     border-radius: 50%;
     &:hover {color: #fff}
-    &.i-ggl:hover {background: #db4437}
-    &.i-fcbk:hover {background: #3b5998}
-    &.i-twttr:hover {background: #1da1f2}
-    &.i-lnkdn:hover {background: #0177b5}
-    &.i-pntrst:hover {background: #d50c22}
+    &.i_ggl:hover {background: #db4437}
+    &.i_fcbk:hover {background: #3b5998}
+    &.i_twttr:hover {background: #1da1f2}
+    &.i_lnkdn:hover {background: #0177b5}
+    &.i_pntrst:hover {background: #d50c22}
   }
 }

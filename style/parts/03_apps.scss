@@ -15,7 +15,7 @@ $h_bg_static: null !default;
 $h_bg_active: null !default;
 
 .nav_icon {
-  @extend .ani;
+  @extend %ani;
   @include transform( translateY(-50%) rotate(0deg) );
   position: absolute;
   right: 3%;
@@ -90,7 +90,7 @@ $load_red: red;
 $load_width: 40px;
 
 .showbox {
-  @extend .ani;
+  @extend %ani;
   @include center();
   position: fixed;
   display: inline-block;

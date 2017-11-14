@@ -14,10 +14,10 @@
   -webkit-box-sizing: border-box;
 }
 
+html, body {margin: 0; height: 100%}
+
 html {
-  margin: 0;
-  background: #f5f5f5;
-  font: 400 #{$fb}/1.6 $ff;
+  font: 400 #{$fb}/1.42 $ff;
   -ms-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   -webkit-overflow-scrolling: touch;
@@ -31,12 +31,12 @@ body {
   @include flexbox;
   @include flex-direction(column);
   min-height: 100vh;
-  max-width: 1920px;
   background: #fff;
-  margin: 0 auto;
   font-size: $fp;
   color: $tx;
   &.is_overflow {overflow: hidden}
+  @include rwd(1024) {font-size: $fp * 0.9}
+  @include rwd(480) {font-size: $fp * 0.8}
 }
 #main {
   @include flex(1, 0, auto);
@@ -49,18 +49,9 @@ body {
   position: relative;
 }
 
-hr {
-  height: 0;
-  border: 0;
-  clear: both;
-  font-size: 0;
-  display: block;
-  overflow: hidden;
-}
-
 article, aside, figure, footer, header, nav, section {display: block}
 button {background: rgba(255, 255, 255, 0); border: medium none}
-h1, h2, h3, h4, h5 {font-weight: normal}
+h1, h2, h3, h4, h5, h6 {font-weight: normal}
 td {vertical-align: middle}
 table {border-spacing: 0}
 mark {background: none}
@@ -73,8 +64,8 @@ img {
 }
 
 a {
+  @extend %ani;
   color: $cl;
-  @extend .ani;
   outline: 0 none;
   text-decoration: none;
   &:hover {
@@ -84,14 +75,15 @@ a {
   > img {border: 0}
 }
 
-input:not([type="radio"]):not([type="checkbox"]), select, textarea {
+input:not([type="submit"]):not([type="radio"]):not([type="checkbox"]), select, textarea {
+  @extend %ani;
   width: 100%;
-  @extend .ani;
   outline: 0 none;
   border-radius: 0;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -webkit-appearance: none;
+  &:-webkit-autofill {-webkit-box-shadow: 0 0 0 30px #fff inset !important}
 }
 input[type="submit"], input[type="button"] {
   width: auto;

@@ -11,11 +11,30 @@ $ff: 'Open Sans', sans-serif;
 @import 'parts/03_apps';
 
 
+.button, input[type="submit"] {
+  @extend %ani;
+  display: inline-block;
+  vertical-align: middle;
+  font: 400 16px/1.2 $ff;
+  color: #fff;
+  background: $cl;
+  padding: rem(7) rem(27);
+  box-shadow: inset 0 0 0 2px $cl;
+  text-align: center;
+  cursor: pointer;
+  &:hover {
+    color: $cl;
+    background: #fff;
+  }
+  &.disabled, &[disabled] {
+    pointer-events: none;
+  }
+  & + .button, & + input[type="submit"] {margin-left: 10px}
+}
+
+
 .content {}
 
-.button {
-  &:hover {}
-}
 
 header {
   @include rwd(1024) {
@@ -24,8 +43,9 @@ header {
   }
 }
 
+
 #menu {
-  @extend .ani;
+  @extend %ani;
   li {
     &.current-menu-item > a {}
     &.menu-item-has-children {
@@ -52,6 +72,7 @@ header {
     }
   }
   .sub-menu {
+    @extend %ani;
     display: block;
     background: #fff;
     position: absolute;
@@ -62,7 +83,6 @@ header {
     visibility: hidden;
     @include transform(translateY(10px));
     margin-top: 10px;
-    @extend .ani;
     z-index: 3;
     li {
       display: block;

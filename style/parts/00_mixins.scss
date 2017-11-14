@@ -23,10 +23,14 @@
   $max-width: $px#{px};
   @media screen and (max-width: $max-width) {@content}
 }
-
 @mixin rwd-min($px) {
   $min-width: $px#{px};
   @media screen and (min-width: $min-width) {@content}
+}
+@mixin rwd-range($px, $px2) {
+  $max-width: $px#{px};
+  $min-width: $px2#{px};
+  @media screen and (max-width: $max-width) and (min-width: $min-width) {@content}
 }
 
 @mixin prefixer($property, $value){
@@ -46,11 +50,11 @@
   }
 }
 
-@mixin transition($property: all, $duration: 0.35s, $easing: ease) {
+@mixin transition($property: all, $duration: 0.25s, $easing: ease) {
   $transitions: ($property $duration $easing);
   @include prefixer('transition', $transitions);
 }
-.ani { @include transition() }
+%ani { @include transition() }
 
 @mixin transform($params) {
   @include prefixer('transform', $params);

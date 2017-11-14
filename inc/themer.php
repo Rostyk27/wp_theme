@@ -6,7 +6,6 @@
 define ('HOME_PAGE_ID', get_option('page_on_front'));
 define ('BLOG_ID', get_option('page_for_posts'));
 define ('POSTS_PER_PAGE', get_option('posts_per_page'));
-define ('ALOAD', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNgYAAAAAMAASsJTYQAAAAASUVORK5CYII=');
 if(class_exists('Woocommerce')) :
 	define ('SHOP_ID', get_option('woocommerce_shop_page_id'));
 	define ('ACCOUNT_ID', get_option('woocommerce_myaccount_page_id'));
@@ -34,6 +33,11 @@ require_once('shortcodes.php');
 
 // Custom Posts Duplicator
 require_once('plugins/duplicator.php');
+
+function my_acf_init() {
+	acf_update_setting('google_api_key', 'AIzaSyAO77hGcvxmsvOn1RSjDFQMI4YUnW89MDo');
+}
+add_action('acf/init', 'my_acf_init');
 
 // Prevent File Modifications
 if ( ! defined( 'DISALLOW_FILE_EDIT' ) ) {
