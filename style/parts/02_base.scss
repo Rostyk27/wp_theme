@@ -110,14 +110,14 @@ div.wpcf7 {
   .ajax-loader {
     @extend %ani;
     @include prefixer(animation, swiper-preloader-spin 1s infinite linear);
-    width: 24px;
-    height: 24px;
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0 -48px 0 24px;
+    width: rem(24);
+    height: rem(24);
+    position: absolute;
+    top: 100%;
+    right: 0;
     border-radius: 100%;
-    border: 2px solid #f1f1f1;
-    border-top: 3px solid $cl;
+    border: rem(2) solid #f1f1f1;
+    border-top: rem(3) solid $cl;
     opacity: 0;
     visibility: hidden;
     &.is-active {
@@ -159,18 +159,17 @@ div.wpcf7 {
 }
 
 
-// social media
-.some {
+// social media + share buttons
+.some, .shrs {
   a {
     display: inline-block;
     vertical-align: top;
-    font-size: 19px;
-    color: #fff;
-    width: 32px;
+    width: 34px;
     height: 32px;
-    line-height: 32px;
+    font-size: 20px;
+    line-height: 36px;
+    margin: 0 rem(6);
     text-align: center;
-    margin: 0 5px;
     position: relative;
     z-index: 0;
     &:after {
@@ -178,70 +177,43 @@ div.wpcf7 {
       content: '';
       position: absolute;
       top: 0;
+      left: 0;
       right: 0;
-      bottom: 0;
-      width: 0;
-      background: #fff;
+      height: 0;
       z-index: -1;
     }
-    &:hover:after {
-      right: auto;
-      left: 0;
-      width: 100%;
-    }
-    &.i_ggl {
-      //font-size: 16px;
-      background: #db4437;
-      &:hover {color: #db4437}
-    }
-    &.i_fcbk {
-      background: #3b5998;
-      &:hover {color: #3b5998}
-    }
-    &.i_twttr {
-      background: #1da1f2;
-      &:hover {color: #1da1f2}
-    }
-    &.i_lnkdn {
-      background: #0177b5;
-      &:hover {color: #0177b5}
-    }
-    &.i_tb {
-      background: #cc181e;
-      &:hover {color: #cc181e}
-    }
-    &.i_pntrst {
-      background: #d50c22;
-      &:hover {color: #d50c22}
-    }
-    &.i_nstgrm {
-      background: #be3094;
-      &:hover {color: #be3094}
-    }
-    &.i_lp {
-      background: #c62221;
-      &:hover {color: #c62221}
-    }
+    &:hover:after {height: 100%}
   }
 }
 
+.some {
+  a {
+    color: #fff;
+    &:after {background: #fff}
+    &.i_ggl:hover {color: #db4437}
+    &.i_fcbk:hover {color: #4267b2}
+    &.i_twttr:hover {color: #1da1f2}
+    &.i_lnkdn:hover {color: #0177b5}
+    &.i_nstgrm:hover {color: #be3094}
+    &.i_tb:hover {color: #cc181e}
+    &.i_vm:hover {color: #01b3ef}
+    &.i_skp:hover {color: #02aff3}
+    &.i_pntrst:hover {color: #d50c22}
+    &.i_drbbl:hover {color: #dd3e7b}
+    &.i_email:hover {color: #39c4ad}
+    &.i_fd:hover {color: #f8991b}
+    &.i_lp:hover {color: #c62221}
+  }
+}
 
-// share buttons
 .shrs {
   a {
-    display: inline-block;
-    vertical-align: top;
-    font-size: 20px;
-    color: #3ddde4;
-    width: 32px;
-    line-height: 32px;
-    text-align: center;
-    border-radius: 50%;
+    color: $tx;
     &:hover {color: #fff}
-    &.i_ggl:hover {background: #db4437}
-    &.i_fcbk:hover {background: #3b5998}
-    &.i_twttr:hover {background: #1da1f2}
-    &.i_lnkdn:hover {background: #0177b5}
-    &.i_pntrst:hover {background: #d50c22}
+    &.i_ggl:after {background: #db4437}
+    &.i_fcbk:after {background: #4267b2}
+    &.i_twttr:after {background: #1da1f2}
+    &.i_lnkdn:after {background: #0177b5}
+    &.i_pntrst:after {background: #d50c22}
   }
 }

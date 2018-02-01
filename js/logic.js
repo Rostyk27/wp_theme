@@ -6,13 +6,14 @@ $(document).ready(function() {
     'use strict';
 
     //  hamburger + menu
-    $(".nav_icon").click(function() {
+    $('.nav_icon').on('click', function() {
         $(this).toggleClass('is_active').next().stop().toggleClass('is_open');
+        $('body').toggleClass('is_overflow');
         return false;
     });
     $('#menu .menu-item-has-children > a').after('<span />');
     $('#menu').on('click', '.menu-item-has-children > a + span', function() {
-        $(this).toggleClass('open').next().stop().toggle().parent().toggleClass('is_active');
+        $(this).toggleClass('is_open').next().stop().toggle().parent().toggleClass('is_active');
     });
 
 
@@ -39,11 +40,7 @@ $(document).ready(function() {
     });
 
 
-    //  apps
-    // $('[data-fancybox]').fancybox({
-    //     smallBtn : false
-    // });
-    
+    //  custom select
     // $('select').selectric({
     //     disableOnMobile: false,
     //     nativeOnMobile: false,
@@ -51,7 +48,8 @@ $(document).ready(function() {
     // });
 
 
-    //  custom
+    //  custom code
+    
 });
 
 
@@ -59,13 +57,17 @@ $(document).ready(function() {
 $(window).on('load', function() {
     'use strict';
 
-    //  apps
+    //  swiper
     // setTimeout(function() {
     //     var home_slider = new Swiper('.home_slider', {
-    //         pagination: '.home_slider .swiper-pagination',
-    //         paginationClickable: true,
-    //         prevButton: '.home_slider .custom_prev',
-    //         nextButton: '.home_slider .custom_next'
+    //         navigation: {
+    //             nextEl: '.custom_next',
+    //             prevEl: '.custom_prev'
+    //         },
+    //         autoplay: {
+    //             delay: 4000
+    //         },
+    //         speed: 1000
     //     });
     // }, 500);
 
@@ -88,5 +90,5 @@ $(window).on('load', function() {
 
 $(window).resizeEnd(function() {
     'use strict';
-    console.log("I'm resized!");
+    
 });

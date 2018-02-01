@@ -1,7 +1,6 @@
 $fb: 30px;
 $fp: 16px;
 $cl: #33d3ff;
-$cl2: #29c662;
 $tx: #212121;
 $ff: 'Open Sans', sans-serif;
 
@@ -26,9 +25,7 @@ $ff: 'Open Sans', sans-serif;
     color: $cl;
     background: #fff;
   }
-  &.disabled, &[disabled] {
-    pointer-events: none;
-  }
+  &.is_disabled, &[disabled] {pointer-events: none}
   & + .button, & + input[type="submit"] {margin-left: 10px}
 }
 
@@ -120,26 +117,28 @@ header {
           position: absolute;
           top: 0;
           right: 0;
-          width: 54px;
-          height: 42px;
+          width: 50px;
+          height: 40px;
           cursor: pointer;
-          z-index: 99;
+          z-index: 2;
           &:after, &:before {
             content: '';
-            position: absolute;
+            @include transition();
             @include transform(translate(-50%,-50%));
+            position: absolute;
             top: 50%;
             left: 50%;
             background: $cl;
-            width: 22px;
-            height: 4px;
-            @include transition();
+          }
+          &:after {
+            width: 20px;
+            height: 2px;
           }
           &:before {
-            width: 4px;
-            height: 22px;
+            width: 2px;
+            height: 20px;
           }
-          &.open {
+          &.is_open {
             &:after {@include transform(translate(-50%,-50%) rotate(180deg))}
             &:before {@include transform(translate(-50%,-50%) rotate(-90deg))}
           }

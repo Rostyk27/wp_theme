@@ -103,6 +103,12 @@
   &:-ms-input-placeholder      { @content; }
 }
 
+@mixin hover {
+  @include rwd-min(1025) {
+    &:hover {@content}
+  }
+}
+
 //SCSS Triangle
 @mixin triangle ($width:12px, $height:10px, $cl:#000, $direction: top) {
   position: absolute;
