@@ -209,19 +209,19 @@ function shortcode_empty_paragraph_fix($content){
     return $content;
 }
 
-function some() {
-    $some = get_field('some', 'option');
+function so_me() {
+    $so_me = get_field('so_me', 'option');
     $soc = '';
-    if($some) {
-        $soc .= '<div class="some">';
-        foreach($some as $sm) {
-            $soc .= '<a class="i_'.$sm['icon'].'" target="_blank" href="'.$sm['link'].'" rel="noopener noreferrer"></a>';
+    if($so_me) {
+        $soc .= '<div class="so_me">';
+        foreach($so_me as $sm) {
+            $soc .= '<a href="'.$sm['link'].'" class="i_'.$sm['icon'].'" target="_blank" rel="noopener noreferrer"></a>';
         }
         $soc .= '</div>';
     }
     return $soc;
 }
-add_shortcode("social", "some");
+add_shortcode("social", "so_me");
 
 
 function youtube_image($id) {

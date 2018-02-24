@@ -1,8 +1,8 @@
 </div>
 <footer>
     <div class="container flex">
-	    <div class="copy">© <?php bloginfo(); ?> <?php echo date( 'Y' ) ?> | All rights reserved</div>
-	    <a href="#" class="dev" target="_blank" rel="noopener noreferrer">Developed in Lviv</a>
+	    <div class="copy">© <?php bloginfo(); ?> <?php echo date( 'Y' ) ?></div>
+	    <a href="#" class="dev" target="_blank" rel="noopener noreferrer">Developed by</a>
     </div>
 </footer>
 <?php wp_footer(); ?>

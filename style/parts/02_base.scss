@@ -1,15 +1,5 @@
 // base classes
 
-.aparent {
-  @extend .flex_start;
-  article {@include flex(1)}
-  aside {
-    width: 350px;
-    max-width: 100%;
-    margin-left: 3.5%;
-  }
-}
-
 // swiper controls
 .swiper-container {
   .custom_prev, .custom_next {
@@ -50,10 +40,10 @@ div.wpcf7 {
     > * {@include flex-basis(48%)}
   }
   .wpcf7-form-control-wrap {
-    display: block !important;
+    display: block;
     margin-bottom: rem(20);
     position: relative;
-    &.is_active {box-shadow: 0 1px #ccc}
+    &.is_active {box-shadow: 0 1px 3px #ccc}
   }
   .wpcf7-not-valid-tip {
     position: absolute;
@@ -97,7 +87,7 @@ div.wpcf7 {
     @include placeholder {color: $tx; opacity: 1}
   }
   textarea {
-    @include transition(none 0.25s ease);
+    @include transition(none);
     resize: none;
     overflow: hidden;
     min-height: 40px;
@@ -160,7 +150,7 @@ div.wpcf7 {
 
 
 // social media + share buttons
-.some, .shrs {
+.so_me, .shrs {
   a {
     display: inline-block;
     vertical-align: top;
@@ -186,7 +176,7 @@ div.wpcf7 {
   }
 }
 
-.some {
+.so_me {
   a {
     color: #fff;
     &:after {background: #fff}

@@ -1,0 +1,151 @@
+// header + main_menu
+
+header {
+  @include rwd(1024) {
+    position: relative;
+    > .container {position: static}
+  }
+}
+
+#menu {
+  @extend %ani;
+  li {
+    &.current-menu-item > a {}
+    &.menu-item-has-children {
+      position: relative;
+      &:before {
+        //content: '';
+        //background: #000;
+        position: absolute;
+        left: -25px;
+        right: -155px;
+        top: 0;
+        height: 40px;
+        z-index: -1;
+        display: none;
+      }
+      &:hover {
+        &:before {display: block}
+        > .sub-menu {
+          opacity: 1;
+          visibility: visible;
+          @include transform(translateY(0));
+        }
+      }
+    }
+  }
+  .sub-menu {
+    @extend %ani;
+    display: block;
+    background: #fff;
+    position: absolute;
+    right: -130px;
+    top: 100%;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    @include transform(translateY(10px));
+    margin-top: 10px;
+    z-index: 3;
+    li {
+      display: block;
+      border-bottom: 1px solid #ccc;
+    }
+    a {
+      display: block;
+      padding: 10px 15px;
+    }
+  }
+  @include rwd(1024) {
+    width: 50%;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 0;
+    border-top: 1px solid $cl;
+    z-index: 2;
+    @include transform(translateX(101%));
+    &.is_open {@include transform(translateX(0))}
+    ul {
+      margin: 0;
+      background: #fff;
+    }
+    li {
+      display: block;
+      line-height: 1.5;
+      margin: 0;
+      text-align: center;
+      border-bottom: 1px solid #ccc;
+      &.menu-item-has-children {
+        > a {border-bottom: 1px solid transparent}
+        &.active > a {border-bottom-color: #ccc}
+        > a + span {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 50px;
+          height: 40px;
+          cursor: pointer;
+          z-index: 2;
+          &:after, &:before {
+            content: '';
+            @include transition();
+            @include transform(translate(-50%,-50%));
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            background: $cl;
+          }
+          &:after {
+            width: 20px;
+            height: 2px;
+          }
+          &:before {
+            width: 2px;
+            height: 20px;
+          }
+          &.is_open {
+            &:after {@include transform(translate(-50%,-50%) rotate(180deg))}
+            &:before {@include transform(translate(-50%,-50%) rotate(-90deg))}
+          }
+        }
+        &.current-menu-item > a + span {
+          &:after, &:before {background: #fff}
+        }
+      }
+      &.current-menu-item {
+        > a {
+          color: #fff;
+          background: $cl;
+        }
+      }
+    }
+    a {
+      display: block;
+      padding: 10px 0 8px;
+      &:hover {color: $tx}
+    }
+    .sub-menu {
+      display: none;
+      position: static;
+      @include transition(none,0s);
+      opacity: 1;
+      visibility: visible;
+      @include transform(translateY(0));
+      top: auto;
+      left: auto;
+      right: auto;
+      padding: 0;
+      margin: 0;
+      box-shadow: none;
+      li {
+        margin: 0;
+        background: #f8f8f8;
+        &:last-of-type {border: none}
+      }
+      a {padding: 10px 0 8px}
+    }
+  }
+  @include rwd(767) {width: 67%}
+  @include rwd(480) {width: 100%}
+}

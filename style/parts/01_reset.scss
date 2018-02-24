@@ -17,10 +17,8 @@ html {
   -webkit-text-size-adjust: none;
   -webkit-overflow-scrolling: touch;
   -webkit-font-smoothing: antialiased;
-  @include rwd(1366) {font-size: $fb * 0.9}
-  @include rwd(1024) {font-size: $fb * 0.8}
-  @include rwd(767) {font-size: $fb * 0.7}
-  @include rwd(480) {font-size: $fb * 0.6}
+  @include rwd(1024) {font-size: $fb * 0.9}
+  @include rwd(767) {font-size: $fb * 0.8}
 }
 body {
   @include flexbox;
@@ -29,11 +27,8 @@ body {
   background: #fff;
   font-size: $fp;
   color: $tx;
-  @include rwd(1024) {
-    font-size: $fp * 0.9;
-    &.is_overflow {overflow: hidden}
-  }
-  @include rwd(480) {font-size: $fp * 0.8}
+  @include rwd(1024) { &.is_overflow {overflow: hidden} }
+  @include rwd(767) {font-size: $fp * 0.9375}
 }
 #main {
   @include flex(1, 0, auto);
@@ -41,9 +36,10 @@ body {
 }
 .container {
   width: 1140px;
-  max-width: 94%;
+  max-width: 90%;
   margin: 0 auto;
   position: relative;
+  @include rwd-min(481) {max-width: 94%}
 }
 
 article, aside, figure, footer, header, nav, section {display: block}
@@ -59,6 +55,8 @@ img {
   display: block;
   max-width: 100%;
 }
+
+%ani {@include transition()}
 
 a {
   @extend %ani;
@@ -78,7 +76,6 @@ input:not([type="submit"]):not([type="radio"]):not([type="checkbox"]), select, t
   outline: 0 none;
   border-radius: 0;
   box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   -webkit-appearance: none;
   &:-webkit-autofill {-webkit-box-shadow: 0 0 0 30px #fff inset !important}
 }
@@ -91,15 +88,15 @@ input[type="submit"], input[type="button"] {
 input, textarea {@include placeholder {color: $tx; opacity: 1}}
 
 // selection
-::-moz-selection {color: #fff; background: $cl}
-::selection {color: #fff; background: $cl}
-::-moz-focus-inner {border: 0}
 :focus {outline: none}
+::-moz-focus-inner {border: 0}
+::selection {color: #fff; background: $cl}
+::-moz-selection {color: #fff; background: $cl}
 
 // custom scrollbar
 ::-webkit-scrollbar {width: 12px}
-::-webkit-scrollbar-track {background: #eaeaea}
 ::-webkit-scrollbar-thumb {background: $cl}
+::-webkit-scrollbar-track {background: #eaeaea}
 ::-webkit-scrollbar-thumb:hover {background: darken($cl, 5%)}
 
 // fullframe video
@@ -111,18 +108,17 @@ input, textarea {@include placeholder {color: $tx; opacity: 1}}
 
 
 // wp content
-.alignleft {float: left}
-.alignright {float: right}
-.aligncenter {margin-left: auto; margin-right: auto}
-
 .content {
   img {
-    &.alignleft {margin: 0 1.5em 1.5em 0}
-    &.alignright {margin: 0 0 1.5em 1.5em}
-    &.alignnone {
-      margin: 0;
-      display: inline-block;
-      vertical-align: baseline;
+    &.alignnone {margin: 0 0 rem(21)}
+    &.aligncenter {margin: 0 auto rem(21)}
+    &.alignleft {
+      float: left;
+      margin: 0 rem(21) rem(21) 0;
+    }
+    &.alignright {
+      float: right;
+      margin: 0 0 rem(21) rem(21);
     }
   }
 }
@@ -143,6 +139,16 @@ input, textarea {@include placeholder {color: $tx; opacity: 1}}
   @include flexbox;
   @include align-items(center);
   @include justify-content(center);
+}
+
+.a_parent {
+  @extend .flex_start;
+  article {@include flex(1)}
+  aside {
+    width: 350px;
+    max-width: 100%;
+    margin-left: 3.5%;
+  }
 }
 
 .bg {

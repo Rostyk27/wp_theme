@@ -54,7 +54,6 @@
   $transitions: ($property $duration $easing);
   @include prefixer('transition', $transitions);
 }
-%ani { @include transition() }
 
 @mixin transform($params) {
   @include prefixer('transform', $params);
