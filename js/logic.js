@@ -44,7 +44,10 @@ $(document).ready(function() {
     // $('select').selectric({
     //     disableOnMobile: false,
     //     nativeOnMobile: false,
-    //     arrowButtonMarkup: ""
+    //     arrowButtonMarkup: '<span class="select_arrow"></span>'
+    // });
+    // $('select.wpcf7-form-control').each(function () {
+    //     $(this).find('option').first().val('');
     // });
 
 
@@ -63,6 +66,11 @@ $(window).on('load', function() {
     //         navigation: {
     //             nextEl: '.custom_next',
     //             prevEl: '.custom_prev'
+    //         },
+    //         pagination: {
+    //             el: '.sw_pagination',
+    //             type: 'bullets',
+    //             clickable: true
     //         },
     //         autoplay: {
     //             delay: 4000

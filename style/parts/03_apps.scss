@@ -171,26 +171,22 @@ $load_width: rem(30);
 
 
 // custom select
-$selectric-main-color:      #DDD !default;                                              // Color used in border
-$selectric-secondary-color: #BBB !default;                                              // Color used in button
-$selectric-text-color:      #444 !default;                                              // Color used in label
-$selectric-bg-color:        #F8F8F8 !default;                                           // Background color
-$selectric-btn-bg-color:    #F8f8f8 !default;                                           // Button background color
+$selectric-main-color:      #ddd !default;                                              // Color used in border
+$selectric-text-color:      #232323 !default;                                           // Color used in label
+$selectric-bg-color:        #f8f8f8 !default;                                           // Background color
 $selectric-height:          40px !default;                                              // Outer height
-$selectric-spacing:         10px !default;                                              // Label left padding
+$selectric-spacing:         rem(15) !default;                                           // Label left padding
 $selectric-border-width:    1px !default;                                               // Outer border width
-$selectric-border-radius:   0px !default;                                               // Border radius
+$selectric-border-radius:   0 !default;                                                 // Border radius
 $selectric-inner-height:    $selectric-height - ($selectric-border-width * 2) !default; // Inner height
-$selectric-font-size:       12px !default;                                              // Font size
+$selectric-font-size:       14px !default;                                              // Font size
 
 .selectric-wrapper {
   position: relative;
   cursor: pointer;
 }
 
-.selectric-responsive {
-  width: 100%;
-}
+.selectric-responsive {width: 100%}
 
 .selectric {
   border: $selectric-border-width solid $selectric-main-color;
@@ -210,65 +206,41 @@ $selectric-font-size:       12px !default;                                      
     color: $selectric-text-color;
     height: $selectric-inner-height;
     user-select: none;
+    @include rwd-min(768) {
+      height: 42px;
+      line-height: 42px;
+      margin-right: 42px;
+    }
   }
 
-  .button {
-    display: block;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: $selectric-inner-height;
-    height: $selectric-inner-height;
-    line-height: $selectric-inner-height;
-    background-color: $selectric-btn-bg-color;
-    color: $selectric-secondary-color;
-    text-align: center;
-    font: 0/0 a;
-    *font: 20px/#{$selectric-inner-height} Lucida Sans Unicode, Arial Unicode MS, Arial;
-
-    &:after {
-      content: " ";
+  .select_arrow {
+    @include center(false, true);
+    right: 21px;
+    &:after, &:before {
+      @extend %ani;
+      content: '';
       position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      margin: auto;
-      width: 0;
-      height: 0;
-      border: 4px solid transparent;
-      border-top-color: $selectric-secondary-color;
-      border-bottom: none;
+      top: 50%;
+      width: 11px;
+      height: 2px;
+      background: #232323;
     }
-  }
-}
-
-.selectric-focus .selectric {
-  border-color: darken($selectric-main-color, 20%);
-}
-
-.selectric-hover .selectric {
-  border-color: darken($selectric-main-color, 10%);
-
-  .button {
-    color: darken($selectric-secondary-color, 10%);
-
     &:after {
-      border-top-color: darken($selectric-secondary-color, 10%);
+      left: -2px;
+      @include transform(translate(0, -50%) rotate(-45deg));
+    }
+    &:before {
+      right: -2px;
+      @include transform(translate(0, -50%) rotate(45deg));
     }
   }
+
 }
 
 .selectric-open {
   z-index: 9999;
 
-  .selectric {
-    border-color: darken($selectric-main-color, 10%);
-  }
-
-  .selectric-items {
-    display: block;
-  }
+  .selectric-items {display: block}
 }
 
 .selectric-disabled {
@@ -332,7 +304,6 @@ $selectric-font-size:       12px !default;                                      
   display: block !important;
 }
 
-/* Items box */
 .selectric-items {
   display: none;
   position: absolute;
@@ -354,34 +325,20 @@ $selectric-font-size:       12px !default;                                      
   }
 
   ul, li {
-    list-style: none;
-    padding: 0;
-    margin: 0;
     font-size: $selectric-font-size;
     line-height: 20px;
     min-height: 20px;
   }
 
   li {
+    @extend %ani;
     display: block;
     padding: 10px;
-    color: #666;
+    color: $tx;
+    background: #eee;
     cursor: pointer;
 
-    &.selected {
-      background: #E0E0E0;
-      color: #444;
-    }
-
-    &.highlighted {
-      background: #D0D0D0;
-      color: #444;
-    }
-
-    &:hover {
-      background: #D5D5D5;
-      color: #444;
-    }
+    &:hover, &.selected, &.highlighted {background: $cl}
   }
 
   .disabled {
