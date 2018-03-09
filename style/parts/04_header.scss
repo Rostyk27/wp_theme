@@ -24,7 +24,7 @@ header {
         z-index: -1;
         display: none;
       }
-      &:hover {
+      @include hover {
         &:before {display: block}
         > .sub-menu {
           opacity: 1;
@@ -123,7 +123,7 @@ header {
     a {
       display: block;
       padding: 10px 0 8px;
-      &:hover {color: $tx}
+      @include hover {color: $tx}
     }
     .sub-menu {
       display: none;

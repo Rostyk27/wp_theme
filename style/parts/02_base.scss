@@ -19,12 +19,16 @@
   .swiper-pagination {
     bottom: 30px !important;
     .swiper-pagination-bullet {
-      background: transparent;
-      border: 1px solid $cl;
       opacity: 1;
-      &:hover, &.swiper-pagination-bullet-active {
-        background: $cl;
+      border: 1px solid $cl;
+      background: transparent;
+      @include hover {
         opacity: 1;
+        background: $cl;
+      }
+      &.swiper-pagination-bullet-active {
+        opacity: 1;
+        background: $cl;
       }
     }
   }
@@ -133,15 +137,17 @@ div.wpcf7 {
     text-align: center;
     //border-radius: 50%;
   }
-  a:hover {
-    background: $cl;
-    border-color: $cl;
-    color: #fff;
+  a {
+    @include hover {
+      color: #fff;
+      background: $cl;
+      border-color: $cl;
+    }
   }
   .current {
+    color: #fff;
     background: $cl;
     border-color: $cl;
-    color: #fff;
     cursor: default;
   }
   .first, .last {font-size: 14px}
@@ -172,7 +178,9 @@ div.wpcf7 {
       height: 0;
       z-index: -1;
     }
-    &:hover:after {height: 100%}
+    @include hover {
+      &:after {height: 100%}
+    }
   }
 }
 
@@ -180,26 +188,26 @@ div.wpcf7 {
   a {
     color: #fff;
     &:after {background: #fff}
-    &.i_ggl:hover {color: #db4437}
-    &.i_fcbk:hover {color: #4267b2}
-    &.i_twttr:hover {color: #1da1f2}
-    &.i_lnkdn:hover {color: #0177b5}
-    &.i_nstgrm:hover {color: #be3094}
-    &.i_tb:hover {color: #cc181e}
-    &.i_vm:hover {color: #01b3ef}
-    &.i_skp:hover {color: #02aff3}
-    &.i_pntrst:hover {color: #d50c22}
-    &.i_drbbl:hover {color: #dd3e7b}
-    &.i_email:hover {color: #39c4ad}
-    &.i_fd:hover {color: #f8991b}
-    &.i_lp:hover {color: #c62221}
+    &.i_ggl { @include hover {color: #db4437} }
+    &.i_fcbk { @include hover {color: #4267b2} }
+    &.i_twttr { @include hover {color: #1da1f2} }
+    &.i_lnkdn { @include hover {color: #0177b5} }
+    &.i_nstgrm { @include hover {color: #be3094} }
+    &.i_tb { @include hover {color: #cc181e} }
+    &.i_vm { @include hover {color: #01b3ef} }
+    &.i_skp { @include hover {color: #02aff3} }
+    &.i_pntrst { @include hover {color: #d50c22} }
+    &.i_drbbl { @include hover {color: #dd3e7b} }
+    &.i_email { @include hover {color: #39c4ad} }
+    &.i_fd { @include hover {color: #f8991b} }
+    &.i_lp { @include hover {color: #c62221} }
   }
 }
 
 .shrs {
   a {
     color: $tx;
-    &:hover {color: #fff}
+    @include hover {color: #fff}
     &.i_ggl:after {background: #db4437}
     &.i_fcbk:after {background: #4267b2}
     &.i_twttr:after {background: #1da1f2}

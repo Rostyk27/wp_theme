@@ -63,7 +63,7 @@ a {
   color: $cl;
   outline: 0 none;
   text-decoration: none;
-  &:hover {
+  @include hover {
     outline: 0 none;
     text-decoration: none;
   }

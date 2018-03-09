@@ -103,6 +103,7 @@
 }
 
 @mixin hover {
+  &:active {@content}
   @include rwd-min(1025) {
     &:hover {@content}
   }

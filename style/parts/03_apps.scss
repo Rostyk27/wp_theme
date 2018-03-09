@@ -338,7 +338,9 @@ $selectric-font-size:       14px !default;                                      
     background: #eee;
     cursor: pointer;
 
-    &:hover, &.selected, &.highlighted {background: $cl}
+    @include hover {background: $cl}
+
+    &.selected, &.highlighted {background: $cl}
   }
 
   .disabled {
