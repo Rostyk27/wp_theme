@@ -17,8 +17,8 @@ html {
   -webkit-text-size-adjust: none;
   -webkit-overflow-scrolling: touch;
   -webkit-font-smoothing: antialiased;
-  @include rwd(1024) {font-size: $fb * 0.9}
-  @include rwd(767) {font-size: $fb * 0.8}
+  @include rwd-max(1024) {font-size: $fb * 0.9}
+  @include rwd-max(767) {font-size: $fb * 0.8}
 }
 body {
   @include flexbox;
@@ -27,8 +27,8 @@ body {
   background: #fff;
   font-size: $fp;
   color: $tx;
-  @include rwd(1024) { &.is_overflow {overflow: hidden} }
-  @include rwd(767) {font-size: $fp * 0.9375}
+  @include rwd-max(1024) { &.is_overflow {overflow: hidden} }
+  @include rwd-max(767) {font-size: $fp * 0.9375}
 }
 #main {
   @include flex(1, 0, auto);
@@ -94,10 +94,14 @@ input, textarea {@include placeholder {color: $tx; opacity: 1}}
 ::-moz-selection {color: #fff; background: $cl}
 
 // custom scrollbar
-::-webkit-scrollbar {width: 12px}
+html::-webkit-scrollbar {
+  width: 8px;
+  @include rwd-min(1025) {width: 12px}
+}
 ::-webkit-scrollbar-thumb {background: $cl}
 ::-webkit-scrollbar-track {background: #eaeaea}
 ::-webkit-scrollbar-thumb:hover {background: darken($cl, 5%)}
+::-webkit-scrollbar-thumb:active {background: darken($cl, 5%)}
 
 // fullframe video
 .fullframe {height: 0;margin: 0;overflow: hidden;padding-bottom: 56.5%;position: relative;z-index: 0;
@@ -130,19 +134,63 @@ input, textarea {@include placeholder {color: $tx; opacity: 1}}
   @include align-items(center);
   @include justify-content(space-between);
 }
+.flex__rwd {
+  @include rwd-min(1025) {
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(space-between);
+  }
+}
+.flex__mob {
+  @include rwd-min(768) {
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(space-between);
+  }
+}
+
 .flex_start {
   @include flexbox;
   @include align-items(flex-start);
   @include justify-content(space-between);
 }
+.flex_start__rwd {
+  @include rwd-min(1025) {
+    @include flexbox;
+    @include align-items(flex-start);
+    @include justify-content(space-between);
+  }
+}
+.flex_start__mob {
+  @include rwd-min(768) {
+    @include flexbox;
+    @include align-items(flex-start);
+    @include justify-content(space-between);
+  }
+}
+
 .flex_center {
   @include flexbox;
   @include align-items(center);
   @include justify-content(center);
 }
+.flex_center__rwd {
+  @include rwd-min(1025) {
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(center);
+  }
+}
+.flex_center__mob {
+  @include rwd-min(768) {
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(center);
+  }
+}
 
 .a_parent {
-  @extend .flex_start;
+  @extend .flex_start__rwd;
   article {@include flex(1)}
   aside {
     width: 350px;
@@ -162,5 +210,16 @@ input, textarea {@include placeholder {color: $tx; opacity: 1}}
   padding-bottom: 0;
 }
 
-@include rwd-min(1025) { .rwd_show {display: none !important} }
-@include rwd(1024) { .rwd_hide {display: none !important} }
+.rwd_show {
+  @include rwd-min(1025) {display: none !important}
+}
+.rwd_hide {
+  @include rwd-max(1024) {display: none !important}
+}
+
+.mob_show {
+  @include rwd-min(768) {display: none !important}
+}
+.mob_hide {
+  @include rwd-max(767) {display: none !important}
+}

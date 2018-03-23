@@ -19,7 +19,7 @@
   @return ($pxval / $base) * 1rem;
 }
 
-@mixin rwd($px) {
+@mixin rwd-max($px) {
   $max-width: $px#{px};
   @media screen and (max-width: $max-width) {@content}
 }

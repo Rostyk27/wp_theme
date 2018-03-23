@@ -1,7 +1,7 @@
 // header + main_menu
 
 header {
-  @include rwd(1024) {
+  @include rwd-max(1024) {
     position: relative;
     > .container {position: static}
   }
@@ -56,7 +56,7 @@ header {
       padding: 10px 15px;
     }
   }
-  @include rwd(1024) {
+  @include rwd-max(1024) {
     width: 50%;
     position: absolute;
     top: 100%;
@@ -146,6 +146,5 @@ header {
       a {padding: 10px 0 8px}
     }
   }
-  @include rwd(767) {width: 67%}
-  @include rwd(480) {width: 100%}
+  @include rwd-max(767) {width: 100%}
 }

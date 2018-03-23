@@ -20,7 +20,7 @@ $h_bg_active: null !default;
   position: absolute;
   right: 3%;
   top: 50%;
-  display: none;
+  display: block;
   height: $h_height;
   width: $h_width;
   cursor: pointer;
@@ -34,7 +34,7 @@ $h_bg_active: null !default;
   outline: none;
   border: none;
   z-index: 10;
-  @include rwd(1024) {display: block}
+  @include rwd-min(1025) {display: none}
   @if $h_bg_static != null {
     background: $h_bg_static;
   }
