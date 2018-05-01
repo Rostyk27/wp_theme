@@ -35,14 +35,16 @@
 
 @mixin prefixer($property, $value){
   -webkit-#{$property}: #{$value};
-  -moz-#{$property}: #{$value};
-  -ms-#{$property}: #{$value};
   #{$property}: #{$value}
 }
 
 @mixin columns($count: 2, $gap: 0) {
-  @include prefixer('column-count', $count);
-  @include prefixer('column-gap', $gap);
+  -webkit-column-count: $count;
+  -moz-column-count: $count;
+  column-count: $count;
+  -webkit-column-gap: $gap;
+  -moz-column-gap: $gap;
+  column-gap: $gap;
   > * {
     break-inside: avoid;
     page-break-inside: avoid;
@@ -50,8 +52,8 @@
   }
 }
 
-@mixin transition($property: all, $duration: 0.25s, $easing: ease) {
-  $transitions: ($property $duration $easing);
+@mixin transition($property: all, $duration: 0.27s, $easing: ease, $delay: 0s) {
+  $transitions: ($property $duration $easing $delay);
   @include prefixer('transition', $transitions);
 }
 
@@ -76,15 +78,6 @@
 
 @mixin keyframes($name) {
   @-webkit-keyframes #{$name} {
-    @content;
-  }
-  @-moz-keyframes #{$name} {
-    @content;
-  }
-  @-ms-keyframes #{$name} {
-    @content;
-  }
-  @-o-keyframes #{$name} {
     @content;
   }
   @keyframes #{$name} {
