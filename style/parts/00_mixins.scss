@@ -52,13 +52,18 @@
   }
 }
 
-@mixin transition($property: all, $duration: 0.27s, $easing: ease, $delay: 0s) {
+@mixin transition($property: all, $duration: 0.3s, $easing: ease, $delay: 0s) {
   $transitions: ($property $duration $easing $delay);
   @include prefixer('transition', $transitions);
 }
 
 @mixin transform($params) {
   @include prefixer('transform', $params);
+}
+
+@mixin gradient($angle: 90deg, $colors...) {
+  background-image: -webkit-linear-gradient(90 - $angle + 360, $colors);
+  background-image: linear-gradient($angle, $colors);
 }
 
 @mixin center($horizontal: true, $vertical: true) {
