@@ -8,7 +8,9 @@ $ff: 'Open Sans', sans-serif;
 @import 'parts/01_reset';
 
 
-.button, input[type="submit"] {
+.button,
+input[type="submit"],
+input[type="button"] {
   @extend %ani;
   display: inline-block;
   vertical-align: middle;
@@ -23,8 +25,11 @@ $ff: 'Open Sans', sans-serif;
     color: $cl;
     background: #fff;
   }
-  &.is_disabled, &[disabled] {pointer-events: none}
-  & + .button, & + input[type="submit"] {margin-left: 7px}
+  &[disabled],
+  &.is_disabled {pointer-events: none}
+  & + .button,
+  & + input[type="submit"],
+  & + input[type="button"] {margin-left: 7px}
 }
 
 .content {}

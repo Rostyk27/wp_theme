@@ -79,7 +79,7 @@ div.wpcf7 {
     &.wpcf7-mail-sent-ok {background: #16a085; position: relative}
     &.wpcf7-validation-errors, &.wpcf7-spam-blocked {background: #ff5f5f; position: relative}
   }
-  input:not([type="submit"]):not([type="radio"]):not([type="checkbox"]), textarea {
+  input:not([type="submit"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]), textarea {
     display: block;
     height: 40px;
     font: 400 16px $ff;

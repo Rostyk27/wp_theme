@@ -17,8 +17,9 @@ html {
   -webkit-text-size-adjust: none;
   -webkit-overflow-scrolling: touch;
   -webkit-font-smoothing: antialiased;
-  @include rwd-max(1024) {font-size: $fb * 0.9}
-  @include rwd-max(767) {font-size: $fb * 0.8}
+  @include rwd-max(1366) {font-size: $fb * 0.9}
+  @include rwd-max(1024) {font-size: $fb * 0.8}
+  @include rwd-max(767) {font-size: $fb * 0.7}
 }
 body {
   @include flexbox;
@@ -36,7 +37,7 @@ body {
 }
 .container {
   width: 1140px;
-  max-width: 90%;
+  max-width: 86%;
   margin: 0 auto;
   position: relative;
   @include rwd-min(481) {max-width: 94%}
@@ -70,7 +71,7 @@ a {
   > img {border: 0}
 }
 
-input:not([type="submit"]):not([type="radio"]):not([type="checkbox"]), select, textarea {
+input:not([type="submit"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]), select, textarea {
   @extend %ani;
   width: 100%;
   outline: 0 none;
@@ -79,7 +80,8 @@ input:not([type="submit"]):not([type="radio"]):not([type="checkbox"]), select, t
   -webkit-appearance: none;
   &:-webkit-autofill {-webkit-box-shadow: 0 0 0 30px #fff inset !important}
 }
-input[type="submit"], input[type="button"] {
+input[type="submit"],
+input[type="button"] {
   width: auto;
   border: none;
   cursor: pointer;
