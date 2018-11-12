@@ -113,7 +113,7 @@ html::-webkit-scrollbar {
 }
 
 
-// wp content
+// wp content images
 .content {
   img {
     &.alignnone {margin: 0 0 rem(21)}
@@ -207,7 +207,7 @@ html::-webkit-scrollbar {
   background-position: 50% 50%;
 }
 
-.last_no_spacing > *:last-child {
+.last_no_spacing > *:last-child:not(.button) {
   margin-bottom: 0;
   padding-bottom: 0;
 }

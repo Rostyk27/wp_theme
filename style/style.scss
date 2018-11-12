@@ -31,8 +31,16 @@ input[type="button"] {
   & + input[type="submit"],
   & + input[type="button"] {margin-left: 7px}
 }
+.link {
+  box-shadow: 0 2px $cl;
+  @include hover {box-shadow: 0 0 $cl}
+}
 
-.content {}
+.content {
+  p, li {
+    a {@extend .link}
+  }
+}
 
 .page404 {padding: rem(60) 0}
 
