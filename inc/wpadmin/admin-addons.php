@@ -1,7 +1,7 @@
 <?php
 
 /*function remove_footer_admin () {
-    echo 'Powered by <a href="http://www.wordpress.org" target="_blank">WordPress</a> | Theme Developer <a href="http://frontend.im" target="_blank">Tusko Trush</a>';
+	echo '<i>Powered by</i> <a href="http://www.wordpress.org" target="_blank" rel="noopener">WordPress</a> | <i>Theme Development</i> <a href="https://codee.pro/" target="_blank" rel="noopener">[codee]</a>';
 }
 add_filter('admin_footer_text', 'remove_footer_admin');*/
 
