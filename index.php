@@ -17,7 +17,7 @@ if(is_home()) {
                             <a class="thumb" href="<?php the_permalink(); ?>">
                                 <img src="<?php echo image_src( get_post_thumbnail_id( $post->ID ), 'single' ); ?>" alt="">
                             </a>
-                            <time datetime="<?php echo get_the_date('F j, Y'); ?>"><?php echo get_the_date('F j, Y'); ?></time>
+                            <time datetime="<?php echo get_the_date('Y-m-d'); ?>"><?php echo get_the_date('F j, Y'); ?></time>
                             <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
                             <p><?php echo wp_trim_words(get_the_content(), 65, ''); ?>
                                 <span class="rm">
@@ -30,7 +30,7 @@ if(is_home()) {
                             <a class="thumb" href="<?php the_permalink(); ?>">
                                 <img src="<?php echo image_src( get_post_thumbnail_id( $post->ID ), 'blog' ); ?>" alt="">
                             </a>
-                            <time datetime="<?php echo get_the_date('F j, Y'); ?>"><?php echo get_the_date('F j, Y'); ?></time>
+                            <time datetime="<?php echo get_the_date('Y-m-d'); ?>"><?php echo get_the_date('F j, Y'); ?></time>
                             <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
                             <p><?php echo wp_trim_words(get_the_content(), 40, ''); ?>
                                 <span class="rm">
