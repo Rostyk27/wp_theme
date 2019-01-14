@@ -16,6 +16,7 @@ require_once dirname( __FILE__ ) . '/class-tgm-plugin-activation.php';
 add_action( 'tgmpa_register', 'wpa_register_recommended_plugins', 10 );
 
 function wpa_register_recommended_plugins() {
+
     $plugins = array(
         array(
             'name' => 'Wp-scss',
@@ -35,11 +36,6 @@ function wpa_register_recommended_plugins() {
         array(
             'name'      => 'WP Migrate DB',
             'slug'      => 'wp-migrate-db',
-            'required'  => false,
-        ),
-        array(
-            'name'      => 'Drag & Drop Featured Image',
-            'slug'      => 'drag-drop-featured-image',
             'required'  => false,
         ),
         array(
