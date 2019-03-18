@@ -104,10 +104,14 @@
     &._col_11 {@include flex(0 0 calc(100%/12*11 - var(--grid-gap)*2))}
     @include rwd-max(1024) {
       &.__rwd {@include flex(1)}
+      &.__33_rwd {@include flex(0 0 calc(33.333% - var(--grid-gap)*2))}
+      &.__50_rwd {@include flex(0 0 calc(50% - var(--grid-gap)*2))}
       &.__full_rwd {@include flex(0 0 calc(100% - var(--grid-gap)*2))}
     }
     @include rwd-max(767) {
       &.__mob {@include flex(1)}
+      &.__33_mob {@include flex(0 0 calc(33.333% - var(--grid-gap)*2))}
+      &.__50_mob {@include flex(0 0 calc(50% - var(--grid-gap)*2))}
       &.__full_mob {@include flex(0 0 calc(100% - var(--grid-gap)*2))}
     }
   }
