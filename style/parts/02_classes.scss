@@ -64,6 +64,57 @@
 
 
 
+// 12_column grid
+.flex_grid {
+  @include flexbox;
+  margin: 0 calc(var(--grid-gap) * -1);
+  > * {margin: 0 var(--grid-gap)}
+}
+.flex_grid__rwd {
+  @include rwd-min(1025) {
+    @include flexbox;
+    margin: 0 calc(var(--grid-gap) * -1);
+    > * {margin: 0 var(--grid-gap)}
+  }
+}
+.flex_grid__mob {
+  @include rwd-min(768) {
+    @include flexbox;
+    margin: 0 calc(var(--grid-gap) * -1);
+    > * {margin: 0 var(--grid-gap)}
+  }
+}
+[class*="flex_grid"] {
+  --grid-gap: 15px;
+  margin-bottom: calc(var(--grid-gap) * -2);
+  &._multi_rows {@include flex-wrap(wrap)}
+  > * {
+    @include flex(1);
+    margin-bottom: calc(var(--grid-gap)*2);
+    &._col_1 {@include flex(0 0 calc(100%/12 - var(--grid-gap)*2))}
+    &._col_2 {@include flex(0 0 calc(100%/12*2 - var(--grid-gap)*2))}
+    &._col_3 {@include flex(0 0 calc(100%/12*3 - var(--grid-gap)*2))}
+    &._col_4 {@include flex(0 0 calc(100%/12*4 - var(--grid-gap)*2))}
+    &._col_5 {@include flex(0 0 calc(100%/12*5 - var(--grid-gap)*2))}
+    &._col_6 {@include flex(0 0 calc(100%/12*6 - var(--grid-gap)*2))}
+    &._col_7 {@include flex(0 0 calc(100%/12*7 - var(--grid-gap)*2))}
+    &._col_8 {@include flex(0 0 calc(100%/12*8 - var(--grid-gap)*2))}
+    &._col_9 {@include flex(0 0 calc(100%/12*9 - var(--grid-gap)*2))}
+    &._col_10 {@include flex(0 0 calc(100%/12*10 - var(--grid-gap)*2))}
+    &._col_11 {@include flex(0 0 calc(100%/12*11 - var(--grid-gap)*2))}
+    @include rwd-max(1024) {
+      &.__rwd {@include flex(1)}
+      &.__full_rwd {@include flex(0 0 calc(100% - var(--grid-gap)*2))}
+    }
+    @include rwd-max(767) {
+      &.__mob {@include flex(1)}
+      &.__full_mob {@include flex(0 0 calc(100% - var(--grid-gap)*2))}
+    }
+  }
+}
+
+
+
 // useful classes
 .bg {
   background-size: cover;
