@@ -56,6 +56,21 @@ img {
   display: block;
   max-width: 100%;
 }
+// wp content images
+.content {
+  img {
+    &.alignnone {margin: 0 0 rem(21)}
+    &.aligncenter {margin: 0 auto rem(21)}
+    &.alignleft {
+      float: left;
+      margin: 0 rem(21) rem(21) 0;
+    }
+    &.alignright {
+      float: right;
+      margin: 0 0 rem(21) rem(21);
+    }
+  }
+}
 
 %ani {@include transition()}
 
@@ -106,122 +121,8 @@ html::-webkit-scrollbar {
 ::-webkit-scrollbar-thumb:active {background: darken($cl, 5%)}
 
 // fullframe video
-.fullframe {height: 0;margin: 0;overflow: hidden;padding-bottom: 56.5%;position: relative;z-index: 0;
+.full_frame {height: 0;margin: 0;overflow: hidden;padding-bottom: 56.5%;position: relative;z-index: 0;
   > {
     iframe, object, embed {height: 100%;left: 0;position: absolute;top: 0;width: 100%;z-index: -1}
   }
-}
-
-
-// wp content images
-.content {
-  img {
-    &.alignnone {margin: 0 0 rem(21)}
-    &.aligncenter {margin: 0 auto rem(21)}
-    &.alignleft {
-      float: left;
-      margin: 0 rem(21) rem(21) 0;
-    }
-    &.alignright {
-      float: right;
-      margin: 0 0 rem(21) rem(21);
-    }
-  }
-}
-
-
-// classes to extend
-.flex {
-  @include flexbox;
-  @include align-items(center);
-  @include justify-content(space-between);
-}
-.flex__rwd {
-  @include rwd-min(1025) {
-    @include flexbox;
-    @include align-items(center);
-    @include justify-content(space-between);
-  }
-}
-.flex__mob {
-  @include rwd-min(768) {
-    @include flexbox;
-    @include align-items(center);
-    @include justify-content(space-between);
-  }
-}
-
-.flex_start {
-  @include flexbox;
-  @include align-items(flex-start);
-  @include justify-content(space-between);
-}
-.flex_start__rwd {
-  @include rwd-min(1025) {
-    @include flexbox;
-    @include align-items(flex-start);
-    @include justify-content(space-between);
-  }
-}
-.flex_start__mob {
-  @include rwd-min(768) {
-    @include flexbox;
-    @include align-items(flex-start);
-    @include justify-content(space-between);
-  }
-}
-
-.flex_center {
-  @include flexbox;
-  @include align-items(center);
-  @include justify-content(center);
-}
-.flex_center__rwd {
-  @include rwd-min(1025) {
-    @include flexbox;
-    @include align-items(center);
-    @include justify-content(center);
-  }
-}
-.flex_center__mob {
-  @include rwd-min(768) {
-    @include flexbox;
-    @include align-items(center);
-    @include justify-content(center);
-  }
-}
-
-.a_parent {
-  @extend .flex_start__rwd;
-  article {@include flex(1)}
-  aside {
-    width: 350px;
-    max-width: 100%;
-    margin-left: 3.5%;
-  }
-}
-
-.bg {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-}
-
-.last_no_spacing > *:last-child:not(.button) {
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
-
-.rwd_show {
-  @include rwd-min(1025) {display: none !important}
-}
-.rwd_hide {
-  @include rwd-max(1024) {display: none !important}
-}
-
-.mob_show {
-  @include rwd-min(768) {display: none !important}
-}
-.mob_hide {
-  @include rwd-max(767) {display: none !important}
 }

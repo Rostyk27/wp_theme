@@ -1,4 +1,96 @@
-// base classes
+// theme classes
+
+
+// flex classes
+.flex {
+  @include flexbox;
+  @include align-items(center);
+  @include justify-content(space-between);
+}
+.flex__rwd {
+  @include rwd-min(1025) {
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(space-between);
+  }
+}
+.flex__mob {
+  @include rwd-min(768) {
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(space-between);
+  }
+}
+
+.flex_start {
+  @include flexbox;
+  @include align-items(flex-start);
+  @include justify-content(space-between);
+}
+.flex_start__rwd {
+  @include rwd-min(1025) {
+    @include flexbox;
+    @include align-items(flex-start);
+    @include justify-content(space-between);
+  }
+}
+.flex_start__mob {
+  @include rwd-min(768) {
+    @include flexbox;
+    @include align-items(flex-start);
+    @include justify-content(space-between);
+  }
+}
+
+.flex_center {
+  @include flexbox;
+  @include align-items(center);
+  @include justify-content(center);
+}
+.flex_center__rwd {
+  @include rwd-min(1025) {
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(center);
+  }
+}
+.flex_center__mob {
+  @include rwd-min(768) {
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(center);
+  }
+}
+
+
+
+// useful classes
+.bg {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+.last_no_spacing > *:last-child:not(.button) {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.rwd_show {
+  @include rwd-min(1025) {display: none !important}
+}
+.rwd_hide {
+  @include rwd-max(1024) {display: none !important}
+}
+
+.mob_show {
+  @include rwd-min(768) {display: none !important}
+}
+.mob_hide {
+  @include rwd-max(767) {display: none !important}
+}
+
+
 
 // swiper controls
 .swiper-container {
@@ -33,6 +125,7 @@
     }
   }
 }
+
 
 
 // cf7
@@ -123,6 +216,7 @@ div.wpcf7 {
 }
 
 
+
 // pager
 .wp-pagenavi {
   margin-top: rem(80);
@@ -153,6 +247,7 @@ div.wpcf7 {
   .first, .last {font-size: 14px}
   //.extend {display: none}
 }
+
 
 
 // social media + share buttons

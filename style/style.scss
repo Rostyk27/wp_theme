@@ -6,8 +6,10 @@ $ff: 'Open Sans', sans-serif;
 
 @import 'parts/00_mixins';
 @import 'parts/01_reset';
+@import 'parts/02_classes';
 
 
+// UI kit
 .button,
 input[type="submit"],
 input[type="button"] {
@@ -45,7 +47,6 @@ input[type="button"] {
 .page404 {padding: rem(60) 0}
 
 
-@import 'parts/02_base';
 @import 'parts/03_apps';
 @import 'parts/04_header';
 @import 'parts/05_footer';

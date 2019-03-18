@@ -20,8 +20,8 @@
 }
 
 @mixin rwd-max($px) {
-  $max-width: $px#{px};
-  @media screen and (max-width: $max-width) {@content}
+  $min-width: $px#{px};
+  @media screen and (max-width: $min-width) {@content}
 }
 @mixin rwd-min($px) {
   $min-width: $px#{px};
