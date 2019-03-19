@@ -102,6 +102,7 @@
     &._col_9 {@include flex(0 0 calc(100%/12*9 - var(--grid-gap)))}
     &._col_10 {@include flex(0 0 calc(100%/12*10 - var(--grid-gap)))}
     &._col_11 {@include flex(0 0 calc(100%/12*11 - var(--grid-gap)))}
+    &._col_12 {@include flex(0 0 calc(100% - var(--grid-gap)))}
     @include rwd-max(1024) {
       &.__rwd {@include flex(1)}
       &.__25_rwd {@include flex(0 0 calc(25% - var(--grid-gap)))}
