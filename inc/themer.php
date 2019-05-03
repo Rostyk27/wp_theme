@@ -485,3 +485,20 @@ function wpa_dump($variable){
 	$pretty = function($v='',$c="&nbsp;&nbsp;&nbsp;&nbsp;",$in=-1,$k=null)use(&$pretty){$r='';if(in_array(gettype($v),array('object','array'))){$r.=($in!=-1?str_repeat($c,$in):'').(is_null($k)?'':"$k: ").'<br>';foreach($v as $sk=>$vl){$r.=$pretty($vl,$c,$in+1,$sk).'<br>';}}else{$r.=($in!=-1?str_repeat($c,$in):'').(is_null($k)?'':"$k: ").(is_null($v)?'&lt;NULL&gt;':"<strong>$v</strong>");}return$r;};
 	echo '<pre style="padding-left: 150px; font-family: Courier New"><code class="json">' . $pretty($variable) . '</code></pre>';
 }
+
+function youtube_image($id) {
+	$resolution = array (
+		'maxresdefault',
+		'sddefault',
+		'hqdefault',
+		'0'
+	);
+
+	for ($x = 0; $x < sizeof($resolution); $x++) {
+		$url = 'https://img.youtube.com/vi/' . $id . '/' . $resolution[$x] . '.jpg';
+		if (get_headers($url)[0] == 'HTTP/1.0 200 OK') {
+			break;
+		}
+	}
+	return $url;
+}
