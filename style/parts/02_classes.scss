@@ -152,23 +152,22 @@
 
 
 // swiper controls
-.swiper-container {
-  .custom_prev, .custom_next {
-    @extend %ani;
-    @include center(false, true);
-    font-size: rem(54);
-    color: #fff;
-    cursor: pointer;
-    z-index: 1;
-    &.swiper-button-disabled {
-      opacity: 0.4;
-      cursor: default;
-    }
+.sw_controls {
+  @extend %ani;
+  @include center(false, true);
+  font-size: rem(54);
+  color: #fff;
+  cursor: pointer;
+  z-index: 1;
+  &.swiper-button-disabled {
+    opacity: 0.4;
+    cursor: default;
   }
-  .custom_prev {left: rem(30)}
-  .custom_next {right: rem(30)}
-  .swiper-pagination {
-    bottom: 30px !important;
+}
+.sw_prev {left: rem(30)}
+.sw_next {right: rem(30)}
+.sw_pagination {
+    bottom: 0;
     .swiper-pagination-bullet {
       opacity: 1;
       border: 1px solid $cl;
@@ -183,7 +182,6 @@
       }
     }
   }
-}
 
 
 
@@ -191,15 +189,14 @@
 div.wpcf7 {
   position: relative;
   .inputs_wrap {
-    @include flexbox;
-    @include justify-content(space-between);
-    > * {@include flex-basis(48%)}
+    @extend .flex__mob;
+    > * { @include rwd-min(768) {width: 48%} }
   }
   .wpcf7-form-control-wrap {
     display: block;
     margin-bottom: rem(20);
     position: relative;
-    &.is_active {box-shadow: 0 1px 3px #ccc}
+    &.is_active {box-shadow: 0 1px 3px #ff0}
   }
   .wpcf7-not-valid-tip {
     position: absolute;
@@ -209,12 +206,11 @@ div.wpcf7 {
     bottom: 0;
     height: 40px;
     font: 400 16px/40px $ff;
-    color: $tx;
-    padding: 0;
+    color: #ff694e;
     background: #fff;
     border-radius: 0;
-    border: 0;
-    border-bottom: 2px solid #ff5f5f;
+    padding: 0 rem(15);
+    border: 1px solid #ff694e;
     cursor: pointer;
   }
   .wpcf7-response-output {
@@ -224,12 +220,12 @@ div.wpcf7 {
     right: 0;
     font: 400 16px/1.4 $ff;
     color: #fff;
-    padding: rem(7) rem(10);
+    padding: rem(12);
     border-radius: 0;
     text-align: center;
     &.wpcf7-mail-sent-ng {background: #1091ae; position: relative}
-    &.wpcf7-mail-sent-ok {background: #16a085; position: relative}
-    &.wpcf7-validation-errors, &.wpcf7-spam-blocked {background: #ff5f5f; position: relative}
+    &.wpcf7-mail-sent-ok {background: #80c684; position: relative}
+    &.wpcf7-validation-errors, &.wpcf7-spam-blocked {background: #ff694e; position: relative}
   }
   input:not([type="submit"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]), textarea {
     display: block;
@@ -237,17 +233,15 @@ div.wpcf7 {
     font: 400 16px $ff;
     color: $tx;
     background: #fff;
-    padding: 0;
-    border: 0;
-    border-bottom: 2px solid $cl;
+    padding: 0 rem(15);
+    border: 1px solid $cl;
     @include placeholder {color: $tx; opacity: 1}
   }
   textarea {
-    @include transition(none);
+    height: 120px;
     resize: none;
-    overflow: hidden;
-    min-height: 40px;
-    line-height: 40px;
+    overflow: auto;
+    padding: rem(15);
   }
   button.button {
     margin: rem(15) 0 rem(20);
@@ -262,8 +256,8 @@ div.wpcf7 {
     top: 100%;
     right: 0;
     border-radius: 100%;
-    border: rem(2) solid #f1f1f1;
-    border-top: rem(3) solid $cl;
+    border: 2px solid #f1f1f1;
+    border-top: 3px solid $cl;
     opacity: 0;
     visibility: hidden;
     &.is-active {

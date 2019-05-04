@@ -34,10 +34,6 @@ $(document).ready(function() {
             $(this).parent().removeClass('is_active');
         }
     });
-    $(this).on( 'keyup', 'textarea', function() {
-        $(this).height( 0 );
-        $(this).height( this.scrollHeight );
-    });
 
 
     //  custom select
@@ -64,11 +60,11 @@ $(window).on('load', function() {
     // setTimeout(function() {
     //     var home_slider = new Swiper('.home_slider', {
     //         navigation: {
-    //             nextEl: '.custom_next',
-    //             prevEl: '.custom_prev'
+    //             nextEl: '.home_slider .sw_next',
+    //             prevEl: '.home_slider .sw_prev'
     //         },
     //         pagination: {
-    //             el: '.sw_pagination',
+    //             el: '.home_slider .sw_pagination',
     //             type: 'bullets',
     //             clickable: true
     //         },
@@ -77,7 +73,7 @@ $(window).on('load', function() {
     //         },
     //         speed: 1000
     //     });
-    // }, 500);
+    // }, 250);
 
 
     //  fluid video (iframe)
