@@ -167,21 +167,23 @@
 .sw_prev {left: rem(30)}
 .sw_next {right: rem(30)}
 .sw_pagination {
-    bottom: 0;
-    .swiper-pagination-bullet {
+  text-align: center;
+  bottom: 0 !important;
+  .swiper-pagination-bullet {
+    @extend %ani;
+    opacity: 1;
+    border: 1px solid $cl;
+    background: transparent;
+    @include hover {
       opacity: 1;
-      border: 1px solid $cl;
-      background: transparent;
-      @include hover {
-        opacity: 1;
-        background: $cl;
-      }
-      &.swiper-pagination-bullet-active {
-        opacity: 1;
-        background: $cl;
-      }
+      background: $cl;
+    }
+    &.swiper-pagination-bullet-active {
+      opacity: 1;
+      background: $cl;
     }
   }
+}
 
 
 
