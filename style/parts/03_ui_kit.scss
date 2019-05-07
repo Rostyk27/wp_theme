@@ -1,0 +1,66 @@
+// style guide
+
+.button {
+  @extend %ani;
+  display: inline-block;
+  vertical-align: middle;
+  font: 400 16px/1.2 $ff;
+  color: #fff;
+  background: $cl;
+  padding: rem(7) rem(27);
+  box-shadow: inset 0 0 0 2px $cl;
+  text-align: center;
+  cursor: pointer;
+  @include hover {
+    color: $cl;
+    background: #fff;
+  }
+  &[disabled],
+  &.is_disabled {pointer-events: none}
+  & + .button {margin-left: 7px}
+}
+.link {
+  box-shadow: 0 2px $cl;
+  @include hover {box-shadow: 0 0 $cl}
+}
+
+p {
+  padding-bottom: rem(21);
+  &.jEmpty {padding-bottom: 0}
+}
+small, sub {
+  display: inline-block;
+  vertical-align: baseline;
+  font-size: 87.5%;
+}
+strong, b {font-weight: 700}
+
+.content {
+  p, li {
+    a {@extend .link}
+  }
+  ul {
+    padding-bottom: rem(21);
+    li {
+      padding-left: rem(18);
+      position: relative;
+      &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 12px;
+        width: 4px;
+        height: 4px;
+        background: $tx;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+[class^="i_"] {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.page404 {padding: rem(60) 0}
