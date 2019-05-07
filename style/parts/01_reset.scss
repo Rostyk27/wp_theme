@@ -37,10 +37,11 @@ body {
 }
 .container {
   width: 1140px;
-  max-width: 86%;
+  max-width: calc(100% - 36px);
   margin: 0 auto;
   position: relative;
-  @include rwd-min(481) {max-width: 94%}
+  @include rwd-range(1024, 481) {max-width: calc(100% - 48px)}
+  @include rwd-min(1025) {max-width: 94%}
 }
 
 article, aside, figure, footer, header, nav, section {display: block}
