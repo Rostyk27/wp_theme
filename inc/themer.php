@@ -155,7 +155,7 @@ function wp_IEhtml5_js () {
 //custom wp_nav_menu classes
 function wpa_discard_menu_classes($classes, $item) {
 	$classes = array_filter(
-		$classes, create_function( '$class', 'return in_array( $class, array( "current-menu-item", "current-menu-parent", "menu-item-has-children" ) );' )
+		$classes, function($class) {return in_array( $class, array( "current-menu-item", "current-menu-parent", "menu-item-has-children" )); }
 	);
 	return array_merge(
 		$classes,
@@ -394,16 +394,10 @@ function wpa_init() {
 	remove_action('wp_head', 'wp_generator');
 	remove_action('wp_head', 'rel_canonical');
 
-	// Remove Emoji js/styles
-	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-	remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
-	remove_action( 'wp_print_styles', 'print_emoji_styles' );
-	remove_action( 'admin_print_styles', 'print_emoji_styles' );
-
 	//Page/Post thumbnail support
 	add_theme_support( 'post-thumbnails' );
 	// Disable Responsive Images
-	add_filter( 'max_srcset_image_width', create_function( '', 'return 1;' ) );
+	add_filter( 'max_srcset_image_width', function(){ return 1; } );
 
 	//site_url convert with qTranslate-x
 	add_filter( 'site_url', 'wpa_qtrans_site_url' );
@@ -430,6 +424,51 @@ function wpa_init() {
 
 }
 add_action( 'init', 'wpa_init', 9999 );
+
+// Remove Emoji js/styles
+function disable_emoji_feature() {
+
+	// Prevent Emoji from loading on the front-end
+	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+	remove_action( 'wp_print_styles', 'print_emoji_styles' );
+
+	// Remove from admin area also
+	remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+	remove_action( 'admin_print_styles', 'print_emoji_styles' );
+
+	// Remove from RSS feeds also
+	remove_filter( 'the_content_feed', 'wp_staticize_emoji');
+	remove_filter( 'comment_text_rss', 'wp_staticize_emoji');
+
+	// Remove from Embeds
+	remove_filter( 'embed_head', 'print_emoji_detection_script' );
+
+	// Remove from emails
+	remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+
+	// Disable from TinyMCE editor. Currently disabled in block editor by default
+	add_filter( 'tiny_mce_plugins', 'disable_emojis_tinymce' );
+
+	/** Finally, disable it from the database also,
+	 *  to prevent characters from converting
+	 *  Earlier, there was a setting under Writings to do this
+	 *  It is not ideal to get & update it here - but it works for now
+	 */
+
+	if( (int) get_option('use_smilies') === 1 ) {
+		update_option( 'use_smilies', 0 );
+	}
+
+}
+
+function disable_emojis_tinymce( $plugins ) {
+	if( is_array($plugins) ) {
+		$plugins = array_diff( $plugins, array( 'wpemoji' ) );
+	}
+	return $plugins;
+}
+
+add_action('init', 'disable_emoji_feature');
 
 /* Activate ACF
    ========================================================================== */
