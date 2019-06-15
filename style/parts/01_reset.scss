@@ -11,25 +11,25 @@
 html, body {margin: 0; height: 100%}
 
 html {
-  font: 400 #{$fb}/1.42 $ff;
+  font: 400 #{$fb * 0.7}/1.42 $ff;
   box-sizing: border-box;
   -ms-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   -webkit-overflow-scrolling: touch;
   -webkit-font-smoothing: antialiased;
-  @include rwd-max(1366) {font-size: $fb * 0.9}
-  @include rwd-max(1024) {font-size: $fb * 0.8}
-  @include rwd-max(767) {font-size: $fb * 0.7}
+  @include rwd-range(1024, 768) {font-size: $fb * 0.8}
+  @include rwd-range(1366, 1025) {font-size: $fb * 0.9}
+  @include rwd-min(1367) {font-size: $fb}
 }
 body {
   @include flexbox;
   @include flex-direction(column);
   min-height: 100vh;
   background: #fff;
-  font-size: $fp;
+  font-size: $fp * 0.9375;
   color: $tx;
   @include rwd-max(1024) { &.is_overflow {overflow: hidden} }
-  @include rwd-max(767) {font-size: $fp * 0.9375}
+  @include rwd-min(768) {font-size: $fp}
 }
 #main {
   @include flex(1, 0, auto);
