@@ -151,21 +151,35 @@
 
 
 
+// fullframe video
+.full_frame {height: 0;margin: 0;overflow: hidden;padding-bottom: 56.5%;position: relative;z-index: 0;
+  > {
+    iframe, object, embed {height: 100%;left: 0;position: absolute;top: 0;width: 100%;z-index: -1}
+  }
+}
+
+
+
 // swiper controls
 .sw_controls {
-  @extend %ani;
   @include center(false, true);
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+.sw_prev,
+.sw_next {
+  @extend %ani;
   font-size: rem(54);
   color: #fff;
   cursor: pointer;
-  z-index: 1;
   &.swiper-button-disabled {
     opacity: 0.4;
     cursor: default;
   }
 }
-.sw_prev {left: rem(30)}
-.sw_next {right: rem(30)}
+.sw_prev {left: 0}
+.sw_next {right: 0}
 .sw_pagination {
   text-align: center;
   bottom: 0 !important;
@@ -246,7 +260,6 @@ div.wpcf7 {
     padding: rem(15);
   }
   button.button {
-    margin: rem(15) 0 rem(20);
     & + input {display: none}
   }
   .ajax-loader {

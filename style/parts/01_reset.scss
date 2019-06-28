@@ -57,21 +57,6 @@ img {
   display: block;
   max-width: 100%;
 }
-// wp content images
-.content {
-  img {
-    &.alignnone {margin: 0 0 rem(21)}
-    &.aligncenter {margin: 0 auto rem(21)}
-    &.alignleft {
-      float: left;
-      margin: 0 rem(21) rem(21) 0;
-    }
-    &.alignright {
-      float: right;
-      margin: 0 0 rem(21) rem(21);
-    }
-  }
-}
 
 %ani {@include transition()}
 
@@ -94,7 +79,10 @@ input:not([type="submit"]):not([type="button"]):not([type="radio"]):not([type="c
   border-radius: 0;
   box-sizing: border-box;
   -webkit-appearance: none;
-  &:-webkit-autofill {-webkit-box-shadow: 0 0 0 30px #fff inset !important}
+  &:-webkit-autofill {
+    -webkit-text-fill-color: $tx !important;
+    -webkit-box-shadow: 0 0 0 30px #fff inset !important;
+  }
 }
 input[type="submit"],
 input[type="button"] {
@@ -113,17 +101,10 @@ input, textarea {@include placeholder {color: $tx; opacity: 1}}
 
 // custom scrollbar
 html::-webkit-scrollbar {
-  width: 8px;
-  @include rwd-min(1025) {width: 12px}
+  width: 6px;
+  @include rwd-min(1025) {width: 10px}
 }
 ::-webkit-scrollbar-thumb {background: $cl}
 ::-webkit-scrollbar-track {background: #eaeaea}
 ::-webkit-scrollbar-thumb:hover {background: darken($cl, 5%)}
 ::-webkit-scrollbar-thumb:active {background: darken($cl, 5%)}
-
-// fullframe video
-.full_frame {height: 0;margin: 0;overflow: hidden;padding-bottom: 56.5%;position: relative;z-index: 0;
-  > {
-    iframe, object, embed {height: 100%;left: 0;position: absolute;top: 0;width: 100%;z-index: -1}
-  }
-}
