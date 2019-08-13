@@ -92,13 +92,12 @@ $load_width: rem(30);
 .show_box {
   @extend %ani;
   @include center();
-  position: fixed;
   display: inline-block;
   vertical-align: top;
   margin: 0;
   opacity: 0;
   visibility: hidden;
-  z-index: 98989;
+  z-index: 3;
   &.is_loading {
     opacity: 1;
     visibility: visible;
