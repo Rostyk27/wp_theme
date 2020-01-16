@@ -68,6 +68,7 @@ if (class_exists('Wp_Scss_Settings')) {
 		update_option('wpscss_options', array('css_dir' => '/style/', 'scss_dir' => '/style/', 'compiling_options' => 'scss_formatter_compressed'));
 	}
 }
+define('WP_SCSS_ALWAYS_RECOMPILE', true);
 
 // Run this code on 'after_theme_setup', when plugins have already been loaded.
 add_action('after_setup_theme', 'wpa_activate_theme');
