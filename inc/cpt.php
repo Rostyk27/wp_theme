@@ -1,5 +1,5 @@
 <?php
-//Example for Custom Post Type with Taxonimies
+//Example for Custom Post Type with Taxonomies
 
 /*
     *** You van use dash-icons https://developer.wordpress.org/resource/dashicons/

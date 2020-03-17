@@ -5,7 +5,7 @@
 $(document).ready(function() {
     'use strict';
 
-    //  hamburger + menu
+    // hamburger + menu
     $('.nav_icon').on('click', function() {
         $(this).toggleClass('is_active').next().stop().toggleClass('is_open');
         $('body').toggleClass('is_overflow');
@@ -17,7 +17,7 @@ $(document).ready(function() {
     });
 
 
-    //  contact form 7
+    // contact form 7
     $(this).on('click', '.wpcf7-not-valid-tip', function() {
         $(this).prev().trigger('focus');
         $(this).fadeOut(250,function(){
@@ -36,7 +36,7 @@ $(document).ready(function() {
     });
 
 
-    //  custom select
+    // custom select
     // $('select').selectric({
     //     disableOnMobile: false,
     //     nativeOnMobile: false,
@@ -47,7 +47,19 @@ $(document).ready(function() {
     // });
 
 
-    //  custom code
+    // fancybox
+    // $.fancybox.defaults.touch = false;
+    // $.fancybox.defaults.smallBtn = false;
+    // $.fancybox.defaults.autoFocus = false;
+
+    // $('[data-fancybox]').fancybox({
+    //     afterLoad: function( instance, slide ) {
+    //         console.log('loaded');
+    //     }
+    // });
+
+
+    // custom code
     
 });
 
@@ -56,7 +68,7 @@ $(document).ready(function() {
 $(window).on('load', function() {
     'use strict';
 
-    //  swiper
+    // swiper
     // setTimeout(function() {
     //     var home_slider = new Swiper('.home_slider', {
     //         navigation: {
@@ -76,7 +88,7 @@ $(window).on('load', function() {
     // }, 250);
 
 
-    //  fluid video (iframe)
+    // fluid video (iframe)
     $('.content iframe').each(function(i) {
         var t = $(this),
             p = t.parent();

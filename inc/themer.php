@@ -156,7 +156,7 @@ function wp_IEhtml5_js () {
 //custom wp_nav_menu classes
 function wpa_discard_menu_classes($classes, $item) {
 	$classes = array_filter(
-		$classes, function($class) {return in_array( $class, array( "current-menu-item", "current-menu-parent", "menu-item-has-children" )); }
+		$classes, function($class) {return in_array( $class, array( "current-menu-item", "current-menu-parent", "current_page_parent", "menu-item-has-children" )); }
 	);
 	return array_merge(
 		$classes,

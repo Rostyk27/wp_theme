@@ -75,4 +75,64 @@ strong, b {font-weight: 700}
   vertical-align: middle;
 }
 
+// social media + share buttons
+.so_me, .shrs {
+  a {
+    display: inline-block;
+    vertical-align: top;
+    width: 34px;
+    height: 32px;
+    font-size: 20px;
+    line-height: 36px;
+    margin: 0 rem(6);
+    text-align: center;
+    position: relative;
+    z-index: 0;
+    &:after {
+      @extend %ani;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 0;
+      z-index: -1;
+    }
+    @include hover {
+      &:after {height: 100%}
+    }
+  }
+}
+.so_me {
+  a {
+    color: #fff;
+    &:after {background: #fff}
+    &.i_ggl { @include hover {color: #db4437} }
+    &.i_fcbk { @include hover {color: #4267b2} }
+    &.i_twttr { @include hover {color: #1da1f2} }
+    &.i_lnkdn { @include hover {color: #0177b5} }
+    &.i_nstgrm { @include hover {color: #be3094} }
+    &.i_tb { @include hover {color: #cc181e} }
+    &.i_vm { @include hover {color: #01b3ef} }
+    &.i_skp { @include hover {color: #02aff3} }
+    &.i_pntrst { @include hover {color: #d50c22} }
+    &.i_drbbl { @include hover {color: #dd3e7b} }
+    &.i_email { @include hover {color: #39c4ad} }
+    &.i_fd { @include hover {color: #f8991b} }
+    &.i_lp { @include hover {color: #c62221} }
+  }
+}
+.shrs {
+  a {
+    color: $tx;
+    @include hover {color: #fff}
+    &.i_ggl:after {background: #db4437}
+    &.i_fcbk:after {background: #4267b2}
+    &.i_twttr:after {background: #1da1f2}
+    &.i_lnkdn:after {background: #0177b5}
+    &.i_pntrst:after {background: #d50c22}
+  }
+}
+
+
 .page404 {padding: rem(60) 0}
