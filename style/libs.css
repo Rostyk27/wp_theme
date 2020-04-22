@@ -1,3 +1,302 @@
+/* icon font */
+[class^="i_"]:before, [class*=" i_"]:before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.i_close:before {
+  content: "\e901";
+}
+.i_twt_circle:before {
+  content: "\e904";
+}
+.i_fcb_circle:before {
+  content: "\e902";
+}
+.i_inst_circle:before {
+  content: "\e903";
+}
+.i_close_b:before {
+  content: "\f00d";
+}
+.i_check_b:before {
+  content: "\f00c";
+}
+.i_thin_arrow_left:before {
+  content: "\e912";
+}
+.i_thin_arrow_right:before {
+  content: "\e913";
+}
+.i_arrow_left:before {
+  content: "\f060";
+}
+.i_arrow_right:before {
+  content: "\f061";
+}
+.i_long_arrow_left:before {
+  content: "\f177";
+}
+.i_long_arrow_right:before {
+  content: "\f178";
+}
+.i_long_arrow_up:before {
+  content: "\f176";
+}
+.i_long_arrow_down:before {
+  content: "\f175";
+}
+.i_chevron_left:before {
+  content: "\f053";
+}
+.i_chevron_right:before {
+  content: "\f054";
+}
+.i_chevron_up:before {
+  content: "\f077";
+}
+.i_chevron_down:before {
+  content: "\f078";
+}
+.i_angle_left:before {
+  content: "\f104";
+}
+.i_angle_right:before {
+  content: "\f105";
+}
+.i_angle_up:before {
+  content: "\f106";
+}
+.i_angle_down:before {
+  content: "\f107";
+}
+.i_clear:before {
+  content: "\e910";
+}
+.i_img:before {
+  content: "\e90d";
+}
+.i_camera:before {
+  content: "\e90c";
+}
+.i_cart:before {
+  content: "\e90e";
+}
+.i_heart_o:before {
+  content: "\e90a";
+}
+.i_heart:before {
+  content: "\e90b";
+}
+.i_star:before {
+  content: "\f005";
+}
+.i_star_o:before {
+  content: "\f006";
+}
+.i_quote_left:before {
+  content: "\f10d";
+}
+.i_quote_right:before {
+  content: "\f10e";
+}
+.i_play:before {
+  content: "\f04b";
+}
+.i_play_circle:before {
+  content: "\e909";
+}
+.i_search_b:before {
+  content: "\f002";
+}
+.i_search:before {
+  content: "\e911";
+}
+.i_pin2:before {
+  content: "\f041";
+}
+.i_phone:before {
+  content: "\f095";
+}
+.i_phone_sqr:before {
+  content: "\e90f";
+}
+.i_copyright:before {
+  content: "\f1f9";
+}
+.i_at:before {
+  content: "\f1fa";
+}
+.i_envelope_o:before {
+  content: "\f003";
+}
+.i_envelope:before {
+  content: "\f0e0";
+}
+.i_twtr:before {
+  content: "\f099";
+}
+.i_twtr_sqr:before {
+  content: "\f081";
+}
+.i_fcbk:before {
+  content: "\f09a";
+}
+.i_fcbk_sqr:before {
+  content: "\f082";
+}
+.i_fcbk_official:before {
+  content: "\f230";
+}
+.i_lnkdn:before {
+  content: "\f0e1";
+}
+.i_lnkdn_sqr:before {
+  content: "\f08c";
+}
+.i_ytb_play:before {
+  content: "\f16a";
+}
+.i_ytb:before {
+  content: "\f167";
+}
+.i_inst:before {
+  content: "\f16d";
+}
+.i_ggl:before {
+  content: "\f1a0";
+}
+.i_pntrst_p:before {
+  content: "\f231";
+}
+.i_pntrst_sqr:before {
+  content: "\f0d3";
+}
+.i_pntrst:before {
+  content: "\f0d2";
+}
+.i_vmo:before {
+  content: "\f27d";
+}
+.i_vmo_sqr:before {
+  content: "\f194";
+}
+.i_whtsp:before {
+  content: "\f232";
+}
+.i_bhnc:before {
+  content: "\f1b4";
+}
+.i_bhnc_sqr:before {
+  content: "\f1b5";
+}
+.i_ylp:before {
+  content: "\f1e9";
+}
+.i_drbbbl:before {
+  content: "\f17d";
+}
+.i_skp:before {
+  content: "\f17e";
+}
+.i_tlgrm:before {
+  content: "\e908";
+}
+.i_share:before {
+  content: "\f1e0";
+}
+.i_share_sqr:before {
+  content: "\f1e1";
+}
+.i_check:before {
+  content: "\e907";
+}
+.i_clock:before {
+  content: "\e906";
+}
+.i_empty_cart:before {
+  content: "\e905";
+}
+.i_quote_left_circle:before {
+  content: "\e915";
+}
+.i_quote_right_circle:before {
+  content: "\e914";
+}
+.i_play_circle_o:before {
+  content: "\e916";
+}
+.i_pin:before {
+  content: "\e919";
+}
+.i_mobile:before {
+  content: "\e918";
+}
+.i_card:before {
+  content: "\e917";
+}
+.i_vbr:before {
+  content: "\e900";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**
  * Swiper 4.5.3
