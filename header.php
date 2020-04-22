@@ -12,7 +12,7 @@
 <meta name="theme-color" content="#232323">
 <?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?> data-hash="<?php wpa_fontbase64(true); ?>" data-a="<?php echo admin_url('admin-ajax.php'); ?>" >
+<body <?php body_class(); ?> data-a="<?php echo admin_url('admin-ajax.php'); ?>">
 <div id="main">
     <header>
         <div class="container">
