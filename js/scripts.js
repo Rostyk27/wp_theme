@@ -36,6 +36,12 @@ $(document).ready(function() {
     });
 
 
+    // scroll to
+    // $('html, body').animate({
+    //     scrollTop: $(elem).offset().top - $('header').outerHeight()
+    // }, 700);
+
+
     // custom select
     // $('select').selectric({
     //     disableOnMobile: false,
@@ -54,8 +60,24 @@ $(document).ready(function() {
 
     // $('[data-fancybox]').fancybox({
     //     afterLoad: function( instance, slide ) {
-    //         console.log('loaded');
+    //         // fix if header is sticky
+    //         $('header').addClass('compensate-for-scrollbar');
+    //     },
+    //     afterClose: function( instance, slide ) {
+    //         // fix if header is sticky
+    //         $('header').removeClass('compensate-for-scrollbar');
     //     }
+    // });
+
+
+    // animations
+    // AOS.init({
+        // disable: true,
+        // disable: 'mobile',
+        // once: true,
+        // offset: 150,
+        // duration: 600,
+        // easing: 'ease-in-out'
     // });
 
 
@@ -83,7 +105,9 @@ $(window).on('load', function() {
     //         autoplay: {
     //             delay: 4000
     //         },
-    //         speed: 1000
+    //         speed: 1000,
+    //         threshold: 30,
+    //         touchEventsTarget : 'wrapper'
     //     });
     // }, 250);
 
