@@ -33,11 +33,11 @@ function wpa_register_recommended_plugins() {
             'slug'      => 'tinymce-advanced',
             'required'  => false,
         ),
-        array(
-            'name'      => 'WP Migrate DB',
-            'slug'      => 'wp-migrate-db',
-            'required'  => false,
-        ),
+//        array(
+//            'name'      => 'WP Migrate DB',
+//            'slug'      => 'wp-migrate-db',
+//            'required'  => false,
+//        ),
         array(
             'name'      => 'Yoast SEO',
             'slug'      => 'wordpress-seo',
