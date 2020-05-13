@@ -148,12 +148,3 @@
 .mob_hide {
   @include rwd-max(767) {display: none !important}
 }
-
-
-
-// fullframe video
-.full_frame {height: 0;margin: 0;overflow: hidden;padding-bottom: 56.5%;position: relative;z-index: 0;
-  > {
-    iframe, object, embed {height: 100%;left: 0;position: absolute;top: 0;width: 100%;z-index: -1}
-  }
-}

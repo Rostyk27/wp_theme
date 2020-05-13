@@ -20,27 +20,36 @@
   & + .button {margin-left: 7px}
 }
 .link {
-  box-shadow: 0 2px $cl;
-  @include hover {box-shadow: 0 0 $cl}
+  box-shadow: 0 1px;
+  @include hover {box-shadow: 0 0}
 }
 
+h1, .h1 {}
+h2, .h2 {}
+h3 {}
+h4 {}
+h5 {}
+h6 {}
+
 p {
-  padding-bottom: rem(21);
+  padding-bottom: 20px;
   &.j_empty {padding-bottom: 0}
 }
+
 small, sub {
   display: inline-block;
   vertical-align: baseline;
   font-size: 87.5%;
 }
-strong, b {font-weight: 700}
+
 
 .content {
   p, li {
-    a {@extend .link}
+    a:not(.button) {@extend .link}
   }
-  ul {
-    padding-bottom: rem(21);
+  li:not(:last-child) {padding-bottom: 10px}
+  ul, ol {padding-bottom: 20px}
+  ul:not(.blocks-gallery-grid) {
     li {
       padding-left: rem(18);
       position: relative;
@@ -48,9 +57,9 @@ strong, b {font-weight: 700}
         content: '';
         position: absolute;
         left: 0;
-        top: 12px;
-        width: 4px;
-        height: 4px;
+        top: 9px;
+        width: 5px;
+        height: 5px;
         background: $tx;
         border-radius: 50%;
       }
@@ -70,10 +79,12 @@ strong, b {font-weight: 700}
   }
 }
 
+
 [class^="i_"] {
   display: inline-block;
   vertical-align: middle;
 }
+
 
 // social media + share buttons
 .so_me, .shrs {
@@ -134,4 +145,15 @@ strong, b {font-weight: 700}
 }
 
 
-.page404 {padding: rem(60) 0}
+// wp html5 video
+.wp-block-video {
+  [poster] {object-fit: cover}
+  video {max-width: 100%}
+}
+
+// full-frame video
+.full_frame {height: 0;margin: 0;overflow: hidden;padding-bottom: 56.5%;position: relative;z-index: 0;
+  > {
+    iframe, object, embed {height: 100%;left: 0;position: absolute;top: 0;width: 100%;z-index: -1}
+  }
+}

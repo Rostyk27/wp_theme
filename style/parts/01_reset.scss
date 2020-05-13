@@ -47,6 +47,8 @@ body {
 article, aside, figure, footer, header, nav, section {display: block}
 button {background: rgba(255, 255, 255, 0); border: medium none}
 h1, h2, h3, h4, h5, h6 {font-weight: normal}
+ol {list-style-position: inside}
+strong, b {font-weight: 700}
 td {vertical-align: middle}
 table {border-spacing: 0}
 mark {background: none}

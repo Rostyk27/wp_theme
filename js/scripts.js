@@ -11,10 +11,11 @@ $(document).ready(function() {
         $('body').toggleClass('is_overflow');
         return false;
     });
-    $('#menu .menu-item-has-children > a').after('<span />');
-    $('#menu').on('click', '.menu-item-has-children > a + span', function() {
-        $(this).toggleClass('is_open').next().stop().toggle().parent().toggleClass('is_active');
-    });
+    // append "plus" element in sub-menu parent item
+    // $('#menu .menu-item-has-children > a').after('<span />');
+    // $('#menu').on('click', '.menu-item-has-children > a + span', function() {
+    //     $(this).toggleClass('is_open').next().stop().toggle().parent().toggleClass('is_active');
+    // });
 
 
     // contact form 7
@@ -24,22 +25,17 @@ $(document).ready(function() {
             $(this).remove();
         });
     });
-    $(this).on('focus', '.wpcf7-form-control:not([type="submit"])', function() {
-        $(this).parent().addClass('is_active');
-    });
-    $(this).on('blur', '.wpcf7-form-control:not([type="submit"])', function() {
-        if($(this).val() !== "") {
-            $(this).parent().addClass('is_active');
-        } else {
-            $(this).parent().removeClass('is_active');
-        }
-    });
-
-
-    // scroll to
-    // $('html, body').animate({
-    //     scrollTop: $(elem).offset().top - $('header').outerHeight()
-    // }, 700);
+    // active class for input parent
+    // $(this).on('focus', '.wpcf7-form-control:not([type="submit"])', function() {
+    //     $(this).parent().addClass('is_active');
+    // });
+    // $(this).on('blur', '.wpcf7-form-control:not([type="submit"])', function() {
+    //     if($(this).val() !== "") {
+    //         $(this).parent().addClass('is_active');
+    //     } else {
+    //         $(this).parent().removeClass('is_active');
+    //     }
+    // });
 
 
     // custom select
@@ -81,7 +77,10 @@ $(document).ready(function() {
     // });
 
 
-    // custom code
+    // scroll to
+    // $('html, body').animate({
+    //     scrollTop: $(elem).offset().top - $('header').outerHeight()
+    // }, 700);
     
 });
 
@@ -112,7 +111,7 @@ $(window).on('load', function() {
     // }, 250);
 
 
-    // fluid video (iframe)
+    // custom class for video in content (iframe)
     $('.content iframe').each(function(i) {
         var t = $(this),
             p = t.parent();
@@ -120,15 +119,24 @@ $(window).on('load', function() {
             p.addClass('full_frame');
         }
     });
-    $('.wp-video').each(function() {
-        $('.mejs-video .mejs-inner', this).addClass('full_frame');
-    });
 
 });
 
 
 
-$(window).resizeEnd(function() {
-    'use strict';
-    
-});
+// close on click outside
+// $(document).on('mouseup', function(e) {
+//     var menu = $('#menu');
+//
+//     if (!menu.is(e.target) && menu.has(e.target).length === 0 && menu.hasClass('is_open')) {
+//         $('.nav_icon.is_active').click();
+//     }
+// });
+
+
+
+// proper resize event
+// $(window).resizeEnd(function() {
+//     'use strict';
+//
+// });
