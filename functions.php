@@ -59,18 +59,6 @@ function cats($pid){
 	return $cats;
 }
 
-//function transliterate($textcyr = null, $textlat = null) {
-//	$cyr = array(
-//		'ы', ' ', 'є', 'ї', 'ж',  'ч',  'щ',   'ш',  'ю',  'а', 'б', 'в', 'г', 'д', 'е', 'з', 'и', 'й', 'і', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ъ', 'ь', 'я',
-//		'Ы','Є', 'Ї', 'Ж',  'Ч',  'Щ',   'Ш',  'Ю',  'А', 'Б', 'В', 'Г', 'Д', 'Е', 'З', 'И', 'Й', 'І', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ъ', 'Ь', 'Я');
-//	$lat = array(
-//		'y', '_', 'ye', 'yi', 'zh', 'ch', 'sht', 'sh', 'yu', 'a', 'b', 'v', 'g', 'd', 'e', 'z', 'i', 'j', 'i', 'k', 'l', 'm', 'n', 'o', 'p', 'r', 's', 't', 'u', 'f', 'h', 'c', 'y', 'x', 'ya',
-//		'Y','Ye', 'Yi', 'Zh', 'Ch', 'Sht', 'Sh', 'Yu', 'A', 'B', 'V', 'G', 'D', 'E', 'Z', 'I', 'J', 'I', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'F', 'H', 'c', 'Y', 'X', 'Ya');
-//	if($textcyr) return str_replace($cyr, $lat, $textcyr);
-//	else if($textlat) return str_replace($lat, $cyr, $textlat);
-//	else return null;
-//}
-
 function get_current_url() {
 	$pageURL = 'http';
 	if (array_key_exists('HTTPS', $_SERVER) && $_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
@@ -87,12 +75,3 @@ function get_loader(){
 	return '<div class="show_box"><div class="loader"><svg class="circular" viewBox="25 25 50 50"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"/></svg></div></div>';
 }
 
-/*function wpa_example_ajax(){
-	extract($_POST);
-
-	var_dump($action);
-
-	exit;
-}
-add_action('wp_ajax_wpa_example_ajax', 'wpa_example_ajax');
-add_action('wp_ajax_nopriv_wpa_example_ajax', 'wpa_example_ajax');*/

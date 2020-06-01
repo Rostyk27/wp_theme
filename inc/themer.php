@@ -2,6 +2,7 @@
 
 /* BEGIN: Theme config params*/
 
+define( 'WPE_POPUP_DISABLED', true );
 //define ('GOOGLEMAPS', TRUE);
 define ('HOME_PAGE_ID', get_option('page_on_front'));
 define ('BLOG_ID', get_option('page_for_posts'));
@@ -15,9 +16,6 @@ if(class_exists('Woocommerce')) :
 endif;
 
 /* END: Theme config params */
-
-//require_once 'qtranslate.php';
-//require_once 'search_query.php';
 
 // Recommended plugins installer
 require_once 'plugins/installer.php';
