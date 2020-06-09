@@ -13,10 +13,11 @@
             <?php the_content(); ?>
             <div class="tags_list">Tags: <?php the_tags(''); ?></div>
             <div class="shrs">
-                <a class="i_twtr" href="https://twitter.com/intent/tweet?status=<?php the_title(); ?> - <?php the_permalink(); ?>" title="Tweet It" target="_blank" rel="noopener"></a>
+                <a class="i_twtr" href="https://twitter.com/intent/tweet?text=<?php the_title(); ?> - <?php the_permalink(); ?>" title="Tweet It" target="_blank" rel="noopener"></a>
                 <a class="i_fcbk" href="https://www.facebook.com/sharer.php?u=<?php the_permalink();?>&amp;t=<?php the_title(); ?>" title="Share at Facebook" target="_blank" rel="noopener"></a>
                 <a class="i_lnkdn" href="https://www.linkedin.com/shareArticle?mini=true&amp;title=<?php the_title(); ?>&amp;url=<?php the_permalink(); ?>" title="Share at LinkedIn" target="_blank" rel="noopener"></a>
-                <a class="i_ggl" href="https://plus.google.com/share?url=<?php the_permalink(); ?>" onclick="javascript:window.open(this.href,  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" title="Share at Google+" target="_blank" rel="noopener"></a>
+                <a class="i_whtsp" href="https://api.whatsapp.com/send?text=<?php the_permalink(); ?>" data-action="share/whatsapp/share" target="_blank" rel="noopener"></a>
+                <a class="i_envelope_o" href="mailto:?subject=<?php the_permalink(); ?>&amp;body=<?php the_title(); ?>"></a>
                 <a class="i_pntrst" href="https://pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>" title="Pin It" target="_blank" rel="noopener"></a>
             </div>
             <?php if(function_exists('comments_template')) :
