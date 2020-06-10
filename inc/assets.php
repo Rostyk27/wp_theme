@@ -4,14 +4,11 @@
 function tt_add_jscss() {
 	if (!is_admin()) {
 		wp_deregister_script( 'jquery' );
+		wp_deregister_script( 'jquery-ui-datepicker' );
 	}
 
 	if(defined('WPCF7_VERSION')) {
 		wp_deregister_style( 'contact-form-7' );
-	}
-
-	if(defined('QTX_VERSION')) {
-		wp_deregister_style('qtranslate-style');
 	}
 
 	if(defined('GOOGLEMAPS')) {

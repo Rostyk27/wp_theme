@@ -259,11 +259,6 @@ function wpa_body_classes( $classes ){
 		$classes[] = 'unknown-browser';
 	}
 
-	//qtranslate classes
-	if(defined('QTX_VERSION')) {
-		$classes[] = 'qtrans-' . qtranxf_getLanguage();
-	}
-
 	return $classes;
 }
 
@@ -397,9 +392,6 @@ function wpa_init() {
 	add_theme_support( 'post-thumbnails' );
 	// Disable Responsive Images
 	add_filter( 'max_srcset_image_width', function(){ return 1; } );
-
-	//site_url convert with qTranslate-x
-	add_filter( 'site_url', 'wpa_qtrans_site_url' );
 
 	// Remove Default Menu Classes
 	add_filter('nav_menu_css_class', 'wpa_discard_menu_classes', 10, 2);
