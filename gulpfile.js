@@ -40,7 +40,7 @@ gulp.task('styles', function() {
         .pipe(gulp.dest('build'));
 });
 
-gulp.task('img', function() {
+gulp.task('images', function() {
     return gulp.src(['images/*.{png,jpg,gif}'])
         .pipe(imagemin())
         .pipe(gulp.dest('images'));
@@ -48,4 +48,4 @@ gulp.task('img', function() {
 
 
 // combine all tasks in default
-gulp.task('default', gulp.parallel('scripts', 'styles', 'img'));
+gulp.task('default', gulp.series('scripts', 'styles', 'images'));
