@@ -52,3 +52,7 @@ Temporary Items
 *.css.map
 
 /style/style.css
+
+node_modules/
+
+package-lock.json

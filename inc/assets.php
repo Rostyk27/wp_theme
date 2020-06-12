@@ -16,21 +16,20 @@ function tt_add_jscss() {
 	}
 
 	wp_enqueue_script('jquery', get_stylesheet_directory_uri(). '/js/_jquery.js', false, null, false);
+
+	// uncomment next line and comment all below it on deploy after gulp run
+	/*wp_enqueue_script('main', get_stylesheet_directory_uri(). '/build/main.min.js', array('jquery'), null, true);*/
 	wp_enqueue_script('libs', get_stylesheet_directory_uri(). '/js/libs.js', array('jquery'), null, true);
 	wp_enqueue_script('scripts', get_stylesheet_directory_uri(). '/js/scripts.js', array('libs'), null, true);
 
+	// uncomment next line and comment all below it on deploy after gulp run
+	/*wp_enqueue_style('main', get_stylesheet_directory_uri(). '/build/main.min.css' );*/
 	wp_enqueue_style('fonts', get_stylesheet_directory_uri(). '/style/fonts.css' );
 	wp_enqueue_style('libs', get_stylesheet_directory_uri(). '/style/libs.css' );
 	wp_enqueue_style('style', get_stylesheet_directory_uri(). '/style/style.css' );
 }
 add_action('wp_enqueue_scripts', 'tt_add_jscss');
 
-// load styles in footer -> enable once loader added
-//function prefix_add_footer_styles() {
-//	wp_enqueue_style('libs', get_stylesheet_directory_uri(). '/style/libs.css' );
-//	wp_enqueue_style('style', get_stylesheet_directory_uri(). '/style/style.css' );
-//};
-//add_action( 'get_footer', 'prefix_add_footer_styles' );
 
 //Disable gutenberg style in Front
 function wps_deregister_styles() {
