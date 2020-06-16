@@ -14,17 +14,21 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.i_close:before {
-  content: "\e901";
+/* icons v1.2 - 90 icons */
+.i_home:before {
+  content: "\e925";
 }
-.i_twt_circle:before {
-  content: "\e904";
+.i_file-text:before {
+  content: "\e920";
 }
-.i_fcb_circle:before {
-  content: "\e902";
+.i_file:before {
+  content: "\e921";
 }
-.i_inst_circle:before {
-  content: "\e903";
+.i_globe:before {
+  content: "\e922";
+}
+.i_gthb:before {
+  content: "\e923";
 }
 .i_close_b:before {
   content: "\f00d";
@@ -218,6 +222,42 @@
 .i_share_sqr:before {
   content: "\f1e1";
 }
+.i_link:before {
+  content: "\e924";
+}
+.i_close:before {
+  content: "\e901";
+}
+.i_twt_circle:before {
+  content: "\e904";
+}
+.i_fcb_circle:before {
+  content: "\e902";
+}
+.i_inst_circle:before {
+  content: "\e903";
+}
+.i_prev:before {
+  content: "\e91a";
+}
+.i_next:before {
+  content: "\e91b";
+}
+.i_angle_top_thin:before {
+  content: "\e91c";
+}
+.i_close_thin:before {
+  content: "\e91d";
+}
+.i_plus:before {
+  content: "\e91e";
+}
+.i_angle_right_thin:before {
+  content: "\e91f";
+}
+.i_vbr:before {
+  content: "\e900";
+}
 .i_check:before {
   content: "\e907";
 }
@@ -244,9 +284,6 @@
 }
 .i_card:before {
   content: "\e917";
-}
-.i_vbr:before {
-  content: "\e900";
 }
 
 
