@@ -282,13 +282,6 @@ function wpa_title(){
 	}
 }
 
-// Convert blogurl
-function wpa_qtrans_site_url( $url ) {
-	// you probably don't want this in admin side
-	if( is_admin() ) return $url;
-	return function_exists('qtranxf_convertURL') ? qtranxf_convertURL( $url ) : $url;
-}
-
 //Show empty categories in category widget
 function show_empty_widget_links($args) {
 	$args['hide_empty'] = 0;
