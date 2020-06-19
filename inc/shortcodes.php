@@ -156,9 +156,11 @@ function content_btn($atts,$content){
         'link' => site_url(),
         'class' => false,
         'target' => false,
-        'popup' => false
+        'popup' => false,
+        'video' => false
     ), $atts ));
-    return '<a href="' . $link . '" class="button'.($class?' '.$class:'').'" '.($target?'target="'.$target.'"':'').' '.($popup?' data-fancybox="" data-src="#'.$popup.'"':'').'>' . $text . '</a>';
+	return '<a href="' . $link . '" class="button'.($class?' '.$class:'').'" '.($target?'target="'.$target.'"  rel="noopener"':'').' 
+            '.($popup?' data-fancybox="" data-src="#'.$popup.'"':'').' '.($video?' data-fancybox=""':'').'>' . $text . '</a>';
 }
 add_shortcode("button", "content_btn");
 
