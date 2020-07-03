@@ -33,6 +33,16 @@ function wpa_register_recommended_plugins() {
             'slug'      => 'tinymce-advanced',
             'required'  => false,
         ),
+	    array(
+            'name'      => 'AJAX Thumbnail Rebuild',
+            'slug'      => 'ajax-thumbnail-rebuild',
+            'required'  => false,
+        ),
+	    array(
+            'name'      => 'Resize Image After Upload',
+            'slug'      => 'resize-image-after-upload',
+            'required'  => false,
+        ),
 //        array(
 //            'name'      => 'WP Migrate DB',
 //            'slug'      => 'wp-migrate-db',

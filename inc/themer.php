@@ -78,16 +78,8 @@ function wpa_activate_theme() {
 	// Check for a constant:
 	//	if (!defined('MY_PLUGIN_CONSTANT')) {
 
-	if (!function_exists('jr_uploadresize_options')) {
-		include_once('plugins/resize-image-after-upload.php');
-	}
-
 	if (!function_exists('no_category_base_refresh_rules')) {
 		include_once('plugins/no-category-base.php');
-	}
-
-	if (!function_exists('AjaxThumbnailRebuild')) {
-		include_once('plugins/ajax-thumbnail-rebuild/ajax-thumbnail-rebuild.php');
 	}
 
 	update_option('image_default_link_type','none');

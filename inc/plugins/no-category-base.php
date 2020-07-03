@@ -106,4 +106,3 @@ function no_category_base_request($query_vars) {
 	}
 	return $query_vars;
 }
-?>
