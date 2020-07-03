@@ -12,11 +12,11 @@
 <meta name="theme-color" content="#232323">
 <?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?> data-a="<?php echo admin_url('admin-ajax.php'); ?>">
+<body <?php body_class(); ?> data-a="<?php echo esc_url(admin_url('admin-ajax.php')); ?>">
 <div id="main">
     <header>
         <div class="container">
-            <?php echo (get_field('logo', 'option') ? '<a href="' . site_url() . '" class="logo"><img src="' . get_field('logo', 'option') . '" alt="logo"></a>' : ''); ?>
+            <?php echo get_field('logo', 'option') ? '<a href="' . esc_url(site_url()) . '" class="logo"><img src="' . esc_url(get_field('logo', 'option')) . '" alt="logo"></a>' : ''; ?>
 	        <a class="nav_icon" href=""><i></i><i></i><i></i></a>
 	        <nav id="menu"><?php wp_nav_menu(array('container' => false, 'items_wrap' => '<ul id="%1$s">%3$s</ul>', 'theme_location'  => 'main_menu')); ?></nav>
         </div>

@@ -84,7 +84,7 @@ function tt_wp_duplicate_posts(){
         wp_redirect( admin_url( 'post.php?action=edit&post=' . $new_post_id ) );
         exit;
     } else {
-        wp_die('Post creation failed, could not find original post: ' . $post_id);
+        wp_die('Post creation failed, could not find original post: ' . esc_html($post_id));
     }
 }
 add_action( 'admin_action_tt_wp_duplicate_posts', 'tt_wp_duplicate_posts' );

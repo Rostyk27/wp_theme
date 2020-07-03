@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<section class="top_panel default_panel" style="<?php echo (has_post_thumbnail() ? image_src( get_post_thumbnail_id( $post->ID ), 'top_default', true ) : 'background-image: url('. theme('images/top_default.jpg') .')'); ?>">
+<section class="top_panel default_panel" style="<?php echo has_post_thumbnail() ? esc_attr(image_src( get_post_thumbnail_id( $post->ID ), 'top_default', true )) : 'background-image: url('. esc_url(theme('images/top_default.jpg')) .')'; ?>">
     <div class="container">
         <h1><?php the_title(); ?></h1>
     </div>

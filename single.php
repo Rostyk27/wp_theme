@@ -4,12 +4,12 @@
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
         <div class="container content">
             <h1><?php the_title(); ?></h1>
-            <img src="<?php echo image_src( get_post_thumbnail_id( $post->ID ), 'single' ); ?>" alt="<?php the_title(); ?>">
+            <img src="<?php echo esc_url(image_src( get_post_thumbnail_id( $post->ID ), 'single' )); ?>" alt="<?php the_title(); ?>">
             <time datetime="<?php echo get_the_date('Y-m-d'); ?>"><?php echo get_the_date('F j, Y'); ?></time>
             <div class="author_name">Author:
-                <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ), get_the_author_meta( 'user_nicename' ) ); ?>"><?php the_author(); ?></a>
+                <a href="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ), get_the_author_meta( 'user_nicename' ) )); ?>"><?php the_author(); ?></a>
             </div>
-            <div class="cats">Category: <?php echo cats($post->ID); ?></div>
+            <div class="cats">Category: <?php echo wp_kses_post(cats($post->ID)); ?></div>
             <?php the_content(); ?>
             <div class="tags_list">Tags: <?php the_tags(''); ?></div>
             <div class="shrs">

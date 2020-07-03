@@ -74,4 +74,22 @@ function get_current_url() {
 function get_loader(){
 	return '<div class="show_box"><div class="loader"><svg class="circular" viewBox="25 25 50 50"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"/></svg></div></div>';
 }
-
+// allowed tags to use loader with escaping
+// usage - echo wp_kses(get_loader(), $GLOBALS['allowed_loader'])
+$allowed_loader = array(
+	'div'    => array(
+		'class' => true
+	),
+	'svg'    => array(
+		'class'   => true,
+		'viewbox' => true,
+	),
+	'circle' => array(
+		'class'             => true,
+		'cx'                => true,
+		'cy'                => true,
+		'r'                 => true,
+		'fill'              => true,
+		'stroke-miterlimit' => true,
+	),
+);

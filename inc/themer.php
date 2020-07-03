@@ -92,7 +92,7 @@ function tinymce_custom_settings() {
 	global $current_screen;
 	if ( $current_screen->id == 'settings_page_tinymce-advanced' ) {
 		$json_string = file_get_contents('tinymce-advanced-preconfig.json',TRUE); ?>
-		<script type="text/javascript">jQuery(function($) { var tcs_json = '<?php echo trim($json_string); ?>'; $('textarea#tadv-import').val(tcs_json); });</script>
+		<script type="text/javascript">jQuery(function($) { var tcs_json = '<?php echo esc_js(trim($json_string)); ?>'; $('textarea#tadv-import').val(tcs_json); });</script>
 	<?php   }
 }
 add_action('admin_head', 'tinymce_custom_settings');
@@ -123,13 +123,6 @@ function wpa_remove_wp_ver_css_js( $src ) {
 // Compress HTML
 function ob_html_compress($buf){
 	return preg_replace(array('/<!--(?>(?!\[).)(.*)(?>(?!\]).)-->/Uis','/[[:blank:]]+/'),array('',' '),str_replace(array("\n","\r","\t"),'',$buf));
-}
-
-// HTML5 support for IE
-function wp_IEhtml5_js () {
-	global $is_IE;
-	if ($is_IE)
-		echo '<!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><script src="//css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]--><!--[if lte IE 9]><link href="'.theme().'/style/animations-ie-fix.css" rel="stylesheet" /><![endif]-->';
 }
 
 //custom wp_nav_menu classes
@@ -251,9 +244,9 @@ function wpa_title(){
 			echo '404 Page not found - ';
 		} elseif((is_single() || is_page()) && $post->post_parent) {
 			$parent_title = get_the_title($post->post_parent);
-			echo wp_title('-', true, 'right') . $parent_title.' - ';
+			echo wp_title('-', true, 'right') . esc_html($parent_title).' - ';
 		} elseif(class_exists('Woocommerce') && is_shop()) {
-			echo get_the_title(SHOP_ID) . ' - ';
+			echo esc_html(get_the_title(SHOP_ID)) . ' - ';
 		} else {
 			wp_title('-', true, 'right');
 		}
@@ -317,7 +310,7 @@ function acf_repeater_even() {
 	} else if($scheme == 'sunrise') {
 		$color = '#dd823b';
 	}
-	echo '<style>.acf-repeater > table > tbody > tr:nth-child(even) > td.order {color: #fff !important;background-color: '.$color.' !important; text-shadow: none}</style>';
+	echo '<style>.acf-repeater > table > tbody > tr:nth-child(even) > td.order {color: #fff !important;background-color: '.esc_html($color).' !important; text-shadow: none}</style>';
 }
 add_action('admin_footer', 'acf_repeater_even');
 
@@ -459,50 +452,7 @@ function wpa__prelicense()
 }
 add_action( 'admin_init', 'wpa__prelicense', 99 );
 
-//function wpa_fontbase64($fonthash) {
-//	$font = get_stylesheet_directory() . '/fonts.css';
-//	$md5 = filemtime( $font );
-//	$md5_cached = get_transient('fonts64_md5');
-//	if( $md5_cached !== $md5 ) {
-//		set_transient( 'fonts64_md5', $md5, 168 * 3600 );
-//	}
-//	if($fonthash) {
-//		echo $md5_cached?$md5_cached:$md5;
-//	} else {
-//		$minfont = file_get_contents( $font );
-//		$minfont = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $minfont);
-//		$minfont = str_replace(array(': ',' : '), ':', $minfont);
-//		$minfont = str_replace(array("\r\n", "\r", "\n", "\t", '  ', '    ', '    '), '', $minfont);
-//		$minfont = str_replace(';}','}', $minfont);
-//		$fontpack = array(
-//			'md5'      => $md5_cached,
-//			'value'    => $minfont
-//		);
-//		echo json_encode($fontpack);
-//		exit;
-//	}
-//}
-//add_action('wp_ajax_wpa_fontbase64', 'wpa_fontbase64');
-//add_action('wp_ajax_nopriv_wpa_fontbase64', 'wpa_fontbase64');
-
 function wpa_dump($variable){
 	$pretty = function($v='',$c="&nbsp;&nbsp;&nbsp;&nbsp;",$in=-1,$k=null)use(&$pretty){$r='';if(in_array(gettype($v),array('object','array'))){$r.=($in!=-1?str_repeat($c,$in):'').(is_null($k)?'':"$k: ").'<br>';foreach($v as $sk=>$vl){$r.=$pretty($vl,$c,$in+1,$sk).'<br>';}}else{$r.=($in!=-1?str_repeat($c,$in):'').(is_null($k)?'':"$k: ").(is_null($v)?'&lt;NULL&gt;':"<strong>$v</strong>");}return$r;};
-	echo '<pre style="padding-left: 150px; font-family: Courier New"><code class="json">' . $pretty($variable) . '</code></pre>';
-}
-
-function youtube_image($id) {
-	$resolution = array (
-		'maxresdefault',
-		'sddefault',
-		'hqdefault',
-		'0'
-	);
-
-	for ($x = 0; $x < sizeof($resolution); $x++) {
-		$url = 'https://img.youtube.com/vi/' . $id . '/' . $resolution[$x] . '.jpg';
-		if (get_headers($url)[0] == 'HTTP/1.0 200 OK') {
-			break;
-		}
-	}
-	return $url;
+	echo '<pre style="padding-left: 150px; font-family: Courier New"><code class="json">' . wp_kses_post($pretty($variable)) . '</code></pre>';
 }

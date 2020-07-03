@@ -194,9 +194,9 @@ function tree_children($absolute = false, $page_id = 0) {
         $children .= '<ul class="submenu">';
         $children .= wp_list_pages("title_li=&child_of=" . $abs . "&echo=0&sort_column=menu_order" . ($ex_pages ? '&exclude=' . $ex_pages : ''));
         $children .= '</ul>';
-        echo $children;
+        echo wp_kses_post($children);
     } elseif ($childlist) {
-        echo '<ul class="submenu">' . wp_list_pages("title_li=&child_of=" . $post->ID . "&echo=0&sort_column=menu_order" . ($ex_pages ? '&exclude=' . $ex_pages : '')) . '</ul>';
+        echo '<ul class="submenu">' . wp_kses_post(wp_list_pages("title_li=&child_of=" . $post->ID . "&echo=0&sort_column=menu_order" . ($ex_pages ? '&exclude=' . $ex_pages : ''))) . '</ul>';
     }
 }
 
