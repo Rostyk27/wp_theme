@@ -7,13 +7,6 @@ define( 'WPE_POPUP_DISABLED', true );
 define ('HOME_PAGE_ID', get_option('page_on_front'));
 define ('BLOG_ID', get_option('page_for_posts'));
 define ('POSTS_PER_PAGE', get_option('posts_per_page'));
-if(class_exists('Woocommerce')) :
-	define ('SHOP_ID', get_option('woocommerce_shop_page_id'));
-	define ('ACCOUNT_ID', get_option('woocommerce_myaccount_page_id'));
-	define ('CART_ID', get_option('woocommerce_cart_page_id'));
-	define ('CHECKOUT_ID', get_option('woocommerce_checkout_page_id'));
-	require_once('woocommerce.php');
-endif;
 
 /* END: Theme config params */
 
@@ -84,10 +77,6 @@ function wpa_activate_theme() {
 	//
 	// Check for a constant:
 	//	if (!defined('MY_PLUGIN_CONSTANT')) {
-
-	if (!function_exists('ctl_schedule_conversion')) {
-		include_once('plugins/cyr-to-lat.php');
-	}
 
 	if (!function_exists('jr_uploadresize_options')) {
 		include_once('plugins/resize-image-after-upload.php');
