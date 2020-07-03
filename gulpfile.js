@@ -20,7 +20,8 @@ var gulp      = require('gulp'),
 gulp.task('scripts', function() {
     return gulp.src([
         'js/libs.js',
-        'js/scripts.js'
+        'js/scripts.js',
+        /*'js/ajax.js'*/
     ])
         .pipe(concat('main.js'))
         .pipe(uglify())

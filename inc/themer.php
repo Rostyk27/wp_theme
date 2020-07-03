@@ -22,6 +22,9 @@ require_once('wpadmin/admin-addons.php');
 // Custom shortcodes
 require_once('shortcodes.php');
 
+// Custom ajax functions
+//require_once('ajax.php');
+
 // Custom Posts Duplicator
 require_once('plugins/duplicator.php');
 

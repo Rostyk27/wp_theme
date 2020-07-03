@@ -21,6 +21,7 @@ function tt_add_jscss() {
 	/*wp_enqueue_script('main', get_stylesheet_directory_uri(). '/build/main.min.js', array('jquery'), null, true);*/
 	wp_enqueue_script('libs', get_stylesheet_directory_uri(). '/js/libs.js', array('jquery'), null, true);
 	wp_enqueue_script('scripts', get_stylesheet_directory_uri(). '/js/scripts.js', array('libs'), null, true);
+	/*wp_enqueue_script('ajax', get_stylesheet_directory_uri(). '/js/ajax.js', array('libs'), null, true);*/
 
 	// uncomment next line and comment all below it on deploy after gulp run
 	/*wp_enqueue_style('main', get_stylesheet_directory_uri(). '/build/main.min.css' );*/
