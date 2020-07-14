@@ -32,7 +32,19 @@ function tt_add_jscss() {
 add_action('wp_enqueue_scripts', 'tt_add_jscss');
 
 
-//Disable gutenberg style in Front
+// defer parsing of JS for external scripts
+// uncomment only after optimization with gulp
+/*if ( !is_admin() ) :
+	function defer_parsing_of_js($url) {
+		if ( FALSE === strpos( $url, '.js' ) ) return $url;
+		if ( strpos( $url, '_jquery.js' ) || strpos( $url, 'main.min.js' ) ) return $url;
+		return "$url' defer='";
+	}
+	add_filter( 'clean_url', 'defer_parsing_of_js', 11, 1 );
+endif;*/
+
+
+// disable gutenberg style in Front
 function wps_deregister_styles() {
 	wp_dequeue_style( 'wp-block-library' );
 }

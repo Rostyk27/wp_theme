@@ -105,3 +105,16 @@ function my_login_failed_403() {
     status_header( 403 );
 }
 add_action( 'wp_login_failed', 'my_login_failed_403' );
+
+
+// disable fullscreen when editing page/post
+if (is_admin())
+{
+	function jba_disable_editor_fullscreen_by_default()
+	{
+		$script = "window.onload = function() { const isFullscreenMode = wp.data.select( 'core/edit-post' ).isFeatureActive( 'fullscreenMode' ); if ( isFullscreenMode ) { wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'fullscreenMode' ); } }";
+		wp_add_inline_script( 'wp-blocks', $script );
+	}
+
+	add_action( 'enqueue_block_editor_assets', 'jba_disable_editor_fullscreen_by_default' );
+}
