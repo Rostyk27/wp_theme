@@ -59,6 +59,18 @@ function cats($pid){
 	return $cats;
 }
 
+function custom_tax($pid, $tax) {
+	$post_tax = get_the_terms($pid, $tax);
+	$taxs = '';
+	$co = count($post_tax);
+	$i = 1;
+	foreach ($post_tax as $t) {
+		$tax = get_term($t);
+		$taxs .= '<span class="tax_term">' . $tax->name . '</span>' . ($i++ != $co ? '<span>,</span> ' : '');
+	}
+	return $taxs;
+}
+
 function get_current_url() {
 	$pageURL = 'http';
 	if (array_key_exists('HTTPS', $_SERVER) && $_SERVER["HTTPS"] == "on") {$pageURL .= "s";}

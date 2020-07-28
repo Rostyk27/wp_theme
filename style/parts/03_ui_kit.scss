@@ -4,16 +4,17 @@
   @extend %ani;
   display: inline-block;
   vertical-align: middle;
-  font: 400 16px/1.2 $ff;
+  font: 400 16px/19px $ff;
   color: #fff;
-  background: $cl;
-  padding: rem(7) rem(27);
-  box-shadow: inset 0 0 0 2px $cl;
+  padding: 10px 35px;
   text-align: center;
+  background-color: $cl;
   cursor: pointer;
+  -moz-user-select: none;
+  user-select: none;
   @include hover {
     color: $cl;
-    background: #fff;
+    background-color: #fff;
   }
   &[disabled],
   &.is_disabled {pointer-events: none}
@@ -22,6 +23,13 @@
 .link {
   box-shadow: 0 1px;
   @include hover {box-shadow: 0 0}
+}
+
+h1, h2, h3, h4, h5, h6 {
+  a {
+    color: inherit;
+    @include hover {color: $cl}
+  }
 }
 
 h1, .h1 {}
@@ -42,6 +50,12 @@ small, sub {
   font-size: 87.5%;
 }
 
+figure {
+  a {
+    display: block;
+    @include hover {opacity: 0.75}
+  }
+}
 
 .content {
   p, li {
