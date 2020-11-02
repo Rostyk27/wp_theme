@@ -89,11 +89,12 @@ $load_blue: $cl;
 $load_red: $cl;
 
 // scaling... any units
-$load_width: rem(30);
+$load_width: 30px;
 
 .show_box {
   @extend %ani;
-  @include center();
+  @include center(true, false);
+  bottom: 0;
   display: inline-block;
   vertical-align: top;
   margin: 0;

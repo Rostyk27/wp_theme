@@ -41,7 +41,8 @@ h6 {}
 
 p {
   padding-bottom: 20px;
-  &.j_empty {padding-bottom: 0}
+  &.j_empty {line-height: 0}
+  &.full_frame {margin-bottom: 25px}
 }
 
 small, sub {
@@ -57,15 +58,43 @@ figure {
   }
 }
 
+figcaption {
+  padding-top: 10px;
+  @include rwd-min(1025) {padding-top: 15px}
+}
+
+blockquote {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: $cl;
+  padding: 16px 0 22px 23px;
+  margin: 5px 0 25px;
+  position: relative;
+  @include rwd-min(768) {font-size: 24px}
+  @include rwd-min(1025) {padding-left: 30px}
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 7px;
+    background: $cl;
+    @include rwd-min(1025) {width: 9px}
+  }
+  p {padding-bottom: 0}
+}
+
 .content {
   p, li {
     a:not(.button) {@extend .link}
   }
   li:not(:last-child) {padding-bottom: 10px}
-  ul, ol {padding-bottom: 20px}
+  ul:not(.blocks-gallery-grid), ol {padding-bottom: 20px}
   ul:not(.blocks-gallery-grid) {
     li {
-      padding-left: rem(18);
+      padding-left: 18px;
       position: relative;
       &:before {
         content: '';
@@ -80,15 +109,15 @@ figure {
     }
   }
   img {
-    &.alignnone {margin: 0 0 rem(21)}
-    &.aligncenter {margin: 0 auto rem(21)}
+    &.alignnone {margin: 0 0 20px}
+    &.aligncenter {margin: 0 auto 20px}
     &.alignleft {
       float: left;
-      margin: 0 rem(21) rem(21) 0;
+      margin: 0 20px 20px 0;
     }
     &.alignright {
       float: right;
-      margin: 0 0 rem(21) rem(21);
+      margin: 0 0 20px 20px;
     }
   }
 }
@@ -104,57 +133,12 @@ figure {
 .so_me, .shrs {
   a {
     display: inline-block;
-    vertical-align: top;
-    width: 34px;
-    height: 32px;
+    vertical-align: middle;
     font-size: 20px;
-    line-height: 36px;
-    margin: 0 rem(6);
-    text-align: center;
-    position: relative;
-    z-index: 0;
-    &:after {
-      @extend %ani;
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 0;
-      z-index: -1;
-    }
-    @include hover {
-      &:after {height: 100%}
-    }
-  }
-}
-.so_me {
-  a {
-    color: #fff;
-    &:after {background: #fff}
-    &.i_ggl { @include hover {color: #db4437} }
-    &.i_fcbk { @include hover {color: #4267b2} }
-    &.i_twtr { @include hover {color: #1da1f2} }
-    &.i_lnkdn { @include hover {color: #0177b5} }
-    &.i_inst { @include hover {color: #be3094} }
-    &.i_ytb_play { @include hover {color: #cc181e} }
-    &.i_vmo { @include hover {color: #01b3ef} }
-    &.i_skp { @include hover {color: #02aff3} }
-    &.i_pntrst { @include hover {color: #d50c22} }
-    &.i_drbbbl { @include hover {color: #dd3e7b} }
-    &.i_envelope { @include hover {color: #39c4ad} }
-    &.i_ylp { @include hover {color: #c62221} }
-  }
-}
-.shrs {
-  a {
+    line-height: 1;
     color: $tx;
-    @include hover {color: #fff}
-    &.i_ggl:after {background: #db4437}
-    &.i_fcbk:after {background: #4267b2}
-    &.i_twtr:after {background: #1da1f2}
-    &.i_lnkdn:after {background: #0177b5}
-    &.i_pntrst:after {background: #d50c22}
+    margin: 0 10px;
+    @include hover {color: $cl}
   }
 }
 

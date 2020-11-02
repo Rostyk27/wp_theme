@@ -20,16 +20,16 @@
 }
 
 @mixin rwd-max($px) {
-  $min-width: $px#{px};
+  $min-width: #{$px}px;
   @media screen and (max-width: $min-width) {@content}
 }
 @mixin rwd-min($px) {
-  $min-width: $px#{px};
+  $min-width: #{$px}px;
   @media screen and (min-width: $min-width) {@content}
 }
 @mixin rwd-range($px, $px2) {
-  $max-width: $px#{px};
-  $min-width: $px2#{px};
+  $max-width: #{$px}px;
+  $min-width: #{$px}px;
   @media screen and (max-width: $max-width) and (min-width: $min-width) {@content}
 }
 

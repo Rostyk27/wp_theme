@@ -12,7 +12,7 @@
 .sw_next {
   @extend %ani;
   @include center(false, true);
-  font-size: rem(54);
+  font-size: 50px;
   color: #fff;
   cursor: pointer;
   &.swiper-button-disabled {
@@ -252,9 +252,23 @@ div.wpcf7 {
     @extend .flex__mob;
     > * { @include rwd-min(768) {width: 48%} }
   }
+  .wpcf7-form {
+    &.sent,
+    &.failed,
+    &.invalid,
+    &.unaccepted {
+      .wpcf7-response-output {margin-top: 10px}
+    }
+    &.sent .wpcf7-response-output {background-color: #80c684}
+    &.unaccepted .wpcf7-response-output {background-color: #1091ae}
+    &.failed,
+    &.invalid {
+      .wpcf7-response-output {background-color: #ff694e}
+    }
+  }
   .wpcf7-form-control-wrap {
     display: block;
-    margin-bottom: rem(20);
+    margin-bottom: 20px;
     position: relative;
     &.is_active {box-shadow: 0 1px 3px #ff0}
   }
@@ -269,7 +283,7 @@ div.wpcf7 {
     color: #ff694e;
     background: #fff;
     border-radius: 0;
-    padding: 0 rem(15);
+    padding: 0 15px;
     border: 1px solid #ff694e;
     cursor: pointer;
   }
@@ -280,12 +294,9 @@ div.wpcf7 {
     right: 0;
     font: 400 16px/1.4 $ff;
     color: #fff;
-    padding: rem(12);
+    padding: 12px;
     border-radius: 0;
     text-align: center;
-    &.wpcf7-mail-sent-ng {background: #1091ae; position: relative}
-    &.wpcf7-mail-sent-ok {background: #80c684; position: relative}
-    &.wpcf7-validation-errors, &.wpcf7-spam-blocked {background: #ff694e; position: relative}
   }
   input:not([type="submit"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]), textarea {
     display: block;
@@ -293,7 +304,7 @@ div.wpcf7 {
     font: 400 16px $ff;
     color: $tx;
     background: #fff;
-    padding: 0 rem(15);
+    padding: 0 15px;
     border: 1px solid $cl;
     @include placeholder {color: $tx; opacity: 1}
   }
@@ -301,7 +312,7 @@ div.wpcf7 {
     height: 120px;
     resize: none;
     overflow: auto;
-    padding: rem(15);
+    padding: 15px;
   }
   button.button {
     & + input {display: none}
@@ -309,8 +320,8 @@ div.wpcf7 {
   .ajax-loader {
     @extend %ani;
     @include prefixer(animation, swiper-preloader-spin 1s infinite linear);
-    width: rem(24);
-    height: rem(24);
+    width: 24px;
+    height: 24px;
     position: absolute;
     top: 100%;
     right: 0;
@@ -332,7 +343,7 @@ div.wpcf7 {
 
 // pager
 .wp-pagenavi {
-  margin-top: rem(80);
+  margin-top: 80px;
   > * {
     display: inline-block;
     font: 400 18px/36px $ff;

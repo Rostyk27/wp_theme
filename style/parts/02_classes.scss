@@ -130,7 +130,7 @@
   background-position: 50% 50%;
 }
 
-.last_no_spacing > *:last-child:not(.button) {
+.last_no_spacing > *:last-child:not(.button):not(.full_frame) {
   margin-bottom: 0;
   padding-bottom: 0;
 }

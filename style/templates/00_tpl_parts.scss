@@ -1,1 +1,16 @@
 // tpl-parts
+
+.load_more_holder {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  z-index: 1;
+}
+.loader_holder {
+  height: 48px; // should be as .load_more button height
+  position: relative;
+  z-index: 0;
+  pointer-events: none;
+}
