@@ -29,7 +29,7 @@ function wpa_register_recommended_plugins() {
             'required'  => false,
         ),
         array(
-            'name'      => 'TinyMCE Advanced',
+            'name'      => 'Advanced Editor Tools (previously TinyMCE Advanced)',
             'slug'      => 'tinymce-advanced',
             'required'  => false,
         ),
@@ -38,16 +38,6 @@ function wpa_register_recommended_plugins() {
             'slug'      => 'ajax-thumbnail-rebuild',
             'required'  => false,
         ),
-	    array(
-            'name'      => 'Resize Image After Upload',
-            'slug'      => 'resize-image-after-upload',
-            'required'  => false,
-        ),
-//        array(
-//            'name'      => 'WP Migrate DB',
-//            'slug'      => 'wp-migrate-db',
-//            'required'  => false,
-//        ),
         array(
             'name'      => 'Yoast SEO',
             'slug'      => 'wordpress-seo',

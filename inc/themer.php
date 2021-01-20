@@ -1,14 +1,18 @@
 <?php
 
-/* BEGIN: Theme config params*/
+/* Theme config params */
 
+// defines
 define( 'WPE_POPUP_DISABLED', true );
 //define ('GOOGLEMAPS', TRUE);
 define ('HOME_PAGE_ID', get_option('page_on_front'));
 define ('BLOG_ID', get_option('page_for_posts'));
 define ('POSTS_PER_PAGE', get_option('posts_per_page'));
-
-/* END: Theme config params */
+//define('WP_SCSS_ALWAYS_RECOMPILE', true);
+// Prevent File Modifications
+if ( ! defined( 'DISALLOW_FILE_EDIT' ) ) {
+	define( 'DISALLOW_FILE_EDIT', true );
+}
 
 // Recommended plugins installer
 require_once 'plugins/installer.php';
@@ -33,72 +37,19 @@ function my_acf_init() {
 }
 add_action('acf/init', 'my_acf_init');
 
-// Prevent File Modifications
-if ( ! defined( 'DISALLOW_FILE_EDIT' ) ) {
-	define( 'DISALLOW_FILE_EDIT', true );
-}
-
 // Custom theme url
 function theme($filepath = NULL){
 	return preg_replace( '(https?://)', '//', get_stylesheet_directory_uri() . ($filepath?'/' . $filepath:'') );
 }
 
-// JS Defer Load
-function wpa_defer_scripts($url) {
-	if ( strpos( $url, '#defer') === false ) {
-		return $url;
-	} else if ( is_admin() ) {
-		return str_replace( '#defer', '', $url );
-	} else {
-		return str_replace( '#defer', '', $url ) . "' defer='defer";
-	}
-}
-
-/* Update wp-scss setings
-   ========================================================================== */
-if (class_exists('Wp_Scss_Settings')) {
-	$wpscss = get_option('wpscss_options');
-	if (empty($wpscss['css_dir']) && empty($wpscss['scss_dir'])) {
-		update_option('wpscss_options', array('css_dir' => '/style/', 'scss_dir' => '/style/', 'compiling_options' => 'scss_formatter_compressed'));
-	}
-}
-//define('WP_SCSS_ALWAYS_RECOMPILE', true);
-
 // Run this code on 'after_theme_setup', when plugins have already been loaded.
 add_action('after_setup_theme', 'wpa_activate_theme');
-
 // This function loads the plugins && update some wordpress options
 function wpa_activate_theme() {
-
-	// Check to see if your plugin has already been loaded. This can be done in several ways - here are a few examples:
-	//
-	// Check for a class:
-	//	if (!class_exists('MyPluginClass')) {
-	//
-	// Check for a function:
-	//	if (!function_exists('my_plugin_function_name')) {
-	//
-	// Check for a constant:
-	//	if (!defined('MY_PLUGIN_CONSTANT')) {
-
-	if (!function_exists('no_category_base_refresh_rules')) {
-		include_once('plugins/no-category-base.php');
-	}
-
 	update_option('image_default_link_type','none');
 	update_option('uploads_use_yearmonth_folders', 0);
 	update_option('permalink_structure', '/%category%/%postname%/');
-
 }
-
-function tinymce_custom_settings() {
-	global $current_screen;
-	if ( $current_screen->id == 'settings_page_tinymce-advanced' ) {
-		$json_string = file_get_contents('tinymce-advanced-preconfig.json',TRUE); ?>
-		<script type="text/javascript">jQuery(function($) { var tcs_json = '<?php echo esc_js(trim($json_string)); ?>'; $('textarea#tadv-import').val(tcs_json); });</script>
-	<?php   }
-}
-add_action('admin_head', 'tinymce_custom_settings');
 
 //Remove embeds rewrites
 function disable_embeds_rewrites( $rules ) {
@@ -125,7 +76,14 @@ function wpa_remove_wp_ver_css_js( $src ) {
 
 // Compress HTML
 function ob_html_compress($buf){
-	return preg_replace(array('/<!--(?>(?!\[).)(.*)(?>(?!\]).)-->/Uis','/[[:blank:]]+/'),array('',' '),str_replace(array("\n","\r","\t"),'',$buf));
+	$preResult = preg_replace('/(?:(?:\/\*(?:[^*]|(?:\*+[^*\/]))*\*+\/)|(?:(?<!\:|\\\|\'|\")\/\/.*))/', ' ', $buf);
+	$out       = preg_replace(
+		array('/<!--(?>(?!\[).)(.*)(?>(?!\]).)-->/Uis', '/[[:blank:]]+/'),
+		array('', ' '),
+		str_replace(array("\n", "\r", "\t"), '', $preResult)
+	);
+
+	return nl2br($out);
 }
 
 //custom wp_nav_menu classes
@@ -137,16 +95,6 @@ function wpa_discard_menu_classes($classes, $item) {
 		$classes,
 		(array)get_post_meta( $item->ID, '_menu_item_classes', true )
 	);
-}
-
-// Disables Kses only for textarea saves
-foreach (array('pre_term_description', 'pre_link_description', 'pre_link_notes', 'pre_user_description') as $filter) {
-	remove_filter($filter, 'wp_filter_kses');
-}
-
-// Disables Kses only for textarea admin displays
-foreach (array('term_description', 'link_description', 'link_notes', 'user_description') as $filter) {
-	remove_filter($filter, 'wp_kses_data');
 }
 
 // New Body Classes
@@ -265,11 +213,6 @@ function show_empty_widget_links($args) {
 	return $args;
 }
 
-//remove empty title from widget
-function foo_widget_title($title) {
-	return $title == '&nbsp;' ? '' : $title;
-}
-
 //simple function for wp_get_attachment_image_src()
 function image_src($id, $size = 'full', $background_image = false, $height = false) {
 	if ($image = wp_get_attachment_image_src($id, $size, true)) {
@@ -329,13 +272,13 @@ function wpa_init() {
 	add_filter('json_jsonp_enabled', '__return_false');
 
 	// Filters for WP-API version 2.x
-	add_filter('rest_enabled', '__return_false');
-	add_filter('rest_jsonp_enabled', '__return_false');
+//	add_filter('rest_enabled', '__return_false');
+//	add_filter('rest_jsonp_enabled', '__return_false');
 	remove_action( 'wp_head', 'rest_output_link_wp_head' );
 	//Disable Thumbnails Embeds
 	add_filter( 'embed_thumbnail_image_shape', '__return_false' );
 	// Remove the REST API endpoint.
-	remove_action( 'rest_api_init', 'wp_oembed_register_route' );
+//	remove_action( 'rest_api_init', 'wp_oembed_register_route' );
 	// Turn off oEmbed auto discovery.
 	add_filter( 'embed_oembed_discover', '__return_false' );
 	// Don't filter oEmbed results.
@@ -351,12 +294,43 @@ function wpa_init() {
 	remove_action('wp_head', 'rsd_link');
 	remove_action('wp_head', 'wlwmanifest_link');
 	remove_action('wp_head', 'index_rel_link');
-	remove_action('wp_head', 'parent_post_rel_link', 10, 0);
-	remove_action('wp_head', 'start_post_rel_link', 10, 0);
+	remove_action('wp_head', 'parent_post_rel_link', 10);
+	remove_action('wp_head', 'start_post_rel_link', 10);
 	remove_action('wp_head', 'wp_shortlink_wp_head' );
 	remove_action('wp_head', 'adjacent_posts_rel_link_wp_head' );
 	remove_action('wp_head', 'wp_generator');
 	remove_action('wp_head', 'rel_canonical');
+
+	// Prevent Emoji from loading on the front-end
+	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+	remove_action( 'wp_print_styles', 'print_emoji_styles' );
+	// Remove from admin area also
+	remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+	remove_action( 'admin_print_styles', 'print_emoji_styles' );
+	// Remove from RSS feeds also
+	remove_filter( 'the_content_feed', 'wp_staticize_emoji');
+	remove_filter( 'comment_text_rss', 'wp_staticize_emoji');
+	// Remove from Embeds
+	remove_filter( 'embed_head', 'print_emoji_detection_script' );
+	// Remove from emails
+	remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+	// Disable from TinyMCE editor. Currently disabled in block editor by default
+	add_filter('tiny_mce_plugins', function($plugins) {
+		if(is_array($plugins)) {
+			return array_diff($plugins, array('wpemoji'));
+		} else {
+			return array();
+		}
+	});
+
+	/** Finally, disable it from the database also,
+	 *  to prevent characters from converting
+	 *  Earlier, there was a setting under Writings to do this
+	 *  It is not ideal to get & update it here - but it works for now
+	 */
+	if( (int) get_option('use_smilies') === 1 ) {
+		update_option( 'use_smilies', 0 );
+	}
 
 	//Page/Post thumbnail support
 	add_theme_support( 'post-thumbnails' );
@@ -371,89 +345,13 @@ function wpa_init() {
 	add_filter( 'style_loader_src', 'wpa_remove_wp_ver_css_js', 9999 );
 	add_filter( 'script_loader_src', 'wpa_remove_wp_ver_css_js', 9999 );
 
-	//defer JS
-	add_filter( 'clean_url', 'wpa_defer_scripts', 11, 1 );
-
-	add_action('wp_head', 'wp_IEhtml5_js');
-
 	add_filter( 'body_class', 'wpa_body_classes' );
 
 	//Widgets extension
 	add_filter('widget_categories_args','show_empty_widget_links');
 	add_filter('widget_tag_cloud_args','show_empty_widget_links');
-//	add_filter('widget_title', 'wpa_widget_title');
-
 }
 add_action( 'init', 'wpa_init', 9999 );
-
-// Remove Emoji js/styles
-function disable_emoji_feature() {
-
-	// Prevent Emoji from loading on the front-end
-	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-	remove_action( 'wp_print_styles', 'print_emoji_styles' );
-
-	// Remove from admin area also
-	remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
-	remove_action( 'admin_print_styles', 'print_emoji_styles' );
-
-	// Remove from RSS feeds also
-	remove_filter( 'the_content_feed', 'wp_staticize_emoji');
-	remove_filter( 'comment_text_rss', 'wp_staticize_emoji');
-
-	// Remove from Embeds
-	remove_filter( 'embed_head', 'print_emoji_detection_script' );
-
-	// Remove from emails
-	remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
-
-	// Disable from TinyMCE editor. Currently disabled in block editor by default
-	add_filter( 'tiny_mce_plugins', 'disable_emojis_tinymce' );
-
-	/** Finally, disable it from the database also,
-	 *  to prevent characters from converting
-	 *  Earlier, there was a setting under Writings to do this
-	 *  It is not ideal to get & update it here - but it works for now
-	 */
-
-	if( (int) get_option('use_smilies') === 1 ) {
-		update_option( 'use_smilies', 0 );
-	}
-
-}
-
-function disable_emojis_tinymce( $plugins ) {
-	if( is_array($plugins) ) {
-		$plugins = array_diff( $plugins, array( 'wpemoji' ) );
-	}
-	return $plugins;
-}
-
-add_action('init', 'disable_emoji_feature');
-
-/* Activate ACF
-   ========================================================================== */
-function wpa__prelicense()
-{
-	if (function_exists('acf_pro_is_license_active') && !acf_pro_is_license_active()) {
-		$args = array(
-			'_nonce' => wp_create_nonce('activate_pro_licence'),
-			'acf_license' => base64_encode('order_id=37918|type=personal|date=2014-08-21 15:02:59'),
-			'acf_version' => acf_get_setting('version'),
-			'wp_name' => get_bloginfo('name'),
-			'wp_url' => home_url(),
-			'wp_version' => get_bloginfo('version'),
-			'wp_language' => get_bloginfo('language'),
-			'wp_timezone' => get_option('timezone_string'),
-		);
-		$response = acf_pro_get_remote_response('activate-license', $args);
-		$response = json_decode($response, true);
-		if ($response['status'] == 1) {
-			acf_pro_update_license($response['license']);
-		}
-	}
-}
-add_action( 'admin_init', 'wpa__prelicense', 99 );
 
 function wpa_dump($variable){
 	$pretty = function($v='',$c="&nbsp;&nbsp;&nbsp;&nbsp;",$in=-1,$k=null)use(&$pretty){$r='';if(in_array(gettype($v),array('object','array'))){$r.=($in!=-1?str_repeat($c,$in):'').(is_null($k)?'':"$k: ").'<br>';foreach($v as $sk=>$vl){$r.=$pretty($vl,$c,$in+1,$sk).'<br>';}}else{$r.=($in!=-1?str_repeat($c,$in):'').(is_null($k)?'':"$k: ").(is_null($v)?'&lt;NULL&gt;':"<strong>$v</strong>");}return$r;};
