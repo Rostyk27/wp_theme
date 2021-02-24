@@ -9,7 +9,6 @@ $(document).ready(function() {
     $('.nav_icon').on('click', function() {
         $(this).toggleClass('is_active').next().stop().toggleClass('is_open');
         $('body').toggleClass('is_overflow');
-        return false;
     });
     // append "plus" element in sub-menu parent item
     // $('#menu .menu-item-has-children > a').after('<span />');

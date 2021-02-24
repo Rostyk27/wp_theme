@@ -218,7 +218,10 @@ function so_me() {
     if($so_me) {
         $soc .= '<div class="so_me">';
         foreach($so_me as $sm) {
-            $soc .= '<a href="'.$sm['link'].'" class="i_'.$sm['icon'].'" target="_blank" rel="noopener noreferrer"></a>';
+	        $host  = parse_url( $sm['link'] );
+	        $parts = explode( '.', $host['host'] );
+	        $label = $parts[0] == "www" ? $parts[1] : $parts[0];
+            $soc .= '<a href="'.$sm['link'].'" class="i_'.$sm['icon'].'" target="_blank" rel="noopener" aria-label="'.$label.'"></a>';
         }
         $soc .= '</div>';
     }

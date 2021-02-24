@@ -17,7 +17,7 @@
     <header>
         <div class="container">
             <?php echo get_field('logo', 'option') ? '<a href="' . esc_url(site_url()) . '" class="logo"><img src="' . esc_url(get_field('logo', 'option')) . '" alt="logo"></a>' : ''; ?>
-	        <a class="nav_icon" href=""><i></i><i></i><i></i></a>
+	        <a class="nav_icon" href="javascript:;" aria-label="hamburger"><i></i><i></i><i></i></a>
 	        <nav id="menu"><?php wp_nav_menu(array('container' => false, 'items_wrap' => '<ul id="%1$s">%3$s</ul>', 'theme_location'  => 'main_menu')); ?></nav>
         </div>
     </header>
