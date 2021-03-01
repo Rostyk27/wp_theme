@@ -23,6 +23,7 @@ $(document).ready(function() {
         $(this).fadeOut(250,function(){
             $(this).remove();
         });
+        $(this).parents('.wpcf7-form').find('.wpcf7-response-output').hide();
     });
     // active class for input parent
     // $(this).on('focus', '.wpcf7-form-control:not([type="submit"])', function() {

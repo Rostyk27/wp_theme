@@ -265,6 +265,12 @@ div.wpcf7 {
     &.invalid {
       .wpcf7-response-output {background-color: #ff694e}
     }
+    &.submitting {
+      .ajax-loader {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
   }
   .wpcf7-form-control-wrap {
     display: block;
@@ -330,10 +336,6 @@ div.wpcf7 {
     border-top: 3px solid $cl;
     opacity: 0;
     visibility: hidden;
-    &.is-active {
-      opacity: 1;
-      visibility: visible;
-    }
   }
   .screen-reader-response {display: none}
 }
