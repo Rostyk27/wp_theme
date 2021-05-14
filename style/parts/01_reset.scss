@@ -11,37 +11,40 @@
 html, body {margin: 0; height: 100%}
 
 html {
-  font: 400 #{$fb * 0.7}/1.42 $ff;
+  font: 300 #{$fb / 1.333333333334}/1.5 $ff;
   box-sizing: border-box;
   -ms-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   -webkit-overflow-scrolling: touch;
   -webkit-font-smoothing: antialiased;
-  @include rwd-range(1024, 768) {font-size: $fb * 0.8}
-  @include rwd-range(1366, 1025) {font-size: $fb * 0.9}
-  @include rwd-min(1367) {font-size: $fb}
+  @include rwd-min(768) {font-size: $fb}
 }
 body {
   @include flexbox;
   @include flex-direction(column);
   min-height: 100vh;
   background: #fff;
-  font-size: $fp * 0.9375;
+  font-size: $fb;
   color: $tx;
   @include rwd-max(1024) { &.is_overflow {overflow: hidden} }
-  @include rwd-min(768) {font-size: $fp}
 }
 #main {
   @include flex(1, 0, auto);
   overflow: hidden;
+  margin-top: 60px;
+  @include rwd-min(1025) {margin-top: 80px}
 }
 .container {
-  width: 1140px;
-  max-width: calc(100% - 36px);
+  width: 1110px;
+  max-width: calc(100% - 48px);
   margin: 0 auto;
   position: relative;
-  @include rwd-range(1024, 481) {max-width: calc(100% - 48px)}
-  @include rwd-min(1025) {max-width: 94%}
+  @include rwd-range(1024, 481) {max-width: calc(100% - 78px)}
+  @include rwd-min(1025) {max-width: calc(100% - 144px)}
+  &.is_smaller {
+    width: 630px;
+    @include rwd-min(1025) {width: 730px}
+  }
 }
 
 article, aside, figure, footer, header, nav, section {display: block}

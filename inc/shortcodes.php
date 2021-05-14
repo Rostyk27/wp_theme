@@ -216,14 +216,14 @@ function so_me() {
     $so_me = get_field('so_me', 'option');
     $soc = '';
     if($so_me) {
-        $soc .= '<div class="so_me">';
+        $soc .= '<ul class="so_me">';
         foreach($so_me as $sm) {
 	        $host  = parse_url( $sm['link'] );
 	        $parts = explode( '.', $host['host'] );
 	        $label = $parts[0] == "www" ? $parts[1] : $parts[0];
-            $soc .= '<a href="'.$sm['link'].'" class="i_'.$sm['icon'].'" target="_blank" rel="noopener" aria-label="'.$label.'"></a>';
+            $soc .= '<li><a href="'.$sm['link'].'" class="i_'.$sm['icon'].'" target="_blank" rel="noopener" aria-label="'.$label.'"></a></li>';
         }
-        $soc .= '</div>';
+        $soc .= '</ul>';
     }
     return $soc;
 }

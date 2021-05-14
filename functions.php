@@ -12,7 +12,8 @@ register_nav_menus(array(
 ));
 
 //Custom images sizes
-//add_image_size( 'top_default', '1920', '500', true );
+add_image_size('top_default', '1095', '616', true);
+add_image_size('custom_gallery', '525', '395', true);
 
 //register sidebar
 $reg_sidebars = array (

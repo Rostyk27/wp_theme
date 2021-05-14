@@ -1,8 +1,10 @@
-$fb: 30px;
-$fp: 16px;
+$fb: 16px;
 $cl: #22bbb4;
-$tx: #232323;
-$ff: 'Open Sans', sans-serif;
+$tx: #1c2c39;
+$border: #e8e8e8;
+$shadow: rgba($tx, 0.5);
+$ff: 'Roboto', sans-serif;
+$ff2: 'Playfair Display', sans-serif;
 $icons: 'icons';
 
 @import 'parts/00_mixins';

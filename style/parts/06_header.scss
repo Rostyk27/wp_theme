@@ -1,9 +1,25 @@
 // header + main_menu
 
 header {
-  @include rwd-max(1024) {
-    position: relative;
-    > .container {position: static}
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0 1px 5px $shadow;
+  z-index: 9;
+
+  .container {
+    height: 60px;
+    position: static;
+    @include rwd-min(1025) {height: 80px}
+  }
+
+  .logo {
+    img {
+      width: 40px;
+      @include rwd-min(1025) {width: 60px}
+    }
   }
 }
 
@@ -33,6 +49,8 @@ header {
         }
       }
     }
+
+    @include rwd-min(1025) {margin-left: 20px}
   }
   .sub-menu {
     @extend %ani;
