@@ -39,13 +39,15 @@ function load_posts_ajax($paged = 1) {
 
 		if ($num_pages != $paged) :
 			echo '<div class="load_more_holder">
-                      <a class="button load_more_posts" data-href="'. wp_kses_post(($paged + 1)) .'" data-cat="'. esc_html($category) .'">Load More</a>
+                      <a class="button load_more__posts" 
+                         data-href="'. wp_kses_post(($paged + 1)) .'" 
+                         data-cat="'. esc_html($category) .'">Load More</a>
                   </div>
                   <div class="loader_holder">'. wp_kses(get_loader(), $GLOBALS['allowed_loader']) .'</div>';
 		endif;
 
 	else :
-		echo '<div><h5 class="custom_coming_soon">Ooops! Nothing found.</h5></div>';
+		echo '<div><h3 class="custom_coming_soon">Oops! Nothing found.</h3></div>';
 	endif;
 
 	if (wp_doing_ajax()) :

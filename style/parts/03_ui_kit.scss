@@ -115,6 +115,7 @@ em, i {font-weight: 500}
 
 figure {
   &.wp-block-image {margin-bottom: 30px}
+  &.aligncenter img {margin: 0 auto}
 
   a {
     display: block;
@@ -293,6 +294,32 @@ hr {
   *:last-child {margin-bottom: 0;padding-bottom: 0;}
   h3 {
     padding-bottom: 10px;
+  }
+}
+
+.wp-block-media-text {
+  @include rwd-min(768) {
+    @include flexbox;
+    @include align-items(center);
+    margin: 0 -10px;
+    &.is-vertically-aligned-top {@include align-items(flex-start)}
+    &.is-vertically-aligned-bottom {@include align-items(flex-end)}
+  }
+  > * {
+    @include rwd-min(768) {
+      @include flex(1);
+      margin: 0 10px;
+    }
+  }
+  &.has-media-on-the-right {
+    .wp-block-media-text__media {
+      @include rwd-min(768) {@include order(1)}
+    }
+  }
+  &.has-media-on-the-left {
+    .wp-block-media-text__media {
+      @include rwd-min(768) {@include order(-1)}
+    }
   }
 }
 

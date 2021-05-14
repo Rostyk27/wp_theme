@@ -9,7 +9,7 @@ function load_posts_ajax(paged, category) {
         paged = 1;
     }
 
-    var ajax_content = $('.posts_container');
+    var ajax_content = $('.posts__container');
 
     $.ajax({
         type: 'POST',
@@ -20,15 +20,15 @@ function load_posts_ajax(paged, category) {
             category: category
         },
         success: function (html) {
+            $('.loader_holder').remove();
+
             if (paged !== 1) {
-                $('.loader_holder').remove();
                 ajax_content.append(html);
-                $('.show_box').removeClass('is_loading');
             } else {
-                $('.loader_holder').remove();
                 ajax_content.html(html);
-                $('.show_box').removeClass('is_loading');
             }
+
+            $('.show_box').removeClass('is_loading');
         }
 
     });
@@ -41,18 +41,18 @@ $(document).ready(function () {
     'use strict';
 
     // ajax posts - filtering
-    var posts_filters = $('.posts_filters a'),
-        posts_dropdown = $('.posts_dropdown');
+    var posts_filters = $('.posts__filters a'),
+        posts_dropdown = $('.posts__dropdown');
 
     // desktop
     posts_filters.on('click', function () {
-        $(this).parents('.posts_filtering').find('.show_box').addClass('is_loading');
+        $(this).parents('.posts__filtering').find('.show_box').addClass('is_loading');
 
         var cat = $(this).attr('href');
 
         load_posts_ajax(1, cat);
 
-        $('.posts_filters a').removeClass('is_filtered');
+        $('.posts__filters a').removeClass('is_filtered');
         $(this).addClass('is_filtered');
 
         window.location.hash = cat;
@@ -69,7 +69,7 @@ $(document).ready(function () {
 
     // mobile
     posts_dropdown.on('change', function () {
-        $(this).parents('.posts_filtering').find('.show_box').addClass('is_loading');
+        $(this).parents('.posts__filtering').find('.show_box').addClass('is_loading');
 
         var cat = $(this).val();
 
@@ -87,7 +87,7 @@ $(document).ready(function () {
     });
 
     // ajax posts - page loading
-    $(this).on('click', '.load_more_posts', function () {
+    $(this).on('click', '.load_more__posts', function () {
         $(this).parent().next().find('.show_box').addClass('is_loading');
 
         var pg = $(this).attr('data-href'),
