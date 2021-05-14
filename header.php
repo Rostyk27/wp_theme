@@ -10,8 +10,9 @@
         <meta name="apple-mobile-web-app-capable" content="yes"/>
         <meta name="format-detection" content="telephone=no">
         <meta name="theme-color" content="#1c2c39">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,500&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,500&display=swap"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,500&display=swap" media="print" onload="this.media='all'"/>
         <?php wp_head(); ?>
     </head>
 
@@ -25,7 +26,7 @@
 
                     <a class="nav_icon" href="javascript:;" aria-label="hamburger"><i></i><i></i><i></i></a>
 
-                    <nav id="menu">
+                    <nav id="menu" class="flex__rwd">
 		                <?php wp_nav_menu(
 			                array(
 				                'container'      => false,
@@ -33,6 +34,12 @@
 				                'theme_location' => 'main_menu'
 			                )
 		                ); ?>
+
+                        <figure class="search_toggle i_search" data-fancybox data-src="#search_field"></figure>
                     </nav>
                 </div>
             </header>
+
+            <div id="search_field">
+                <div class="container"><?php get_search_form(); ?></div>
+            </div>

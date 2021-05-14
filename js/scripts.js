@@ -66,6 +66,11 @@ $(document).ready(function() {
         }
     });
 
+    // add body class on event
+    $('.search_toggle').on('click', function () {
+        $('body').addClass('is_searching');
+    });
+
 
     // animations
     // AOS.init({

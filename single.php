@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <div class="single_post">
-    <section class="single_post__meta">
+    <section class="single_post__meta top_panel__default">
         <div class="container is_smaller">
             <h1><?php the_title(); ?></h1>
 

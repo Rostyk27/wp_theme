@@ -34,15 +34,13 @@ add_action('wp_enqueue_scripts', 'tt_add_jscss');
 
 // defer parsing of JS for external scripts
 // uncomment only after optimization with gulp
-/*if ( !is_admin() ) :
-	function defer_parsing_of_js($url) {
-		if ( FALSE === strpos( $url, '.js' ) ) return $url;
-		if ( strpos( $url, '_jquery.js' ) || strpos( $url, 'main.min.js' ) ) return $url;
-		return "$url' defer='";
-	}
-	add_filter( 'clean_url', 'defer_parsing_of_js', 11, 1 );
-endif;*/
-
+/*function defer_parsing_of_js( $url ){
+	if ( is_user_logged_in() ) return $url; //don't break WP Admin
+	if ( FALSE === strpos( $url, '.js' ) ) return $url;
+	if ( strpos( $url, '_jquery.js' ) || strpos( $url, 'main.min.js' ) ) return $url;
+	return str_replace( ' src', ' defer src', $url );
+}
+add_filter( 'script_loader_tag', 'defer_parsing_of_js', 10 );*/
 
 // disable gutenberg style in Front
 function wps_deregister_styles() {

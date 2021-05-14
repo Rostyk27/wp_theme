@@ -50,7 +50,7 @@ header {
       }
     }
 
-    @include rwd-min(1025) {margin-left: 20px}
+    @include rwd-min(1025) {margin: 0 15px}
   }
   .sub-menu {
     @extend %ani;
@@ -165,4 +165,67 @@ header {
     }
   }
   @include rwd-max(767) {width: 100%}
+}
+
+
+.search_toggle {
+  @extend %ani;
+  @extend .flex_center;
+  font-size: 18px;
+  color: $tx;
+  margin: 0 10px;
+  cursor: pointer;
+  @include hover {color: $cl}
+}
+
+
+#search_field {
+  display: none;
+  padding: 0;
+  background-color: transparent;
+
+  form {position: relative}
+
+  input {
+    height: 48px;
+    border: none;
+    font: 400 24px $ff2;
+    color: #fff;
+    padding-right: 50px;
+    background-color: transparent;
+    border-bottom: 1px solid #fff;
+    @include rwd-min(768) {
+      height: 54px;
+      font-size: 28px;
+      padding-right: 56px;
+    }
+    @include placeholder {color: #fff; opacity: 1}
+  }
+
+  button {
+    @extend %ani;
+    @include center(false, true);
+    right: 0;
+    width: 48px;
+    height: 48px;
+    color: #fff;
+    text-align: center;
+    box-shadow: inset 0 0 0 0 transparent;
+    cursor: pointer;
+    @include rwd-min(768) {
+      width: 54px;
+      height: 54px;
+    }
+
+    &:before {
+      font-size: 24px;
+      line-height: 48px;
+      @include rwd-min(768) {
+        font-size: 28px;
+        line-height: 54px;
+      }
+    }
+
+    @include hover {box-shadow: inset 0 0 0 2px #fff}
+  }
 }

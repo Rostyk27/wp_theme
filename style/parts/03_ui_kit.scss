@@ -246,12 +246,6 @@ hr {
   }
 }
 
-.default_page {
-  padding: 30px 0 60px;
-  @include rwd-range(1024, 768) {padding-top: 50px}
-  @include rwd-min(1025) {padding-top: 60px}
-}
-
 
 // default Gutenberg blocks
 .wp-block-columns {
