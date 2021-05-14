@@ -51,19 +51,20 @@ $(document).ready(function() {
 
     // fancybox
     // $.fancybox.defaults.touch = false;
-    // $.fancybox.defaults.smallBtn = false;
+    $.fancybox.defaults.smallBtn = false;
+    $.fancybox.defaults.backFocus = false;
     // $.fancybox.defaults.autoFocus = false;
 
-    // $('[data-fancybox]').fancybox({
-    //     afterLoad: function( instance, slide ) {
-    //         // fix if header is sticky
-    //         $('header').addClass('compensate-for-scrollbar');
-    //     },
-    //     afterClose: function( instance, slide ) {
-    //         // fix if header is sticky
-    //         $('header').removeClass('compensate-for-scrollbar');
-    //     }
-    // });
+    $('[data-fancybox]').fancybox({
+        afterLoad: function( instance, slide ) {
+            // fix if header is sticky
+            $('header').addClass('compensate-for-scrollbar');
+        },
+        afterClose: function( instance, slide ) {
+            // fix if header is sticky
+            $('header').removeClass('compensate-for-scrollbar');
+        }
+    });
 
 
     // animations
@@ -81,6 +82,19 @@ $(document).ready(function() {
     // $('html, body').animate({
     //     scrollTop: $(elem).offset().top - $('header').outerHeight()
     // }, 700);
+
+
+    // block - accordion
+    $('.acc_title').on('click', function () {
+        $(this).toggleClass('is_open').next().toggle();
+        $(this).find('.circle_arrow').toggleClass('is_up').toggleClass('is_down');
+    });
+
+
+    // wrap tables for responsive design
+    if($('table').length > 0) {
+        $('table').wrap('<div class="table_wrapper"></div>');
+    }
     
 });
 
@@ -89,33 +103,47 @@ $(document).ready(function() {
 $(window).on('load', function() {
     'use strict';
 
-    // swiper
-    // setTimeout(function() {
-    //     var home_slider = new Swiper('.home_slider', {
-    //         navigation: {
-    //             nextEl: '.home_slider .sw_next',
-    //             prevEl: '.home_slider .sw_prev'
-    //         },
-    //         pagination: {
-    //             el: '.home_slider .sw_pagination',
-    //             type: 'bullets',
-    //             clickable: true
-    //         },
-    //         autoplay: {
-    //             delay: 4000
-    //         },
-    //         speed: 1000,
-    //         threshold: 30,
-    //         touchEventsTarget : 'wrapper'
-    //     });
-    // }, 250);
+    // swiper - block__custom_slider
+    $('.block__custom_slider').each(function () {
+        var block__custom_slider = $(this),
+            swiper_container = block__custom_slider.find('.swiper-container'),
+            next = block__custom_slider.find('.sw_next'),
+            prev = block__custom_slider.find('.sw_prev'),
+            pagination = block__custom_slider.find('.sw_pagination');
+
+        var slider = new Swiper(swiper_container[0], {
+            navigation: {
+                nextEl: next[0],
+                prevEl: prev[0]
+            },
+            pagination: {
+                el: pagination[0],
+                type: 'bullets',
+                clickable: true
+            },
+            loop: true,
+            speed: 700,
+            initialSlide: 1,
+            spaceBetween: 10,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            breakpoints: {
+                768: {
+                    spaceBetween: 20
+                },
+                1025: {
+                    spaceBetween: 30
+                }
+            }
+        });
+    });
 
 
     // custom class for video in content (iframe)
     $('.content iframe').each(function(i) {
         var t = $(this),
             p = t.parent();
-        if (p.is('p') && !p.hasClass('full_frame')) {
+        if ( (p.is('p') || p.is('span') ) && !p.hasClass('full_frame')) {
             p.addClass('full_frame');
         }
     });
@@ -128,7 +156,7 @@ $(window).on('load', function() {
 // $(document).on('mouseup', function(e) {
 //     var menu = $('#menu');
 //
-//     if (!menu.is(e.target) && menu.has(e.target).length === 0 && menu.hasClass('is_open')) {
+//     if (!menu.is(e.target) && !$('.nav_icon.is_active').is(e.target) && menu.has(e.target).length === 0 && menu.hasClass('is_open')) {
 //         $('.nav_icon.is_active').click();
 //     }
 // });

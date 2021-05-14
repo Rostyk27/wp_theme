@@ -1,0 +1,21 @@
+/* disabling Gutenberg's "Welcome Guide" popup! */
+.components-modal__screen-overlay {display: none !important}
+
+/* styles for custom Gutenberg blocks */
+
+/* default table */
+.wp-block-table table {
+  border: 2px solid #000;
+}
+.wp-block-table thead {
+  border-bottom: 2px solid;
+}
+.wp-block-table th {
+  text-align: left;
+}
+.wp-block-table th:not(:last-child) {
+  border-right-width: 2px;
+}
+.wp-block-table td {
+  vertical-align: top;
+}
