@@ -11,10 +11,10 @@ $(document).ready(function() {
         $('body').toggleClass('is_overflow');
     });
     // append "plus" element in sub-menu parent item
-    // $('#menu .menu-item-has-children > a').after('<span />');
-    // $('#menu').on('click', '.menu-item-has-children > a + span', function() {
-    //     $(this).toggleClass('is_open').next().stop().toggle().parent().toggleClass('is_active');
-    // });
+    $('#menu .menu-item-has-children > a').after('<span />');
+    $('#menu').on('click', '.menu-item-has-children > a + span', function() {
+        $(this).toggleClass('is_open').next().stop().toggle();
+    });
 
 
     // contact form 7

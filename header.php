@@ -24,6 +24,8 @@
                         <img src="<?php echo esc_url( theme( 'images/logo.svg' ) ); ?>" alt="logo">
                     </a>
 
+                    <figure class="search_toggle i_search" data-fancybox data-src="#search_field"></figure>
+
                     <a class="nav_icon" href="javascript:;" aria-label="hamburger"><i></i><i></i><i></i></a>
 
                     <nav id="menu" class="flex__rwd">
@@ -34,8 +36,6 @@
 				                'theme_location' => 'main_menu'
 			                )
 		                ); ?>
-
-                        <figure class="search_toggle i_search" data-fancybox data-src="#search_field"></figure>
                     </nav>
                 </div>
             </header>
