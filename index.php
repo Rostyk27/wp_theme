@@ -2,7 +2,7 @@
 
 <section class="top_panel top_panel__default">
     <div class="container">
-        <h1><?php the_archive_title(); ?></h1>
+        <h1><?php echo is_home() ? get_the_title( BLOG_ID ) : get_the_archive_title(); ?></h1>
     </div>
 </section>
 
