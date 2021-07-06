@@ -98,17 +98,36 @@ input[type="button"] {
 input, textarea {@include placeholder {color: $tx; opacity: 1}}
 
 // selection
-:focus {outline: none}
-::-moz-focus-inner {border: 0}
-::selection {color: #fff; background: $cl}
-::-moz-selection {color: #fff; background: $cl}
+::selection {color: #fff; background-color: $cl}
+::-moz-selection {color: #fff; background-color: $cl}
 
-// custom scrollbar
+// custom scrollbar - chrome
 html::-webkit-scrollbar {
   width: 6px;
-  @include rwd-min(1025) {width: 10px}
+  @include rwd-min(1025) {width: 8px}
 }
-::-webkit-scrollbar-thumb {background: $cl}
-::-webkit-scrollbar-track {background: #eaeaea}
-::-webkit-scrollbar-thumb:hover {background: darken($cl, 5%)}
-::-webkit-scrollbar-thumb:active {background: darken($cl, 5%)}
+::-webkit-scrollbar-thumb {background-color: $cl}
+::-webkit-scrollbar-track {background-color: #eaeaea}
+::-webkit-scrollbar-thumb:hover {background-color: darken($cl, 5%)}
+::-webkit-scrollbar-thumb:active {background-color: darken($cl, 5%)}
+// custom scrollbar - firefox
+:root {
+  scrollbar-width: thin;
+  scrollbar-color: $cl #eaeaea;
+}
+
+// disable default focus
+:focus {outline: 0 none}
+// enable focus for tabbable elements
+a[href], area[href], input:not([disabled]):not([type="hidden"]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable], audio[controls], video[controls], summary, [tabindex^="0"], [tabindex^="1"], [tabindex^="2"], [tabindex^="3"], [tabindex^="4"], [tabindex^="5"], [tabindex^="6"], [tabindex^="7"], [tabindex^="8"], [tabindex^="9"] {
+  &:focus,
+  &:focus-visible {
+    @include transition(none);
+    outline: 2px dashed $cl;
+  }
+
+  .is_using_mouse & {
+    &:focus,
+    &:focus-visible {outline: 0 none}
+  }
+}
