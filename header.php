@@ -1,6 +1,9 @@
-<?php if( @!WP_DEBUG) {	ob_start('ob_html_compress'); } ?>
+<?php
+if( @!WP_DEBUG) { ob_start('ob_html_compress'); }
+( function_exists( 'pll_current_language' ) ) ? $lang = pll_current_language() : $lang = 'en';
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo $lang; ?>">
     <head>
         <meta charset="UTF-8">
         <title><?php wpa_title(); ?></title>
