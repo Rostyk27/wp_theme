@@ -61,7 +61,8 @@ header {
         line-height: 28px;
         text-transform: uppercase;
         margin-bottom: 10px;
-        > a {padding: 7px 0}
+        & > a,
+        & > .empty_link {padding: 7px 0}
       }
     }
   }
@@ -71,7 +72,8 @@ header {
 
     &.current-menu-item,
     &.current-menu-parent {
-      & > a {
+      & > a,
+      & > span {
         @include rwd-min(1025) {text-decoration: underline}
         @include rwd-max(1024) {color: $tx}
       }
@@ -90,14 +92,15 @@ header {
           height: 100px;
         }
 
-        & > a {position: relative}
+        & > a,
+        & > .empty_link {position: relative}
 
         &:hover {
           &:before {display: block}
 
           & > .sub-menu {
             opacity: 1;
-            visibility: visible;
+            pointer-events: all;
             @include transform(translateY(0));
           }
         }
@@ -114,9 +117,9 @@ header {
           right: -50px;
         }
       }
-
       @include rwd-max(1024) {
-        & > a + span {
+        & > a + span,
+        & > .empty_link + span {
           position: absolute;
           top: 0;
           right: 0;
@@ -153,7 +156,8 @@ header {
 
         &.current-menu-item,
         &.current-menu-parent {
-          & > a + span {
+          & > a + span,
+          & > span + span {
             &:after, &:before {background-color: $tx}
           }
         }
@@ -171,6 +175,12 @@ header {
     @include rwd-max(1024) {display: inline-block}
   }
 
+  .empty_link {
+    color: #fff;
+    @include rwd-min(1025) {color: $tx}
+    @include rwd-max(1024) {display: inline-block}
+  }
+
   .sub-menu {
     @include rwd-min(1025) {
       @include transition();
@@ -182,7 +192,7 @@ header {
       background-color: #fff;
       box-shadow: 0 6px 5px $shadow;
       opacity: 0;
-      visibility: hidden;
+      pointer-events: none;
       z-index: 3;
     }
     @include rwd-min(1200) {left: -35px}
@@ -201,7 +211,8 @@ header {
       @include rwd-max(1024) {text-transform: none}
     }
 
-    a {
+    a,
+    .empty_link {
       @include rwd-max(1024) {padding: 5px 0}
     }
   }
@@ -209,13 +220,11 @@ header {
 
 
 .search_toggle {
-  @extend %ani;
   @extend .flex_center;
   font-size: 18px;
   color: $tx;
   position: relative;
   z-index: 1;
-  cursor: pointer;
   @include hover {color: $cl}
   @include rwd-min(1025) {@include order(1)}
   @include rwd-max(1024) {margin-right: 60px}
@@ -271,4 +280,15 @@ header {
 
     @include hover {box-shadow: inset 0 0 0 2px #fff}
   }
+}
+
+.skip_to_content {
+  @include transition(none);
+  @include transform(translate(-110%, -110%));
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  &:focus,
+  &:focus-visible {@include transform(translate(10px, 10px))}
 }

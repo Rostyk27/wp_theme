@@ -187,6 +187,32 @@ function wpa_discard_menu_classes($classes, $item) {
 	);
 }
 
+// replace empty links with <span>
+function wpa_replace_empty_link_with_span($item_output, $item, $depth, $args) {
+	if (empty($item->url) || '#' === $item->url) {
+		$item_output = $args->before;
+		$item_output .= '<span class="empty_link">';
+		$item_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
+		$item_output .= '</span>';
+		$item_output .= $args->after;
+	}
+	return $item_output;
+}
+//add_filter('walker_nav_menu_start_el', 'wpa_replace_empty_link_with_span', 10, 4);
+
+// replace current link with <span>
+function wpa_replace_current_link_with_span($item_output, $item, $depth, $args) {
+	if ($item->current) {
+		$item_output = $args->before;
+		$item_output .= '<span aria-current="page">';
+		$item_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
+		$item_output .= '</span>';
+		$item_output .= $args->after;
+	}
+	return $item_output;
+}
+//add_filter('walker_nav_menu_start_el', 'wpa_replace_current_link_with_span', 10, 4);
+
 // New Body Classes
 function wpa_body_classes( $classes ){
 	if( is_page() ){
