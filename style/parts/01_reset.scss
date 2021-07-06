@@ -23,9 +23,9 @@ body {
   @include flexbox;
   @include flex-direction(column);
   min-height: 100vh;
-  background: #fff;
   font-size: $fb;
   color: $tx;
+  background-color: #fff;
   @include rwd-max(1024) { &.is_overflow {overflow: hidden} }
 }
 #main {
@@ -131,3 +131,17 @@ a[href], area[href], input:not([disabled]):not([type="hidden"]), select:not([dis
     &:focus-visible {outline: 0 none}
   }
 }
+
+// option to control colors with system color scheme
+//@media (prefers-color-scheme: dark) {
+//  body {
+//    color: #fff;
+//    background-color: $tx;
+//  }
+//}
+//@media (prefers-color-scheme: light) {
+//  body {
+//    color: $tx;
+//    background-color: #fff;
+//  }
+//}
