@@ -2,6 +2,16 @@
 /*jshint multistr: true, latedef: nofunc */
 /*global jQuery, $, Swiper*/
 
+
+// control :focus when using mouse/keyboard
+document.body.addEventListener('mousedown', function() {
+    document.body.classList.add('is_using_mouse');
+});
+document.body.addEventListener('keydown', function() {
+    document.body.classList.remove('is_using_mouse');
+});
+
+
 $(document).ready(function() {
     'use strict';
 
@@ -10,9 +20,14 @@ $(document).ready(function() {
         $(this).toggleClass('is_active').next().stop().toggleClass('is_open');
         $('body').toggleClass('is_overflow');
     });
+    // make parent element hidden from screen readers
+    // $('#menu .menu-item-has-children > a').attr({
+    //     'aria-hidden': 'true',
+    //     'tabindex': -1
+    // });
     // append "plus" element in sub-menu parent item
-    $('#menu .menu-item-has-children > a').after('<span />');
-    $('#menu').on('click', '.menu-item-has-children > a + span', function() {
+    $('#menu .menu-item-has-children > a, #menu .menu-item-has-children > .empty_link').after('<span />');
+    $('#menu').on('click', '.menu-item-has-children > a + span, .menu-item-has-children > .empty_link + span', function() {
         $(this).toggleClass('is_open').next().stop().toggle();
     });
 
@@ -90,9 +105,20 @@ $(document).ready(function() {
 
 
     // block - accordion
+    function acc_action(elem) {
+        let exp = elem.attr('aria-expanded');
+        let hid = elem.next().attr('aria-hidden');
+        (exp === 'false') ? elem.attr('aria-expanded', 'true') : elem.attr('aria-expanded', 'false');
+        (hid === 'true') ? elem.next().attr('aria-hidden', 'false') : elem.next().attr('aria-hidden', 'true');
+        elem.toggleClass('is_open').next().toggle();
+        elem.find('.circle_arrow').toggleClass('is_up').toggleClass('is_down');
+    }
     $('.acc_title').on('click', function () {
-        $(this).toggleClass('is_open').next().toggle();
-        $(this).find('.circle_arrow').toggleClass('is_up').toggleClass('is_down');
+        acc_action($(this));
+    }).on('keyup', function (e) {
+        if (e.keyCode === 13) {
+            acc_action($(this));
+        }
     });
 
 
