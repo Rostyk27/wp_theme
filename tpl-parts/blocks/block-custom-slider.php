@@ -28,9 +28,9 @@ if ( $custom_slider ) :
         </div>
 
         <div class="block__custom_slider_controls flex_center">
-            <div class="sw_prev circle_arrow is_left"></div>
+            <span class="sw_prev circle_arrow is_left"></span>
             <div class="sw_pagination"></div>
-            <div class="sw_next circle_arrow is_right"></div>
+            <span class="sw_next circle_arrow is_right"></span>
         </div>
     </div>
 <?php endif; ?>

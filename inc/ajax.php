@@ -41,7 +41,9 @@ function load_posts_ajax($paged = 1) {
 			echo '<div class="load_more_holder">
                       <a class="button load_more__posts" 
                          data-href="'. wp_kses_post(($paged + 1)) .'" 
-                         data-cat="'. esc_html($category) .'">Load More</a>
+                         data-cat="'. esc_html($category) .'"
+                         aria-label="Load page '. wp_kses_post(($paged + 1)) .'"
+                         href="javascript:;">Load More</a>
                   </div>
                   <div class="loader_holder">'. wp_kses(get_loader(), $GLOBALS['allowed_loader']) .'</div>';
 		endif;
