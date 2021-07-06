@@ -6,7 +6,7 @@
         <title><?php wpa_title(); ?></title>
         <meta name="MobileOptimized" content="width"/>
         <meta name="HandheldFriendly" content="True"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"/>
         <meta name="apple-mobile-web-app-capable" content="yes"/>
         <meta name="format-detection" content="telephone=no">
         <meta name="theme-color" content="#1c2c39">
@@ -18,15 +18,21 @@
 
     <body <?php body_class(); ?> data-a="<?php echo esc_url(admin_url('admin-ajax.php')); ?>">
         <div id="main">
+            <a href="#skip_to_content" class="button skip_to_content" tabindex="9">Skip to content</a>
+
             <header>
                 <div class="container flex">
-                    <a href="<?php echo esc_url( site_url() ); ?>" class="logo">
-                        <img src="<?php echo esc_url( theme( 'images/logo.svg' ) ); ?>" alt="logo">
+	                <?php echo ( is_front_page() ) ? '<figure class="logo">' : '<a href="'. esc_url( get_site_url() ) .'" class="logo">'; ?>
+                        <img src="<?php echo esc_url( theme( 'images/logo.svg' ) ); ?>" alt="<?php bloginfo(); ?>">
+	                <?php echo ( is_front_page() ) ? '</figure>' : '</a>'; ?>
+
+                    <a class="search_toggle i_search" data-fancybox data-src="#search_field" href="javascript:;" aria-label="Search"></a>
+
+                    <a class="nav_icon" href="javascript:;" aria-label="Menu toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </a>
-
-                    <figure class="search_toggle i_search" data-fancybox data-src="#search_field"></figure>
-
-                    <a class="nav_icon" href="javascript:;" aria-label="hamburger"><i></i><i></i><i></i></a>
 
                     <nav id="menu" class="flex__rwd">
 		                <?php wp_nav_menu(
@@ -43,3 +49,5 @@
             <div id="search_field">
                 <div class="container"><?php get_search_form(); ?></div>
             </div>
+
+            <div id="skip_to_content"></div>

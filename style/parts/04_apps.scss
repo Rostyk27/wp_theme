@@ -39,7 +39,7 @@ $h_bg_active: null !default;
   @if $h_bg_static != null {
     background: $h_bg_static;
   }
-  i {
+  span {
     top: ($h_height / 2) - ($h_bar_thickness / 2) - $h_spacing;
     @include transition( all, .25s, ease-in-out );
     @include transform( rotate(0deg) );
@@ -61,7 +61,7 @@ $h_bg_active: null !default;
     @if $h_bg_active != null {
       background: $h_bg_active;
     }
-    i {
+    span {
       left: $h_active_padding;
       right: $h_active_padding;
       &:nth-child(1) {
