@@ -20,15 +20,30 @@ $(document).ready(function() {
         $(this).toggleClass('is_active').next().stop().toggleClass('is_open');
         $('body').toggleClass('is_overflow');
     });
+    $('body').on('keyup', function (e) {
+        if (e.keyCode === 27 && $('.nav_icon').hasClass('is_active')) {
+            $('.nav_icon.is_active').click();
+            $('a[href="#skip_to_content"]').focus();
+        }
+    });
     // make parent element hidden from screen readers
     // $('#menu .menu-item-has-children > a').attr({
     //     'aria-hidden': 'true',
     //     'tabindex': -1
     // });
     // append "plus" element in sub-menu parent item
-    $('#menu .menu-item-has-children > a, #menu .menu-item-has-children > .empty_link').after('<span />');
-    $('#menu').on('click', '.menu-item-has-children > a + span, .menu-item-has-children > .empty_link + span', function() {
-        $(this).toggleClass('is_open').next().stop().toggle();
+    $('#menu .menu-item-has-children > a, #menu .menu-item-has-children > .empty_link').after('<span class="rwd_show" tabindex="0" role="button" aria-label="Sub-menu toggle" aria-expanded="false" />');
+    function sub_menu_action(elem) {
+        let exp = elem.attr('aria-expanded');
+        (exp === 'false') ? elem.attr('aria-expanded', 'true') : elem.attr('aria-expanded', 'false');
+        elem.toggleClass('is_open').next().stop().toggle();
+    }
+    $('#menu').on('click', '[aria-label="Sub-menu toggle"]', function() {
+        sub_menu_action($(this));
+    }).on('keyup', '[aria-label="Sub-menu toggle"]', function (e) {
+        if (e.keyCode === 13) {
+            sub_menu_action($(this));
+        }
     });
 
 
