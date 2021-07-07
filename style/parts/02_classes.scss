@@ -148,3 +148,5 @@
 .mob_hide {
   @include rwd-max(767) {display: none !important}
 }
+
+.is_visually_hidden {display: none !important}
