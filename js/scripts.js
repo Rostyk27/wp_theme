@@ -80,19 +80,23 @@ $(document).ready(function() {
 
 
     // fancybox
-    // $.fancybox.defaults.touch = false;
-    $.fancybox.defaults.smallBtn = false;
-    $.fancybox.defaults.backFocus = false;
-    // $.fancybox.defaults.autoFocus = false;
-
     $('[data-fancybox]').fancybox({
-        afterLoad: function( instance, slide ) {
+        touch: {
+            vertical: false,
+            momentum: true
+        },
+        smallBtn: false,
+        beforeLoad: function( instance, slide ) {
             // fix if header is sticky
             $('header').addClass('compensate-for-scrollbar');
         },
         afterClose: function( instance, slide ) {
             // fix if header is sticky
             $('header').removeClass('compensate-for-scrollbar');
+            // remove body class after event
+            if ($('body').hasClass('is_searching')) {
+                $('body').removeClass('is_searching');
+            }
         }
     });
 
