@@ -95,7 +95,8 @@ header {
         & > a,
         & > .empty_link {position: relative}
 
-        &:hover {
+        &:hover,
+        &.is_focused {
           &:before {display: block}
 
           & > .sub-menu {

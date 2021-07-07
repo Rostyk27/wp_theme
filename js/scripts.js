@@ -20,13 +20,25 @@ $(document).ready(function() {
         $(this).toggleClass('is_active').next().stop().toggleClass('is_open');
         $('body').toggleClass('is_overflow');
     });
+    // close menu with Esc key
     $('body').on('keyup', function (e) {
         if (e.keyCode === 27 && $('.nav_icon').hasClass('is_active')) {
             $('.nav_icon.is_active').click();
             $('a[href="#skip_to_content"]').focus();
         }
     });
-    // make parent element hidden from screen readers
+    // open/close sub-menu with Tab key
+    $('#menu .menu-item-has-children > a').on('focus', function () {
+        $(this).parent().addClass('is_focused');
+    });
+    $('#menu .sub-menu').each(function () {
+        let sub_menu_links = $(this).find('> li > a');
+        let last_sub_menu_link = sub_menu_links.last();
+        last_sub_menu_link.on('blur', function () {
+            $(this).parents('.menu-item-has-children').removeClass('is_focused');
+        });
+    });
+    // option to make parent element hidden from screen readers
     // $('#menu .menu-item-has-children > a').attr({
     //     'aria-hidden': 'true',
     //     'tabindex': -1
