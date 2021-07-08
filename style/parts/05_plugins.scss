@@ -262,7 +262,10 @@ div.wpcf7 {
     &.unaccepted .wpcf7-response-output {background-color: #1091ae}
     &.failed,
     &.invalid {
-      .wpcf7-response-output {background-color: #ff694e}
+      .wpcf7-response-output {
+        background-color: #ff694e;
+        &.is_temp_hidden {display: none}
+      }
     }
     &.submitting {
       .ajax-loader {
