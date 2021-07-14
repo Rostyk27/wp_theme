@@ -245,6 +245,10 @@ hr {
 
 
 // default Gutenberg blocks
+.has-text-align-left {text-align: left}
+.has-text-align-right {text-align: right}
+.has-text-align-center {text-align: center}
+
 .wp-block-columns {
   &.are-vertically-aligned-top {@include align-items(flex-start)}
   &.are-vertically-aligned-center {@include align-items(center)}

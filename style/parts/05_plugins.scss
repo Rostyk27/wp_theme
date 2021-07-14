@@ -339,7 +339,13 @@ div.wpcf7 {
     opacity: 0;
     visibility: hidden;
   }
-  .screen-reader-response {display: none}
+  .screen-reader-response {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 
