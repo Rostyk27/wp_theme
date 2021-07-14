@@ -315,6 +315,15 @@ div.wpcf7 {
     padding: 0 15px;
     border: 1px solid $cl;
     @include placeholder {color: $tx; opacity: 1}
+    &:focus,
+    &:focus-visible {
+      @include transition(none);
+      outline: 2px dashed $cl;
+    }
+    .is_using_mouse & {
+      &:focus,
+      &:focus-visible {outline: 2px solid $tx}
+    }
   }
   textarea {
     height: 120px;
