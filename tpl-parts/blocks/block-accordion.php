@@ -16,14 +16,14 @@ if( !empty( $block['data']['__is_preview'] ) ) : ?>
 $accordion = get_field( 'accordion' );
 if ( $accordion ) :
 ?>
-    <div class="block__accordion">
+    <div class="block__accordion" aria-label="Accordion">
         <?php foreach ( $accordion as $row ) : ?>
             <div class="block__accordion_row">
-                <h3 class="acc_title" tabindex="0" aria-expanded="false"
+                <div class="acc_title h3" tabindex="0" aria-expanded="false"
                     aria-label="<?php echo esc_html( $row['title'] ); ?>">
                     <?php echo esc_html( $row['title'] ); ?>
-                    <figure class="circle_arrow is_down"></figure>
-                </h3>
+                    <span class="circle_arrow is_down"></span>
+                </div>
                 <div class="content" aria-hidden="true">
                     <?php echo wp_kses_post( $row['content'] ); ?>
                 </div>
