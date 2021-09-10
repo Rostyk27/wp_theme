@@ -149,4 +149,10 @@
   @include rwd-max(767) {display: none !important}
 }
 
-.is_visually_hidden {display: none !important}
+.is_visually_hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
