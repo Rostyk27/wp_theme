@@ -2,12 +2,14 @@
 
 // swiper controls
 .swiper-slide {box-sizing: border-box}
+
 .sw_controls {
   @include center(false, true);
   left: 0;
   right: 0;
   z-index: 1;
 }
+
 .sw_prev,
 .sw_next {
   @extend %ani;
@@ -18,10 +20,12 @@
     cursor: default;
   }
 }
+
 .sw_pagination {
   position: relative;
   text-align: center;
   bottom: 0 !important;
+
   .swiper-pagination-bullet {
     @extend %ani;
     opacity: 1;
@@ -245,12 +249,20 @@ $selectric-font-size:       14px !default;                                      
 
 
 // cf7
+$form-error: #ef3f3f;
+$form-success: #22b86c;
+
 div.wpcf7 {
   position: relative;
+
   .inputs_wrap {
     @extend .flex__mob;
-    > * { @include rwd-min(768) {width: 48%} }
+
+    & > * {
+      @include rwd-min(768) {width: 48%}
+    }
   }
+
   .wpcf7-form {
     &.sent,
     &.failed,
@@ -258,43 +270,56 @@ div.wpcf7 {
     &.unaccepted {
       .wpcf7-response-output {margin-top: 10px}
     }
-    &.sent .wpcf7-response-output {background-color: #80c684}
+
+    &.sent .wpcf7-response-output {background-color: $form-success}
+
     &.unaccepted .wpcf7-response-output {background-color: #1091ae}
+
     &.failed,
     &.invalid {
       .wpcf7-response-output {
-        background-color: #ff694e;
+        background-color: $form-error;
+
         &.is_temp_hidden {display: none}
       }
     }
+
     &.submitting {
-      .ajax-loader {
+      .wpcf7-spinner {
         opacity: 1;
         visibility: visible;
       }
+
+      .button {
+        opacity: 0.5;
+        pointer-events: none;
+      }
     }
   }
+
   .wpcf7-form-control-wrap {
     display: block;
     margin-bottom: 20px;
     position: relative;
-    &.is_active {box-shadow: 0 1px 3px #ff0}
+
+    &[class*="acceptance"] {min-height: 40px}
   }
+
   .wpcf7-not-valid-tip {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    height: 40px;
     font: 400 16px/40px $ff;
-    color: #ff694e;
-    background: #fff;
-    border-radius: 0;
+    color: $form-error;
     padding: 0 15px;
-    border: 1px solid #ff694e;
+    border-radius: 0;
+    background-color: #fff;
+    border: 1px solid $form-error;
     cursor: pointer;
   }
+
   .wpcf7-response-output {
     position: absolute;
     top: 100%;
@@ -306,35 +331,99 @@ div.wpcf7 {
     border-radius: 0;
     text-align: center;
   }
-  input:not([type="submit"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]), textarea {
-    display: block;
-    height: 40px;
-    font: 400 16px $ff;
-    color: $tx;
-    background: #fff;
-    padding: 0 15px;
-    border: 1px solid $cl;
-    @include placeholder {color: $tx; opacity: 1}
-    &:focus,
-    &:focus-visible {
-      @include transition(none);
-      outline: 2px dashed $cl;
-    }
-    .is_using_mouse & {
+
+  input, textarea {
+    &:not([type="submit"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]):not([type="file"]) {
+      display: block;
+      height: 40px;
+      font: 400 16px $ff;
+      color: $tx;
+      padding: 0 15px;
+      border: 1px solid $cl;
+      background-color: #fff;
+      @include placeholder {color: $tx; opacity: 1}
+
       &:focus,
-      &:focus-visible {outline: 2px solid $tx}
+      &:focus-visible {
+        outline: 0 none;
+        border-color: $form-success;
+      }
+
+      .is_using_mouse & {
+        &:focus,
+        &:focus-visible {border-color: $form-success}
+      }
+    }
+
+    &[type="checkbox"] {
+      @extend .is_visually_hidden;
+
+      & + span {
+        display: inline-block;
+        font-size: 14px;
+        line-height: 26px;
+        padding-left: 40px;
+        cursor: pointer;
+        position: relative;
+
+        &:before,
+        &:after {
+          @extend %ani;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 24px;
+        }
+
+        &:before {
+          content: '';
+          height: 24px;
+          border-radius: 3px;
+          border: 1px solid $cl;
+        }
+
+        &:after {
+          content: '\e907';
+          font: 400 20px/24px $icons;
+          color: $cl;
+          text-align: center;
+          opacity: 0;
+        }
+      }
+
+      &:checked + span {
+        &:after {opacity: 1}
+      }
+
+      &:focus,
+      &:focus-visible {
+        & + span:before {
+          @include transition(none);
+          outline: 2px dashed $cl;
+        }
+      }
+
+      .is_using_mouse & {
+        &:focus,
+        &:focus-visible {
+          & + span:before {outline: 0 none}
+        }
+      }
     }
   }
+
   textarea {
-    height: 120px;
+    height: 120px !important;
+    padding: 15px !important;
     resize: none;
     overflow: auto;
-    padding: 15px;
   }
+
   button.button {
     & + input {display: none}
   }
-  .ajax-loader {
+
+  .wpcf7-spinner {
     @extend %ani;
     @include prefixer(animation, swiper-preloader-spin 1s infinite linear);
     width: 24px;
@@ -348,13 +437,8 @@ div.wpcf7 {
     opacity: 0;
     visibility: hidden;
   }
-  .screen-reader-response {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-    pointer-events: none;
-  }
+
+  .screen-reader-response {@extend .is_visually_hidden}
 }
 
 
