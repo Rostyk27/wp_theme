@@ -85,7 +85,7 @@
   }
 }
 [class*="flex_grid"] {
-  --grid-gap: 20px;
+  --grid-gap: 24px;
   @include flex-wrap(wrap);
   margin-bottom: calc(var(--grid-gap) * -1);
   &._nowrap {@include flex-wrap(nowrap)}
@@ -104,6 +104,20 @@
     &._col_10 {@include flex(0 0 calc(100%/12*10 - var(--grid-gap)))}
     &._col_11 {@include flex(0 0 calc(100%/12*11 - var(--grid-gap)))}
     &._col_12 {@include flex(0 0 calc(100% - var(--grid-gap)))}
+    @include rwd-range(1499, 1025) {
+      &._col_sd_1 {@include flex(0 0 calc(100%/12 - var(--grid-gap)))}
+      &._col_sd_2 {@include flex(0 0 calc(100%/12*2 - var(--grid-gap)))}
+      &._col_sd_3 {@include flex(0 0 calc(100%/12*3 - var(--grid-gap)))}
+      &._col_sd_4 {@include flex(0 0 calc(100%/12*4 - var(--grid-gap)))}
+      &._col_sd_5 {@include flex(0 0 calc(100%/12*5 - var(--grid-gap)))}
+      &._col_sd_6 {@include flex(0 0 calc(100%/12*6 - var(--grid-gap)))}
+      &._col_sd_7 {@include flex(0 0 calc(100%/12*7 - var(--grid-gap)))}
+      &._col_sd_8 {@include flex(0 0 calc(100%/12*8 - var(--grid-gap)))}
+      &._col_sd_9 {@include flex(0 0 calc(100%/12*9 - var(--grid-gap)))}
+      &._col_sd_10 {@include flex(0 0 calc(100%/12*10 - var(--grid-gap)))}
+      &._col_sd_11 {@include flex(0 0 calc(100%/12*11 - var(--grid-gap)))}
+      &._col_sd_12 {@include flex(0 0 calc(100% - var(--grid-gap)))}
+    }
     @include rwd-max(1024) {
       &.__rwd {@include flex(1)}
       &.__25_rwd {@include flex(0 0 calc(25% - var(--grid-gap)))}
@@ -130,7 +144,13 @@
   background-position: 50% 50%;
 }
 
-.last_no_spacing > *:last-child:not(.button):not(.full_frame) {
+.object_fit {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.last_no_spacing > *:last-child:not(.button):not(.full_frame):not(blockquote) {
   margin-bottom: 0;
   padding-bottom: 0;
 }
