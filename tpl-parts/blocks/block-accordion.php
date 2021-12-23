@@ -20,11 +20,11 @@ if ( $accordion ) :
         <?php foreach ( $accordion as $row ) : ?>
             <div class="block__accordion_row">
                 <div class="acc_title h3" tabindex="0" aria-expanded="false"
-                    aria-label="<?php echo esc_html( $row['title'] ); ?>">
+                    aria-label="<?php echo esc_html( $row['title'] ); ?>" role="button">
                     <?php echo esc_html( $row['title'] ); ?>
                     <span class="circle_arrow is_down"></span>
                 </div>
-                <div class="content" aria-hidden="true">
+                <div class="content" aria-hidden="true" role="region">
                     <?php echo wp_kses_post( $row['content'] ); ?>
                 </div>
             </div>
