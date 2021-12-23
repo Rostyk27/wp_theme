@@ -17,7 +17,7 @@ $custom_slider = get_field( 'custom_slider' );
 if ( $custom_slider ) :
 ?>
     <div class="block__custom_slider">
-        <div class="swiper-container">
+        <div class="swiper">
             <div class="swiper-wrapper">
 	            <?php foreach ( $custom_slider as $image ) : ?>
                     <div class="block__custom_slider_item swiper-slide">

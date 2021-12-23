@@ -176,13 +176,13 @@ $(window).on('load', function() {
 
     // swiper - block__custom_slider
     $('.block__custom_slider').each(function () {
-        var block__custom_slider = $(this),
-            swiper_container = block__custom_slider.find('.swiper-container'),
-            next = block__custom_slider.find('.sw_next'),
-            prev = block__custom_slider.find('.sw_prev'),
-            pagination = block__custom_slider.find('.sw_pagination');
+        var slider_holder = $(this),
+            swiper_instance = slider_holder.find('.swiper'),
+            next = slider_holder.find('.sw_next'),
+            prev = slider_holder.find('.sw_prev'),
+            pagination = slider_holder.find('.sw_pagination');
 
-        var slider = new Swiper(swiper_container[0], {
+        var slider = new Swiper(swiper_instance[0], {
             navigation: {
                 nextEl: next[0],
                 prevEl: prev[0]
@@ -194,16 +194,10 @@ $(window).on('load', function() {
             },
             loop: true,
             speed: 700,
-            initialSlide: 1,
             spaceBetween: 10,
-            centeredSlides: true,
-            slidesPerView: 'auto',
             breakpoints: {
-                768: {
-                    spaceBetween: 20
-                },
                 1025: {
-                    spaceBetween: 30
+                    spaceBetween: 20
                 }
             }
         });
