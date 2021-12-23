@@ -21,7 +21,7 @@ if ( $video ) :
 ?>
     <div class="block__custom_video">
         <figure class="block__custom_video_poster">
-            <img src="<?php echo esc_url( image_src( $img_id, 'top_default' ) ); ?>" alt="<?php echo esc_attr( get_alt( $img_id ) ); ?>">
+            <?php echo wp_get_attachment_image( $img_id, 'top_default', false, array( 'alt' => get_alt( $img_id ) ) ); ?>
             <a href="<?php echo esc_url( $video ); ?>" data-fancybox="<?php echo $img_id; ?>" class="i_play" aria-label="Play video"></a>
         </figure>
         <div class="content">

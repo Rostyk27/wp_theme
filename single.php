@@ -32,7 +32,7 @@
                     <?php if ( has_post_thumbnail() ) :
                         $img_id = get_post_thumbnail_id( $post->ID ); ?>
                         <figure class="wp-block-image">
-                            <img src="<?php echo esc_url( image_src( $img_id, 'top_default' ) ); ?>" alt="<?php echo esc_attr( get_alt( $img_id ) ); ?>">
+                            <?php echo wp_get_attachment_image( $img_id, 'top_default', false, array( 'alt' => get_alt( $img_id ) ) ); ?>
                             <?php if ( get_the_post_thumbnail_caption() ) : ?>
                                 <figcaption>
                                     <?php the_post_thumbnail_caption(); ?>

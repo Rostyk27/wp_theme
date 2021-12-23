@@ -2,7 +2,7 @@
 	<figure class="post_item__thumb">
 		<a href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
 			<?php $img_id = get_post_thumbnail_id( $post->ID ); ?>
-            <img src="<?php echo esc_url( image_src( $img_id, 'custom_gallery' ) ); ?>" alt="<?php echo esc_attr( get_alt( $img_id ) ); ?>">
+            <?php echo wp_get_attachment_image( $img_id, 'custom_gallery', false, array( 'alt' => get_alt( $img_id ) ) ); ?>
 		</a>
 	</figure>
 	<time datetime="<?php echo get_the_date('Y-m-d'); ?>"><?php echo get_the_date('F j, Y'); ?></time>

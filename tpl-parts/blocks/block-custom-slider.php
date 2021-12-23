@@ -21,7 +21,7 @@ if ( $custom_slider ) :
             <div class="swiper-wrapper">
 	            <?php foreach ( $custom_slider as $image ) : ?>
                     <div class="block__custom_slider_item swiper-slide">
-                        <img src="<?php echo esc_url( image_src( $image['id'], 'top_default' ) ); ?>" alt="<?php echo esc_attr( get_alt( $image['id'] ) ); ?>">
+                        <?php echo wp_get_attachment_image( $image['id'], 'top_default', false, array( 'alt' => get_alt( $image['id'] ) ) ); ?>
                     </div>
 	            <?php endforeach; ?>
             </div>

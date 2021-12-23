@@ -20,7 +20,7 @@ if ( $custom_gallery ) :
 	    <?php $g_i = 1; foreach ( $custom_gallery as $image ) : ?>
             <figure class="block__custom_gallery_item">
                 <a href="<?php echo esc_url( $image['url'] ); ?>" data-fancybox="custom-gallery" aria-label="Open image <?php echo $g_i++; ?>">
-                    <img src="<?php echo esc_url( image_src( $image['id'], 'custom_gallery' ) ); ?>" alt="<?php echo esc_attr( get_alt( $image['id'] ) ); ?>">
+                    <?php echo wp_get_attachment_image( $image['id'], 'custom_gallery', false, array( 'alt' => get_alt( $image['id'] ) ) ); ?>
                 </a>
             </figure>
 	    <?php endforeach; ?>
