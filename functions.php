@@ -59,6 +59,7 @@ function cats($pid){
 	}
 	return $cats;
 }
+
 function cats_linked($pid){
 	$post_categories = wp_get_post_categories($pid);
 	$cats = '';
@@ -71,26 +72,33 @@ function cats_linked($pid){
 }
 
 function custom_tax($pid, $tax) {
-	$post_tax = get_the_terms($pid, $tax);
-	$taxs = '';
-	$co = count($post_tax);
-	$i = 1;
-	foreach ($post_tax as $t) {
-		$tax = get_term($t);
-		$taxs .= '<span class="tax_term">' . $tax->name . '</span>' . ($i++ != $co ? '<span>,</span> ' : '');
+	if ( get_the_terms( $pid, $tax ) ) {
+		$post_tax = get_the_terms( $pid, $tax );
+		$taxs = '';
+		$co = count( $post_tax );
+		$i = 1;
+		foreach ( $post_tax as $t ) {
+			$tax = get_term( $t );
+			$taxs .= '<span class="tax_term">' . $tax->name . '</span>' . ( $i ++ != $co ? '<span>,</span> ' : '' );
+		}
+
+		return $taxs;
 	}
-	return $taxs;
 }
+
 function custom_tax_linked($pid, $tax) {
-	$post_tax = get_the_terms($pid, $tax);
-	$taxs = '';
-	$co = count($post_tax);
-	$i = 1;
-	foreach ($post_tax as $t) {
-		$tax = get_term($t);
-		$taxs .= '<a href="'. get_permalink(BLOG_ID) .'#'.$tax->slug.'" class="tax_term">' . $tax->name . '</a>' . ($i++ != $co ? '<span>,</span> ' : '');
+	if ( get_the_terms($pid, $tax) ) {
+		$post_tax = get_the_terms( $pid, $tax );
+		$taxs = '';
+		$co = count( $post_tax );
+		$i = 1;
+		foreach ( $post_tax as $t ) {
+			$tax = get_term( $t );
+			$taxs .= '<a href="' . get_permalink( BLOG_ID ) . '#' . $tax->slug . '" class="tax_term">' . $tax->name . '</a>' . ( $i ++ != $co ? '<span>,</span> ' : '' );
+		}
+
+		return $taxs;
 	}
-	return $taxs;
 }
 
 function get_current_url() {

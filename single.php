@@ -11,9 +11,7 @@
 
             <time datetime="<?php echo get_the_date('Y-m-d'); ?>"><?php echo get_the_date('F j, Y'); ?></time>
 
-	        <?php if ( get_the_terms( $post->ID, 'category' ) ) : ?>
-                <div class="cats">Category: <?php echo wp_kses_post( cats( $post->ID ) ); ?></div>
-	        <?php endif; ?>
+            <div class="cats">Category: <?php echo wp_kses_post( cats( $post->ID ) ); ?></div>
 
 	        <?php if ( get_the_terms( $post->ID, 'post_tag' ) ) : ?>
                 <div class="tags_list">Tags: <?php the_tags(''); ?></div>
