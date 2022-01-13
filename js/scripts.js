@@ -193,13 +193,17 @@ $(window).on('load', function() {
                 clickable: true
             },
             loop: true,
-            speed: 700,
-            spaceBetween: 10,
-            breakpoints: {
-                1025: {
-                    spaceBetween: 20
-                }
-            }
+            speed: 600,
+            grabCursor: true,
+            effect: "creative",
+            creativeEffect: {
+                prev: {
+                    translate: ["-20%", 0, -1],
+                },
+                next: {
+                    translate: ["100%", 0, 0],
+                },
+            },
         });
     });
 

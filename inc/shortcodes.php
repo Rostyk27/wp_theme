@@ -213,18 +213,22 @@ function shortcode_empty_paragraph_fix($content){
 }
 
 function so_me() {
-    $so_me = get_field('so_me', 'option');
-    $soc = '';
-    if($so_me) {
-        $soc .= '<ul class="so_me">';
-        foreach($so_me as $sm) {
-	        $host  = parse_url( $sm['link'] );
-	        $parts = explode( '.', $host['host'] );
-	        $label = $parts[0] == "www" ? $parts[1] : $parts[0];
-            $soc .= '<li><a href="'.$sm['link'].'" class="i_'.$sm['icon'].'" target="_blank" rel="noopener" aria-label="'.$label.'"></a></li>';
-        }
-        $soc .= '</ul>';
-    }
-    return $soc;
+	$so_me = get_field('so_me', 'option');
+	$soc = '';
+	if($so_me) {
+		$soc .= '<ul class="so_me">';
+		foreach($so_me as $sm) {
+			$host = parse_url( $sm['link'] );
+			if ( array_key_exists('host', $host ) ) {
+				$parts = explode( '.', $host['host'] );
+				$label = $parts[0] == 'www' ? $parts[1] : $parts[0];
+			} else {
+				$label = get_bloginfo();
+			}
+			$soc .= '<li><a href="'.$sm['link'].'" class="i_'.$sm['icon'].'" target="_blank" rel="noopener" aria-label="'.$label.'"></a></li>';
+		}
+		$soc .= '</ul>';
+	}
+	return $soc;
 }
-add_shortcode("social", "so_me");
+add_shortcode('social', 'so_me');
