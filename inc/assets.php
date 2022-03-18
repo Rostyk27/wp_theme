@@ -19,28 +19,18 @@ function tt_add_jscss() {
 
 	// uncomment next line and comment all below it on deploy after gulp run
 	/*wp_enqueue_script('main', get_stylesheet_directory_uri(). '/build/main.min.js', array('jquery'), null, true);*/
-	wp_enqueue_script('libs', get_stylesheet_directory_uri(). '/js/libs.js', array('jquery'), null, true);
+	wp_enqueue_script('libs', get_stylesheet_directory_uri(). '/js/libs/common-libs.js', array('jquery'), null, true);
 	wp_enqueue_script('scripts', get_stylesheet_directory_uri(). '/js/scripts.js', array('libs'), null, true);
 	/*wp_enqueue_script('ajax', get_stylesheet_directory_uri(). '/js/ajax.js', array('libs'), null, true);*/
 
 	// uncomment next line and comment all below it on deploy after gulp run
 	/*wp_enqueue_style('main', get_stylesheet_directory_uri(). '/build/main.min.css' );*/
 	wp_enqueue_style('fonts', get_stylesheet_directory_uri(). '/style/fonts.css' );
-	wp_enqueue_style('libs', get_stylesheet_directory_uri(). '/style/libs.css' );
+	wp_enqueue_style('libs', get_stylesheet_directory_uri(). '/style/libs/common-libs.css' );
 	wp_enqueue_style('style', get_stylesheet_directory_uri(). '/style/style.css' );
 }
 add_action('wp_enqueue_scripts', 'tt_add_jscss');
 
-
-// defer parsing of JS for external scripts
-// uncomment only after optimization with gulp
-/*function defer_parsing_of_js( $url ){
-	if ( is_user_logged_in() ) return $url; //don't break WP Admin
-	if ( FALSE === strpos( $url, '.js' ) ) return $url;
-	if ( strpos( $url, '_jquery.js' ) || strpos( $url, 'main.min.js' ) ) return $url;
-	return str_replace( ' src', ' defer src', $url );
-}
-add_filter( 'script_loader_tag', 'defer_parsing_of_js', 10 );*/
 
 // disable gutenberg style in Front
 function wps_deregister_styles() {

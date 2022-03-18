@@ -12,26 +12,10 @@ register_nav_menus(array(
 ));
 
 //Custom images sizes
+add_image_size('full', '1920', '', true);
 add_image_size('top_default', '1095', '616', true);
 add_image_size('custom_gallery', '525', '395', true);
 
-//register sidebar
-$reg_sidebars = array (
-	'page_sidebar'     => 'Page Sidebar',
-	'blog_sidebar'     => 'Blog Sidebar'
-);
-foreach ( $reg_sidebars as $id => $name ) {
-	register_sidebar(
-		array (
-			'name'          => __( $name ),
-			'id'            => $id,
-			'before_widget' => '<div class="widget %2$s">',
-			'after_widget'  => '</div>',
-			'before_title'  => '<mark class="widget_title">',
-			'after_title'   => '</mark>',
-		)
-	);
-}
 
 if(function_exists('acf_add_options_page') ) {
 	acf_add_options_page(array(
@@ -77,18 +61,6 @@ function custom_tax_linked($pid, $tax) {
 
 		return $taxs;
 	}
-}
-
-function get_current_url() {
-	$pageURL = 'http';
-	if (array_key_exists('HTTPS', $_SERVER) && $_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
-	$pageURL .= "://";
-	if ($_SERVER["SERVER_PORT"] != "80") {
-		$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
-	} else {
-		$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
-	}
-	return str_replace('www.', '', $pageURL);
 }
 
 function get_loader(){

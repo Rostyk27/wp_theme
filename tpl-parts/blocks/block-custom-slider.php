@@ -1,4 +1,7 @@
 <?php
+wp_enqueue_script('swiper', get_stylesheet_directory_uri(). '/js/libs/swiper.js', array('jquery'));
+wp_enqueue_style('swiper', get_stylesheet_directory_uri(). '/style/libs/swiper.css' );
+
 /**
  * Block Name: Custom Slider
  *
