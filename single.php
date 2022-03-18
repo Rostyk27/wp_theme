@@ -11,9 +11,11 @@
 
             <time datetime="<?php echo get_the_date('Y-m-d'); ?>"><?php echo get_the_date('F j, Y'); ?></time>
 
-            <div class="cats">Category: <?php echo wp_kses_post( cats( $post->ID ) ); ?></div>
+            <?php if ( get_the_terms( get_the_ID(), 'category' ) ) : ?>
+                <div class="cats">Category: <?php echo wp_kses_post( custom_tax( get_the_ID(), 'category' ) ); ?></div>
+            <?php endif; ?>
 
-	        <?php if ( get_the_terms( $post->ID, 'post_tag' ) ) : ?>
+	        <?php if ( get_the_terms( get_the_ID(), 'post_tag' ) ) : ?>
                 <div class="tags_list">Tags: <?php the_tags(''); ?></div>
 	        <?php endif; ?>
         </div>
@@ -28,7 +30,7 @@
 
                 <div class="content">
                     <?php if ( has_post_thumbnail() ) :
-                        $img_id = get_post_thumbnail_id( $post->ID ); ?>
+                        $img_id = get_post_thumbnail_id( get_the_ID() ); ?>
                         <figure class="wp-block-image">
                             <?php echo wp_get_attachment_image( $img_id, 'top_default', false, array( 'alt' => get_alt( $img_id ) ) ); ?>
                             <?php if ( get_the_post_thumbnail_caption() ) : ?>

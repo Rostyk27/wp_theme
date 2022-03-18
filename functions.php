@@ -49,28 +49,6 @@ function get_alt($id){
 	return $c_alt?$c_alt:$c_tit;
 }
 
-function cats($pid){
-	$post_categories = wp_get_post_categories($pid);
-	$cats = '';
-	$co = count($post_categories); $i = 1;
-	foreach($post_categories as $c){
-		$cat = get_category($c);
-		$cats .= '<span class="cat_term">'.$cat->name.'</span>' .($i++ != $co?'<span>,</span> ':'');
-	}
-	return $cats;
-}
-
-function cats_linked($pid){
-	$post_categories = wp_get_post_categories($pid);
-	$cats = '';
-	$co = count($post_categories); $i = 1;
-	foreach($post_categories as $c){
-		$cat = get_category($c);
-		$cats .= '<a href="'.get_permalink(BLOG_ID).'#'.$cat->slug.'" class="cat_term">'.$cat->name.'</a>' .($i++ != $co?'<span>,</span> ':'');
-	}
-	return $cats;
-}
-
 function custom_tax($pid, $tax) {
 	if ( get_the_terms( $pid, $tax ) ) {
 		$post_tax = get_the_terms( $pid, $tax );
