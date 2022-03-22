@@ -63,23 +63,6 @@ function wpa_activate_theme() {
 	update_option('permalink_structure', '/%category%/%postname%/');
 }
 
-// remove embeds rewrites
-function disable_embeds_rewrites( $rules ) {
-	foreach ( $rules as $rule => $rewrite ) {
-		if ( false !== strpos( $rewrite, 'embed=true' ) ) {
-			unset( $rules[ $rule ] );
-		}
-	}
-	return $rules;
-}
-
-// remove recent_comments_style in wp_head
-function my_remove_recent_comments_style() {
-	global $wp_widget_factory;
-	remove_action('wp_head', array($wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style'));
-}
-add_action('widgets_init', 'my_remove_recent_comments_style');
-
 // compress HTML
 function ob_html_compress($buf){
 	$preResult = preg_replace('/(?:(?:\/\*(?:[^*]|(?:\*+[^*\/]))*\*+\/)|(?:(?<!\:|\\\|\'|\")\/\/.*))/', ' ', $buf);
@@ -211,12 +194,6 @@ function wpa_title(){
 	}
 }
 
-// show empty categories in category widget
-function show_empty_widget_links($args) {
-	$args['hide_empty'] = 0;
-	return $args;
-}
-
 function wpa_init() {
 	/* @var WP $wp */
 	global $wp;
@@ -241,7 +218,7 @@ function wpa_init() {
 	// Remove oEmbed-specific JavaScript from the front-end and back-end.
 	remove_action( 'wp_head', 'wp_oembed_add_host_js' );
 	// Remove all embeds rewrite rules.
-	add_filter( 'rewrite_rules_array', 'disable_embeds_rewrites' );
+//	add_filter( 'rewrite_rules_array', 'disable_embeds_rewrites' );
 
 	remove_action('wp_head', 'feed_links_extra', 3);
 	remove_action('wp_head', 'rsd_link');
@@ -297,9 +274,6 @@ function wpa_init() {
 
 	add_filter( 'body_class', 'wpa_body_classes' );
 
-	//Widgets extension
-	add_filter('widget_categories_args','show_empty_widget_links');
-	add_filter('widget_tag_cloud_args','show_empty_widget_links');
 
 	// remove <p> & <br> from CF7
 	add_filter('wpcf7_autop_or_not', '__return_false');
