@@ -3,7 +3,7 @@
 <section class="top_panel top_panel__primary">
     <picture>
         <source media="(max-width: 480px)"
-                srcset="<?php echo image_src( get_post_thumbnail_id( get_the_ID() ), 'mob_size' ); ?>">
+                srcset="<?php echo wp_get_attachment_image_url( get_post_thumbnail_id( get_the_ID() ), 'mob_size' ); ?>">
 		<?php echo wp_get_attachment_image( get_post_thumbnail_id( get_the_ID() ), 'full', false, array( 'alt'   => get_alt( get_the_ID() ),
 		                                                                                                 'class' => 'object_fit'
 		) ); ?>
