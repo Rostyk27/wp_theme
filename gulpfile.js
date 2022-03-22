@@ -20,6 +20,7 @@ var gulp      = require('gulp'),
 gulp.task('scripts', function() {
     return gulp.src([
         'js/libs/common-libs.js',
+        /*'js/libs/aos.js',*/
         'js/scripts.js',
         /*'js/ajax.js'*/
     ])
@@ -33,6 +34,7 @@ gulp.task('styles', function() {
     return gulp.src([
         'style/fonts.css',
         'style/libs/common-libs.css',
+        /*'style/libs/aos.css',*/
         'style/style.css'
     ])
         .pipe(concat('main.css'))

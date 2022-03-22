@@ -158,12 +158,6 @@ function my_remove_recent_comments_style() {
 }
 add_action('widgets_init', 'my_remove_recent_comments_style');
 
-// Remove wp version param from any enqueued scripts
-function wpa_remove_wp_ver_css_js( $src ) {
-	if ( strpos( $src, 'ver=' ) ) $src = remove_query_arg( 'ver', $src );
-	return $src;
-}
-
 // Compress HTML
 function ob_html_compress($buf){
 	$preResult = preg_replace('/(?:(?:\/\*(?:[^*]|(?:\*+[^*\/]))*\*+\/)|(?:(?<!\:|\\\|\'|\")\/\/.*))/', ' ', $buf);
@@ -186,32 +180,6 @@ function wpa_discard_menu_classes($classes, $item) {
 		(array)get_post_meta( $item->ID, '_menu_item_classes', true )
 	);
 }
-
-// replace empty links with <span>
-function wpa_replace_empty_link_with_span($item_output, $item, $depth, $args) {
-	if (empty($item->url) || '#' === $item->url) {
-		$item_output = $args->before;
-		$item_output .= '<span class="empty_link">';
-		$item_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
-		$item_output .= '</span>';
-		$item_output .= $args->after;
-	}
-	return $item_output;
-}
-//add_filter('walker_nav_menu_start_el', 'wpa_replace_empty_link_with_span', 10, 4);
-
-// replace current link with <span>
-function wpa_replace_current_link_with_span($item_output, $item, $depth, $args) {
-	if ($item->current) {
-		$item_output = $args->before;
-		$item_output .= '<span aria-current="page">';
-		$item_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
-		$item_output .= '</span>';
-		$item_output .= $args->after;
-	}
-	return $item_output;
-}
-//add_filter('walker_nav_menu_start_el', 'wpa_replace_current_link_with_span', 10, 4);
 
 // New Body Classes
 function wpa_body_classes( $classes ){
@@ -312,8 +280,6 @@ function wpa_title(){
 		} elseif((is_single() || is_page()) && $post->post_parent) {
 			$parent_title = get_the_title($post->post_parent);
 			echo wp_title('-', true, 'right') . esc_html($parent_title).' - ';
-		} elseif(class_exists('Woocommerce') && is_shop()) {
-			echo esc_html(get_the_title(SHOP_ID)) . ' - ';
 		} else {
 			wp_title('-', true, 'right');
 		}
@@ -442,9 +408,6 @@ function wpa_init() {
 	add_filter('nav_menu_css_class', 'wpa_discard_menu_classes', 10, 2);
 	//Remove IDs from menu
 	add_filter('nav_menu_item_id', '__return_false', 10);
-
-	add_filter( 'style_loader_src', 'wpa_remove_wp_ver_css_js', 9999 );
-	add_filter( 'script_loader_src', 'wpa_remove_wp_ver_css_js', 9999 );
 
 	add_filter( 'body_class', 'wpa_body_classes' );
 
