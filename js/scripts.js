@@ -90,14 +90,16 @@ $(document).ready(function() {
 
 
     // custom select
-    // $('select').selectric({
-    //     disableOnMobile: false,
-    //     nativeOnMobile: false,
-    //     arrowButtonMarkup: '<span class="select_arrow"></span>'
-    // });
-    // $('select.wpcf7-form-control').each(function () {
-    //     $(this).find('option').first().val('');
-    // });
+    if($('select').length > 0) {
+        $('select').selectric({
+            disableOnMobile: false,
+            nativeOnMobile: false,
+            arrowButtonMarkup: '<span class="select_arrow"></span>'
+        });
+        // $('select.wpcf7-form-control').each(function () {
+        //     $(this).find('option').first().val('');
+        // });
+    }
 
 
     // fancybox
