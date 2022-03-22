@@ -9,139 +9,61 @@ define ('HOME_PAGE_ID', get_option('page_on_front'));
 define ('BLOG_ID', get_option('page_for_posts'));
 define ('POSTS_PER_PAGE', get_option('posts_per_page'));
 //define('WP_SCSS_ALWAYS_RECOMPILE', true);
-// Prevent File Modifications
+// prevent file modifications
 if ( ! defined( 'DISALLOW_FILE_EDIT' ) ) {
 	define( 'DISALLOW_FILE_EDIT', true );
 }
 
-// Recommended plugins installer
+// recommended plugins installer
 require_once 'plugins/installer.php';
 
-// Include custom assets
+// include custom assets
 require_once('assets.php');
 
-// Custom admin area functions
+// custom admin area functions
 require_once('wpadmin/admin-addons.php');
 
-// Custom shortcodes
+// custom shortcodes
 require_once('shortcodes.php');
 
-// Custom ajax functions
+// custom ajax functions
 //require_once('ajax.php');
 
-// Custom Posts Duplicator
+// custom posts duplicator
 require_once('plugins/duplicator.php');
 
-function my_acf_init() {
-	acf_update_setting('google_api_key', 'AIzaSyAO77hGcvxmsvOn1RSjDFQMI4YUnW89MDo');
+// ACF settings
+require_once('acf.php');
 
-	// check function exists
-	if( function_exists('acf_register_block_type') ) {
-
-		// register a testimonial block
-		acf_register_block_type(array(
-			'name'            => 'accordion',
-			'title'           => __( 'Accordion' ),
-			'description'     => __( 'Use this block to have an accordion block.' ),
-			'render_template' => get_template_directory() . '/tpl-parts/blocks/block-accordion.php',
-			'category'        => 'formatting',
-			'icon'            => 'editor-table',
-			'keywords'        => array( 'accordion', 'group', 'text' ),
-			'mode'            => 'edit',
-			'example'         => array(
-				'attributes' => array(
-					'mode' => 'preview',
-					'data' => array(
-						'__is_preview' => true
-					)
-				)
-			)
-		));
-
-		// register custom video block
-		acf_register_block_type(array(
-			'name'            => 'custom-video',
-			'title'           => __( 'Custom Video' ),
-			'description'     => __( 'Use this block to have the custom video block.' ),
-			'render_template' => get_template_directory() . '/tpl-parts/blocks/block-custom-video.php',
-			'category'        => 'media',
-			'icon'            => 'embed-video',
-			'keywords'        => array( 'video', 'embed', 'custom' ),
-			'mode'            => 'edit',
-			'example'         => array(
-				'attributes' => array(
-					'mode' => 'preview',
-					'data' => array(
-						'__is_preview' => true
-					)
-				)
-			)
-		));
-
-		// register a custom gallery block
-		acf_register_block_type(array(
-			'name'            => 'custom-gallery',
-			'title'           => __( 'Custom Gallery' ),
-			'description'     => __( 'Use this block to have the custom gallery block.' ),
-			'render_template' => get_template_directory() . '/tpl-parts/blocks/block-custom-gallery.php',
-			'category'        => 'media',
-			'icon'            => 'layout',
-			'keywords'        => array( 'gallery', 'image', 'custom' ),
-			'mode'            => 'edit',
-			'example'         => array(
-				'attributes' => array(
-					'mode' => 'preview',
-					'data' => array(
-						'__is_preview' => true
-					)
-				)
-			)
-		));
-
-		// register a custom slider block
-		acf_register_block_type(array(
-			'name'            => 'custom-slider',
-			'title'           => __( 'Custom Slider' ),
-			'description'     => __( 'Use this block to have the custom slider block.' ),
-			'render_template' => get_template_directory() . '/tpl-parts/blocks/block-custom-slider.php',
-			'category'        => 'media',
-			'icon'            => 'images-alt2',
-			'keywords'        => array( 'slider', 'image', 'custom' ),
-			'mode'            => 'edit',
-			'example'         => array(
-				'attributes' => array(
-					'mode' => 'preview',
-					'data' => array(
-						'__is_preview' => true
-					)
-				)
-			)
-		));
-	}
-}
-add_action('acf/init', 'my_acf_init');
-
-function load_custom_wp_admin_style() {
-	wp_register_style( 'custom_wp_admin_css', get_template_directory_uri() . '/tpl-parts/blocks/block-custom-styles.css', false, '1.0.0' );
-	wp_enqueue_style( 'custom_wp_admin_css' );
-}
-add_action( 'admin_enqueue_scripts', 'load_custom_wp_admin_style' );
-
-// Custom theme url
-function theme($filepath = NULL){
+// custom theme url
+function theme($filepath = NULL) {
 	return preg_replace( '(https?://)', '//', get_stylesheet_directory_uri() . ($filepath?'/' . $filepath:'') );
 }
 
-// Run this code on 'after_theme_setup', when plugins have already been loaded.
+// get alt or image name
+function get_alt($id) {
+	$c_alt = get_post_meta($id, '_wp_attachment_image_alt', true);
+	$c_tit = get_the_title($id);
+	return $c_alt?$c_alt:$c_tit;
+}
+
+// simple function for wp_get_attachment_image_src()
+function image_src($id, $size = 'full', $background_image = false, $height = false) {
+	if ($image = wp_get_attachment_image_src($id, $size, true)) {
+		return $background_image ? 'background-image: url('.$image[0].');' . ($height?'height:'.$image[2].'px':'') : $image[0];
+	}
+}
+
+// run this code on 'after_theme_setup', when plugins have already been loaded.
 add_action('after_setup_theme', 'wpa_activate_theme');
-// This function loads the plugins && update some wordpress options
+// this function loads the plugins && update some WordPress options
 function wpa_activate_theme() {
 	update_option('image_default_link_type','none');
 	update_option('uploads_use_yearmonth_folders', 0);
 	update_option('permalink_structure', '/%category%/%postname%/');
 }
 
-//Remove embeds rewrites
+// remove embeds rewrites
 function disable_embeds_rewrites( $rules ) {
 	foreach ( $rules as $rule => $rewrite ) {
 		if ( false !== strpos( $rewrite, 'embed=true' ) ) {
@@ -151,14 +73,14 @@ function disable_embeds_rewrites( $rules ) {
 	return $rules;
 }
 
-// Remove recent_comments_style in wp_head
+// remove recent_comments_style in wp_head
 function my_remove_recent_comments_style() {
 	global $wp_widget_factory;
 	remove_action('wp_head', array($wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style'));
 }
 add_action('widgets_init', 'my_remove_recent_comments_style');
 
-// Compress HTML
+// compress HTML
 function ob_html_compress($buf){
 	$preResult = preg_replace('/(?:(?:\/\*(?:[^*]|(?:\*+[^*\/]))*\*+\/)|(?:(?<!\:|\\\|\'|\")\/\/.*))/', ' ', $buf);
 	$out       = preg_replace(
@@ -170,7 +92,7 @@ function ob_html_compress($buf){
 	return nl2br($out);
 }
 
-//custom wp_nav_menu classes
+// custom wp_nav_menu classes
 function wpa_discard_menu_classes($classes, $item) {
 	$classes = array_filter(
 		$classes, function($class) {return in_array( $class, array( "current-menu-item", "current-menu-parent", "current_page_parent", "menu-item-has-children" )); }
@@ -181,7 +103,7 @@ function wpa_discard_menu_classes($classes, $item) {
 	);
 }
 
-// New Body Classes
+// new body classes
 function wpa_body_classes( $classes ){
 	if( is_page() ){
 		global $post;
@@ -271,7 +193,7 @@ function wpa_body_classes( $classes ){
 	return $classes;
 }
 
-// Custom SEO Title
+// custom SEO title
 function wpa_title(){
 	global $post;
 	if(!defined('WPSEO_VERSION')) {
@@ -289,43 +211,11 @@ function wpa_title(){
 	}
 }
 
-//Show empty categories in category widget
+// show empty categories in category widget
 function show_empty_widget_links($args) {
 	$args['hide_empty'] = 0;
 	return $args;
 }
-
-//simple function for wp_get_attachment_image_src()
-function image_src($id, $size = 'full', $background_image = false, $height = false) {
-	if ($image = wp_get_attachment_image_src($id, $size, true)) {
-		return $background_image ? 'background-image: url('.$image[0].');' . ($height?'height:'.$image[2].'px':'') : $image[0];
-	}
-}
-
-// ACF Repeater Styles
-function acf_repeater_even() {
-	$scheme = get_user_option( 'admin_color' );
-	$color = '';
-	if($scheme == 'fresh') {
-		$color = '#0073aa';
-	} else if($scheme == 'light') {
-		$color = '#d64e07';
-	} else if($scheme == 'blue') {
-		$color = '#52accc';
-	} else if($scheme == 'coffee') {
-		$color = '#59524c';
-	} else if($scheme == 'ectoplasm') {
-		$color = '#523f6d';
-	} else if($scheme == 'midnight') {
-		$color = '#e14d43';
-	} else if($scheme == 'ocean') {
-		$color = '#738e96';
-	} else if($scheme == 'sunrise') {
-		$color = '#dd823b';
-	}
-	echo '<style>.acf-repeater > table > tbody > tr:nth-child(even) > td.order {color: #fff !important;background-color: '.esc_html($color).' !important; text-shadow: none}</style>';
-}
-add_action('admin_footer', 'acf_repeater_even');
 
 function wpa_init() {
 	/* @var WP $wp */
@@ -339,13 +229,9 @@ function wpa_init() {
 	add_filter('json_jsonp_enabled', '__return_false');
 
 	// Filters for WP-API version 2.x
-//	add_filter('rest_enabled', '__return_false');
-//	add_filter('rest_jsonp_enabled', '__return_false');
 	remove_action( 'wp_head', 'rest_output_link_wp_head' );
 	//Disable Thumbnails Embeds
 	add_filter( 'embed_thumbnail_image_shape', '__return_false' );
-	// Remove the REST API endpoint.
-//	remove_action( 'rest_api_init', 'wp_oembed_register_route' );
 	// Turn off oEmbed auto discovery.
 	add_filter( 'embed_oembed_discover', '__return_false' );
 	// Don't filter oEmbed results.
@@ -420,7 +306,32 @@ function wpa_init() {
 }
 add_action( 'init', 'wpa_init', 9999 );
 
-function wpa_dump($variable){
+// custom var_dump
+function wpa_dump($variable) {
 	$pretty = function($v='',$c="&nbsp;&nbsp;&nbsp;&nbsp;",$in=-1,$k=null)use(&$pretty){$r='';if(in_array(gettype($v),array('object','array'))){$r.=($in!=-1?str_repeat($c,$in):'').(is_null($k)?'':"$k: ").'<br>';foreach($v as $sk=>$vl){$r.=$pretty($vl,$c,$in+1,$sk).'<br>';}}else{$r.=($in!=-1?str_repeat($c,$in):'').(is_null($k)?'':"$k: ").(is_null($v)?'&lt;NULL&gt;':"<strong>$v</strong>");}return$r;};
 	echo '<pre style="padding-left: 150px; font-family: Courier New"><code class="json">' . wp_kses_post($pretty($variable)) . '</code></pre>';
 }
+
+// custom loader
+function get_loader(){
+	return '<div class="show_box"><div class="loader"><svg class="circular" viewBox="25 25 50 50"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10"/></svg></div></div>';
+}
+// allowed tags to use loader with escaping
+// usage - echo wp_kses(get_loader(), $GLOBALS['allowed_loader'])
+$allowed_loader = array(
+	'div'    => array(
+		'class' => true
+	),
+	'svg'    => array(
+		'class'   => true,
+		'viewbox' => true,
+	),
+	'circle' => array(
+		'class'             => true,
+		'cx'                => true,
+		'cy'                => true,
+		'r'                 => true,
+		'fill'              => true,
+		'stroke-miterlimit' => true,
+	),
+);
