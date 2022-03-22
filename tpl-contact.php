@@ -1,4 +1,5 @@
-<?php get_header(); /*Template Name: Contact*/
+<?php get_header();
+/*Template Name: Contact*/
 wp_enqueue_script( 'selectric', get_stylesheet_directory_uri() . '/js/libs/selectric.js', array( 'jquery' ), null, true );
 ?>
 
@@ -9,11 +10,14 @@ wp_enqueue_script( 'selectric', get_stylesheet_directory_uri() . '/js/libs/selec
     </div>
 </section>
 
-<?php if ( have_posts() ) : while ( have_posts() ) : the_post();
-	if ( get_the_content() ) : ?>
-        <section class="default_page container">
-			<?php the_content(); ?>
-        </section>
-	<?php endif; endwhile; endif; ?>
+
+<section class="default_page container">
+	<?php if ( have_posts() ) : while ( have_posts() ) : the_post();
+		if ( get_the_content() ) : ?>
+			<div class="content"><?php the_content(); ?></div>
+		<?php endif; endwhile; endif; ?>
+    <?php echo do_shortcode('[contact-form-7 id="5" title="Contact form 1"]'); ?>
+</section>
+
 
 <?php get_footer(); ?>
