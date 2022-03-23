@@ -1,17 +1,17 @@
 <?php get_header();
 /*Template Name: Contact*/
 wp_enqueue_script( 'selectric', get_stylesheet_directory_uri() . '/js/libs/selectric.js', array( 'jquery' ), null, true );
+
+$thumb_id = get_post_thumbnail_id( get_the_ID() );
 ?>
 
 <section class="top_panel top_panel__secondary">
-    <picture>
-        <source media="(max-width: 480px)"
-                srcset="<?php echo wp_get_attachment_image_url( get_post_thumbnail_id( get_the_ID() ), 'mob_size' ); ?>">
-		<?php echo wp_get_attachment_image( get_post_thumbnail_id( get_the_ID() ), 'full', false, array(
-			'alt'   => get_alt( get_the_ID() ),
-			'class' => 'object_fit'
-		) ); ?>
-    </picture>
+	<?php if ( has_post_thumbnail( get_the_ID() ) ) : ?>
+        <picture>
+            <source media="(max-width: 480px)" srcset="<?php echo wp_get_attachment_image_url( $thumb_id, 'mob_size' ); ?>">
+			<?php echo wp_get_attachment_image( $thumb_id, 'full', false, array( 'alt' => get_alt( get_the_ID() ), 'class' => 'object_fit' ) ); ?>
+        </picture>
+	<?php endif; ?>
     <div class="container">
         <h1><?php the_title(); ?></h1>
     </div>

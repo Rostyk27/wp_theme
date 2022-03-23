@@ -1,14 +1,15 @@
-<?php get_header(); ?>
+<?php get_header();
+
+$thumb_id = get_post_thumbnail_id( get_the_ID() );
+?>
 
 <section class="top_panel top_panel__secondary">
-    <picture>
-        <source media="(max-width: 480px)"
-                srcset="<?php echo wp_get_attachment_image_url( get_post_thumbnail_id( get_the_ID() ), 'mob_size' ); ?>">
-		<?php echo wp_get_attachment_image( get_post_thumbnail_id( get_the_ID() ), 'full', false, array(
-			'alt'   => get_alt( get_the_ID() ),
-			'class' => 'object_fit'
-		) ); ?>
-    </picture>
+	<?php if ( has_post_thumbnail( get_the_ID() ) ) : ?>
+        <picture>
+            <source media="(max-width: 480px)" srcset="<?php echo wp_get_attachment_image_url( $thumb_id, 'mob_size' ); ?>">
+			<?php echo wp_get_attachment_image( $thumb_id, 'full', false, array( 'alt' => get_alt( get_the_ID() ), 'class' => 'object_fit' ) ); ?>
+        </picture>
+	<?php endif; ?>
 </section>
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post();
