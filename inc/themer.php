@@ -3,12 +3,11 @@
 /* Theme config params */
 
 // defines
-define( 'WPE_POPUP_DISABLED', true );
 //define ('GOOGLEMAPS', TRUE);
+define( 'WPE_POPUP_DISABLED', true );
 define ('HOME_PAGE_ID', get_option('page_on_front'));
 define ('BLOG_ID', get_option('page_for_posts'));
 define ('POSTS_PER_PAGE', get_option('posts_per_page'));
-//define('WP_SCSS_ALWAYS_RECOMPILE', true);
 // prevent file modifications
 if ( ! defined( 'DISALLOW_FILE_EDIT' ) ) {
 	define( 'DISALLOW_FILE_EDIT', true );
@@ -21,7 +20,7 @@ require_once 'plugins/installer.php';
 require_once('assets.php');
 
 // custom admin area functions
-require_once('wpadmin/admin-addons.php');
+require_once('wpadmin/admin-area.php');
 
 // custom shortcodes
 require_once('shortcodes.php');
@@ -35,7 +34,7 @@ require_once('plugins/duplicator.php');
 // ACF settings
 require_once('acf.php');
 
-// custom theme url
+// custom theme URL
 function theme($filepath = NULL) {
 	return preg_replace( '(https?://)', '//', get_stylesheet_directory_uri() . ($filepath?'/' . $filepath:'') );
 }
@@ -47,19 +46,14 @@ function get_alt($id) {
 	return $c_alt?$c_alt:$c_tit;
 }
 
-// simple function for wp_get_attachment_image_src()
-function image_src($id, $size = 'full', $background_image = false, $height = false) {
-	if ($image = wp_get_attachment_image_src($id, $size, true)) {
-		return $background_image ? 'background-image: url('.$image[0].');' . ($height?'height:'.$image[2].'px':'') : $image[0];
-	}
-}
-
-// run this code on 'after_theme_setup', when plugins have already been loaded.
+// run this code on 'after_theme_setup', when plugins have already been loaded
 add_action('after_setup_theme', 'wpa_activate_theme');
-// this function loads the plugins && update some WordPress options
+// this function loads the plugins & updates some WordPress options
 function wpa_activate_theme() {
 	update_option('image_default_link_type','none');
+	// comment this before the build if uploads from the old website is being migrated with default year-month structure
 	update_option('uploads_use_yearmonth_folders', 0);
+	// comment this if different permalink structure needed
 	update_option('permalink_structure', '/%category%/%postname%/');
 }
 
@@ -75,7 +69,7 @@ function ob_html_compress($buf){
 	return nl2br($out);
 }
 
-// custom wp_nav_menu classes
+// remove default menu classes + new custom classes
 function wpa_discard_menu_classes($classes, $item) {
 	$classes = array_filter(
 		$classes, function($class) {return in_array( $class, array( "current-menu-item", "current-menu-parent", "current_page_parent", "menu-item-has-children" )); }
@@ -217,8 +211,6 @@ function wpa_init() {
 	remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
 	// Remove oEmbed-specific JavaScript from the front-end and back-end.
 	remove_action( 'wp_head', 'wp_oembed_add_host_js' );
-	// Remove all embeds rewrite rules.
-//	add_filter( 'rewrite_rules_array', 'disable_embeds_rewrites' );
 
 	remove_action('wp_head', 'feed_links_extra', 3);
 	remove_action('wp_head', 'rsd_link');
@@ -231,20 +223,20 @@ function wpa_init() {
 	remove_action('wp_head', 'wp_generator');
 	remove_action('wp_head', 'rel_canonical');
 
-	// Prevent Emoji from loading on the front-end
+	// prevent Emoji from loading on the front-end
 	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 	remove_action( 'wp_print_styles', 'print_emoji_styles' );
-	// Remove from admin area also
+	// remove from admin area also
 	remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
 	remove_action( 'admin_print_styles', 'print_emoji_styles' );
-	// Remove from RSS feeds also
+	// remove from RSS feeds also
 	remove_filter( 'the_content_feed', 'wp_staticize_emoji');
 	remove_filter( 'comment_text_rss', 'wp_staticize_emoji');
-	// Remove from Embeds
+	// remove from embeds
 	remove_filter( 'embed_head', 'print_emoji_detection_script' );
-	// Remove from emails
+	// remove from emails
 	remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
-	// Disable from TinyMCE editor. Currently disabled in block editor by default
+	// disable from TinyMCE editor, currently disabled in block editor by default
 	add_filter('tiny_mce_plugins', function($plugins) {
 		if(is_array($plugins)) {
 			return array_diff($plugins, array('wpemoji'));
@@ -262,18 +254,18 @@ function wpa_init() {
 		update_option( 'use_smilies', 0 );
 	}
 
-	//Page/Post thumbnail support
+	// page/post thumbnail support
 	add_theme_support( 'post-thumbnails' );
 	// Disable Responsive Images
 	add_filter( 'max_srcset_image_width', function(){ return 1; } );
 
-	// Remove Default Menu Classes
+	// remove default menu classes + new custom classes
 	add_filter('nav_menu_css_class', 'wpa_discard_menu_classes', 10, 2);
-	//Remove IDs from menu
+	// remove IDs from menu
 	add_filter('nav_menu_item_id', '__return_false', 10);
 
+	// new body classes
 	add_filter( 'body_class', 'wpa_body_classes' );
-
 
 	// remove <p> & <br> from CF7
 	add_filter('wpcf7_autop_or_not', '__return_false');
@@ -292,20 +284,4 @@ function get_loader(){
 }
 // allowed tags to use loader with escaping
 // usage - echo wp_kses(get_loader(), $GLOBALS['allowed_loader'])
-$allowed_loader = array(
-	'div'    => array(
-		'class' => true
-	),
-	'svg'    => array(
-		'class'   => true,
-		'viewbox' => true,
-	),
-	'circle' => array(
-		'class'             => true,
-		'cx'                => true,
-		'cy'                => true,
-		'r'                 => true,
-		'fill'              => true,
-		'stroke-miterlimit' => true,
-	),
-);
+$allowed_loader = array( 'div' => array( 'class' => true ), 'svg' => array( 'class'   => true, 'viewbox' => true, ), 'circle' => array( 'class' => true, 'cx' => true, 'cy' => true, 'r' => true, 'fill' => true, 'stroke-miterlimit' => true, ), );

@@ -34,7 +34,7 @@ function tt_add_jscss() {
 add_action('wp_enqueue_scripts', 'tt_add_jscss');
 
 
-// disable gutenberg style in Front
+// disable Gutenberg style on Front
 function wps_deregister_styles() {
 	wp_dequeue_style( 'wp-block-library' );
 }

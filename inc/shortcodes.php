@@ -1,26 +1,4 @@
 <?php
-function get_subpages($parent_id) {
-    global $query_string;
-    global $post;
-    $subloop = get_pages($query_string.'&child_of='.$post->ID.'&sort_column=menu_order');
-    $aa = 0;
-    $sp = '';
-    $sp .= '<div class="perpage cfx">';
-    foreach($subloop as $sub) {
-        setup_postdata($sub);
-        $img = get_field('icon', $sub->ID, true);
-        $sp .= '<div class="'.(($aa++%2==0)?'alignleft':'alignright').'" onClick="window.location=\''. get_permalink($sub->ID).'\'">';
-        $sp .= '<h3 class="cfx"><img src="'. $img .'" class="alignleft" alt="'. $sub->post_title.'" />'. $sub->post_title.'</h3>';
-        $sp .= '</div>';
-    }
-    $sp .= '</div>';
-    return $sp;
-}
-/*
-* using:
-* [subpages]
-*/
-add_shortcode('subpages', 'get_subpages');
 
 //User can enter e-mail for login
 add_filter('authenticate', 'bainternet_allow_email_login', 20, 3);
@@ -38,6 +16,7 @@ function addEmailToLogin( $translated_text, $text, $domain ) {
     return $translated_text;
 }
 
+// helper function for G-map shortcode
 function javascript_escape($str) {
     $new_str = '';
     $str_len = strlen($str);
@@ -47,6 +26,7 @@ function javascript_escape($str) {
     return htmlspecialchars($new_str);
 }
 
+// shortcode Google Map
 if(defined('GOOGLEMAPS')) {
     /* google map shortcode
         *** Using [googlemap id="somemapid" coordinates="1 ,1" zoom="17" height="500px" infobox="<p>Some Infobox Content</p>"]
@@ -150,6 +130,7 @@ if(defined('GOOGLEMAPS')) {
     }
 } //end GOOGLEMAPS
 
+// shortcode button
 function content_btn($atts,$content){
     extract(shortcode_atts(array(
         'text' => 'Learn More',
@@ -164,54 +145,7 @@ function content_btn($atts,$content){
 }
 add_shortcode("button", "content_btn");
 
-function tree_children($absolute = false, $page_id = 0) {
-    global $wp_query;
-    if ($wp_query->is_posts_page) {
-        $post = get_post(BLOG_ID);
-    } else {
-        global $post;
-    }
-    $ex_pages = null;
-    $ex_args = array(
-        'posts_per_page' => -1,
-        'post_type' => 'page',
-        'meta_key' => 'hide_page',
-        'meta_value' => true
-    );
-    $excluded = new WP_Query($ex_args);
-    if ($excluded->have_posts()): while ($excluded->have_posts()) : $excluded->the_post();
-    $ex_pages .= get_the_ID() . ',';
-    endwhile;
-    $ex_pages = substr($ex_pages, 0, -1);
-    endif;
-    wp_reset_query();
-    $childlist = get_pages('child_of=' . $post->ID . ($ex_pages ? '&exclude=' . $ex_pages : ''));
-    $children = '';
-    if ($post->post_parent) {
-        $ancestors = get_post_ancestors($post->ID);
-        $reverse = array_reverse($ancestors);
-        $abs = $reverse[0];
-        $children .= '<ul class="submenu">';
-        $children .= wp_list_pages("title_li=&child_of=" . $abs . "&echo=0&sort_column=menu_order" . ($ex_pages ? '&exclude=' . $ex_pages : ''));
-        $children .= '</ul>';
-        echo wp_kses_post($children);
-    } elseif ($childlist) {
-        echo '<ul class="submenu">' . wp_kses_post(wp_list_pages("title_li=&child_of=" . $post->ID . "&echo=0&sort_column=menu_order" . ($ex_pages ? '&exclude=' . $ex_pages : ''))) . '</ul>';
-    }
-}
-
-//remove <p> and <br /> from shortcodes
-add_filter('the_content', 'shortcode_empty_paragraph_fix');
-function shortcode_empty_paragraph_fix($content){
-    $array = array (
-        '<p>[' => '[',
-        ']</p>' => ']',
-        ']<br />' => ']'
-    );
-    $content = strtr($content, $array);
-    return $content;
-}
-
+// shortcode social media
 function so_me() {
 	$so_me = get_field('so_me', 'option');
 	$soc = '';
@@ -232,3 +166,15 @@ function so_me() {
 	return $soc;
 }
 add_shortcode('social', 'so_me');
+
+// remove <p> and <br /> from shortcodes
+add_filter('the_content', 'shortcode_empty_paragraph_fix');
+function shortcode_empty_paragraph_fix($content){
+    $array = array (
+        '<p>[' => '[',
+        ']</p>' => ']',
+        ']<br />' => ']'
+    );
+    $content = strtr($content, $array);
+    return $content;
+}
