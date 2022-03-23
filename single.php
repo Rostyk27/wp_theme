@@ -30,9 +30,12 @@
 
                 <div class="content">
                     <?php if ( has_post_thumbnail() ) :
-                        $img_id = get_post_thumbnail_id( get_the_ID() ); ?>
+	                    $thumb_id = get_post_thumbnail_id( get_the_ID() ); ?>
                         <figure class="wp-block-image">
-                            <?php echo wp_get_attachment_image( $img_id, 'top_default', false, array( 'alt' => get_alt( $img_id ) ) ); ?>
+                            <picture>
+                                <source media="(max-width: 480px)" srcset="<?php echo wp_get_attachment_image_url( $thumb_id, 'mob_size' ); ?>">
+                            	<?php echo wp_get_attachment_image( $thumb_id, 'top_default', false, array( 'alt' => get_alt( get_the_ID() ), 'class' => 'object_fit' ) ); ?>
+                            </picture>
                             <?php if ( get_the_post_thumbnail_caption() ) : ?>
                                 <figcaption>
                                     <?php the_post_thumbnail_caption(); ?>

@@ -257,7 +257,7 @@ function wpa_init() {
 	// page/post thumbnail support
 	add_theme_support( 'post-thumbnails' );
 	// Disable Responsive Images
-	add_filter( 'max_srcset_image_width', function(){ return 1; } );
+//	add_filter( 'max_srcset_image_width', function(){ return 1; } );
 
 	// remove default menu classes + new custom classes
 	add_filter('nav_menu_css_class', 'wpa_discard_menu_classes', 10, 2);

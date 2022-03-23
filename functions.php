@@ -14,6 +14,7 @@ register_nav_menus(array(
 // custom images sizes
 add_image_size('full', '1920', '', true);
 add_image_size('mob_size', '480', '', true);
+add_image_size('mob_slider', '480', '320', true);
 add_image_size('top_default', '1095', '616', true);
 add_image_size('custom_gallery', '525', '395', true);
 
