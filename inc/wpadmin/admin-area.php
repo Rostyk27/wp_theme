@@ -60,26 +60,26 @@ add_action( 'wp_before_admin_bar_render', 'wpa_clear_admin_bar' );
 // Clean dashboard
 function wpa_remove_dashboard_widgets () {
     remove_meta_box('dashboard_quick_press','dashboard','side'); //Quick Press widget
-    remove_meta_box('dashboard_recent_drafts','dashboard','side'); //Recent Drafts
-    remove_meta_box('dashboard_primary','dashboard','side'); //WordPress.com Blog
-    remove_meta_box('dashboard_secondary','dashboard','side'); //Other WordPress News
-    remove_meta_box('dashboard_incoming_links','dashboard','normal'); //Incoming Links
-    remove_meta_box('dashboard_plugins','dashboard','normal'); //Plugins
-    remove_meta_box('rg_forms_dashboard','dashboard','normal'); //Gravity Forms
-    remove_meta_box('icl_dashboard_widget','dashboard','normal'); //Multi Language Plugin
-    remove_action('welcome_panel','wp_welcome_panel');
-    //remove_meta_box('dashboard_activity','dashboard', 'normal'); //Activity
+	remove_meta_box('dashboard_primary','dashboard','side'); //WordPress.com widget event and news
+	//remove_meta_box('dashboard_activity','dashboard', 'normal'); //Activity
+	//remove_action('welcome_panel','wp_welcome_panel');
+	//remove_meta_box('icl_dashboard_widget','dashboard','normal'); //Multi Language Plugin
+	//remove_meta_box('rg_forms_dashboard','dashboard','normal'); //Gravity Forms
+	//remove_meta_box('dashboard_plugins','dashboard','normal'); //Plugins
+	//remove_meta_box('dashboard_incoming_links','dashboard','normal'); //Incoming Links
+	//remove_meta_box('dashboard_recent_drafts','dashboard','side'); //Recent Drafts
+	//remove_meta_box('dashboard_secondary','dashboard','side'); //Other WordPress News
     //remove_meta_box('dashboard_right_now','dashboard', 'normal'); //Right Now
     //remove_meta_box('dashboard_recent_comments','dashboard','normal'); //Recent Comments
 }
 add_action('wp_dashboard_setup', 'wpa_remove_dashboard_widgets');
 
 
-//remore admin bar
+//remove admin bar
 add_filter( 'show_admin_bar', '__return_false' ); // remove Admin Bar
 
 
-// Remove the wordpress update notifications for all users except Super Administator
+// Remove the WordPress update notifications for all users except Super Administrator
 if( ! current_user_can('update_plugins')) { // checks to see if current user can update plugins
 	add_action('init', function() {
 		remove_action('init', 'wp_version_check');
@@ -97,7 +97,7 @@ add_filter( 'login_headerurl', 'wpa_login_url' );
 
 // Changing the alt text on the logo to show your site name
 function wpa_login_title() { return get_option( 'blogname' ); }
-add_filter( 'login_headertitle', 'wpa_login_title' );
+add_filter( 'login_headertext ', 'wpa_login_title' );
 
 
 // Return header 403 for wrong login
