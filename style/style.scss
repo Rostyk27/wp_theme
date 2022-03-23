@@ -11,10 +11,9 @@ $icons: 'icons';
 @import 'parts/01_reset';
 @import 'parts/02_classes';
 @import 'parts/03_ui_kit';
-@import 'parts/04_apps';
-@import 'parts/05_plugins';
-@import 'parts/06_header';
-@import 'parts/07_footer';
+@import 'parts/04_plugins';
+@import 'parts/05_header';
+@import 'parts/06_footer';
 
 @import 'templates/00_tpl_parts';
 @import 'templates/01_front_page';

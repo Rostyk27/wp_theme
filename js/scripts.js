@@ -15,23 +15,32 @@ document.body.addEventListener('keydown', function() {
 $(document).ready(function() {
     'use strict';
 
+    // variables
+    const body = $('body');
+    const header = $('header');
+    const menu__toggle = $('.menu__toggle');
+    const menu__primary = $('.menu__primary');
+    const menu__a_parent = menu__primary.find('.menu-item-has-children > a');
+
+
     // hamburger + menu
-    $('.nav_icon').on('click', function() {
-        $(this).toggleClass('is_active').next().stop().toggleClass('is_open');
-        $('body').toggleClass('is_overflow');
+    menu__toggle.on('click', function() {
+        $(this).toggleClass('is_active');
+        menu__primary.stop().toggleClass('is_open');
+        body.toggleClass('is_overflow');
     });
     // close menu with Esc key
-    $('body').on('keyup', function (e) {
-        if (e.keyCode === 27 && $('.nav_icon').hasClass('is_active')) {
-            $('.nav_icon.is_active').click();
+    body.on('keyup', function (e) {
+        if (e.keyCode === 27 && menu__toggle.hasClass('is_active')) {
+            $('.menu__toggle.is_active').click();
             $('a[href="#skip_to_content"]').focus();
         }
     });
     // open/close sub-menu with Tab key
-    $('#menu .menu-item-has-children > a').on('focus', function () {
+    menu__a_parent.on('focus', function () {
         $(this).parent().addClass('is_focused');
     });
-    $('#menu .sub-menu').each(function () {
+    menu__primary.find('.sub-menu').each(function () {
         let sub_menu_links = $(this).find('> li > a');
         let last_sub_menu_link = sub_menu_links.last();
         last_sub_menu_link.on('blur', function () {
@@ -39,24 +48,35 @@ $(document).ready(function() {
         });
     });
     // option to make parent element hidden from screen readers
-    // $('#menu .menu-item-has-children > a').attr({
+    // menu__a_parent.attr({
     //     'aria-hidden': 'true',
     //     'tabindex': -1
     // });
     // append "plus" element in sub-menu parent item
-    $('#menu .menu-item-has-children > a, #menu .menu-item-has-children > .empty_link').after('<span class="rwd_show" tabindex="0" role="button" aria-label="Sub-menu toggle" aria-expanded="false" />');
+    menu__a_parent.after('<span class="rwd_show" tabindex="0" role="button" aria-label="Sub-menu toggle" aria-expanded="false" />');
     function sub_menu_action(elem) {
         let exp = elem.attr('aria-expanded');
         (exp === 'false') ? elem.attr('aria-expanded', 'true') : elem.attr('aria-expanded', 'false');
         elem.toggleClass('is_open').next().stop().toggle();
     }
-    $('#menu').on('click', '[aria-label="Sub-menu toggle"]', function() {
+    menu__primary.on('click', '[aria-label="Sub-menu toggle"]', function() {
         sub_menu_action($(this));
     }).on('keyup', '[aria-label="Sub-menu toggle"]', function (e) {
         if (e.keyCode === 13) {
             sub_menu_action($(this));
         }
     });
+
+
+    // header
+    $(window).on('scroll', function () {
+        if ($(this).scrollTop() > 5) {
+            header.addClass('is_sticky');
+        } else {
+            header.removeClass('is_sticky');
+        }
+    });
+    if ($(this).scrollTop() > 4) header.addClass('is_sticky');
 
 
     // contact form 7
@@ -76,17 +96,6 @@ $(document).ready(function() {
     document.addEventListener( 'wpcf7submit', function( event ) {
         $('.wpcf7-response-output').removeClass('is_temp_hidden');
     }, false );
-    // active class for input parent
-    // $(this).on('focus', '.wpcf7-form-control:not([type="submit"])', function() {
-    //     $(this).parent().addClass('is_active');
-    // });
-    // $(this).on('blur', '.wpcf7-form-control:not([type="submit"])', function() {
-    //     if($(this).val() !== "") {
-    //         $(this).parent().addClass('is_active');
-    //     } else {
-    //         $(this).parent().removeClass('is_active');
-    //     }
-    // });
 
 
     // custom select
@@ -111,21 +120,22 @@ $(document).ready(function() {
         smallBtn: false,
         beforeLoad: function( instance, slide ) {
             // fix if header is sticky
-            $('header').addClass('compensate-for-scrollbar');
+            header.addClass('compensate-for-scrollbar');
         },
         afterClose: function( instance, slide ) {
             // fix if header is sticky
-            $('header').removeClass('compensate-for-scrollbar');
+            header.removeClass('compensate-for-scrollbar');
             // remove body class after event
-            if ($('body').hasClass('is_searching')) {
-                $('body').removeClass('is_searching');
+            if (body.hasClass('is_searching')) {
+                body.removeClass('is_searching');
             }
         }
     });
 
+
     // add body class on event
     $('.search_toggle').on('click', function () {
-        $('body').addClass('is_searching');
+        body.addClass('is_searching');
     });
 
 
@@ -141,9 +151,15 @@ $(document).ready(function() {
 
 
     // scroll to
-    // $('html, body').animate({
-    //     scrollTop: $(elem).offset().top - $('header').outerHeight()
-    // }, 700);
+    $('a[data-scrollto]').on('click', function () {
+        let anchor = $(this).data('scrollto');
+
+        if ($(anchor).length > 0) {
+            $('html, body').animate({
+                scrollTop: $(anchor).offset().top - header.outerHeight()
+            }, 700);
+        }
+    });
 
 
     // block - accordion
@@ -165,8 +181,8 @@ $(document).ready(function() {
 
 
     // wrap tables for responsive design
-    if($('table').length > 0) {
-        $('table').wrap('<div class="table_wrapper"></div>');
+    if($('.content table').length > 0) {
+        $('.content table').wrap('<div class="table_wrapper"></div>');
     }
     
 });
@@ -178,13 +194,13 @@ $(window).on('load', function() {
 
     // swiper - block__custom_slider
     $('.block__custom_slider').each(function () {
-        var slider_holder = $(this),
+        let slider_holder = $(this),
             swiper_instance = slider_holder.find('.swiper'),
             next = slider_holder.find('.sw_next'),
             prev = slider_holder.find('.sw_prev'),
             pagination = slider_holder.find('.sw_pagination');
 
-        var slider = new Swiper(swiper_instance[0], {
+        let block_slider = new Swiper(swiper_instance[0], {
             navigation: {
                 nextEl: next[0],
                 prevEl: prev[0]
@@ -212,7 +228,7 @@ $(window).on('load', function() {
 
     // custom class for video in content (iframe)
     $('.content iframe').each(function(i) {
-        var t = $(this),
+        let t = $(this),
             p = t.parent();
         if ( (p.is('p') || p.is('span') ) && !p.hasClass('full_frame')) {
             p.addClass('full_frame');
@@ -225,10 +241,10 @@ $(window).on('load', function() {
 
 // close on click outside
 // $(document).on('mouseup', function(e) {
-//     var menu = $('#menu');
+//     let menu = $('.menu__primary');
 //
-//     if (!menu.is(e.target) && !$('.nav_icon.is_active').is(e.target) && menu.has(e.target).length === 0 && menu.hasClass('is_open')) {
-//         $('.nav_icon.is_active').click();
+//     if (!menu.is(e.target) && !$('.menu__toggle.is_active').is(e.target) && menu.has(e.target).length === 0 && menu.hasClass('is_open')) {
+//         $('.menu__toggle.is_active').click();
 //     }
 // });
 

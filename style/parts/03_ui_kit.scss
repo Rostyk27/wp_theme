@@ -242,6 +242,54 @@ hr {
     @include rwd-range(1024, 768) {margin-left: 50px}
     @include rwd-min(1025) {margin-left: 75px}
   }
+
+  .table_wrapper {
+    @include rwd-max(879) {overflow-x: auto}
+  }
+
+  table {
+    width: 100%;
+    min-width: 630px;
+    border: 2px solid $tx;
+    border-collapse: collapse;
+
+    &.has-fixed-layout {
+      tr {
+        @include flexbox();
+        > * {@include flex(1)}
+      }
+    }
+
+    th, td {
+      text-align: left;
+      vertical-align: top;
+      > * {padding: 0}
+    }
+
+    th {
+      font-size: 21px;
+      font-weight: 600;
+      font-family: $ff2;
+      padding: 14px 20px 11px;
+      border-bottom: 2px solid $tx;
+    }
+
+    td {padding: 20px 20px 25px}
+
+    tr {
+      &:not(:last-child) * {border-bottom: 2px solid $border}
+
+      & > th {
+        &:not(:last-child) {border-right: 2px solid $tx}
+      }
+
+      & > td {
+        &:not(:last-child) {border-right: 2px solid $border}
+      }
+    }
+
+    a {@extend .link}
+  }
 }
 
 
@@ -323,53 +371,6 @@ hr {
 .wp-block-embed {
   margin-bottom: 50px;
   @include rwd-min(768) {margin-bottom: 60px}
-}
-
-.table_wrapper {
-  @include rwd-max(879) {overflow-x: auto}
-}
-table {
-  width: 100%;
-  min-width: 630px;
-  border: 2px solid $tx;
-  border-collapse: collapse;
-
-  &.has-fixed-layout {
-    tr {
-      @include flexbox();
-      > * {@include flex(1)}
-    }
-  }
-
-  th, td {
-    text-align: left;
-    vertical-align: top;
-    > * {padding: 0}
-  }
-
-  th {
-    font-size: 21px;
-    font-weight: 600;
-    font-family: $ff2;
-    padding: 14px 20px 11px;
-    border-bottom: 2px solid $tx;
-  }
-
-  td {padding: 20px 20px 25px}
-
-  tr {
-    &:not(:last-child) * {border-bottom: 2px solid $border}
-
-    & > th {
-      &:not(:last-child) {border-right: 2px solid $tx}
-    }
-
-    & > td {
-      &:not(:last-child) {border-right: 2px solid $border}
-    }
-  }
-
-  a {@extend .link}
 }
 
 // wp html5 video

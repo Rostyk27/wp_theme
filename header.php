@@ -22,24 +22,24 @@ if( @!WP_DEBUG) { ob_start('ob_html_compress'); }
             <a href="#skip_to_content" class="button skip_to_content" tabindex="9">Skip to content</a>
 
             <header>
-                <div class="container flex">
-	                <?php echo ( is_front_page() ) ? '<figure class="logo">' : '<a href="'. esc_url( get_site_url() ) .'" class="logo">'; ?>
+                <div class="header__container container flex">
+	                <?php echo ( is_front_page() ) ? '<figure class="header__logo">' : '<a href="'. esc_url( get_site_url() ) .'" class="header__logo">'; ?>
                         <img src="<?php echo esc_url( theme( 'images/logo.svg' ) ); ?>" height="60" width="60" alt="<?php bloginfo(); ?>">
 	                <?php echo ( is_front_page() ) ? '</figure>' : '</a>'; ?>
 
                     <a class="search_toggle i_search" data-fancybox data-src="#search_field" href="javascript:;" aria-label="Search"></a>
 
-                    <a class="nav_icon" href="javascript:;" aria-label="Menu toggle">
+                    <a class="menu__toggle" href="javascript:;" aria-label="Menu toggle">
                         <span></span>
                         <span></span>
                         <span></span>
                     </a>
 
-                    <nav id="menu" class="flex__rwd">
+                    <nav class="menu__primary">
 		                <?php wp_nav_menu(
 			                array(
 				                'container'      => false,
-				                'items_wrap'     => '<ul class="flex__rwd">%3$s</ul>',
+				                'items_wrap'     => '<ul class="menu__primary_list flex__rwd">%3$s</ul>',
 				                'theme_location' => 'main_menu'
 			                )
 		                ); ?>
