@@ -20,7 +20,7 @@ require_once 'plugins/installer.php';
 require_once('assets.php');
 
 // custom admin area functions
-require_once('wpadmin/admin-area.php');
+require_once('admin-area/admin-area.php');
 
 // custom shortcodes
 require_once('shortcodes.php');
