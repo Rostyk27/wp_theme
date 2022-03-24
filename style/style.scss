@@ -7,6 +7,10 @@ $ff: 'Roboto', sans-serif;
 $ff2: 'Playfair Display', sans-serif;
 $icons: 'icons';
 
+:root {
+  --grid-gap: 24px;
+}
+
 @import 'parts/00_mixins';
 @import 'parts/01_reset';
 @import 'parts/02_classes';

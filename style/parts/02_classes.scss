@@ -68,69 +68,62 @@
 .flex_grid {
   @include flexbox;
   margin: 0 calc(var(--grid-gap) / -2);
-  > * {margin: 0 calc(var(--grid-gap)/2)}
-}
-.flex_grid__rwd {
-  @include rwd-min(1025) {
-    @include flexbox;
-    margin: 0 calc(var(--grid-gap) / -2);
-    > * {margin: 0 calc(var(--grid-gap)/2)}
+  & > * {margin: 0 calc(var(--grid-gap)/2)}
+
+  &__rwd {
+    @include rwd-min(1025) {
+      @include flexbox;
+      margin: 0 calc(var(--grid-gap) / -2);
+      & > * {margin: 0 calc(var(--grid-gap)/2)}
+    }
+  }
+
+  &__mob {
+    @include rwd-min(768) {
+      @include flexbox;
+      margin: 0 calc(var(--grid-gap) / -2);
+      & > * {margin: 0 calc(var(--grid-gap)/2)}
+    }
   }
 }
-.flex_grid__mob {
-  @include rwd-min(768) {
-    @include flexbox;
-    margin: 0 calc(var(--grid-gap) / -2);
-    > * {margin: 0 calc(var(--grid-gap)/2)}
-  }
-}
+
 [class*="flex_grid"] {
-  --grid-gap: 24px;
   @include flex-wrap(wrap);
-  margin-bottom: calc(var(--grid-gap) * -1);
   &._nowrap {@include flex-wrap(nowrap)}
-  > * {
+  &._align_center {@include align-items(center)}
+  &._space_between {@include justify-content(space-between)}
+
+  & > * {
     @include flex(1);
     margin-bottom: calc(var(--grid-gap));
-    &._col_1 {@include flex(0 0 calc(100%/12 - var(--grid-gap)))}
-    &._col_2 {@include flex(0 0 calc(100%/12*2 - var(--grid-gap)))}
-    &._col_3 {@include flex(0 0 calc(100%/12*3 - var(--grid-gap)))}
-    &._col_4 {@include flex(0 0 calc(100%/12*4 - var(--grid-gap)))}
-    &._col_5 {@include flex(0 0 calc(100%/12*5 - var(--grid-gap)))}
-    &._col_6 {@include flex(0 0 calc(100%/12*6 - var(--grid-gap)))}
-    &._col_7 {@include flex(0 0 calc(100%/12*7 - var(--grid-gap)))}
-    &._col_8 {@include flex(0 0 calc(100%/12*8 - var(--grid-gap)))}
-    &._col_9 {@include flex(0 0 calc(100%/12*9 - var(--grid-gap)))}
-    &._col_10 {@include flex(0 0 calc(100%/12*10 - var(--grid-gap)))}
-    &._col_11 {@include flex(0 0 calc(100%/12*11 - var(--grid-gap)))}
-    &._col_12 {@include flex(0 0 calc(100% - var(--grid-gap)))}
+
+    @for $i from 1 through 12 {
+      &._col_#{$i} {@include flex(0 0 calc(100%/12*#{$i} - var(--grid-gap)))}
+    }
+
     @include rwd-range(1499, 1025) {
-      &._col_sd_1 {@include flex(0 0 calc(100%/12 - var(--grid-gap)))}
-      &._col_sd_2 {@include flex(0 0 calc(100%/12*2 - var(--grid-gap)))}
-      &._col_sd_3 {@include flex(0 0 calc(100%/12*3 - var(--grid-gap)))}
-      &._col_sd_4 {@include flex(0 0 calc(100%/12*4 - var(--grid-gap)))}
-      &._col_sd_5 {@include flex(0 0 calc(100%/12*5 - var(--grid-gap)))}
-      &._col_sd_6 {@include flex(0 0 calc(100%/12*6 - var(--grid-gap)))}
-      &._col_sd_7 {@include flex(0 0 calc(100%/12*7 - var(--grid-gap)))}
-      &._col_sd_8 {@include flex(0 0 calc(100%/12*8 - var(--grid-gap)))}
-      &._col_sd_9 {@include flex(0 0 calc(100%/12*9 - var(--grid-gap)))}
-      &._col_sd_10 {@include flex(0 0 calc(100%/12*10 - var(--grid-gap)))}
-      &._col_sd_11 {@include flex(0 0 calc(100%/12*11 - var(--grid-gap)))}
-      &._col_sd_12 {@include flex(0 0 calc(100% - var(--grid-gap)))}
+      @for $i from 1 through 12 {
+        &._col_sd_#{$i} {@include flex(0 0 calc(100%/12*#{$i} - var(--grid-gap)))}
+      }
     }
+
     @include rwd-max(1024) {
-      &.__rwd {@include flex(1)}
-      &.__25_rwd {@include flex(0 0 calc(25% - var(--grid-gap)))}
-      &.__33_rwd {@include flex(0 0 calc(33.333% - var(--grid-gap)))}
-      &.__50_rwd {@include flex(0 0 calc(50% - var(--grid-gap)))}
-      &.__full_rwd {@include flex(0 0 calc(100% - var(--grid-gap)))}
+      @for $i from 1 through 12 {
+        &._col_rwd_#{$i} {@include flex(0 0 calc(100%/12*#{$i} - var(--grid-gap)))}
+      }
     }
+
     @include rwd-max(767) {
-      &.__mob {@include flex(1)}
-      &.__25_mob {@include flex(0 0 calc(25% - var(--grid-gap)))}
-      &.__33_mob {@include flex(0 0 calc(33.333% - var(--grid-gap)))}
-      &.__50_mob {@include flex(0 0 calc(50% - var(--grid-gap)))}
-      &.__full_mob {@include flex(0 0 calc(100% - var(--grid-gap)))}
+      @for $i from 1 through 12 {
+        &._col_mob_#{$i} {@include flex(0 0 calc(100%/12*#{$i} - var(--grid-gap)))}
+      }
+    }
+
+    @include rwd-min(1025) {
+      @for $i from 1 through 4 {
+        &._space_l_#{$i} {padding-left: calc(100%/12*#{$i})}
+        &._space_r_#{$i} {padding-right: calc(100%/12*#{$i})}
+      }
     }
   }
 }
@@ -167,6 +160,14 @@
 }
 .mob_hide {
   @include rwd-max(767) {display: none !important}
+}
+
+// 12 column spacing
+@include rwd-min(1025) {
+  @for $i from 1 through 4 {
+    .col_space_l_#{$i} {padding-left: calc((100% + var(--grid-gap))/12*#{$i})}
+    .col_space_r_#{$i} {padding-right: calc((100% + var(--grid-gap))/12*#{$i})}
+  }
 }
 
 .is_visually_hidden {
