@@ -1,14 +1,8 @@
 <?php
 
-/*function remove_footer_admin () {
-	echo '<i>Powered by</i> <a href="http://www.wordpress.org" target="_blank" rel="noopener">WordPress</a> | <i>Theme Development</i> <a href="#dev-url" target="_blank" rel="noopener">dev-name</a>';
-}
-add_filter('admin_footer_text', 'remove_footer_admin');*/
-
-
 // Login area branding styles
 function wp_login_candy() {
-    wp_enqueue_style( 'wpcandy', theme('inc/wpadmin/admin-area.css'), false );
+    wp_enqueue_style( 'wpcandy', theme('inc/admin-area/admin-area.css'), false );
 }
 add_action( 'login_enqueue_scripts', 'wp_login_candy', 10 );
 
@@ -41,14 +35,6 @@ function wpa_custom_image_choose( $sizes ) {
 add_filter( 'image_size_names_choose', 'wpa_custom_image_choose', 999 );
 
 
-//Remove ACF menu item from
-add_filter('acf/settings/show_admin', 'my_acf_show_admin');
-
-function my_acf_show_admin( $show ) {
-    return current_user_can('manage_options');
-}
-
-
 //remove wp-logo
 function wpa_clear_admin_bar() {
     global $wp_admin_bar;
@@ -63,8 +49,6 @@ function wpa_remove_dashboard_widgets () {
 	remove_meta_box('dashboard_primary','dashboard','side'); //WordPress.com widget event and news
 	//remove_meta_box('dashboard_activity','dashboard', 'normal'); //Activity
 	//remove_action('welcome_panel','wp_welcome_panel');
-	//remove_meta_box('icl_dashboard_widget','dashboard','normal'); //Multi Language Plugin
-	//remove_meta_box('rg_forms_dashboard','dashboard','normal'); //Gravity Forms
 	//remove_meta_box('dashboard_plugins','dashboard','normal'); //Plugins
 	//remove_meta_box('dashboard_incoming_links','dashboard','normal'); //Incoming Links
 	//remove_meta_box('dashboard_recent_drafts','dashboard','side'); //Recent Drafts
@@ -76,7 +60,7 @@ add_action('wp_dashboard_setup', 'wpa_remove_dashboard_widgets');
 
 
 //remove admin bar
-add_filter( 'show_admin_bar', '__return_false' ); // remove Admin Bar
+add_filter( 'show_admin_bar', '__return_false' );
 
 
 // Remove the WordPress update notifications for all users except Super Administrator
@@ -97,14 +81,7 @@ add_filter( 'login_headerurl', 'wpa_login_url' );
 
 // Changing the alt text on the logo to show your site name
 function wpa_login_title() { return get_option( 'blogname' ); }
-add_filter( 'login_headertext ', 'wpa_login_title' );
-
-
-// Return header 403 for wrong login
-function my_login_failed_403() {
-    status_header( 403 );
-}
-add_action( 'wp_login_failed', 'my_login_failed_403' );
+add_filter( 'login_headertext', 'wpa_login_title' );
 
 
 // disable fullscreen when editing page/post
