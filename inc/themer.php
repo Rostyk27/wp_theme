@@ -189,29 +189,23 @@ function wpa_title(){
 }
 
 function wpa_init() {
-	/* @var WP $wp */
-	global $wp;
-	// Remove the embed query var.
-	$wp->public_query_vars = array_diff( $wp->public_query_vars, array(
-		'embed',
-	) );
-	// Filters for WP-API version 1.x
+	// add support for page/post thumbnails
+	add_theme_support( 'post-thumbnails' );
+
+	// security
+	// disable JSON API
 	add_filter('json_enabled', '__return_false');
 	add_filter('json_jsonp_enabled', '__return_false');
-
-	// Filters for WP-API version 2.x
+	// remove REST API link tag from page header
 	remove_action( 'wp_head', 'rest_output_link_wp_head' );
-	//Disable Thumbnails Embeds
-	add_filter( 'embed_thumbnail_image_shape', '__return_false' );
-	// Turn off oEmbed auto discovery.
-	add_filter( 'embed_oembed_discover', '__return_false' );
-	// Don't filter oEmbed results.
-	remove_filter( 'oembed_dataparse', 'wp_filter_oembed_result', 10 );
-	// Remove oEmbed discovery links.
-	remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
-	// Remove oEmbed-specific JavaScript from the front-end and back-end.
-	remove_action( 'wp_head', 'wp_oembed_add_host_js' );
 
+	// custom oEmbed rules
+	// turn off oEmbed auto discovery
+	add_filter( 'embed_oembed_discover', '__return_false' );
+	// remove JSON & XML oEmbed discovery links from front end
+	remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
+
+	// remove unnecessary code from wp_head
 	remove_action('wp_head', 'feed_links_extra', 3);
 	remove_action('wp_head', 'rsd_link');
 	remove_action('wp_head', 'wlwmanifest_link');
@@ -223,6 +217,7 @@ function wpa_init() {
 	remove_action('wp_head', 'wp_generator');
 	remove_action('wp_head', 'rel_canonical');
 
+	// remove Emoji
 	// prevent Emoji from loading on the front-end
 	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 	remove_action( 'wp_print_styles', 'print_emoji_styles' );
@@ -238,37 +233,28 @@ function wpa_init() {
 	remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
 	// disable from TinyMCE editor, currently disabled in block editor by default
 	add_filter('tiny_mce_plugins', function($plugins) {
-		if(is_array($plugins)) {
-			return array_diff($plugins, array('wpemoji'));
-		} else {
-			return array();
-		}
+		if(is_array($plugins)) { return array_diff($plugins, array('wpemoji')); } else { return array(); }
 	});
+	// finally, disable it from the database also, to prevent characters from converting
+	// earlier, there was a setting under Writings to do this
+	// it is not ideal to get & update it here - but it works for now
+	if( (int) get_option('use_smilies') === 1 ) { update_option( 'use_smilies', 0 ); }
 
-	/** Finally, disable it from the database also,
-	 *  to prevent characters from converting
-	 *  Earlier, there was a setting under Writings to do this
-	 *  It is not ideal to get & update it here - but it works for now
-	 */
-	if( (int) get_option('use_smilies') === 1 ) {
-		update_option( 'use_smilies', 0 );
-	}
-
-	// page/post thumbnail support
-	add_theme_support( 'post-thumbnails' );
-	// Disable Responsive Images
-//	add_filter( 'max_srcset_image_width', function(){ return 1; } );
-
+	// theme custom functions
 	// remove default menu classes + new custom classes
 	add_filter('nav_menu_css_class', 'wpa_discard_menu_classes', 10, 2);
 	// remove IDs from menu
 	add_filter('nav_menu_item_id', '__return_false', 10);
-
 	// new body classes
 	add_filter( 'body_class', 'wpa_body_classes' );
-
 	// remove <p> & <br> from CF7
 	add_filter('wpcf7_autop_or_not', '__return_false');
+
+	// outdated - temp not used
+	// disable responsive images
+	//add_filter( 'max_srcset_image_width', function(){ return 1; } );
+	// disable thumbnails embeds
+	//add_filter( 'embed_thumbnail_image_shape', '__return_false' );
 }
 add_action( 'init', 'wpa_init', 9999 );
 
