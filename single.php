@@ -13,6 +13,7 @@
 
             <?php if ( get_the_terms( get_the_ID(), 'category' ) ) : ?>
                 <div class="cats">Category: <?php echo wp_kses_post( custom_tax( get_the_ID(), 'category' ) ); ?></div>
+                <div class="cats">Category linked: <?php echo wp_kses_post( custom_tax_linked( get_the_ID(), 'category', CUSTOM_TEMPLATE_SLUG ) ); ?></div>
             <?php endif; ?>
 
 	        <?php if ( get_the_terms( get_the_ID(), 'post_tag' ) ) : ?>

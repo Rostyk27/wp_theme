@@ -34,8 +34,11 @@ function custom_tax($pid, $tax) {
 	}
 }
 
-// get post taxonomy - alt
-function custom_tax_linked($pid, $tax) {
+// custom templates slugs to use with custom_tax_linked() function
+const CUSTOM_TEMPLATE_SLUG = '/custom-post-type/';
+
+// get post taxonomy as hash with related template slug
+function custom_tax_linked($pid, $tax, $template_slug) {
 	if ( get_the_terms($pid, $tax) ) {
 		$post_tax = get_the_terms( $pid, $tax );
 		$taxs = '';
@@ -43,7 +46,7 @@ function custom_tax_linked($pid, $tax) {
 		$i = 1;
 		foreach ( $post_tax as $t ) {
 			$tax = get_term( $t );
-			$taxs .= '<a href="' . get_permalink( BLOG_ID ) . '#' . $tax->slug . '" class="tax_term">' . $tax->name . '</a>' . ( $i ++ != $co ? '<span>,</span> ' : '' );
+			$taxs .= '<a href="' . $template_slug . '#' . $tax->slug . '" class="tax_term">' . $tax->name . '</a>' . ( $i ++ != $co ? '<span>,</span> ' : '' );
 		}
 
 		return $taxs;
