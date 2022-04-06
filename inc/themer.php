@@ -217,6 +217,10 @@ function wpa_init() {
 	remove_action('wp_head', 'wp_generator');
 	remove_action('wp_head', 'rel_canonical');
 
+	// remove global css vars
+	remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
+	remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
+
 	// remove Emoji
 	// prevent Emoji from loading on the front-end
 	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
