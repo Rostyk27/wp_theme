@@ -3,6 +3,9 @@
 
 // you can use dash-icons https://developer.wordpress.org/resource/dashicons/
 
+// use this arg if post-type shouldn't have single pages
+// 'publicly_queryable' => false
+
 
 /**
  * custom taxonomy args
@@ -89,34 +92,27 @@ add_action( 'init', 'register_cpts' );
 
 function register_cpts() {
 
-	// args for taxonomy "custom_taxonomy_name"
+	// args & register for taxonomy "custom_taxonomy"
 	$tax_arr  = tax_args_arr( 'Taxonomy Name' );
-	// taxonomy "custom_taxonomy_name" attached to cpt "custom_post_type"
-	register_taxonomy( 'custom_taxonomy_name', 'custom_post_type', $tax_arr );
+
+	register_taxonomy( 'custom_taxonomy', 'custom_post_type', $tax_arr );
+
 
 	// cpt "custom_post_type"
 	register_post_type( 'custom_post_type',
 		array(
 			'labels'            => array(
-				'name'          => 'Custom Post Type',
-				'singular_name' => 'Custom Post Type',
-				'menu_name'     => 'Custom Post Type'
+				'name'          => 'Custom post type',
+				'singular_name' => 'Custom post type Singular',
 			),
 			'public'            => true,
-			'show_ui'           => true,
-			'show_in_menu'      => true,
-			'supports'          => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
-			'rewrite'           => array( 'slug' => 'permalink' ),
-			'has_archive'       => true,
-			'hierarchical'      => true,
-			'show_in_nav_menus' => true,
-			'capability_type'   => 'page',
-			'query_var'         => true,
 			'show_in_rest'      => true,
-			'menu_icon'         => 'dashicons-admin-page',
-		) );
+			'show_in_nav_menus' => false,
+			'menu_icon'         => 'dashicons-portfolio',
+			'rewrite'           => array( 'slug' => 'permalink' ),
+			'supports'          => array( 'title', 'editor', 'thumbnail', 'excerpt' ), // 'author'
+		)
+	);
 
-    if( defined('WP_DEBUG') && true !== WP_DEBUG) {
-        flush_rewrite_rules();
-    }
+    if( defined('WP_DEBUG') && true !== WP_DEBUG) { flush_rewrite_rules(); }
 }
