@@ -1,8 +1,8 @@
 /* make menu sidebar scrollable after disabling fullscreen mode */
-body.block-editor-page.modal-open { overflow: unset; }
+/*body.block-editor-page.modal-open { overflow: unset; }*/
 
 /* disabling Gutenberg's "Welcome Guide" popup! */
-.components-modal__screen-overlay {display: none !important}
+/*.components-modal__screen-overlay {display: none !important}*/
 
 /* styles for custom Gutenberg blocks */
 

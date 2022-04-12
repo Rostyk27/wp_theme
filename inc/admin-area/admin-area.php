@@ -60,13 +60,13 @@ function wpa_remove_dashboard_widgets () {
 add_action('wp_dashboard_setup', 'wpa_remove_dashboard_widgets');
 
 // dashboard - disable fullscreen mode when editing page/post
-if ( is_admin() ) {
+/*if ( is_admin() ) {
 	function jba_disable_editor_fullscreen_by_default() {
 		$script = "window.onload = function() { const isFullscreenMode = wp.data.select( 'core/edit-post' ).isFeatureActive( 'fullscreenMode' ); if ( isFullscreenMode ) { wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'fullscreenMode' ); } }";
 		wp_add_inline_script( 'wp-blocks', $script );
 	}
 	add_action( 'enqueue_block_editor_assets', 'jba_disable_editor_fullscreen_by_default' );
-}
+}*/
 
 
 // general - custom image sizes in media editor
