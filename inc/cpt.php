@@ -10,80 +10,40 @@
 /**
  * custom taxonomy args
  *
- * @param $tax_name
+ * @param      $tax_name
+ * @param      $tax_plural
+ * @param null $new_slug    // if not set - $taxonomy slug will be used as default
+ * @param bool $is_in_menu  // set to 'false' if there's a need to hide terms from nav_menu
  *
  * @return array
  */
-function tax_args_arr($tax_name) {
+function tax_args_arr( $tax_name, $tax_plural, $new_slug = null, $is_in_menu = true ) {
 	$tax_labels = array(
 		'name'                       => $tax_name,
 		'singular_name'              => $tax_name,
 		'search_items'               => 'Search ' . $tax_name,
 		'popular_items'              => 'Popular ' . $tax_name,
-		'all_items'                  => 'All ' . $tax_name . 's',
+		'all_items'                  => 'All ' . $tax_plural,
 		'parent_item'                => 'Parent ' . $tax_name,
 		'edit_item'                  => 'Edit ' . $tax_name,
 		'update_item'                => 'Update ' . $tax_name,
 		'add_new_item'               => 'Add New ' . $tax_name,
 		'new_item_name'              => 'New ' . $tax_name,
-		'separate_items_with_commas' => 'Separate ' . $tax_name . 's with commas',
-		'add_or_remove_items'        => 'Add or remove ' . $tax_name . 's',
-		'choose_from_most_used'      => 'Choose from most used ' . $tax_name . 's'
+		'separate_items_with_commas' => 'Separate ' . $tax_plural . ' with commas',
+		'add_or_remove_items'        => 'Add or remove ' . $tax_plural,
+		'choose_from_most_used'      => 'Choose from most used ' . $tax_plural
 	);
 
 	return array(
 		'label'             => $tax_name,
 		'labels'            => $tax_labels,
 		'public'            => true,
-		'hierarchical'      => true,
-		'show_in_nav_menus' => true,
-		'args'              => array( 'orderby' => 'term_order' ),
-		'query_var'         => true,
-		'show_ui'           => true,
-		'rewrite'           => true,
-		'show_admin_column' => true,
 		'show_in_rest'      => true,
-	);
-}
-
-
-/**
- * custom taxonomy args - when plural is custom
- *
- * @param $tax_name
- * @param $tax_name_plural
- *
- * @return array
- */
-function tax_args_arr_plural($tax_name, $tax_name_plural) {
-	$tax_labels = array(
-		'name'                       => $tax_name,
-		'singular_name'              => $tax_name,
-		'search_items'               => 'Search ' . $tax_name,
-		'popular_items'              => 'Popular ' . $tax_name,
-		'all_items'                  => 'All ' . $tax_name_plural,
-		'parent_item'                => 'Parent ' . $tax_name,
-		'edit_item'                  => 'Edit ' . $tax_name,
-		'update_item'                => 'Update ' . $tax_name,
-		'add_new_item'               => 'Add New ' . $tax_name,
-		'new_item_name'              => 'New ' . $tax_name,
-		'separate_items_with_commas' => 'Separate ' . $tax_name_plural . ' with commas',
-		'add_or_remove_items'        => 'Add or remove ' . $tax_name_plural,
-		'choose_from_most_used'      => 'Choose from most used ' . $tax_name_plural
-	);
-
-	return array(
-		'label'             => $tax_name,
-		'labels'            => $tax_labels,
-		'public'            => true,
 		'hierarchical'      => true,
-		'show_in_nav_menus' => true,
-		'args'              => array( 'orderby' => 'term_order' ),
-		'query_var'         => true,
-		'show_ui'           => true,
-		'rewrite'           => true,
 		'show_admin_column' => true,
-		'show_in_rest'      => true,
+		'show_in_nav_menus' => $is_in_menu,
+		'args'              => array( 'orderby' => 'term_order' ),
+		'rewrite'           => array( 'slug' => $new_slug, 'hierarchical' => true ),
 	);
 }
 
@@ -92,10 +52,10 @@ add_action( 'init', 'register_cpts' );
 
 function register_cpts() {
 
-	// args & register for taxonomy "custom_taxonomy"
-	$tax_arr  = tax_args_arr( 'Taxonomy Name' );
+	// args & register - taxonomy "custom_taxonomy"
+	$custom_tax_args = tax_args_arr( 'Taxonomy', 'Taxonomies' );
 
-	register_taxonomy( 'custom_taxonomy', 'custom_post_type', $tax_arr );
+	register_taxonomy( 'custom_taxonomy', 'custom_post_type', $custom_tax_args );
 
 
 	// cpt "custom_post_type"
