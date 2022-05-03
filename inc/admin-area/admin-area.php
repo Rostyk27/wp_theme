@@ -69,6 +69,16 @@ add_action('wp_dashboard_setup', 'wpa_remove_dashboard_widgets');
 }*/
 
 
+// general - disable comments for media
+function filter_media_comment_status( $open, $post_id ) {
+	$post = get_post( $post_id );
+	if( $post->post_type == 'attachment' ) {
+		return false;
+	}
+	return $open;
+}
+add_filter( 'comments_open', 'filter_media_comment_status', 10 , 2 );
+
 // general - custom image sizes in media editor
 function wpa_custom_image_choose( $sizes ) {
     global $_wp_additional_image_sizes;
