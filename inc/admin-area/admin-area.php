@@ -92,5 +92,20 @@ function wpa_custom_image_choose( $sizes ) {
 }
 add_filter( 'image_size_names_choose', 'wpa_custom_image_choose', 999 );
 
+// general - wp 6.0 - remove .wp-container# inline styles
+remove_filter( 'render_block', 'wp_render_layout_support_flag', 10, 2 );
+add_filter( 'render_block', function( $block_content, $block ) {
+	if ( $block['blockName'] === 'core/columns' ) {
+		return $block_content;
+	}
+	if ( $block['blockName'] === 'core/column' ) {
+		return $block_content;
+	}
+	if ( $block['blockName'] === 'core/group' ) {
+		return $block_content;
+	}
+	return wp_render_layout_support_flag( $block_content, $block );
+}, 10, 2 );
+
 // general - remove admin bar on front end
 add_filter( 'show_admin_bar', '__return_false' );
