@@ -16,6 +16,11 @@ header {
   right: 0;
   z-index: 9;
 
+  .logged-in.admin-bar & {
+    top: 46px;
+    @include rwd-min(783) {top: 32px}
+  }
+
   &.is_sticky {
     &:before {box-shadow: 0 1px 5px $shadow}
   }
