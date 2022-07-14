@@ -3,9 +3,6 @@
 // run pre-installed plugins
 require_once('inc/themer.php');
 
-// uncomment if need CPT
-//require_once('inc/cpt.php');
-
 // register menus
 register_nav_menus(array(
     'main_menu' => 'Main menu'

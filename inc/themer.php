@@ -25,14 +25,17 @@ require_once('admin-area/admin-area.php');
 // custom shortcodes
 require_once('shortcodes.php');
 
-// custom ajax functions
-//require_once('ajax.php');
-
 // custom posts duplicator
 require_once('plugins/duplicator.php');
 
 // ACF settings
 require_once('acf.php');
+
+// custom post types & taxonomies
+//require_once('cpt.php');
+
+// custom ajax functions
+//require_once('ajax.php');
 
 // custom theme URL
 function theme($filepath = NULL) {
@@ -53,8 +56,6 @@ function wpa_activate_theme() {
 	update_option('image_default_link_type','none');
 	// comment this before the build if uploads from the old website is being migrated with default year-month structure
 	update_option('uploads_use_yearmonth_folders', 0);
-	// comment this if different permalink structure needed
-	update_option('permalink_structure', '/%category%/%postname%/');
 }
 
 // compress HTML
