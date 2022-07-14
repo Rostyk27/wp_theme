@@ -304,7 +304,7 @@ header {
 }
 
 .search_toggle {
-  @extend .flex_center;
+  @extend %flex_center;
   font-size: 18px;
   color: $tx;
   position: relative;

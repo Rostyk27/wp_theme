@@ -402,7 +402,7 @@ hr {
       &:not(:last-child) {border-bottom: 2px solid $border}
 
       .content {
-        @extend .last_no_spacing;
+        @extend %last_no_spacing;
         display: none;
         padding: 20px 18px 30px;
         box-shadow: inset 0 2px 0 $border;
@@ -456,7 +456,7 @@ hr {
     }
 
     .content {
-      @extend .last_no_spacing;
+      @extend %last_no_spacing;
       padding: 20px 20px 24px;
 
       h2, h3, h4, h5, h6, p, ol,
@@ -573,17 +573,7 @@ hr {
 }
 
 
-// fancybox
-.fancybox-slide--html {padding: 0}
-
-.fancybox-bg {
-  .is_searching & {
-    background-color: $cl;
-  }
-}
-
-.fancybox-is-open .fancybox-bg {
-  .is_searching & {
-    opacity: 0.98;
-  }
+// default page
+.default_page {
+  padding: 30px 0 60px;
 }

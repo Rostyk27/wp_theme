@@ -1,0 +1,44 @@
+// swiper controls
+.swiper-slide {box-sizing: border-box}
+
+.sw_controls {
+  @include center(false, true);
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.sw_prev,
+.sw_next {
+  @extend %ani;
+  &.swiper-button-disabled {
+    pointer-events: none;
+    color: $border;
+    opacity: 0.4;
+    cursor: default;
+  }
+}
+
+.sw_pagination {
+  width: auto !important;
+  position: relative;
+  text-align: center;
+  bottom: 0 !important;
+
+  .swiper-pagination-bullet {
+    @extend %ani;
+    opacity: 1;
+    height: 12px;
+    width: 12px;
+    background-color: $border;
+    margin: 0 10px;
+    @include hover {
+      opacity: 1;
+      background-color: $cl;
+    }
+    &.swiper-pagination-bullet-active {
+      opacity: 1;
+      background-color: $cl;
+    }
+  }
+}

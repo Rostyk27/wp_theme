@@ -6,62 +6,67 @@
   @include flexbox;
   @include align-items(center);
   @include justify-content(space-between);
-}
-.flex__rwd {
-  @include rwd-min(1025) {
-    @include flexbox;
-    @include align-items(center);
-    @include justify-content(space-between);
-  }
-}
-.flex__mob {
-  @include rwd-min(768) {
-    @include flexbox;
-    @include align-items(center);
-    @include justify-content(space-between);
-  }
-}
 
-.flex_start {
-  @include flexbox;
-  @include align-items(flex-start);
-  @include justify-content(space-between);
-}
-.flex_start__rwd {
-  @include rwd-min(1025) {
+  &__rwd {
+    @include rwd-min(1025) {
+      @include flexbox;
+      @include align-items(center);
+      @include justify-content(space-between);
+    }
+  }
+
+  &__mob {
+    @include rwd-min(768) {
+      @include flexbox;
+      @include align-items(center);
+      @include justify-content(space-between);
+    }
+  }
+
+  &_start {
     @include flexbox;
     @include align-items(flex-start);
     @include justify-content(space-between);
-  }
-}
-.flex_start__mob {
-  @include rwd-min(768) {
-    @include flexbox;
-    @include align-items(flex-start);
-    @include justify-content(space-between);
-  }
-}
 
-.flex_center {
-  @include flexbox;
-  @include align-items(center);
-  @include justify-content(center);
-}
-.flex_center__rwd {
-  @include rwd-min(1025) {
+    &__rwd {
+      @include rwd-min(1025) {
+        @include flexbox;
+        @include align-items(flex-start);
+        @include justify-content(space-between);
+      }
+    }
+
+    &__mob {
+      @include rwd-min(768) {
+        @include flexbox;
+        @include align-items(flex-start);
+        @include justify-content(space-between);
+      }
+    }
+  }
+
+  &_center {
     @include flexbox;
     @include align-items(center);
     @include justify-content(center);
-  }
-}
-.flex_center__mob {
-  @include rwd-min(768) {
-    @include flexbox;
-    @include align-items(center);
-    @include justify-content(center);
-  }
-}
 
+    &__rwd {
+      @include rwd-min(1025) {
+        @include flexbox;
+        @include align-items(center);
+        @include justify-content(center);
+      }
+    }
+
+    &__mob {
+      @include rwd-min(768) {
+        @include flexbox;
+        @include align-items(center);
+        @include justify-content(center);
+      }
+    }
+  }
+}
 
 
 // 12_column grid
@@ -162,18 +167,18 @@
   @include rwd-max(767) {display: none !important}
 }
 
-// 12 column spacing
-@include rwd-min(1025) {
-  @for $i from 1 through 4 {
-    .col_space_l_#{$i} {padding-left: calc((100% + var(--grid-gap))/12*#{$i})}
-    .col_space_r_#{$i} {padding-right: calc((100% + var(--grid-gap))/12*#{$i})}
-  }
-}
-
 .is_visually_hidden {
   position: absolute;
   width: 1px;
   height: 1px;
   opacity: 0;
   pointer-events: none;
+}
+
+// 12 column spacing
+@include rwd-min(1025) {
+  @for $i from 1 through 4 {
+    .col_space_l_#{$i} {padding-left: calc((100% + var(--grid-gap))/12*#{$i})}
+    .col_space_r_#{$i} {padding-right: calc((100% + var(--grid-gap))/12*#{$i})}
+  }
 }

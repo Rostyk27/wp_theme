@@ -52,6 +52,7 @@ Temporary Items
 *.css.map
 
 /style/style.css
+/style/templates/*.css
 
 node_modules/
 

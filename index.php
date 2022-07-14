@@ -1,10 +1,9 @@
 <?php get_header(); ?>
 
-<section class="top_panel top_panel__default">
-    <div class="container">
-        <h1><?php echo is_home() ? get_the_title( BLOG_ID ) : get_the_archive_title(); ?></h1>
-    </div>
-</section>
+<?php
+$title = is_home() ? get_the_title( BLOG_ID ) : get_the_archive_title();
+get_template_part( 'tpl-parts/top-panels/top-panel', 'default', array( 'title' => $title ) );
+?>
 
 <section class="posts__holder">
     <div class="container">

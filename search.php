@@ -7,11 +7,7 @@ $i_query = array(
 );
 ?>
 
-<section class="top_panel top_panel__default">
-    <div class="container">
-        <h1><span>Search Results</span></h1>
-    </div>
-</section>
+<?php get_template_part( 'tpl-parts/top-panels/top-panel', 'default', array( 'title' => 'Search Results' ) ); ?>
 
 <section class="search__page">
     <div class="container">

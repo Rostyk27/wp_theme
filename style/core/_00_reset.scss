@@ -62,8 +62,6 @@ img {
   max-width: 100%;
 }
 
-%ani {@include transition()}
-
 a {
   @extend %ani;
   color: $cl;

@@ -1,0 +1,41 @@
+// top-panel
+.top_panel {
+  &__primary {
+    padding: 70px 0;
+  }
+
+  &__secondary {
+    padding: 50px 0;
+  }
+
+  &__default {
+    padding: 35px 0 20px;
+  }
+}
+
+.top_panel__primary,
+.top_panel__secondary {
+  @include flexbox();
+  @include align-items(center);
+  min-height: 290px;
+  margin-bottom: 20px;
+  position: relative;
+  @include rwd-min(768) {
+    min-height: 480px;
+    margin-bottom: 40px;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $shadow;
+  }
+
+  figure, picture {position: absolute; top: 0;bottom: 0;right: 0;left: 0; z-index: -1;}
+
+  h1 {color: #fff}
+}

@@ -1,0 +1,14 @@
+// fancybox
+.fancybox-slide--html {padding: 0}
+
+.fancybox-bg {
+  .is_searching & {
+    background-color: $cl;
+  }
+}
+
+.fancybox-is-open .fancybox-bg {
+  .is_searching & {
+    opacity: 0.98;
+  }
+}

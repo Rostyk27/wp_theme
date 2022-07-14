@@ -1,0 +1,104 @@
+// custom loader
+$load_red: $cl;
+$load_blue: $cl;
+$load_green: $cl;
+$load_yellow: $cl;
+
+// scaling... any units
+$load_width: 30px;
+
+.show_box {
+  @extend %ani;
+  @include center(true, false);
+  bottom: 0;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 3;
+  &.is_loading {
+    opacity: 1;
+    visibility: visible;
+  }
+  .loader {
+    margin: 0 auto;
+    width: $load_width;
+    position: relative;
+    &:before {
+      content: '';
+      display: block;
+      padding-top: 100%;
+    }
+  }
+  .circular {
+    @include animation(rotate 2s linear infinite);
+    transform-origin: center center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+  }
+  .path {
+    stroke-width: 3;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+    stroke-dasharray: 1,200;
+    animation: dash 1.5s ease-in-out infinite, color 3s ease-in-out infinite;
+    -webkit-animation: dash 1.5s ease-in-out infinite, color 3s ease-in-out infinite;
+  }
+}
+
+@keyframes rotate{
+  100%{
+    transform: rotate(360deg);
+  }
+}
+@keyframes dash{
+  0%{
+    stroke-dasharray: 1,200;
+    stroke-dashoffset: 0;
+  }
+  50%{
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -35px;
+  }
+  100%{
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -124px;
+  }
+}
+@keyframes color{
+  100%, 0%{
+    stroke: $load_red;
+  }
+  40%{
+    stroke: $load_blue;
+  }
+  66%{
+    stroke: $load_green;
+  }
+  80%, 90%{
+    stroke: $load_yellow;
+  }
+}
+
+// ajax load_more
+.load_more_holder {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  z-index: 1;
+}
+.loader_holder {
+  height: 48px; // should be as .load_more button height
+  position: relative;
+  z-index: 0;
+  pointer-events: none;
+}

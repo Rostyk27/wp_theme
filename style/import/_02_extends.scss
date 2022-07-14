@@ -1,0 +1,118 @@
+// theme class placeholders
+
+// flex classes
+%flex {
+  @include flexbox;
+  @include align-items(center);
+  @include justify-content(space-between);
+
+  &__rwd {
+    @include rwd-min(1025) {
+      @include flexbox;
+      @include align-items(center);
+      @include justify-content(space-between);
+    }
+  }
+
+  &__mob {
+    @include rwd-min(768) {
+      @include flexbox;
+      @include align-items(center);
+      @include justify-content(space-between);
+    }
+  }
+
+  &_start {
+    @include flexbox;
+    @include align-items(flex-start);
+    @include justify-content(space-between);
+
+    &__rwd {
+      @include rwd-min(1025) {
+        @include flexbox;
+        @include align-items(flex-start);
+        @include justify-content(space-between);
+      }
+    }
+
+    &__mob {
+      @include rwd-min(768) {
+        @include flexbox;
+        @include align-items(flex-start);
+        @include justify-content(space-between);
+      }
+    }
+  }
+
+  &_center {
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(center);
+
+    &__rwd {
+      @include rwd-min(1025) {
+        @include flexbox;
+        @include align-items(center);
+        @include justify-content(center);
+      }
+    }
+
+    &__mob {
+      @include rwd-min(768) {
+        @include flexbox;
+        @include align-items(center);
+        @include justify-content(center);
+      }
+    }
+  }
+}
+
+// other useful classes to extend
+%ani {@include transition()}
+
+%bg {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+%object_fit {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+%last_no_spacing > *:last-child:not(.button):not(.full_frame):not(blockquote) {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+%rwd_show {
+  @include rwd-min(1025) {display: none !important}
+}
+%rwd_hide {
+  @include rwd-max(1024) {display: none !important}
+}
+
+%mob_show {
+  @include rwd-min(768) {display: none !important}
+}
+%mob_hide {
+  @include rwd-max(767) {display: none !important}
+}
+
+%is_visually_hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+// 12 column spacing
+@include rwd-min(1025) {
+  @for $i from 1 through 4 {
+    %col_space_l_#{$i} {padding-left: calc((100% + var(--grid-gap))/12*#{$i})}
+    %col_space_r_#{$i} {padding-right: calc((100% + var(--grid-gap))/12*#{$i})}
+  }
+}

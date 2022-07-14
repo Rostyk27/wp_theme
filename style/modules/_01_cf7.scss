@@ -1,0 +1,192 @@
+// cf7
+$form-error: #ef3f3f;
+$form-success: #22b86c;
+
+div.wpcf7 {
+  position: relative;
+
+  .inputs_wrap {
+    @extend %flex__mob;
+
+    & > * {
+      @include rwd-min(768) {width: 48%}
+    }
+  }
+
+  .wpcf7-form {
+    &.sent,
+    &.failed,
+    &.invalid,
+    &.unaccepted {
+      .wpcf7-response-output {margin-top: 10px}
+    }
+
+    &.sent .wpcf7-response-output {background-color: $form-success}
+
+    &.unaccepted .wpcf7-response-output {background-color: #1091ae}
+
+    &.failed,
+    &.invalid {
+      .wpcf7-response-output {
+        background-color: $form-error;
+
+        &.is_temp_hidden {display: none}
+      }
+    }
+
+    &.submitting {
+      .wpcf7-spinner {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .button {
+        opacity: 0.5;
+        pointer-events: none;
+      }
+    }
+  }
+
+  .wpcf7-form-control-wrap {
+    display: block;
+    margin-bottom: 20px;
+    position: relative;
+
+    &[class*="acceptance"] {min-height: 40px}
+  }
+
+  .wpcf7-not-valid-tip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font: 400 16px/40px $ff;
+    color: $form-error;
+    padding: 0 15px;
+    border-radius: 0;
+    background-color: #fff;
+    border: 1px solid $form-error;
+    cursor: pointer;
+  }
+
+  .wpcf7-response-output {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    font: 400 16px/1.4 $ff;
+    color: #fff;
+    padding: 12px;
+    border-radius: 0;
+    text-align: center;
+  }
+
+  input, textarea {
+    &:not([type="submit"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]):not([type="file"]) {
+      display: block;
+      height: 40px;
+      font: 400 16px $ff;
+      color: $tx;
+      padding: 0 15px;
+      border: 1px solid $cl;
+      background-color: #fff;
+      @include placeholder {color: $tx; opacity: 1}
+
+      &:focus,
+      &:focus-visible {
+        outline: 0 none;
+        border-color: $form-success;
+      }
+
+      .is_using_mouse & {
+        &:focus,
+        &:focus-visible {border-color: $form-success}
+      }
+    }
+
+    &[type="checkbox"] {
+      @extend %is_visually_hidden;
+
+      & + span {
+        display: inline-block;
+        font-size: 14px;
+        line-height: 26px;
+        padding-left: 40px;
+        cursor: pointer;
+        position: relative;
+
+        &:before,
+        &:after {
+          @extend %ani;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 24px;
+        }
+
+        &:before {
+          content: '';
+          height: 24px;
+          border-radius: 3px;
+          border: 1px solid $cl;
+        }
+
+        &:after {
+          content: '\e907';
+          font: 400 20px/24px $icons;
+          color: $cl;
+          text-align: center;
+          opacity: 0;
+        }
+      }
+
+      &:checked + span {
+        &:after {opacity: 1}
+      }
+
+      &:focus,
+      &:focus-visible {
+        & + span:before {
+          @include transition(none);
+          outline: 2px dashed $cl;
+        }
+      }
+
+      .is_using_mouse & {
+        &:focus,
+        &:focus-visible {
+          & + span:before {outline: 0 none}
+        }
+      }
+    }
+  }
+
+  textarea {
+    height: 120px !important;
+    padding: 15px !important;
+    resize: none;
+    overflow: auto;
+  }
+
+  button.button {
+    & + input {display: none}
+  }
+
+  .wpcf7-spinner {
+    @extend %ani;
+    @include prefixer(animation, swiper-preloader-spin 1s infinite linear);
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    border-radius: 100%;
+    border: 2px solid #f1f1f1;
+    border-top: 3px solid $cl;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .screen-reader-response {@extend %is_visually_hidden}
+}
