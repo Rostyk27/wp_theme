@@ -16,7 +16,7 @@ $i_query = array(
                 load_search_ajax( $i_query );
             else :
 	            if (have_posts()) : while (have_posts()) : the_post();
-		            get_template_part( 'tpl-parts/post-item' );
+		            get_template_part( 'tpl-parts/post', 'item' );
 	            endwhile; endif;
             endif; ?>
         </div>

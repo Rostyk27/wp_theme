@@ -11,10 +11,9 @@ wp_enqueue_style( 'swiper', get_stylesheet_directory_uri() . '/style/libs/swiper
 // set a preview for a block
 if ( ! empty( $block['data']['__is_preview'] ) ) : ?>
     <figure>
-        <img src="<?php echo esc_url( theme( 'tpl-parts/blocks/images/custom-slider-placeholder.png' ) ); ?>"
-             alt="preview">
+        <img src="<?php echo esc_url( theme( 'tpl-parts/blocks/images/custom-slider-placeholder.png' ) ); ?>" alt="preview" style="max-width: 100%;">
     </figure>
-	<?php return; endif;
+<?php return; endif;
 
 // get fields
 $custom_slider = get_field( 'custom_slider' );

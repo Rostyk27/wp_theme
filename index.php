@@ -12,7 +12,7 @@ get_template_part( 'tpl-parts/top-panels/top-panel', 'default', array( 'title' =
 	            load_posts_ajax();
             else :
 	            if (have_posts()) : while (have_posts()) : the_post();
-		            get_template_part( 'tpl-parts/post-item' );
+		            get_template_part( 'tpl-parts/post', 'item' );
                 endwhile; endif;
             endif; ?>
         </div>

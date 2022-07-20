@@ -1,8 +1,17 @@
+// fonts
 $fb: 16px;
+$ff: 'Roboto', sans-serif;
+$ff2: 'Playfair Display', sans-serif;
+$icons: 'icons';
+
+// colors
 $cl: #22bbb4;
 $tx: #1c2c39;
 $border: #e8e8e8;
 $shadow: rgba($tx, 0.33);
-$ff: 'Roboto', sans-serif;
-$ff2: 'Playfair Display', sans-serif;
-$icons: 'icons';
+
+// container > child col spacings
+$container_col1: calc((100% + var(--grid-gap))/12);
+$container_col2: calc((100% + var(--grid-gap))/12*2);
+$container_col3: calc((100% + var(--grid-gap))/12*3);
+$container_col4: calc((100% + var(--grid-gap))/12*4);

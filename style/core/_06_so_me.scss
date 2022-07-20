@@ -1,53 +1,29 @@
 // social media + share buttons
 .shrs,
 .so_me {
+  margin: 0 -10px;
+
   li {
     display: inline-flex;
     vertical-align: middle;
+    margin: 0 10px;
   }
 
   a {
     font-size: 24px;
     line-height: 0.8;
-  }
-}
-
-.so_me {
-  margin: 0 -10px;
-
-  li {margin: 0 10px}
-
-  a {
     color: $cl;
-    @include hover {color: #fff}
   }
 }
 
 .shrs {
-  &.is_vertical {
-    @include rwd-min(1025) {
-      position: absolute;
-      top: 3px;
-      left: -40px;
-      width: 24px;
-      text-align: center;
-
-      li {
-        margin-right: 0;
-        margin-bottom: 20px;
-      }
-    }
-    @include rwd-max(1024) {margin-bottom: 22px}
-  }
-
-  &_wrap {position: relative}
-
-  &_holder {@include justify-content(flex-start)}
-
-  li {margin-right: 20px}
-
   a {
-    color: $cl;
     @include hover {color: $tx}
+  }
+}
+
+.so_me {
+  a {
+    @include hover {color: #fff}
   }
 }

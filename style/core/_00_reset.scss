@@ -35,15 +35,23 @@ body {
   @include rwd-min(1025) {margin-top: 80px}
 }
 .container {
-  width: 1110px;
+  width: 1200px;
   max-width: calc(100% - 48px);
   margin: 0 auto;
   position: relative;
   @include rwd-range(1024, 481) {max-width: calc(100% - 78px)}
   @include rwd-min(1025) {max-width: calc(100% - 144px)}
-  &.is_smaller {
-    width: 630px;
-    @include rwd-min(1025) {width: 730px}
+
+  &.is_10 > * {
+    @include rwd-min(1025) {padding: 0 $container_col1}
+  }
+
+  &.is_8 > * {
+    @include rwd-min(1025) {padding: 0 $container_col2}
+  }
+
+  &.is_6 > * {
+    @include rwd-min(1025) {padding: 0 $container_col3}
   }
 }
 

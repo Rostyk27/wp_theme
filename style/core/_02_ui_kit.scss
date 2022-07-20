@@ -400,22 +400,9 @@ hr {
   &__accordion {
     &_row {
       &:not(:last-child) {border-bottom: 2px solid $border}
-
-      .content {
-        @extend %last_no_spacing;
-        display: none;
-        padding: 20px 18px 30px;
-        box-shadow: inset 0 2px 0 $border;
-        @include rwd-min(768) {
-          padding-left: 20px;
-          padding-right: 23px;
-        }
-
-        ul {@extend .is_indent}
-      }
     }
 
-    .acc_title {
+    &_title {
       @extend %ani;
       padding: 8px 68px 10px 10px;
       position: relative;
@@ -433,6 +420,19 @@ hr {
         right: 10px;
         @include rwd-min(768) {right: 14px}
       }
+    }
+
+    &_content {
+      @extend %last_no_spacing;
+      display: none;
+      padding: 20px 18px 30px;
+      box-shadow: inset 0 2px 0 $border;
+      @include rwd-min(768) {
+        padding-left: 20px;
+        padding-right: 23px;
+      }
+
+      ul {@extend .is_indent}
     }
   }
 
@@ -455,7 +455,7 @@ hr {
       }
     }
 
-    .content {
+    &_content {
       @extend %last_no_spacing;
       padding: 20px 20px 24px;
 
