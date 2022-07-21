@@ -5,7 +5,7 @@ $title = is_home() ? get_the_title( BLOG_ID ) : get_the_archive_title();
 get_template_part( 'tpl-parts/top-panels/top-panel', 'default', array( 'title' => $title ) );
 ?>
 
-<section class="posts__holder">
+<section class="posts__page">
     <div class="container">
         <div class="posts__container">
             <?php if ( function_exists( 'load_posts_ajax') ) :

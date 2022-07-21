@@ -52,7 +52,7 @@ div.wpcf7 {
     margin-bottom: 20px;
     position: relative;
 
-    &[class*="acceptance"] {min-height: 40px}
+    &[data-name*="acceptance"] {min-height: 40px}
   }
 
   .wpcf7-not-valid-tip {

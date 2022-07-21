@@ -10,7 +10,7 @@ tpl_style( $file_name );
 
 <?php get_template_part( 'tpl-parts/top-panels/top-panel', 'secondary' ); ?>
 
-<section class="default_page">
+<section class="contact__page">
 	<?php get_template_part( 'tpl-parts/default', 'content' ); ?>
 
     <div class="container">

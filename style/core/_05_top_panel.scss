@@ -9,8 +9,11 @@
   }
 
   &__default {
-    padding: 35px 0 20px;
+    padding: 40px 0 30px;
+    @include rwd-min(768) {padding-top: 50px}
   }
+
+  h1 {padding-bottom: 0}
 }
 
 .top_panel__primary,
@@ -18,11 +21,11 @@
   @include flexbox();
   @include align-items(center);
   min-height: 290px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   position: relative;
   @include rwd-min(768) {
     min-height: 480px;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
   }
 
   &:before {
@@ -35,7 +38,14 @@
     background-color: $shadow;
   }
 
-  figure, picture {position: absolute; top: 0;bottom: 0;right: 0;left: 0; z-index: -1;}
+  figure, picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
 
   h1 {color: #fff}
 }
