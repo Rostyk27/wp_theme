@@ -35,8 +35,14 @@ add_action('wp_enqueue_scripts', 'tt_add_jscss');
 
 
 // enqueue styles individually by template
-function tpl_style( $file_name, $sub_path =  '', $version = null ) {
-	wp_enqueue_style( $file_name, get_stylesheet_directory_uri() . '/style/templates/' . $sub_path . '' . $file_name . '.css', null, $version );
+function tpl_style( $file_names, $sub_path =  '', $version = null ) {
+	if ( !is_array( $file_names ) ) :
+		$file_names = array( $file_names );
+	endif;
+
+	foreach ( $file_names as $file_name ) {
+		wp_enqueue_style( $file_name, get_stylesheet_directory_uri() . '/style/templates/' . $sub_path . '' . $file_name . '.css', null, $version );
+	}
 }
 
 
