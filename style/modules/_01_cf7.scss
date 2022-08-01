@@ -175,7 +175,7 @@ div.wpcf7 {
 
   .wpcf7-spinner {
     @extend %ani;
-    @include prefixer(animation, swiper-preloader-spin 1s infinite linear);
+    @include animation(loading-spinner 1s infinite linear);
     width: 24px;
     height: 24px;
     position: absolute;
@@ -189,4 +189,8 @@ div.wpcf7 {
   }
 
   .screen-reader-response {@extend %is_visually_hidden}
+}
+
+@keyframes loading-spinner {
+  100% {transform: rotate(360deg)}
 }
