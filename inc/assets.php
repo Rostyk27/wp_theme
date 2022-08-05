@@ -40,6 +40,10 @@ function tpl_style( $file_names, $sub_path =  '', $version = null ) {
 		$file_names = array( $file_names );
 	endif;
 
+	if ($sub_path !== '') :
+		$sub_path = $sub_path . '/';
+	endif;
+
 	foreach ( $file_names as $file_name ) {
 		wp_enqueue_style( $file_name, get_stylesheet_directory_uri() . '/style/templates/' . $sub_path . '' . $file_name . '.css', null, $version );
 	}

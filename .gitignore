@@ -53,6 +53,7 @@ Temporary Items
 
 /style/style.css
 /style/templates/*.css
+/style/templates/*/*.css
 
 node_modules/
 
