@@ -148,7 +148,7 @@ div.wpcf7 {
       &:focus,
       &:focus-visible {
         & + span:before {
-          @include transition(none);
+          transition: none;
           outline: 2px dashed $cl;
         }
       }
@@ -175,7 +175,6 @@ div.wpcf7 {
 
   .wpcf7-spinner {
     @extend %ani;
-    @include animation(loading-spinner 1s infinite linear);
     width: 24px;
     height: 24px;
     position: absolute;
@@ -186,6 +185,7 @@ div.wpcf7 {
     border-top: 3px solid $cl;
     opacity: 0;
     visibility: hidden;
+    animation: loading-spinner 1s infinite linear;
   }
 
   .screen-reader-response {@extend %is_visually_hidden}

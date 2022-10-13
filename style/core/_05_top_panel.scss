@@ -18,8 +18,8 @@
 
 .top_panel__primary,
 .top_panel__secondary {
-  @include flexbox();
-  @include align-items(center);
+  display: flex;
+  align-items: center;
   min-height: 290px;
   margin-bottom: 30px;
   position: relative;

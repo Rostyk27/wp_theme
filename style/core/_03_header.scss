@@ -65,9 +65,9 @@ header {
       overflow: auto;
       padding: 35px 24px 0;
       background-color: $cl;
+      transform: translateX(101%);
       z-index: 2;
-      @include transform(translateX(101%));
-      &.is_open {@include transform(translateX(0))}
+      &.is_open {transform: translateX(0)}
     }
     @include rwd-range(1024, 768) {width: 50%}
     @include rwd-range(1024, 481) {
@@ -130,7 +130,7 @@ header {
             & > .sub-menu {
               opacity: 1;
               pointer-events: all;
-              @include transform(translateY(0));
+              transform: translateY(0);
             }
           }
         }
@@ -158,12 +158,12 @@ header {
 
             &:after, &:before {
               content: '';
-              @include transition();
-              @include transform(translate(-50%,-50%));
+              transform: translate(-50%,-50%);
               position: absolute;
               top: 50%;
               left: 50%;
               background-color: #fff;
+              transition: all 0.3s ease;
             }
 
             &:after {
@@ -177,8 +177,8 @@ header {
             }
 
             &.is_open {
-              &:after {@include transform(translate(-50%,-50%) rotate(180deg))}
-              &:before {@include transform(translate(-50%,-50%) rotate(90deg))}
+              &:after {transform: translate(-50%,-50%) rotate(180deg)}
+              &:before {transform: translate(-50%,-50%) rotate(90deg)}
             }
           }
 
@@ -205,14 +205,14 @@ header {
 
     .sub-menu {
       @include rwd-min(1025) {
-        @include transition();
-        @include transform(translateY(5px));
         position: absolute;
         top: 52px;
         min-width: 140px;
         padding: 15px 20px 7px;
         background-color: #fff;
         box-shadow: 0 6px 5px $shadow;
+        transform: translateY(5px);
+        transition: all 0.3s ease;
         opacity: 0;
         pointer-events: none;
         z-index: 3;
@@ -241,8 +241,8 @@ header {
 
   &__toggle {
     @extend %ani;
-    @include transform(translateY(-50%) rotate(0deg));
     display: block;
+    transform: translateY(-50%) rotate(0deg);
     position: absolute;
     top: 50%;
     right: calc(#{$h_padding} * -1);
@@ -251,10 +251,7 @@ header {
     border: none;
     outline: none;
     box-shadow: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
     appearance: none;
-    -webkit-border-radius: 0;
     border-radius: 0;
     text-indent: -9999px;
     cursor: pointer;
@@ -263,14 +260,14 @@ header {
 
     span {
       display: block;
-      @include transform(rotate(0deg));
-      @include transition(all, 0.25s, ease-in-out);
       position: absolute;
       left: $h_padding;
       right: $h_padding;
       top: ($h_height / 2) - ($h_line_thickness / 2) - $h_spacing;
       height: $h_line_thickness;
       background-color: $h_color;
+      transform: rotate(0deg);
+      transition: all 0.25s ease-in-out;
       opacity: 1;
       pointer-events: none;
 
@@ -285,17 +282,17 @@ header {
         right: $h_active_padding;
 
         &:nth-child(1) {
-          @include transform(rotate(135deg));
+          transform: rotate(135deg);
           top: ($h_height / 2) - ($h_line_thickness / 2);
         }
 
         &:nth-child(2) {
-          @include transform(translate3d(-100%, 0, 0));
+          transform: translate3d(-100%, 0, 0);
           opacity: 0;
         }
 
         &:nth-child(3) {
-          @include transform(rotate(-135deg));
+          transform: rotate(-135deg);
           top: ($h_height / 2) - ($h_line_thickness / 2);
         }
       }
@@ -310,7 +307,7 @@ header {
   position: relative;
   z-index: 1;
   @include hover {color: $cl}
-  @include rwd-min(1025) {@include order(1)}
+  @include rwd-min(1025) {order: 1}
   @include rwd-max(1024) {margin-right: 60px}
 }
 
@@ -366,12 +363,13 @@ header {
 }
 
 .skip_to_content {
-  @include transition(none);
-  @include transform(translate(-110%, -110%));
   position: absolute;
   top: 0;
   left: 0;
+  transform: translate(-110%, -110%);
+  transition: none;
   z-index: 10;
+
   &:focus,
-  &:focus-visible {@include transform(translate(10px, 10px))}
+  &:focus-visible {transform: translate(10px, 10px)}
 }

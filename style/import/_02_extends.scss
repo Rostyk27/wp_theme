@@ -2,73 +2,43 @@
 
 // flex classes
 %flex {
-  @include flexbox;
-  @include align-items(center);
-  @include justify-content(space-between);
+  @include flex_class;
 
   &__rwd {
-    @include rwd-min(1025) {
-      @include flexbox;
-      @include align-items(center);
-      @include justify-content(space-between);
-    }
+    @include rwd-min(1025) {@include flex_class}
   }
 
   &__mob {
-    @include rwd-min(768) {
-      @include flexbox;
-      @include align-items(center);
-      @include justify-content(space-between);
-    }
+    @include rwd-min(768) {@include flex_class}
   }
 
   &_start {
-    @include flexbox;
-    @include align-items(flex-start);
-    @include justify-content(space-between);
+    @include flex_class(start);
 
     &__rwd {
-      @include rwd-min(1025) {
-        @include flexbox;
-        @include align-items(flex-start);
-        @include justify-content(space-between);
-      }
+      @include rwd-min(1025) {@include flex_class(start)}
     }
 
     &__mob {
-      @include rwd-min(768) {
-        @include flexbox;
-        @include align-items(flex-start);
-        @include justify-content(space-between);
-      }
+      @include rwd-min(768) {@include flex_class(start)}
     }
   }
 
   &_center {
-    @include flexbox;
-    @include align-items(center);
-    @include justify-content(center);
+    @include flex_class(center);
 
     &__rwd {
-      @include rwd-min(1025) {
-        @include flexbox;
-        @include align-items(center);
-        @include justify-content(center);
-      }
+      @include rwd-min(1025) {@include flex_class(center)}
     }
 
     &__mob {
-      @include rwd-min(768) {
-        @include flexbox;
-        @include align-items(center);
-        @include justify-content(center);
-      }
+      @include rwd-min(768) {@include flex_class(center)}
     }
   }
 }
 
 // other useful classes to extend
-%ani {@include transition()}
+%ani {transition: all 0.3s ease}
 
 %bg {
   background-size: cover;

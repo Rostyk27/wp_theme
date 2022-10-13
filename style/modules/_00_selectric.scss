@@ -50,11 +50,11 @@ $selectric-font-size:       14px !default;                                      
     }
     &:after {
       left: -2px;
-      @include transform(translate(0, -50%) rotate(-45deg));
+      transform: translate(0, -50%) rotate(-45deg);
     }
     &:before {
       right: -2px;
-      @include transform(translate(0, -50%) rotate(45deg));
+      transform: translate(0, -50%) rotate(45deg);
     }
   }
 

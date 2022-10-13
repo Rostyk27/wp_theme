@@ -1,126 +1,91 @@
 // theme classes
 
-
 // flex classes
 .flex {
-  @include flexbox;
-  @include align-items(center);
-  @include justify-content(space-between);
+  @include flex_class;
 
   &__rwd {
-    @include rwd-min(1025) {
-      @include flexbox;
-      @include align-items(center);
-      @include justify-content(space-between);
-    }
+    @include rwd-min(1025) {@include flex_class}
   }
 
   &__mob {
-    @include rwd-min(768) {
-      @include flexbox;
-      @include align-items(center);
-      @include justify-content(space-between);
-    }
+    @include rwd-min(768) {@include flex_class}
   }
 
   &_start {
-    @include flexbox;
-    @include align-items(flex-start);
-    @include justify-content(space-between);
+    @include flex_class(start);
 
     &__rwd {
-      @include rwd-min(1025) {
-        @include flexbox;
-        @include align-items(flex-start);
-        @include justify-content(space-between);
-      }
+      @include rwd-min(1025) {@include flex_class(start)}
     }
 
     &__mob {
-      @include rwd-min(768) {
-        @include flexbox;
-        @include align-items(flex-start);
-        @include justify-content(space-between);
-      }
+      @include rwd-min(768) {@include flex_class(start)}
     }
   }
 
   &_center {
-    @include flexbox;
-    @include align-items(center);
-    @include justify-content(center);
+    @include flex_class(center);
 
     &__rwd {
-      @include rwd-min(1025) {
-        @include flexbox;
-        @include align-items(center);
-        @include justify-content(center);
-      }
+      @include rwd-min(1025) {@include flex_class(center)}
     }
 
     &__mob {
-      @include rwd-min(768) {
-        @include flexbox;
-        @include align-items(center);
-        @include justify-content(center);
-      }
+      @include rwd-min(768) {@include flex_class(center)}
     }
   }
 }
 
 
 // 12_column grid
-.flex_grid {
-  @include flexbox;
+@mixin flex_grid_styles {
+  display: flex;
   margin: 0 calc(var(--grid-gap) / -2);
   & > * {margin: 0 calc(var(--grid-gap)/2)}
+}
+
+.flex_grid {
+  @include flex_grid_styles;
 
   &__rwd {
-    @include rwd-min(1025) {
-      @include flexbox;
-      margin: 0 calc(var(--grid-gap) / -2);
-      & > * {margin: 0 calc(var(--grid-gap)/2)}
-    }
+    @include rwd-min(1025) {@include flex_grid_styles}
   }
 
   &__mob {
-    @include rwd-min(768) {
-      @include flexbox;
-      margin: 0 calc(var(--grid-gap) / -2);
-      & > * {margin: 0 calc(var(--grid-gap)/2)}
-    }
+    @include rwd-min(768) {@include flex_grid_styles}
   }
 }
 
 [class*="flex_grid"] {
-  @include flex-wrap(wrap);
-  &._nowrap {@include flex-wrap(nowrap)}
-  &._align_center {@include align-items(center)}
-  &._space_between {@include justify-content(space-between)}
+  flex-wrap: wrap;
+  &._nowrap {flex-wrap: nowrap}
+  &._align_center {align-items: center}
+  &._space_between {justify-content: space-between}
 
   & > * {
-    @include flex(1);
+    flex: 1;
     margin-bottom: calc(var(--grid-gap));
 
     @for $i from 1 through 12 {
-      &._col_#{$i} {@include flex(0 0 calc(100%/12*#{$i} - var(--grid-gap)))}
+      &._col_#{$i} {flex: 0 0 calc(100%/12*#{$i} - var(--grid-gap))}
     }
 
     @include rwd-range(1499, 1025) {
       @for $i from 1 through 12 {
-        &._col_sd_#{$i} {@include flex(0 0 calc(100%/12*#{$i} - var(--grid-gap)))}
+        &._col_sd_#{$i} {flex: 0 0 calc(100%/12*#{$i} - var(--grid-gap))}
       }
     }
 
     @include rwd-max(1024) {
       @for $i from 1 through 12 {
-        &._col_rwd_#{$i} {@include flex(0 0 calc(100%/12*#{$i} - var(--grid-gap)))}
+        &._col_rwd_#{$i} {flex: 0 0 calc(100%/12*#{$i} - var(--grid-gap))}
       }
     }
 
     @include rwd-max(767) {
       @for $i from 1 through 12 {
-        &._col_mob_#{$i} {@include flex(0 0 calc(100%/12*#{$i} - var(--grid-gap)))}
+        &._col_mob_#{$i} {flex: 0 0 calc(100%/12*#{$i} - var(--grid-gap))}
       }
     }
 

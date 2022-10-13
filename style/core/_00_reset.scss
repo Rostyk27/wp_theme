@@ -19,21 +19,24 @@ html {
   -webkit-font-smoothing: antialiased;
   @include rwd-min(768) {font-size: $fb}
 }
+
 body {
-  @include flexbox;
-  @include flex-direction(column);
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
   font-size: $fb;
   color: $tx;
   background-color: #fff;
   @include rwd-max(1024) { &.is_overflow {overflow: hidden} }
 }
+
 #main {
-  @include flex(1, 0, auto);
+  flex: 1 0 auto;
   overflow: hidden;
   margin-top: 60px;
   @include rwd-min(1025) {margin-top: 80px}
 }
+
 .container {
   width: 1200px;
   max-width: calc(100% - 48px);
@@ -104,8 +107,8 @@ input[type="button"] {
 input, textarea {@include placeholder {color: $tx; opacity: 1}}
 
 // selection
-::selection {color: #fff; background-color: $cl}
-::-moz-selection {color: #fff; background-color: $cl}
+::selection {color: $tx; background-color: $cl}
+::-moz-selection {color: $tx; background-color: $cl}
 
 // custom scrollbar - chrome
 html::-webkit-scrollbar {
@@ -128,7 +131,7 @@ html::-webkit-scrollbar {
 a[href], area[href], input:not([disabled]):not([type="hidden"]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable], audio[controls], video[controls], summary, [tabindex^="0"], [tabindex^="1"], [tabindex^="2"], [tabindex^="3"], [tabindex^="4"], [tabindex^="5"], [tabindex^="6"], [tabindex^="7"], [tabindex^="8"], [tabindex^="9"] {
   &:focus,
   &:focus-visible {
-    @include transition(none);
+    transition: none;
     outline: 2px dashed $cl;
   }
 
