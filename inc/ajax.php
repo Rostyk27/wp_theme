@@ -33,7 +33,7 @@ function load_posts_ajax($paged = 1) {
 
 	if($posts_query->have_posts()) : while ( $posts_query->have_posts() ) : $posts_query->the_post();
 
-		get_template_part('tpl-parts/post', 'item');
+		get_template_part('tpl-parts/post-items/post', 'item');
 
 	endwhile;
 

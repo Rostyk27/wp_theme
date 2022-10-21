@@ -1,9 +1,4 @@
-<?php
-get_header();
-
-$file_name = basename(__FILE__, '.php');
-tpl_style( $file_name );
-?>
+<?php get_header(); ?>
 
 <?php get_template_part( 'tpl-parts/top-panels/top-panel', 'default', array( 'container_class' => 'is_8' ) ); ?>
 
@@ -11,6 +6,13 @@ tpl_style( $file_name );
 
 <?php get_template_part( 'tpl-parts/single/single', 'thumb' ); ?>
 
-<?php get_template_part( 'tpl-parts/default', 'content', array( 'class' => 'single_post__content is_8' ) ); ?>
+<div class="single_post__content">
+	<?php get_template_part( 'tpl-parts/gutenberg', null, array( 'class' => 'is_8' ) ); ?>
+</div>
 
-<?php get_footer(); ?>
+<?php
+$file_name = basename(__FILE__, '.php');
+tpl_style( $file_name );
+
+get_footer();
+?>
