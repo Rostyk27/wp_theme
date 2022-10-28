@@ -18,16 +18,16 @@ add_image_size('custom_gallery', '525', '395', true);
 // get post taxonomy
 function custom_tax($pid, $tax) {
 	if ( get_the_terms( $pid, $tax ) ) {
-		$post_tax = get_the_terms( $pid, $tax );
-		$taxs = '';
-		$co = count( $post_tax );
+		$tax_terms = get_the_terms( $pid, $tax );
+		$term_list = '';
+		$co = count( $tax_terms );
 		$i = 1;
-		foreach ( $post_tax as $t ) {
-			$tax = get_term( $t );
-			$taxs .= '<span class="tax_term">' . $tax->name . '</span>' . ( $i ++ != $co ? '<span>,</span> ' : '' );
+		foreach ( $tax_terms as $t ) {
+			$tax_term = get_term( $t );
+			$term_list .= '<span class="tax_term">' . $tax_term->name . '</span>' . ( $i ++ != $co ? '<span>,</span> ' : '' );
 		}
 
-		return $taxs;
+		return $term_list;
 	}
 }
 
@@ -37,15 +37,15 @@ const CUSTOM_TEMPLATE_SLUG = '/custom-post-type/';
 // get post taxonomy as hash with related template slug
 function custom_tax_linked($pid, $tax, $template_slug) {
 	if ( get_the_terms($pid, $tax) ) {
-		$post_tax = get_the_terms( $pid, $tax );
-		$taxs = '';
-		$co = count( $post_tax );
+		$tax_terms = get_the_terms( $pid, $tax );
+		$term_list = '';
+		$co = count( $tax_terms );
 		$i = 1;
-		foreach ( $post_tax as $t ) {
-			$tax = get_term( $t );
-			$taxs .= '<a href="' . $template_slug . '#' . $tax->slug . '" class="tax_term">' . $tax->name . '</a>' . ( $i ++ != $co ? '<span>,</span> ' : '' );
+		foreach ( $tax_terms as $t ) {
+			$tax_term = get_term( $t );
+			$term_list .= '<a href="' . $template_slug . '#' . $tax_term->slug . '" class="tax_term">' . $tax_term->name . '</a>' . ( $i ++ != $co ? '<span>,</span> ' : '' );
 		}
 
-		return $taxs;
+		return $term_list;
 	}
 }

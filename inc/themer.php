@@ -276,3 +276,21 @@ function get_loader(){
 // allowed tags to use loader with escaping
 // usage - echo wp_kses(get_loader(), $GLOBALS['allowed_loader'])
 $allowed_loader = array( 'div' => array( 'class' => true ), 'svg' => array( 'class'   => true, 'viewbox' => true, ), 'circle' => array( 'class' => true, 'cx' => true, 'cy' => true, 'r' => true, 'fill' => true, 'stroke-miterlimit' => true, ), );
+
+//allow iframe display via wp_kses_post
+function custom_wpkses_post_tags( $tags, $context ) {
+
+	if ( 'post' === $context ) {
+		$tags['iframe'] = array(
+			'src'             => true,
+			'height'          => true,
+			'width'           => true,
+			'frameborder'     => true,
+			'allowfullscreen' => true,
+		);
+	}
+
+	return $tags;
+}
+
+add_filter( 'wp_kses_allowed_html', 'custom_wpkses_post_tags', 10, 2 );
