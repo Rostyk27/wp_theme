@@ -8,7 +8,6 @@ tpl_style( 'page' );
 
 <div class="page_404 default_page container">
     <div class="content">
-        <h2>test</h2>
         <p>Sorry, this page doesn't exist or has been removed.</p>
         <a href="<?php echo esc_url( site_url() ); ?>" class="button">Go back home</a>
     </div>
